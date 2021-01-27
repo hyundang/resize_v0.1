@@ -4,7 +4,7 @@ import Link from 'next/link';
 const MainContainer = () => {
     return (
         <>
-         <Link href="/sizetest">옷고민 상담소</Link>
+         <Link href="/sizetest">체형 TEST</Link>
         </>
     );
 };

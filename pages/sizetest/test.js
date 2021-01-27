@@ -13,7 +13,7 @@ const Container = style.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: url(/images/sizetest/background/1_bg_blur.jpg) right top no-repeat;;
+  background: url(/images/sizetest/background/${props=>props.photo}) right top no-repeat;;
   background-size: cover;
 `;
 
@@ -78,7 +78,7 @@ const Answer = style.div`
   border:1px solid black;
   border-color: white;
   border-radius: 15px;
-  box-shadow: 0vw 2vw 7vw 0 rgba(98, 69, 34, 0.15);
+  box-shadow: 0vw 2vw 7vw 0.3 rgba(98, 69, 34, 0.15);
   padding: 3vw;
   margin: 4vw 2vw;
   background-color: white;
@@ -138,7 +138,7 @@ const Test = ({}) => {
       questions.length == (questionNumber) ? (
         <Container><FinalContainer answers={answers}/></Container>
       ) : (
-        <Container>
+        <Container photo = {questions[questionNumber].photo}>
           <Card>
             <QuestionContainer>
               <QuestionN>Q{questionNumber+1}</QuestionN>
