@@ -12,6 +12,7 @@ const Container = style.div`
   width:100%;
   height:100%;
   background-color: #f3ece3;
+  font-family: 'Nanum Gothic', sans-serif;
 `;
 
 const TitleContainer = style.div`
@@ -33,6 +34,7 @@ const Des = style.div`
   padding: 3vw 0 5vw 0;
   font-size:0.8rem;
   width:80%;
+  line-height: 1.2rem;
 `;
 
 const Des2 = style.div`
@@ -50,7 +52,7 @@ const Button = style.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align:center;
+  text-align: center;
   background-color: #dec19f;
   box-shadow: 0vw 2vw 5vw 0 rgba(98, 69, 34, 0.4);
   border-radius: 5px;
@@ -59,7 +61,8 @@ const Button = style.div`
 
 const Text = style.div`
   color : #fff;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: bold;
 `;
 
 export function searchID(id) {

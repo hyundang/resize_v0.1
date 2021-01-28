@@ -74,7 +74,7 @@ export const sizeTest_final = [
     {
         id:12,
         title:'모험을 떠나는 알파카',
-        subscription: '퐁실퐁실한 체형과 파워숄더 소유자',
+        subtitle: '퐁실퐁실한 체형과 파워숄더 소유자',
         description:'고객님은 어깨가 넓은 편, 허리가 두꺼운 편, 엉덩이가 작은 편, 비율은 유니크한 체형이세요! 평소에 모델 같다는 얘기 많이 들으시지 않나요?',
     },
     {

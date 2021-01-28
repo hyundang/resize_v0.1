@@ -28,6 +28,7 @@ const Card = style.div`
 `;
 
 const QSContainer = style.div`
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,7 +55,7 @@ const Question = style.div`
   color : white;
   margin: 3vw 2vw 4vw 2vw;
   width: 80%;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight:500;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 1.3vw gray;
@@ -94,16 +95,37 @@ const Text = style.div`
   justify-content:center;
   align-items: center;
   color : black;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
 `;
 
 const Status = style.div`
+  width: 100%;
   margin: 10px 0 5px 0;
   color : white;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
+  text-align: end;
 `;
+
+const StatusContainer = style.div`
+  margin: 10vw 0 0 0 ;
+  height: 2vw;
+  width: 100%;
+  background-color: white;
+  border:0.3px solid black;
+  border-color: white;
+  border-radius: 30px;
+  box-shadow: 0vw 2vw 7vw 0.3 rgba(98, 69, 34, 0.15);
+`;
+
+const StatusBar = style.div`
+  height: 100%;
+  width: ${props=>props.completed}%;
+  background-color: #dec19f ;
+  border-radius: 30px;
+`;
+
 
 export const useInput = (initValue = null) => {
   const [value, setter] = useState(initValue);
@@ -173,6 +195,7 @@ const Test = ({}) => {
                 <Answer onClick = {onClickButton1}><Text>{questions[questionNumber].answers[0]}</Text></Answer>
                 <Answer onClick = {onClickButton2}><Text>{questions[questionNumber].answers[1]}</Text></Answer>
               </AnswerContainer>
+              <StatusContainer><StatusBar completed = {questionNumber/questions.length *100}></StatusBar></StatusContainer>
               <Status>Question {questionNumber+1} / Question {questions.length}</Status>
             </QSContainer>
           </Card>
