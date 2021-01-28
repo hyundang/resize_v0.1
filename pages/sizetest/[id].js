@@ -11,7 +11,7 @@ const Container = style.div`
   flex-direction: column;
   width:100%;
   height:100%;
-  bottom:50px;
+  background-color: #f3ece3;
 `;
 
 const TitleContainer = style.div`
@@ -25,10 +25,12 @@ const TitleContainer = style.div`
 const Title = style.div`
   font-size:1rem;
   font-weight: bold;
+  width:90%;
+  text-align:center;
 `;
 
 const Des = style.div`
-  padding: 3vw 0 5vw 0 ;
+  padding: 3vw 0 5vw 0;
   font-size:0.8rem;
   width:80%;
 `;
@@ -37,6 +39,7 @@ const Des2 = style.div`
   padding: 3vw;
   font-size:0.9rem;
   font-weight:bold;
+  text-align:center;
   width:90%;
 `;
 
@@ -57,7 +60,6 @@ const Button = style.div`
 const Text = style.div`
   color : #fff;
   font-size: 0.8rem;
-  font-family: 'Nanum Gothic', sans-serif;
 `;
 
 export function searchID(id) {
@@ -132,7 +134,7 @@ const Final = ({}) => {
           <Title>{data[sizeID].subtitle}</Title>
         </TitleContainer>
         <Des>{data[sizeID].description}</Des>
-        <Des2>리사이즈가 고객님께 어울리는 코디를 추천해드릴까요?</Des2>
+        <Des2>고객님께 어울리는 코디를 추천해드릴까요?</Des2>
         <Button>
             <Text>내 체형에 맞는 무료 코디 스타일링 받아보기 </Text>
           </Button>

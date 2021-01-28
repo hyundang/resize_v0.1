@@ -2,8 +2,8 @@ export const TestData = [
     {
         id:0,
         question1: '샤워를 마친 후',
-        question2: '거울을 보는 당신',
-        answers: ['“어깨가 좁은 사람에게 어울리는 옷 찾아주세요”','“어깨가 넓은 사람에게 어울리는 옷 찾아주세요”'],
+        question2: '거울을 보는 당신...',
+        answers: ['"배는 참 괜찮은데..."','“아 이 뱃살...언제 다 빼지?”'],
         photo: '1_bg_blur.jpg'
     },
     {
@@ -17,14 +17,14 @@ export const TestData = [
         id:2,
         question1: '타이트한 바지를 포기하고',
         question2: '다른 바지를 입어보는데',
-        answers: ['아 또 허리가 작네. 한 사이즈 큰 거 살 걸','아 허리가 남네. 벨트 해야겠다'],
+        answers: ['"아 허리가 남네 벨트 해야겠다"','"아 또 허리가 작네 한 사이즈 큰 거 살 걸"'],
         photo: '1_bg_blur.jpg'
     },
     {
         id:3,
         question1: '상의 안에 입을',
         question2: '이너 티셔츠를 입는데',
-        answers: ['소매가 길어서 손등을 덮는다','소매가 짧아서 손목이 보인다'],
+        answers: ['팔이 짧아서 소매가 길다','팔이 길어서 소매가 짧다'],
         photo: '1_bg_blur.jpg'
     },
     {
@@ -38,14 +38,14 @@ export const TestData = [
         id:5,
         question1: '머리 손질할 시간이 부족해',
         question2: '급하게 모자를 쓴 당신',
-        answers: ['“캡 모자 뒤의 끈을 늘린다"','“캡 모자 뒤의 끈을 조인다”'],
+        answers: ['캡 모자 뒤의 끈을 늘린다','캡 모자 뒤의 끈을 조인다'],
         photo: '1_bg_blur.jpg'
     },
     {
         id:6,
         question1: '가방을 맨 당신',
         question2: '',
-        answers: ['“가방이 자꾸 흘러내려 다시 고쳐 멘다"','“가방이 어꺠에 딱 붙어있다”'],
+        answers: ['가방이 자꾸 흘러내려 다시 고쳐 멘다','가방이 어깨에 딱 붙어있다'],
         photo: '2_bg_blur.jpg'
     },
     {
@@ -59,20 +59,20 @@ export const TestData = [
         id:8,
         question1: '지하철을 내리려는데',
         question2: '아까 번호를 물어본 사람이 말을 건다',
-        answers: ['생각보다 키가 크시네요?','생각보다 키가 작으시네요?'],
+        answers: ['"생각보다 키가 작으시네요?"','"생각보다 키가 크시네요?"'],
         photo: '2_bg_blur.jpg'
     },
     {
         id:9,
         question1: '맘에 드는 가게에서',
         question2: '점원을 마주쳤는데',
-        answers: ['어깨가 좁은 사람에게 어울리는 옷을 찾아주세요','어깨가 넓은 사람에게 어울리는 옷을 찾아주세요'],
+        answers: ['"어깨가 좁은 사람에게 어울리는 옷을 찾아주세요"','"어깨가 넓은 사람에게 어울리는 옷을 찾아주세요"'],
         photo: '3_bg_blur.jpg'
     },
     {
         id:10,
-        question1: '아 그리고',
-        question2: '바지를 구매할 때',
+        question1: '"아 그리고',
+        question2: '바지를 구매할 때..."',
         answers: ['"허리가 얇아서 맞는 옷 찾기가 힘들어요"','"허리가 두꺼워서 맞는 옷 찾기가 힘들어요"'],
         photo: '3_bg_blur.jpg'
     },

@@ -54,10 +54,10 @@ const Question = style.div`
   color : white;
   margin: 3vw 2vw 4vw 2vw;
   width: 80%;
-  font-size: 1.2rem;
-  font-weight: bold;
-  font-family: 'Nanum Gothic', sans-serif;
-  text-shadow: 0.8vw 0.8vw 1vw gray;
+  font-size: 1.4rem;
+  font-weight:500;
+  font-family: 'Noto Serif KR', serif;
+  text-shadow: 0.8vw 0.8vw 1.3vw gray;
 `;
 
 const AnswerContainer = style.div`
@@ -94,8 +94,9 @@ const Text = style.div`
   justify-content:center;
   align-items: center;
   color : black;
-  font-size: 0.8rem;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 1rem;
+  font-weight:300;
+  font-family: 'Noto Serif KR', serif;
 `;
 
 const Status = style.div`
@@ -149,12 +150,16 @@ const Test = ({}) => {
     setAnswers((prevResult) => {
       return [...prevResult, 1];
     });
+    if (questions.length-1 == (questionNumber)) {
+      const size = getMySize();
+      Router.push('/sizetest/'+size);
+    }
   };
 
   return (
     questions.length > 0 ? (
       questions.length == (questionNumber) ? (
-        <Container></Container>
+        <></>
       ) : (
         <Container photo = {questions[questionNumber].photo}>
           <Card>
