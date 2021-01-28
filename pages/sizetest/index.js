@@ -6,13 +6,24 @@ import Link from 'next/link';
 const Container = style.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: start;
   flex-direction: column;
   position: absolute;
   width: 100%;
   height: 100%;
 `;
+
+const LogoContainer = style.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  background-color: #a99174;
+  padding : 1vw;
+`;
+
 const TitleContainer = style.div`
+  margin: 8vw 0;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -31,12 +42,10 @@ const DesBC = style.div`
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
+  padding: 10vw 0;
 `;
-const DesContainer = style.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-`;
+
+
 const Des = style.div`
   color : black;
   padding: 1vw;
@@ -67,6 +76,7 @@ const Start = ({}) => {
 
   return (
     <Container>
+      <LogoContainer><Image src={'/images/resize_white.png'} width="160" height="50" /></LogoContainer>
       <TitleContainer>
         <Title>체형 유형 테스트</Title>
         <Des>나와 비슷한 체형을 가진 동물이 존재한다구?</Des>

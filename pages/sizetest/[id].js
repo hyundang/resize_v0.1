@@ -15,8 +15,17 @@ const Container = style.div`
   font-family: 'Nanum Gothic', sans-serif;
 `;
 
+const LogoContainer = style.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  background-color: #a99174;
+  padding : 1vw;
+`;
+
 const TitleContainer = style.div`
-  padding: 15vw 0 5vw 0;
+  padding: 4vw 0 5vw 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,7 +55,7 @@ const Des2 = style.div`
 `;
 
 const Button = style.div`
-  width: 90%;
+  width: 85%;
   height: 15vw;
   margin: 5vw;
   display: flex;
@@ -131,6 +140,7 @@ const Final = ({}) => {
   return (
     <>
       <Container>
+        <LogoContainer><Image src={'/images/resize_white.png'} width="160" height="50" /></LogoContainer>
         <TitleContainer>
           <Title>{data[sizeID].title}</Title>
           <Image src= {url} width="280" height="280"/>
