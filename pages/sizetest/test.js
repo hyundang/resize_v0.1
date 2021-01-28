@@ -1,7 +1,7 @@
 import style from 'styled-components';
 import React, {useState, useCallback} from 'react';
 import {TestData} from '../../data/sizeTest_data';
-import FinalContainer from '../../containers/sizeTest/finalContainer';
+import Router from 'next/router';
 
 const Container = style.div`
   display: flex;
@@ -54,7 +54,7 @@ const Question = style.div`
   color : white;
   margin: 3vw 2vw 4vw 2vw;
   width: 80%;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
   font-family: 'Nanum Gothic', sans-serif;
   text-shadow: 0.8vw 0.8vw 1vw gray;
@@ -119,11 +119,29 @@ const Test = ({}) => {
 
   const questions = TestData;
   
+  function getMySize() {
+    var size = '';
+    if ((answers[4] + answers[6] + answers[9])>1) size += 'W';
+    else size += 'N';
+    if ((answers[0] + answers[2] + answers[10])>1) size += 'C';
+    else size += 'T';
+    if (answers[1] == 1) size += 'S';
+    else size += 'B';
+    if ((answers[3] + answers[5] + answers[8])>1) size += 'M';
+    else size += 'U';
+  
+    return size;
+  }
+
   const onClickButton1 = () => {
     setQuestionNumber(questionNumber+1);
     setAnswers((prevResult) => {
       return [...prevResult, 0];
     });
+    if (questions.length-1 == (questionNumber)) {
+      const size = getMySize();
+      Router.push('/sizetest/'+size);
+    }
   };
 
   const onClickButton2 = () => {
@@ -136,7 +154,7 @@ const Test = ({}) => {
   return (
     questions.length > 0 ? (
       questions.length == (questionNumber) ? (
-        <Container><FinalContainer answers={answers}/></Container>
+        <Container></Container>
       ) : (
         <Container photo = {questions[questionNumber].photo}>
           <Card>
