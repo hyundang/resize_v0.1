@@ -30,3 +30,8 @@ export const ThirdBackImgState = atom({
     key: 'ThirdBackImgState',
     default: true
 })
+
+export const FourthBackImgState = atom({
+    key: 'FourthBackImgState',
+    default: true
+})

@@ -2,25 +2,26 @@ import React from 'react';
 import style from 'styled-components';
 // recoil
 import {useRecoilState} from 'recoil';
-import {ThirdBackImgState} from '../../states/atom';
+import {FourthBackImgState} from '../../states/atom';
 
 
-const ThirdScreen = () => {
-    const [isThirdShow, setIsThirdShow] = useRecoilState(ThirdBackImgState);
+const FourthScreen = () => {
+    const [isThirdShow, setIsFourthShow] = useRecoilState(FourthBackImgState);
 
     return(
         <>
-            <Container onClick={() => setIsThirdShow(false)}>
+            <Container onClick={() => setIsFourthShow(false)}>
                 <TextContainer>
-                    <Text>오랜만에 외출이라서 그런가?</Text> 
-                    <Text>저기 서있는 사람이 계속 쳐다본다.</Text>
+                    <Text>드디어 쇼핑몰 도착한 당신!</Text> 
+                    <Text>이번엔 기필코 내 체형에 찰떡인 코디를 찾아야지!</Text>
+                    <Text>괜찮은 옷 없나?</Text>
                 </TextContainer>
             </Container>
         </>
     )
 }
 
-export default ThirdScreen;
+export default FourthScreen;
 
 const Container = style.div`
   display: flex;
@@ -32,7 +33,7 @@ const Container = style.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: url(/images/sizetest/background/2_bg.jpg) right top no-repeat;
+  background: url(/images/sizetest/background/3_bg.jpg) right top no-repeat;
   background-size: cover;
 `;
 
@@ -50,9 +51,9 @@ const Text = style.div`
   justify-content:center;
   align-items: center;
   color : white;
-  font-size: 1.1rem;
-  font-weight:300;
+  font-size: 1.05rem;
+  font-weight: 400;
   font-family: 'Noto Serif KR', serif;
   line-height: 8vw;
-  text-shadow: 0.8vw 0.8vw 0.5vw gray;
+  text-shadow: 0.8vw 0.8vw 1vw gray;
 `;

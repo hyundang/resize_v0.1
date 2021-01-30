@@ -9,7 +9,8 @@ import
   LoadingState,
   FirstBackImgState,
   SecondBackImgState,
-  ThirdBackImgState
+  ThirdBackImgState,
+  FourthBackImgState
 } 
 from '../../states/atom';
 // component
@@ -29,7 +30,7 @@ import Loading from '../../containers/sizeTest/LoadingContainer';
 import FirstScreen from '../../containers/sizeTest/FirstScreen';
 import SecondScreen from '../../containers/sizeTest/SecondScreen';
 import ThirdScreen from '../../containers/sizeTest/ThirdScreen';
-
+import FourthScreen from '../../containers/sizeTest/FourthScreen';
 
 const Test = ({}) => {  
   //기본 question, 정답 저장
@@ -41,6 +42,7 @@ const Test = ({}) => {
   const [isFirstShow, setIsFirstShow] = useRecoilState(FirstBackImgState);
   const [isSecondShow, setIsSecondShow] = useRecoilState(SecondBackImgState);
   const [isThirdShow, setIsThirdShow] = useRecoilState(ThirdBackImgState);  
+  const [isFourthShow, setIsFourthShow] = useRecoilState(FourthBackImgState); 
 
   switch(questionNumber){
     case 0:
@@ -66,13 +68,17 @@ const Test = ({}) => {
       :<PageSeven/>
       )
     case 7:
-      return <PageEight/>
+      return (
+      isThirdShow ?
+      <ThirdScreen/>
+      :<PageEight/>
+      )
     case 8:
       return <PageNine/>
     case 9:
       return (
-        isThirdShow ?
-        <ThirdScreen/>
+        isFourthShow ?
+        <FourthScreen/>
         :<PageTen/>
       )
     case 10:

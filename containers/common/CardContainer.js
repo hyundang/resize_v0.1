@@ -5,6 +5,7 @@ import {useRecoilState} from 'recoil';
 import {QuestionNumberState, AnswerState} from '../../states/atom';
 // test data
 import {TestData} from '../../data/sizeTest_data';
+import Router from 'next/router';
 
 
 const CardContainer = ({isShow}) => {  
@@ -14,14 +15,36 @@ const CardContainer = ({isShow}) => {
 
   const questions = TestData;
   
+  function getMySize() {
+    var size = '';
+    if ((answers[4] + answers[6] + answers[9])>1) size += 'W';
+    else size += 'N';
+    if ((answers[0] + answers[2] + answers[10])>1) size += 'C';
+    else size += 'T';
+    if (answers[1] == 1) size += 'S';
+    else size += 'B';
+    if ((answers[3] + answers[5] + answers[8])>1) size += 'M';
+    else size += 'U';
+  
+    return size;
+  }
+
   const onClickButton1 = () => {
     setQuestionNumber(questionNumber+1);
-    setAnswers(answers.concat([0]))
+    setAnswers(answers.concat([0]));
+    if (questions.length-1 == (questionNumber)) {
+      const size = getMySize();
+      Router.push('/sizetest/'+size);
+    }
   };
 
   const onClickButton2 = () => {
     setQuestionNumber(questionNumber+1);
     setAnswers(answers.concat([1]));
+    if (questions.length-1 == (questionNumber)) {
+      const size = getMySize();
+      Router.push('/sizetest/'+size);
+    }
   };
   
 
@@ -39,8 +62,8 @@ const CardContainer = ({isShow}) => {
             <Answer onClick = {onClickButton1} isShow={isShow}><Text>{questions[questionNumber].answers[0]}</Text></Answer>
             <Answer onClick = {onClickButton2} isShow={isShow}><Text>{questions[questionNumber].answers[1]}</Text></Answer>
             </AnswerContainer>
-            
-            <Status>Question {questionNumber+1} / Question {questions.length}</Status>
+            <StatusContainer isShow={isShow}><StatusBar completed = {questionNumber/questions.length *100}></StatusBar></StatusContainer>
+            <Status isShow={isShow}>Question {questionNumber+1} / Question {questions.length}</Status>
         </QSContainer>
         </Card>
     </Container>
@@ -67,7 +90,7 @@ const Container = style.div`
 const Card = style.div`
   display: flex;
   width: 90%;
-  height: 80%;
+  height: 90%;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
@@ -75,6 +98,7 @@ const Card = style.div`
 `;
 
 const QSContainer = style.div`
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -184,9 +208,33 @@ const Text = style.div`
 `;
 
 const Status = style.div`
+  width: 100%;
   margin: 10px 0 5px 0;
   color : white;
-  font-size: 0.8rem;
-  position: absolute;
-  bottom: 10%;
+  font-size: 0.5rem;
+  text-align: end;
+  opacity: ${props=>props.isShow ? '0.9' : '0'};
+  transition-duration: 0.5s;
+  pointer-events: ${props=>props.isShow ? 'auto' : 'none'};
+`;
+
+const StatusContainer = style.div`
+  margin: 10vw 0 0 0 ;
+  height: 2vw;
+  width: 100%;
+  background-color: white;
+  border:0.3px solid black;
+  border-color: white;
+  border-radius: 30px;
+  box-shadow: 0vw 2vw 7vw 0.3 rgba(98, 69, 34, 0.15);
+  opacity: ${props=>props.isShow ? '0.8' : '0'};
+  transition-duration: 0.5s;
+  pointer-events: ${props=>props.isShow ? 'auto' : 'none'};
+`;
+
+const StatusBar = style.div`
+  height: 100%;
+  width: ${props=>props.completed}%;
+  background-color: #dec19f ;
+  border-radius: 30px;
 `;
