@@ -175,6 +175,7 @@ const Answer = style.div`
 `;
 
 const Text = style.div`
+  cursor: pointer;
   justify-content:center;
   align-items: center;
   color : black;

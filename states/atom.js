@@ -14,3 +14,19 @@ export const LoadingState = atom({
     key: 'LoadingState',
     default: true
 })
+
+export const FirstBackImgState = atom({
+    key: 'FirstBackImgState',
+    default: true
+})
+
+
+export const SecondBackImgState = atom({
+    key: 'SecondBackImgState',
+    default: true
+})
+
+export const ThirdBackImgState = atom({
+    key: 'ThirdBackImgState',
+    default: true
+})

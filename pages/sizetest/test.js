@@ -2,7 +2,16 @@ import style, { keyframes } from 'styled-components';
 import React, { useState, useCallback, useEffect } from 'react';
 // recoil
 import { useRecoilState } from 'recoil';
-import { QuestionNumberState, AnswerState, LoadingState } from '../../states/atom';
+import 
+{ 
+  QuestionNumberState, 
+  AnswerState, 
+  LoadingState,
+  FirstBackImgState,
+  SecondBackImgState,
+  ThirdBackImgState
+} 
+from '../../states/atom';
 // component
 import FinalContainer from '../../containers/sizeTest/finalContainer';
 import PageOne from '../../containers/sizeTest/PageOne';
@@ -17,19 +26,29 @@ import PageNine from '../../containers/sizeTest/PageNine';
 import PageTen from '../../containers/sizeTest/PageTen';
 import PageEleven from '../../containers/sizeTest/PageEleven';
 import Loading from '../../containers/sizeTest/LoadingContainer';
-
+import FirstScreen from '../../containers/sizeTest/FirstScreen';
+import SecondScreen from '../../containers/sizeTest/SecondScreen';
+import ThirdScreen from '../../containers/sizeTest/ThirdScreen';
 
 
 const Test = ({}) => {  
   //기본 question, 정답 저장
   const [questionNumber, setQuestionNumber] = useRecoilState(QuestionNumberState);
   const [answers, setAnswers] = useRecoilState(AnswerState);
+  // 결과 로딩 화면
   const [isLoading, setIsLoading] = useRecoilState(LoadingState);
-
+  // 화면 전환 사이 화면
+  const [isFirstShow, setIsFirstShow] = useRecoilState(FirstBackImgState);
+  const [isSecondShow, setIsSecondShow] = useRecoilState(SecondBackImgState);
+  const [isThirdShow, setIsThirdShow] = useRecoilState(ThirdBackImgState);  
 
   switch(questionNumber){
     case 0:
-      return <PageOne/>
+      return (
+      isFirstShow ?
+      <FirstScreen/>
+      :<PageOne/>
+      )
     case 1:
       return <PageTwo/>
     case 2:
@@ -41,17 +60,24 @@ const Test = ({}) => {
     case 5:
       return <PageSix/>
     case 6:
-      return <PageSeven/>
+      return (
+      isSecondShow ?
+      <SecondScreen/>
+      :<PageSeven/>
+      )
     case 7:
       return <PageEight/>
     case 8:
       return <PageNine/>
     case 9:
-      return <PageTen/>
+      return (
+        isThirdShow ?
+        <ThirdScreen/>
+        :<PageTen/>
+      )
     case 10:
       return <PageEleven/>
     default:
-      console.log(questionNumber);
       return (
         <>
           {isLoading ? 
