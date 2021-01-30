@@ -26,7 +26,7 @@ const CardContainer = ({isShow}) => {
   
 
   return (
-    <Container>
+    <Container path={questions[questionNumber].photo}>
         <Card>
         <QuestionContainer>
             <QuestionN>Q{questionNumber+1}</QuestionN>
@@ -60,7 +60,7 @@ const Container = style.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: url(/images/sizetest/background/1_bg_blur.jpg) right top no-repeat;;
+  background: url(/images/sizetest/background/${props=>props.path}) right top no-repeat;
   background-size: cover;
 `;
 
