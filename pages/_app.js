@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "../reducers/index";
 import {createStore} from 'redux';
+import {RecoilRoot} from 'recoil';
 
 const store = createStore(
   rootReducer,
@@ -13,6 +14,7 @@ const store = createStore(
 
 const Resize = ({ Component, pageProps }) => {
   return (
+    <RecoilRoot>
     <Provider store={store}>
       <Head>
         <title>Resize</title>
@@ -22,6 +24,8 @@ const Resize = ({ Component, pageProps }) => {
       </Head>
         <Component />
     </Provider>
+    </RecoilRoot>
+
   )
 };
 

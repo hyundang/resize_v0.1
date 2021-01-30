@@ -65,10 +65,4 @@ export const TestData = [
         question2: '아 이 뱃살...언제 다빼지?',
         answers: ['짧은 편이다','긴 편이다']
     },
-    {
-        id:11,
-        question1: '배는 참 괜찮은데...',
-        question2: '아 이 뱃살...언제 다빼지?',
-        answers: ['짧은 편이다','긴 편이다']
-    },
 ]
