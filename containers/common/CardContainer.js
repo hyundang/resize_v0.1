@@ -129,13 +129,12 @@ const fadein = keyframes`
 const QuestionN = style.div`  
   position: absolute;
   top: 16%;
-  color : black;
+  color : white;
   margin: 3vw 2vw 4vw 2vw;
   width: 80%;
-  font-size: 1.4rem;
-  font-weight: bold;
-  font-family: 'Nanum Gothic', sans-serif;
-  text-shadow: 1px 1px 1px gray;
+  font-size: 1.35rem;
+  font-family: 'Noto Serif KR', serif;
+  text-shadow: 0.8vw 0.8vw 0.5vw gray;
   animation: ${fadein} 1s;
 `;
 
@@ -147,8 +146,8 @@ const QuestionOne = style.div`
   margin: 3vw 2vw 4vw 2vw;
   width: 80%;
   font-size: 1.3rem;
-  font-weight: bold;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 500;
+  font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 1vw gray;
   animation: ${fadein} 2s;
 `;
@@ -160,8 +159,8 @@ const QuestionTwo = style.div`
   margin: 3vw 2vw 4vw 2vw;
   width: 80%;
   font-size: 1.3rem;
-  font-weight: bold;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 500;
+  font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 1vw gray;
   animation: ${fadein} 3s;
 `;
@@ -203,8 +202,8 @@ const Text = style.div`
   justify-content:center;
   align-items: center;
   color : black;
-  font-size: 0.8rem;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 0.9rem;
+  font-family: 'Noto Serif KR', serif;
 `;
 
 const Status = style.div`

@@ -22,45 +22,25 @@ const LogoContainer = style.div`
   padding : 1vw;
 `;
 
-const TitleContainer = style.div`
-  margin: 8vw 0;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+const ImageContainer = style.div`
+  padding: 15vw 5vw 10vw 5vw;
 `;
-const Title = style.div`
-  width: 80%
-  justify-content: start;
-  align-items: start;
-  margin:1vw;
-  color : black;
-  font-size: 1.5rem;
-  font-family: 'Nanum Gothic', sans-serif;
-`;
+
 const DesBC = style.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  padding: 10vw 0;
-`;
-
-
-const Des = style.div`
-  color : black;
-  padding: 1vw;
-  font-size: 0.9rem;
-  font-family: 'Nanum Gothic', sans-serif;
+  padding: 5vw 0;
 `;
 
 const Button = style.div`
   width: 270px;
   height: 50px;
-  margin-top: 2vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
+  background-color: #dec19f;
   box-shadow: 0vw 2vw 5vw 0 rgba(98, 69, 34, 0.4);
   border-radius: 5px;
   cursor : pointer;
@@ -68,7 +48,7 @@ const Button = style.div`
 
 const Text = style.div`
   color : #fff;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-family: 'Nanum Gothic', sans-serif;
 `;
 
@@ -77,15 +57,13 @@ const Start = ({}) => {
   return (
     <Container>
       <LogoContainer><Image src={'/images/resize_white.png'} width="160" height="50" /></LogoContainer>
-      <TitleContainer>
-        <Title>체형 유형 테스트</Title>
-        <Des>나와 비슷한 체형을 가진 동물이 존재한다구?</Des>
-        <Des>나도 몰랐던 체형유형과 이에 맞는 코디 추천까지!</Des>
-      </TitleContainer>
+      <ImageContainer>
+        <Image src={'/images/sizetest/title.png'} width="500" height="500" />
+      </ImageContainer>
       <DesBC>
         <Link href="/sizetest/test">
           <Button>
-            <Text>시작하기</Text>
+            <Text>G O</Text>
           </Button>
         </Link>
       </DesBC>

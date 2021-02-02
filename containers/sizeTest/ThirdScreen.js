@@ -12,8 +12,7 @@ const ThirdScreen = () => {
         <>
             <Container onClick={() => setIsThirdShow(false)}>
                 <TextContainer>
-                    <Text>오랜만에 외출이라서 그런가?</Text> 
-                    <Text>저기 서있는 사람이 계속 쳐다본다.</Text>
+                    <Text>앗, 열차를 놓칠 수는 없지.</Text> 
                 </TextContainer>
             </Container>
         </>
@@ -42,7 +41,7 @@ const TextContainer = style.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding : 15vw 5vw 0 5vw ;
+  padding : 10vw 5vw 0 5vw ;
 `;
 
 const Text = style.div`

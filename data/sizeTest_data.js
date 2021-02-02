@@ -43,23 +43,23 @@ export const TestData = [
     },
     {
         id:6,
-        question1: '가방을 맨 당신...',
+        question1: '가방을 멘 당신...',
         question2: '',
         answers: ['가방이 자꾸 흘러내려 다시 고쳐 멘다','가방이 어깨에 딱 붙어있다'],
         photo: '1_bg_blur.jpg'
     },
     {
         id:7,
-        question1: '갑자기 와서 번호를 물어보면...',
+        question1: '무작정 뛰다가 넘어졌는데...',
         question2: '',
-        answers: ['“고민하다가 결국 번호를 준다”','“고민하다가 결국 번호를 안 준다”'],
+        answers: ['아무렇지 않게 툭툭 털며 일어난다','사람들이 지나갈 때까지 누워서 기다린다'],
         photo: '2_bg_blur.jpg'
     },
     {
         id:8,
-        question1: '지하철을 내리려는데',
-        question2: '아까 번호를 물어본 사람이 말을 거는데...',
-        answers: ['"생각보다 키가 작으시네요?"','"생각보다 키가 크시네요?"'],
+        question1: '우연히 마주친 친구가',
+        question2: '"너 사진으로 볼 땐 몰랐는데..."',
+        answers: ['"생각보다 키가 작구나?"','"생각보다 키가 크구나?"'],
         photo: '2_bg_blur.jpg'
     },
     {

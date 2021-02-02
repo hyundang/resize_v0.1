@@ -26,11 +26,11 @@ import PageEight from '../../containers/sizeTest/PageEight';
 import PageNine from '../../containers/sizeTest/PageNine';
 import PageTen from '../../containers/sizeTest/PageTen';
 import PageEleven from '../../containers/sizeTest/PageEleven';
-import Loading from '../../containers/sizeTest/LoadingContainer';
 import FirstScreen from '../../containers/sizeTest/FirstScreen';
 import SecondScreen from '../../containers/sizeTest/SecondScreen';
 import ThirdScreen from '../../containers/sizeTest/ThirdScreen';
 import FourthScreen from '../../containers/sizeTest/FourthScreen';
+import LoadingContainer from '../../containers/sizeTest/LoadingContainer';
 
 const Test = ({}) => {  
   //기본 question, 정답 저장
@@ -87,7 +87,7 @@ const Test = ({}) => {
       return (
         <>
           {isLoading ? 
-          <Loading/>
+          <LoadingContainer/>
           :<FinalContainer answers={answers}/>
           }
         </>
