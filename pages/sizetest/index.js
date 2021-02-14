@@ -3,14 +3,48 @@ import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 
+const Start = ({}) => {
+
+  return (
+    <PCContainer>
+      <Container>
+        <LogoContainer><Image src={'/images/resize_white.png'} width="160" height="50" /></LogoContainer>
+        <ImageContainer>
+          <Image src={'/images/sizetest/title.png'} width="500" height="500" />
+        </ImageContainer>
+        <DesBC>
+          <Link href="/sizetest/test">
+            <Button>
+              <Text>G O</Text>
+            </Button>
+          </Link>
+        </DesBC>
+      </Container>
+    </PCContainer>
+  );
+}
+
+export default Start;
+
+const PCContainer = style.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:start;
+  background-color: #f6f2eb;
+`
+
 const Container = style.div`
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: space-between;
   flex-direction: column;
   position: absolute;
-  width: 100%;
+  width: 500px;
   height: 100%;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const LogoContainer = style.div`
@@ -23,7 +57,10 @@ const LogoContainer = style.div`
 `;
 
 const ImageContainer = style.div`
-  padding: 15vw 5vw 10vw 5vw;
+  padding: 5vw 5vw 3vw 5vw;
+  @media (max-width: 500px) {
+    padding: 15vw 5vw 10vw 5vw;
+  }
 `;
 
 const DesBC = style.div`
@@ -31,7 +68,10 @@ const DesBC = style.div`
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  padding: 5vw 0;
+  padding: 3vw 0;
+  @media (max-width: 500px) {
+    padding: 5vw 0;
+  }
 `;
 
 const Button = style.div`
@@ -51,24 +91,3 @@ const Text = style.div`
   font-size: 1.1rem;
   font-family: 'Nanum Gothic', sans-serif;
 `;
-
-const Start = ({}) => {
-
-  return (
-    <Container>
-      <LogoContainer><Image src={'/images/resize_white.png'} width="160" height="50" /></LogoContainer>
-      <ImageContainer>
-        <Image src={'/images/sizetest/title.png'} width="500" height="500" />
-      </ImageContainer>
-      <DesBC>
-        <Link href="/sizetest/test">
-          <Button>
-            <Text>G O</Text>
-          </Button>
-        </Link>
-      </DesBC>
-    </Container>
-  );
-}
-
-export default Start;

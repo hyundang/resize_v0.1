@@ -16,6 +16,7 @@ const LoadingContainer = () => {
     
     return(
         <>
+          <PCContainer>
             <Container>
             <LogoContainer><Image src={'/images/resize_white.png'} width="160" height="50" /></LogoContainer>
                 <MainContainer>
@@ -25,11 +26,20 @@ const LoadingContainer = () => {
                     <Text>고객님의 체형을 분석중입니다</Text>
                 </MainContainer>
             </Container>
+          </PCContainer>
         </>
     )
 }
 
 export default LoadingContainer;
+
+const PCContainer = style.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:start;
+  background-color: #f6f2eb;
+`
 
 const Container = style.div`
   display: flex;
@@ -38,9 +48,11 @@ const Container = style.div`
   position: absolute;
   background-color: #f3ece3;
   top: 0;
-  left: 0;
-  width: 100%;
+  width: 500px;
   height: 100%;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const LogoContainer = style.div`

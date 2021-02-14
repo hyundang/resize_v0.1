@@ -10,6 +10,7 @@ const FourthScreen = () => {
 
     return(
         <>
+          <PCContainer>
             <Container onClick={() => setIsFourthShow(false)}>
                 <TextContainer>
                     <Text>드디어 쇼핑몰 도착한 당신!</Text> 
@@ -17,11 +18,20 @@ const FourthScreen = () => {
                     <Text>괜찮은 옷 없나?</Text>
                 </TextContainer>
             </Container>
+          </PCContainer>
         </>
     )
 }
 
 export default FourthScreen;
+
+const PCContainer = style.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:start;
+  background-color: #f6f2eb;
+`
 
 const Container = style.div`
   display: flex;
@@ -30,11 +40,13 @@ const Container = style.div`
   flex-direction: column;
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  width: 500px;
   height: 100%;
   background: url(/images/sizetest/background/3_bg.jpg) right top no-repeat;
   background-size: cover;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const TextContainer = style.div`
@@ -43,17 +55,22 @@ const TextContainer = style.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding : 15vw 5vw 0 5vw ;
+  padding : 0 5vw 0 5vw ;
 `;
 
 const Text = style.div`
-  padding: 2vw 0;
   justify-content:center;
   align-items: center;
   color : white;
   font-size: 1.05rem;
   font-weight: 400;
   font-family: 'Noto Serif KR', serif;
-  line-height: 8vw;
   text-shadow: 0.8vw 0.8vw 1vw gray;
+  padding: 0.8vw 0;
+  @media (max-width: 1024px) {
+    padding: 1.5vw 0;
+  }
+  @media (max-width: 500px) {
+    padding: 2vw 0;
+  }
 `;

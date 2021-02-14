@@ -10,16 +10,26 @@ const ThirdScreen = () => {
 
     return(
         <>
+          <PCContainer>
             <Container onClick={() => setIsThirdShow(false)}>
                 <TextContainer>
                     <Text>앗, 열차를 놓칠 수는 없지.</Text> 
                 </TextContainer>
             </Container>
+          </PCContainer>
         </>
     )
 }
 
 export default ThirdScreen;
+
+const PCContainer = style.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:start;
+  background-color: #f6f2eb;
+`
 
 const Container = style.div`
   display: flex;
@@ -28,11 +38,13 @@ const Container = style.div`
   flex-direction: column;
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  width: 500px;
   height: 100%;
   background: url(/images/sizetest/background/2_bg.jpg) right top no-repeat;
   background-size: cover;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const TextContainer = style.div`
@@ -41,17 +53,22 @@ const TextContainer = style.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding : 10vw 5vw 0 5vw ;
+  padding : 0 5vw 0 5vw ;
 `;
 
 const Text = style.div`
-  padding: 2vw 0;
   justify-content:center;
   align-items: center;
   color : white;
   font-size: 1.1rem;
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
-  line-height: 8vw;
   text-shadow: 0.8vw 0.8vw 0.5vw gray;
+  padding: 0.8vw 0;
+  @media (max-width: 1024px) {
+    padding: 1.5vw 0;
+  }
+  @media (max-width: 500px) {
+    padding: 2vw 0;
+  }
 `;
