@@ -103,14 +103,15 @@ const Final = ({}) => {
     if (email.indexOf('@')== -1) setEmailError(true);
     else if (email.indexOf('.')== -1) setEmailError(true);
     else (console.log(email));
-    axios.post(`https://test.re-size.co.kr/sizetest/sizetestemail/`, result)
-          .catch((error) => {
-            if(error.response) {
-              console.log(error.response);
-            }
-            console.log("Problem submitting New Post", error);
-          });
+    // axios.post(`https://test.re-size.co.kr/sizetest/sizetestemail/`, result)
+    //       .catch((error) => {
+    //         if(error.response) {
+    //           console.log(error.response);
+    //         }
+    //         console.log("Problem submitting New Post", error);
+    //       });
     console.log('finished');
+    alert('제출되었습니다');
   };
 
   const [isClip, setIsClip] = useRecoilState(IsClipState);
@@ -198,11 +199,17 @@ const LogoContainer = style.div`
 `;
 
 const TitleContainer = style.div`
-  padding: 4vw 0 5vw 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 2vw 0 3vw 0;
+  @media (max-width: 1024px) {
+    padding: 3vw 0 4vw 0;
+  }
+  @media (max-width: 500px) {
+    padding: 4vw 0 5vw 0;
+  }
 `;
 
 const Title = style.div`
@@ -213,10 +220,13 @@ const Title = style.div`
 `;
 
 const Des = style.div`
-  padding: 3vw 0 5vw 0;
   font-size:0.8rem;
   width:80%;
   line-height: 1.2rem;
+  padding: 2vw 0 2vw 0;
+  @media (max-width: 500px) {
+    padding: 4vw 0 5vw 0;
+  }
 `;
 
 const Des2 = style.div`
@@ -225,6 +235,13 @@ const Des2 = style.div`
   font-weight:bold;
   text-align:center;
   width:90%;
+  padding: 1vw;
+  @media (max-width: 1024px) {
+    padding: 2vw;
+  }
+  @media (max-width: 500px) {
+    padding: 3vw;
+  }
 `;
 
 const Text = style.div`
