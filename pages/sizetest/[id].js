@@ -2,9 +2,20 @@ import style from 'styled-components';
 import React, {useState, useCallback} from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+// recoil
+import { useRecoilState } from "recoil";
+import { ToastMsgState, IsClipState } from "../../states/atom";
+// component
 import {sizeTest_final} from '../../data/sizeTest_final_data.js';
 
 import axios from "axios";
+import Layout from '../../containers/common/Layout';
+// for clipboard
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import ToastMsg from '../../containers/common/ToastMsg';
+// asset
+const clip = "/images/sizetest/clip.svg";
+const baseurl = "https://www.resize.com";
 
 export function searchID(id) {
     var sizeID = 0;
@@ -102,6 +113,24 @@ const Final = ({}) => {
     console.log('finished');
   };
 
+  const [isClip, setIsClip] = useRecoilState(IsClipState);
+  const [isToastMsgShow, setIsToastMsgShow] = useRecoilState(ToastMsgState);
+
+  const onCopy = () => {
+    ({ copied: true });
+  };
+
+  const handleClipClick = () => {
+    setIsToastMsgShow(true);
+    setIsClip(true);
+  }
+
+  const handleKtalckClick = () => {
+    setIsToastMsgShow(true);
+    setIsClip(false);
+    console.log("hi");
+  }
+
   return (
     <PCContainer>
       <Container>
@@ -118,6 +147,15 @@ const Final = ({}) => {
         </input>
         <Submit type="submit" onClick = {onFinish} value="Submit"><Text>제출하기</Text></Submit>
         {emailError && <Status> 올바른 이메일을 입력해주세요. </Status> }
+        <BottomWrap>
+          <CopyToClipboard text={baseurl+`/sizetest/${id}`} onCopy={onCopy}>
+            <ShareBtnWrap onClick={handleClipClick}>
+              <IconImg src={clip}/>
+            </ShareBtnWrap>
+          </CopyToClipboard>
+          <Layout imgurl={url} onClick={handleKtalckClick}/>
+        </BottomWrap>
+        {isToastMsgShow && <ToastMsg text={isClip ? "복사되었습니다." : "공유되었습니다."}/>}
       </Container>
     </PCContainer>
   );
@@ -219,4 +257,33 @@ const Status = style.div`
   margin: 10px 0 5px 0;
   color : #a99174;
   font-size: 0.8rem;
+`
+
+const BottomWrap = style.div`
+  box-sizing: border-box;
+  width: 100%;
+  height: 5rem;
+  padding: 0rem 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ShareBtnWrap = style.div`
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: #a0a0a0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  box-shadow: 0vw 2vw 5vw 0 rgba(0, 0, 0, 0.4);
+`;
+
+const IconImg = style.img`
+  width: 2rem;
+  height: 2rem;
 `;

@@ -35,3 +35,13 @@ export const FourthBackImgState = atom({
     key: 'FourthBackImgState',
     default: true
 })
+
+export const ToastMsgState = atom({
+    key: "ToastMsgState",
+    default: false
+})
+
+export const IsClipState = atom({
+    key: "IsClipState",
+    default : true
+})
