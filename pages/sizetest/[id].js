@@ -144,7 +144,7 @@ const Final = ({}) => {
         </TitleContainer>
         <Hash>{data[sizeID].hashtag}</Hash>
         <Des>{data[sizeID].description}</Des>
-        <Des2>리사이즈에서 3월 론칭 예정인<Bold>"고객님만을 위한 1:1 퍼스널 패션 큐레이션 서비스"</Bold>를 무료로 이용하고 싶으시다면,고객님 이메일을 적어주세요! 적어주신 이메일로 리사이즈 1:1 퍼스널 큐레이션 서비스 이용권을 드립니다.</Des2>
+        <Des2>리사이즈에서 3월 론칭 예정인<Bold>"고객님만을 위한 1:1 퍼스널 패션 큐레이션 서비스"</Bold>를 무료로 이용하고 싶으시다면, 고객님의 이메일을 적어주세요! 적어주신 이메일로 리사이즈 1:1 퍼스널 큐레이션 서비스 이용권을 드립니다.</Des2>
         <IntroTitle>1:1 퍼스널 패션 큐레이션 서비스 이용권 받기</IntroTitle>
         <EmailContainer>
             <input type="text" style ={{border: '1px solid #dec19f', borderColor: '#dec19f', width: '80%', padding: '10px 0'}} value={email} required onChange={onChangeEmail} placeholder="무료 이용권을 받을 이메일을 입력해주세요.">
