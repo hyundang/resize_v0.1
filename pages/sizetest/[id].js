@@ -103,13 +103,13 @@ const Final = ({}) => {
     if (email.indexOf('@')== -1) setEmailError(true);
     else if (email.indexOf('.')== -1) setEmailError(true);
     else (console.log(email));
-    // axios.post(`https://test.re-size.co.kr/sizetest/sizetestemail/`, result)
-    //       .catch((error) => {
-    //         if(error.response) {
-    //           console.log(error.response);
-    //         }
-    //         console.log("Problem submitting New Post", error);
-    //       });
+    axios.post(`https://test.re-size.co.kr/sizetest/sizetestemail/`, result)
+          .catch((error) => {
+            if(error.response) {
+              console.log(error.response);
+            }
+            console.log("Problem submitting New Post", error);
+          });
     console.log('finished');
     alert('제출되었습니다');
   };
