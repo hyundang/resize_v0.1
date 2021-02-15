@@ -102,16 +102,17 @@ const Final = ({}) => {
     setEmailError(false);
     if (email.indexOf('@')== -1) setEmailError(true);
     else if (email.indexOf('.')== -1) setEmailError(true);
-    else (console.log(email));
-    axios.post(`https://test.re-size.co.kr/sizetest/sizetestemail/`, result)
+    else {
+      axios.post(`https://test.re-size.co.kr/sizetest/sizetestemail/`, result)
           .catch((error) => {
             if(error.response) {
               console.log(error.response);
             }
             console.log("Problem submitting New Post", error);
           });
-    console.log('finished');
-    alert('제출되었습니다');
+      console.log('finished');
+      alert('제출되었습니다');
+    }
   };
 
   const [isClip, setIsClip] = useRecoilState(IsClipState);
@@ -141,13 +142,16 @@ const Final = ({}) => {
           <Image src= {url} width="280" height="280"/>
           <Title>{data[sizeID].subtitle}</Title>
         </TitleContainer>
+        <Hash>{data[sizeID].hashtag}</Hash>
         <Des>{data[sizeID].description}</Des>
-        <Des2>고객님께 어울리는 코디를 추천해드릴까요?</Des2>
-        <Des2>1:1 코디 스타일링 무료쿠폰 받기</Des2>
-        <input type="text" style ={{border: '2px solid #dec19f', borderColor: '#dec19f', width: '70%'}} value={email} required onChange={onChangeEmail}>
-        </input>
-        <Submit type="submit" onClick = {onFinish} value="Submit"><Text>제출하기</Text></Submit>
-        {emailError && <Status> 올바른 이메일을 입력해주세요. </Status> }
+        <Des2>리사이즈에서 3월 론칭 예정인<Bold>"고객님만을 위한 1:1 퍼스널 패션 큐레이션 서비스"</Bold>를 무료로 이용하고 싶으시다면,고객님 이메일을 적어주세요! 적어주신 이메일로 리사이즈 1:1 퍼스널 큐레이션 서비스 이용권을 드립니다.</Des2>
+        <IntroTitle>1:1 퍼스널 패션 큐레이션 서비스 이용권 받기</IntroTitle>
+        <EmailContainer>
+            <input type="text" style ={{border: '1px solid #dec19f', borderColor: '#dec19f', width: '80%', padding: '10px 0'}} value={email} required onChange={onChangeEmail} placeholder="무료 이용권을 받을 이메일을 입력해주세요.">
+            </input>
+          <Submit type="submit" onClick = {onFinish} value="Submit"><Text>제출</Text></Submit>
+          {emailError && <Status> 올바른 이메일을 입력해주세요. </Status> }
+        </EmailContainer>
         <BottomWrap>
           <CopyToClipboard text={baseurl+`/sizetest/${id}`} onCopy={onCopy}>
             <ShareBtnWrap onClick={handleClipClick}>
@@ -203,55 +207,101 @@ const TitleContainer = style.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 2vw 0 3vw 0;
-  @media (max-width: 1024px) {
-    padding: 3vw 0 4vw 0;
-  }
+  padding: 26px 0 0 0;
   @media (max-width: 500px) {
-    padding: 4vw 0 5vw 0;
+    padding: 5vw 0 2vw 0;
   }
 `;
 
 const Title = style.div`
-  font-size:1rem;
+  font-size:16px;
+  @media (max-width: 500px) {
+    font-size:1rem;
+  }
   font-weight: bold;
   width:90%;
   text-align:center;
 `;
 
-const Des = style.div`
-  font-size:0.8rem;
+const Hash = style.div`
+  text-align:center;
+  font-size:16px;
   width:80%;
-  line-height: 1.2rem;
-  padding: 2vw 0 2vw 0;
+  color: gray;
+  line-height: 16px;
+  padding: 16px 0 6px 0;
   @media (max-width: 500px) {
-    padding: 4vw 0 5vw 0;
+    font-size:0.9rem;
+    line-height: 1.1rem;
+    padding: 1vw 0 2vw 0;
+  }
+`;
+
+const Des = style.div`
+  font-size:13px;
+  width:80%;
+  line-height: 20px;
+  padding: 10px 0 20px 0;
+  @media (max-width: 500px) {
+    font-size:0.8rem;
+    line-height: 1.2rem;
+    padding: 1vw 0 5vw 0;
   }
 `;
 
 const Des2 = style.div`
-  padding: 3vw;
-  font-size:0.9rem;
-  font-weight:bold;
-  text-align:center;
-  width:90%;
-  padding: 1vw;
-  @media (max-width: 1024px) {
-    padding: 2vw;
-  }
+  font-size:12px;
+  width:80%;
+  line-height: 20px;
+  padding: 10px 14px 10px 14px;
   @media (max-width: 500px) {
-    padding: 3vw;
+    font-size:0.75rem;
+    line-height: 1.2rem;
+    padding: 2.5vw 3vw 2.5vw 3vw;
   }
+  text-align:center;
+  color: white;
+  background-color: #dec19f;
+  border:1px solid black;
+  border-color: #dec19f;
+  border-radius: 5px;
+`;
+
+const Bold = style.div`
+  font-weight: bold;
 `;
 
 const Text = style.div`
   color : #fff;
-  font-size: 0.9rem;
+  font-size: 14px;
+  @media (max-width: 500px) {
+    font-size: 0.9rem;
+  }
   font-weight: bold;
 `;
+const IntroTitle = style.div`
+  font-size: 16px;
+  font-weight: bold;
+  padding: 30px 0 0 0 ;
+`;
+
+const EmailContainer = style.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  font-size: 14px;
+  width: 80%;
+  padding: 8px 0 0 0;
+  @media (max-width: 500px) {
+    padding: 1vw 0 0 0;
+    font-size: 0.9rem;
+  }
+`;
+
 
 const Submit = style.div`
-  width: 30%;
+  width: 20%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -260,8 +310,12 @@ const Submit = style.div`
   border-color: #dec19f;
   border-radius: 5px;
   box-shadow: 0vw 2vw 7vw 0 rgba(98, 69, 34, 0.15);
-  padding: 1vw;
-  margin: 2vw;
+  padding:  10px 0 ;
+  margin: 18px 10px;
+  @media (max-width: 500px) {
+    padding: 2vw 0;
+    margin: 2vw 1vw;
+  }
   background-color: #dec19f;
   cursor : pointer;
   &:hover{

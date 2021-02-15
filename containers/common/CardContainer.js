@@ -105,7 +105,7 @@ const Card = style.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  padding: 3vw;
+  padding: 18px;
   @media (max-width: 500px) {
     padding: 3vw;
     height: 90%;
@@ -121,7 +121,10 @@ const QSContainer = style.div`
 `;
 
 const QuestionContainer = style.div`
-  margin: 3vw 2vw 4vw 2vw;
+  margin: 10px 10px;
+  @media (max-width: 500px) {
+    margin: 3vw 2vw 4vw 2vw;
+  }
   width: 90%;
   text-align:start;
   
@@ -146,9 +149,13 @@ const QuestionN = style.div`
   position: absolute;
   top: 16%;
   color : white;
-  margin: 3vw 2vw 4vw 2vw;
   width: 80%;
-  font-size: 1.35rem;
+  margin: 10px 10px;
+  font-size: 24px;
+  @media (max-width: 500px) {
+    margin: 3vw 2vw 4vw 2vw;
+    font-size: 1.3rem;
+  }
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.5vw gray;
   animation: ${fadein} 1s;
@@ -159,9 +166,13 @@ const QuestionOne = style.div`
   position: absolute;
   top: 22%;
   color : white;
-  margin: 3vw 2vw 4vw 2vw;
   width: 80%;
-  font-size: 1.3rem;
+  margin: 10px 10px;
+  font-size: 20px;
+  @media (max-width: 500px) {
+    margin: 3vw 2vw 4vw 2vw;
+    font-size: 1.3rem;
+  }
   font-weight: 500;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 1vw gray;
@@ -172,9 +183,13 @@ const QuestionTwo = style.div`
   position: absolute;
   top: 28%;
   color : white;
-  margin: 3vw 2vw 4vw 2vw;
   width: 80%;
-  font-size: 1.3rem;
+  margin: 10px 10px;
+  font-size: 20px;
+  @media (max-width: 500px) {
+    margin: 3vw 2vw 4vw 2vw;
+    font-size: 1.3rem;
+  }
   font-weight: 500;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 1vw gray;
@@ -187,8 +202,9 @@ const AnswerContainer = style.div`
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  padding: 1vw;
+  padding: 8px;
   @media (max-width: 500px) {
+    padding: 1vw;
     margin: 2vw;
   }
 `;
@@ -202,16 +218,8 @@ const Answer = style.div`
   border-color: white;
   border-radius: 15px;
   box-shadow: 0vw 2vw 7vw 0 rgba(98, 69, 34, 0.15);
-  padding: 1.3vw;
-  margin: 1vw;
-  @media (max-width: 1024px) {
-    padding: 2vw;
-    margin: 2vw 2vw;
-  }
-  @media (max-width: 768px) {
-    padding: 3vw;
-    margin: 3vw 2vw;
-  }
+  padding: 16px;
+  margin: 18px;
   @media (max-width: 500px) {
     padding: 3vw;
     margin: 4vw 2vw;
@@ -232,7 +240,10 @@ const Text = style.div`
   justify-content:center;
   align-items: center;
   color : black;
-  font-size: 0.9rem;
+  font-size: 14px;;
+  @media (max-width: 500px) {
+    font-size: 0.9rem;
+  }
   font-family: 'Noto Serif KR', serif;
 `;
 
@@ -240,7 +251,10 @@ const Status = style.div`
   width: 100%;
   margin: 10px 0 5px 0;
   color : white;
-  font-size: 0.5rem;
+  font-size: 10px;
+  @media (max-width: 500px) {
+    font-size: 0.5rem;
+  }
   text-align: end;
   opacity: ${props=>props.isShow ? '0.9' : '0'};
   transition-duration: 0.5s;
@@ -248,16 +262,8 @@ const Status = style.div`
 `;
 
 const StatusContainer = style.div`
-  margin: 3vw 0 0 0;
-  height: 1vw;
-  @media (max-width: 1024px) {
-    margin: 3vw 0 0 0;
-    height: 2vw;
-  }
-  @media (max-width: 768px) {
-    margin: 5vw 0 0 0;
-    height: 2vw;
-  }
+  margin: 58px 0 0 0;
+  height: 10px;
   @media (max-width: 500px) {
     margin: 10vw 0 0 0 ;
     height: 2vw;
