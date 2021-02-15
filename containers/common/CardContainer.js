@@ -49,42 +49,53 @@ const CardContainer = ({isShow}) => {
   
 
   return (
-    <Container path={questions[questionNumber].photo}>
-        <Card>
-        <QuestionContainer>
-            <QuestionN>Q{questionNumber+1}</QuestionN>
-            <QuestionOne>{questions[questionNumber].question1}</QuestionOne>
-            <QuestionTwo>{questions[questionNumber].question2}</QuestionTwo>
-        </QuestionContainer>
-        <QSContainer>
-            {/* {isShow&& */}
-            <AnswerContainer>
-            <Answer onClick = {onClickButton1} isShow={isShow}><Text>{questions[questionNumber].answers[0]}</Text></Answer>
-            <Answer onClick = {onClickButton2} isShow={isShow}><Text>{questions[questionNumber].answers[1]}</Text></Answer>
-            </AnswerContainer>
-            <StatusContainer isShow={isShow}><StatusBar completed = {questionNumber/questions.length *100}></StatusBar></StatusContainer>
-            <Status isShow={isShow}>Question {questionNumber+1} / Question {questions.length}</Status>
-        </QSContainer>
-        </Card>
-    </Container>
+    <PCContainer>
+      <Container path={questions[questionNumber].photo}>
+          <Card>
+          <QuestionContainer>
+              <QuestionN>Q{questionNumber+1}</QuestionN>
+              <QuestionOne>{questions[questionNumber].question1}</QuestionOne>
+              <QuestionTwo>{questions[questionNumber].question2}</QuestionTwo>
+          </QuestionContainer>
+          <QSContainer>
+              {/* {isShow&& */}
+              <AnswerContainer>
+              <Answer onClick = {onClickButton1} isShow={isShow}><Text>{questions[questionNumber].answers[0]}</Text></Answer>
+              <Answer onClick = {onClickButton2} isShow={isShow}><Text>{questions[questionNumber].answers[1]}</Text></Answer>
+              </AnswerContainer>
+              <StatusContainer isShow={isShow}><StatusBar completed = {questionNumber/questions.length *100}></StatusBar></StatusContainer>
+              <Status isShow={isShow}>Question {questionNumber+1} / Question {questions.length}</Status>
+          </QSContainer>
+          </Card>
+      </Container>
+    </PCContainer>
   )
 }
 
 export default CardContainer;
 
+const PCContainer = style.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:start;
+  background-color: #f6f2eb;
+`
 
 const Container = style.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  width: 500px;
   height: 100%;
   background: url(/images/sizetest/background/${props=>props.path}) right top no-repeat;
   background-size: cover;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const Card = style.div`
@@ -92,9 +103,13 @@ const Card = style.div`
   width: 90%;
   height: 90%;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-direction: column;
   padding: 3vw;
+  @media (max-width: 500px) {
+    padding: 3vw;
+    height: 90%;
+  }
 `;
 
 const QSContainer = style.div`
@@ -109,6 +124,7 @@ const QuestionContainer = style.div`
   margin: 3vw 2vw 4vw 2vw;
   width: 90%;
   text-align:start;
+  
 `;
 
 const fadein = keyframes`
@@ -172,7 +188,9 @@ const AnswerContainer = style.div`
   justify-content: space-around;
   flex-direction: column;
   padding: 1vw;
-  margin: 2vw;
+  @media (max-width: 500px) {
+    margin: 2vw;
+  }
 `;
 
 const Answer = style.div`
@@ -184,8 +202,20 @@ const Answer = style.div`
   border-color: white;
   border-radius: 15px;
   box-shadow: 0vw 2vw 7vw 0 rgba(98, 69, 34, 0.15);
-  padding: 3vw;
-  margin: 4vw 2vw;
+  padding: 1.3vw;
+  margin: 1vw;
+  @media (max-width: 1024px) {
+    padding: 2vw;
+    margin: 2vw 2vw;
+  }
+  @media (max-width: 768px) {
+    padding: 3vw;
+    margin: 3vw 2vw;
+  }
+  @media (max-width: 500px) {
+    padding: 3vw;
+    margin: 4vw 2vw;
+  }
   background-color: white;
   cursor : pointer;
   &:hover{
@@ -218,8 +248,20 @@ const Status = style.div`
 `;
 
 const StatusContainer = style.div`
-  margin: 10vw 0 0 0 ;
-  height: 2vw;
+  margin: 3vw 0 0 0;
+  height: 1vw;
+  @media (max-width: 1024px) {
+    margin: 3vw 0 0 0;
+    height: 2vw;
+  }
+  @media (max-width: 768px) {
+    margin: 5vw 0 0 0;
+    height: 2vw;
+  }
+  @media (max-width: 500px) {
+    margin: 10vw 0 0 0 ;
+    height: 2vw;
+  }
   width: 100%;
   background-color: white;
   border:0.3px solid black;
