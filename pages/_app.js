@@ -6,6 +6,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "../reducers/index";
 import {createStore} from 'redux';
 import {RecoilRoot} from 'recoil';
+import { ThemeProvider } from 'styled-components';
+import theme from '../assets/themes';
 
 const store = createStore(
   rootReducer,
@@ -14,6 +16,7 @@ const store = createStore(
 
 const Resize = ({ Component, pageProps }) => {
   return (
+    <ThemeProvider theme={theme}>
     <RecoilRoot>
       <Provider store={store}>
         <Head>
@@ -28,7 +31,7 @@ const Resize = ({ Component, pageProps }) => {
           <Component />
       </Provider>
     </RecoilRoot>
-
+    </ThemeProvider>
   )
 };
 
