@@ -82,8 +82,10 @@ export const useInput = (initValue = null) => {
 };
 
 const Final = ({}) => {
-  const [email, onChangeEmail] = useInput('');
-  const [emailError, setEmailError] = useState(false);
+  const [phone, onChangePhone] = useInput('');
+  const [phoneError, setPhoneError] = useState(false);
+  const [checked, onChangeChecked] = useState(false);
+  const [checkedError, setCheckedError] = useState(false);
   const router = useRouter();
   const {id} = router.query;
   const url = '/images/sizetest/character/'+id+'.png';
@@ -93,24 +95,34 @@ const Final = ({}) => {
     gender : 0,
     height: 1,
     weight: 1,
-    answers: 0,
+    answers: phone,
     mySize : id,
-    email: email,
+    email: "t@g.com",
   }
 
+  const checkHandler = ({ target }) => {
+    onChangeChecked(!checked);
+  };
+
   const onFinish = () => {
-    setEmailError(false);
-    if (email.indexOf('@')== -1) setEmailError(true);
-    else if (email.indexOf('.')== -1) setEmailError(true);
-    else {
+    console.log(phone);
+    console.log(checked);
+    setPhoneError(false);
+    setCheckedError(false);
+    if (!phone) {
+      setPhoneError(true);
+    }
+    else if (!checked) {
+      setCheckedError(true);
+    }
+    else{
       axios.post(`https://test.re-size.co.kr/sizetest/sizetestemail/`, result)
-          .catch((error) => {
-            if(error.response) {
-              console.log(error.response);
-            }
-            console.log("Problem submitting New Post", error);
-          });
-      console.log('finished');
+        .catch((error) => {
+          if(error.response) {
+            console.log(error.response);
+          }
+          console.log("Problem submitting New Post", error);
+        });
       alert('제출되었습니다');
     }
   };
@@ -125,13 +137,13 @@ const Final = ({}) => {
   const handleClipClick = () => {
     setIsToastMsgShow(true);
     setIsClip(true);
-  }
+  };
 
   const handleKtalckClick = () => {
     setIsToastMsgShow(true);
     setIsClip(false);
     console.log("hi");
-  }
+  };
 
   return (
     <PCContainer>
@@ -144,14 +156,19 @@ const Final = ({}) => {
         </TitleContainer>
         <Hash>{data[sizeID].hashtag}</Hash>
         <Des>{data[sizeID].description}</Des>
-        <Des2>리사이즈에서 3월 론칭 예정인<Bold>"고객님만을 위한 1:1 퍼스널 패션 큐레이션 서비스"</Bold>를 무료로 이용하고 싶으시다면, 고객님의 이메일을 적어주세요! 적어주신 이메일로 리사이즈 1:1 퍼스널 큐레이션 서비스 이용권을 드립니다.</Des2>
+        <Des2>리사이즈에서 3월 론칭 예정인<Bold>"고객님만을 위한 1:1 퍼스널 패션 큐레이션 서비스"</Bold>를 무료로 이용하고 싶으시다면, 고객님의 전화번호를 적어주세요! 적어주신 번호로 리사이즈 1:1 퍼스널 큐레이션 서비스 이용권을 드립니다.</Des2>
         <IntroTitle>1:1 퍼스널 패션 큐레이션 서비스 이용권 받기</IntroTitle>
-        <EmailContainer>
-            <input type="text" style ={{border: '1px solid #dec19f', borderColor: '#dec19f', width: '80%', padding: '10px 0'}} value={email} required onChange={onChangeEmail} placeholder="무료 이용권을 받을 이메일을 입력해주세요.">
+        <PhoneContainer>
+            <input type="text" style ={{border: '1px solid #dec19f', borderColor: '#dec19f', width: '80%', padding: '10px 10px'}} value={phone} required onChange={onChangePhone} placeholder="무료 이용권을 받을 전화번호를 입력해주세요.">
             </input>
           <Submit type="submit" onClick = {onFinish} value="Submit"><Text>제출</Text></Submit>
-          {emailError && <Status> 올바른 이메일을 입력해주세요. </Status> }
-        </EmailContainer>
+        </PhoneContainer>
+        {phoneError && <Status> 전화번호를 입력해주세요 </Status> }
+        {checkedError && <Status> 개인정보 수집에 동의해주세요 </Status> }
+        <AgreeContainer>
+          <BottomText>개인정보 수집에 동의합니다</BottomText>
+          <input type="checkbox" checked={checked} onChange={(e) => checkHandler(e)} /> 
+        </AgreeContainer>
         <BottomWrap>
           <CopyToClipboard text={baseurl+`/sizetest/${id}`} onCopy={onCopy}>
             <ShareBtnWrap onClick={handleClipClick}>
@@ -285,7 +302,7 @@ const IntroTitle = style.div`
   padding: 30px 0 0 0 ;
 `;
 
-const EmailContainer = style.div`
+const PhoneContainer = style.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -324,10 +341,34 @@ const Submit = style.div`
   }
 `;
 
+const AgreeContainer = style.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  width: 80%;
+  padding: 0 10px 10px 0;
+  @media (max-width: 500px) {
+    padding: 0 0 1vw 0;
+    font-size: 0.9rem;
+  }
+`;
+
+const BottomText = style.div`
+  font-size: 12px;
+  @media (max-width: 500px) {
+    font-size: 0.8rem;
+  }
+`;
+
 const Status = style.div`
-  margin: 10px 0 5px 0;
-  color : #a99174;
-  font-size: 0.8rem;
+  margin : 0 0 6px 0 ;
+  color : red;
+  font-size: 10px;
+  @media (max-width: 500px) {
+    font-size: 0.7rem;
+  }
 `
 
 const BottomWrap = style.div`
