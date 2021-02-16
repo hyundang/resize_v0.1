@@ -151,31 +151,35 @@ const Final = ({}) => {
         <LogoContainer><Image src={'/images/resize_white.png'} width="160" height="50" /></LogoContainer>
         <TitleContainer>
           <Title>{data[sizeID].title}</Title>
+          <Title2>{data[sizeID].subtitle}</Title2>
           <Image src= {url} width="280" height="280"/>
-          <Title>{data[sizeID].subtitle}</Title>
         </TitleContainer>
         <Hash>{data[sizeID].hashtag}</Hash>
         <Des>{data[sizeID].description}</Des>
-        <Des2>리사이즈에서 3월 론칭 예정인<Bold>"고객님만을 위한 1:1 퍼스널 패션 큐레이션 서비스"</Bold>를 무료로 이용하고 싶으시다면, 고객님의 전화번호를 적어주세요! 적어주신 번호로 리사이즈 1:1 퍼스널 큐레이션 서비스 이용권을 드립니다.</Des2>
-        <IntroTitle>1:1 퍼스널 패션 큐레이션 서비스 이용권 받기</IntroTitle>
-        <PhoneContainer>
-            <input type="text" style ={{border: '1px solid #dec19f', borderColor: '#dec19f', width: '80%', padding: '10px 10px'}} value={phone} required onChange={onChangePhone} placeholder="무료 이용권을 받을 전화번호를 입력해주세요.">
-            </input>
-          <Submit type="submit" onClick = {onFinish} value="Submit"><Text>제출</Text></Submit>
-        </PhoneContainer>
-        {phoneError && <Status> 전화번호를 입력해주세요 </Status> }
-        {checkedError && <Status> 개인정보 수집에 동의해주세요 </Status> }
-        <AgreeContainer>
-          <BottomText>개인정보 수집에 동의합니다</BottomText>
-          <input type="checkbox" checked={checked} onChange={(e) => checkHandler(e)} /> 
-        </AgreeContainer>
+        <Personal>
+          <IntroTitle>1:1 퍼스널 패션 큐레이션 서비스 이용권 받기</IntroTitle>
+          <Des2>리사이즈에서 3월 론칭 예정인<Bold>"고객님만을 위한 1:1 퍼스널 패션 큐레이션 서비스"</Bold>를 무료로 이용하고 싶으시다면, 고객님의 전화번호를 적어주세요! 적어주신 번호로 리사이즈 1:1 퍼스널 큐레이션 서비스 이용권을 드립니다.</Des2>
+          <PhoneContainer>
+              <input type="text" style ={{border: '1px solid #dec19f', borderColor: '#dec19f', width: '80%', padding: '10px 10px'}} value={phone} required onChange={onChangePhone} placeholder="전화번호를 입력해주세요.">
+              </input>
+            <Submit type="submit" onClick = {onFinish} value="Submit"><Text>제출</Text></Submit>
+          </PhoneContainer>
+          {phoneError && <Status> 전화번호를 입력해주세요 </Status> }
+          {checkedError && <Status> 개인정보 수집에 동의해주세요 </Status> }
+          <AgreeContainer>
+            <BottomText>개인정보 수집에 동의합니다</BottomText>
+            <input type="checkbox" checked={checked} onChange={(e) => checkHandler(e)} /> 
+          </AgreeContainer>
+        </Personal>
         <BottomWrap>
           <CopyToClipboard text={baseurl+`/sizetest/${id}`} onCopy={onCopy}>
             <ShareBtnWrap onClick={handleClipClick}>
               <IconImg src={clip}/>
             </ShareBtnWrap>
           </CopyToClipboard>
-          <Layout imgurl={url} onClick={handleKtalckClick}/>
+          <KaKaoButton>
+            <Layout imgurl={url} onClick={handleKtalckClick} />
+          </KaKaoButton>
         </BottomWrap>
         {isToastMsgShow && <ToastMsg text={isClip ? "복사되었습니다." : "공유되었습니다."}/>}
       </Container>
@@ -190,7 +194,7 @@ const PCContainer = style.div`
   flex-direction: row;
   justify-content: center;
   align-items:start;
-  background-color: #f6f2eb;
+  background-color: white;
 `
 
 const Container = style.div`
@@ -200,7 +204,7 @@ const Container = style.div`
   flex-direction: column;
   width:500px;
   height:100%;
-  background-color: #f3ece3;
+  background-color: white;
   font-family: 'Nanum Gothic', sans-serif;
   border:1px solid black;
   border-color: #a99174;
@@ -208,6 +212,7 @@ const Container = style.div`
   @media (max-width: 500px) {
     width: 100%;
   }
+  padding: 0 0 60px 0;
 `;
 
 const LogoContainer = style.div`
@@ -231,9 +236,21 @@ const TitleContainer = style.div`
 `;
 
 const Title = style.div`
-  font-size:16px;
+  font-size:12px;
+  padding: 20px 0 0 0;
   @media (max-width: 500px) {
-    font-size:1rem;
+    font-size:12px;
+  }
+  font-weight: bold;
+  width:90%;
+  text-align:center;
+`;
+
+const Title2 = style.div`
+  font-size:24px;
+  padding: 10px 0 0 0;
+  @media (max-width: 500px) {
+    font-size:24px;
   }
   font-weight: bold;
   width:90%;
@@ -243,44 +260,59 @@ const Title = style.div`
 const Hash = style.div`
   text-align:center;
   font-size:16px;
+  font-style: italic;
   width:80%;
   color: gray;
   line-height: 16px;
   padding: 16px 0 6px 0;
   @media (max-width: 500px) {
-    font-size:0.9rem;
-    line-height: 1.1rem;
+    font-size: 16px;
+    line-height: 20px;
     padding: 1vw 0 2vw 0;
   }
 `;
 
 const Des = style.div`
+  text-align: justify;
   font-size:13px;
   width:80%;
-  line-height: 20px;
-  padding: 10px 0 20px 0;
+  line-height: 24px;
+  padding: 10px 0 30px 0;
+  margin: 10px;
   @media (max-width: 500px) {
-    font-size:0.8rem;
-    line-height: 1.2rem;
-    padding: 1vw 0 5vw 0;
+    font-size:12px;
+    line-height: 24px;
+    padding: 10px 10px 30px 0;
   }
+`;
+
+const Personal = style.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  text-align:center;
+  color: black;
+  background-color: #f6f2eb;
+  border:1px solid black;
+  border-color: #f6f2eb;
+  border-radius: 5px;
+  padding: 10px 0 20px 0;
 `;
 
 const Des2 = style.div`
   font-size:12px;
-  width:80%;
-  line-height: 20px;
-  padding: 10px 14px 10px 14px;
+  width:90%;
+  line-height: 24px;
   @media (max-width: 500px) {
-    font-size:0.75rem;
-    line-height: 1.2rem;
-    padding: 2.5vw 3vw 2.5vw 3vw;
+    font-size: 12px;
+    line-height: 24px;
   }
   text-align:center;
-  color: white;
-  background-color: #dec19f;
+  color: black;
+  background-color: #f6f2eb;
   border:1px solid black;
-  border-color: #dec19f;
+  border-color: #f6f2eb;
   border-radius: 5px;
 `;
 
@@ -292,14 +324,15 @@ const Text = style.div`
   color : #fff;
   font-size: 14px;
   @media (max-width: 500px) {
-    font-size: 0.9rem;
+    font-size: 14px;
   }
   font-weight: bold;
 `;
+
 const IntroTitle = style.div`
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
-  padding: 30px 0 0 0 ;
+  padding: 30px 0 30px 0 ;
 `;
 
 const PhoneContainer = style.div`
@@ -308,10 +341,10 @@ const PhoneContainer = style.div`
   align-items: center;
   justify-content: start;
   font-size: 14px;
-  width: 80%;
-  padding: 8px 0 0 0;
+  width: 90%;
+  padding: 14px 0 0 0;
   @media (max-width: 500px) {
-    padding: 1vw 0 0 0;
+    padding: 14px 0 0 0;
     font-size: 0.9rem;
   }
 `;
@@ -330,7 +363,7 @@ const Submit = style.div`
   padding:  10px 0 ;
   margin: 18px 10px;
   @media (max-width: 500px) {
-    padding: 2vw 0;
+    padding: 10px 0;
     margin: 2vw 1vw;
   }
   background-color: #dec19f;
@@ -375,14 +408,15 @@ const BottomWrap = style.div`
   box-sizing: border-box;
   width: 100%;
   height: 5rem;
-  padding: 0rem 5rem;
+  padding: 30px 5rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
 
 const ShareBtnWrap = style.div`
+  margin: 20px;
   cursor: pointer;
   width: 3rem;
   height: 3rem;
@@ -396,6 +430,11 @@ const ShareBtnWrap = style.div`
 `;
 
 const IconImg = style.img`
+  margin: 20px;
   width: 2rem;
   height: 2rem;
+`;
+
+const KaKaoButton = style.div`
+  margin: 20px;
 `;
