@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
+// assets
+import del_icon from "../../assets/img/icons/del_icon.svg";
 
 // text: placeholder 문구
 // value: input값 
@@ -21,7 +23,7 @@ export default ({text, value, setvalue}) => {
         <>
         <Wrap>
             <Box placeholder={text} onChange={(e) => setvalue(e.target.value)} value={value}/>
-            <DelBtn isShown={isBtnShown} onClick={() => setvalue('')}>x</DelBtn>
+            <DelBtn isShown={isBtnShown} onClick={() => setvalue('')} src={del_icon}>x</DelBtn>
         </Wrap>
         </>
     )
@@ -59,17 +61,17 @@ const Box = styled.input`
     }
 `;
 
-const DelBtn = styled.div`
-    display: ${props=>props.isShown? 'flex' : 'none'};
-    justify-content: center;
+const DelBtn = styled.image`
+    display: ${props=>props.isShown? 'box' : 'none'};
+    /* justify-content: center; */
     position: relative;
     z-index: 2;
     right: 4rem;
     width: 2.1rem;
     height: 2.1rem;
-    border-radius: 1.05rem;
-    background-color: #bdbdbd;
-    font-size: 1.6rem;
-    color: white;
-    line-height: 1.6rem;
+    /* border-radius: 1.05rem;
+    background-color: #bdbdbd; */
+    /* font-size: 1.6rem; */
+    /* color: white;
+    line-height: 1.6rem; */
 `;
