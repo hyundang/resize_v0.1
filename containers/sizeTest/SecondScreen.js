@@ -61,7 +61,7 @@ const Text = style.div`
   justify-content:center;
   align-items: center;
   color : white;
-  font-size: 1.1rem;
+  font-size: 16px;
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.9vw gray;
