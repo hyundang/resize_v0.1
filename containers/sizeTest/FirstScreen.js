@@ -18,6 +18,7 @@ const FirstScreen = () => {
                     <Text>리사이즈와 함께 쇼핑하러 가볼까요? </Text>
                     <Text>쇼핑 가기 전, 준비하러 가봅시다!</Text>
                 </TextContainer>
+                <GoText>탭하여 계속하기</GoText>
             </Container>
           </PCContainer>
         </>
@@ -64,6 +65,23 @@ const Text = style.div`
   align-items: center;
   color : white;
   font-size: 16px;
+  font-weight:300;
+  font-family: 'Noto Serif KR', serif;
+  text-shadow: 0.8vw 0.8vw 0.9vw gray;
+  padding: 0.8vw 0;
+  @media (max-width: 1024px) {
+    padding: 1.5vw 0;
+  }
+  @media (max-width: 500px) {
+    padding: 2vw 0;
+  }
+`;
+
+const GoText = style.div`
+  justify-content:center;
+  align-items: center;
+  color : white;
+  font-size: 14px;
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.9vw gray;

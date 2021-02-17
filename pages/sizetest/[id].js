@@ -285,7 +285,7 @@ const Title = style.div`
 
 const Title2 = style.div`
   font-size:24px;
-  padding: 10px 0 30px 0;
+  padding: 10px 0 40px 0;
   @media (max-width: 500px) {
     font-size:24px;
   }
@@ -305,7 +305,7 @@ const Hash = style.div`
   width: 80%;
   color: gray;
   line-height: 16px;
-  padding: 26px 0 6px 0;
+  padding: 40px 0 6px 0;
   @media (max-width: 500px) {
     font-size: 16px;
     line-height: 20px;

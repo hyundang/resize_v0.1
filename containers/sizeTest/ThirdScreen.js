@@ -15,6 +15,7 @@ const ThirdScreen = () => {
                 <TextContainer>
                     <Text>앗, 열차를 놓칠 수는 없지.</Text> 
                 </TextContainer>
+                <GoText>탭하여 계속하기</GoText>
             </Container>
           </PCContainer>
         </>
@@ -64,6 +65,23 @@ const Text = style.div`
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.5vw gray;
+  padding: 0.8vw 0;
+  @media (max-width: 1024px) {
+    padding: 1.5vw 0;
+  }
+  @media (max-width: 500px) {
+    padding: 2vw 0;
+  }
+`;
+
+const GoText = style.div`
+  justify-content:center;
+  align-items: center;
+  color : white;
+  font-size: 14px;
+  font-weight:300;
+  font-family: 'Noto Serif KR', serif;
+  text-shadow: 0.8vw 0.8vw 0.9vw gray;
   padding: 0.8vw 0;
   @media (max-width: 1024px) {
     padding: 1.5vw 0;
