@@ -88,6 +88,6 @@ const Button = style.div`
 
 const Text = style.div`
   color : #fff;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Nanum Gothic', sans-serif;
 `;
