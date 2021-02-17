@@ -2,20 +2,24 @@ import style from 'styled-components';
 import React, {useState, useCallback} from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+
 // recoil
 import { useRecoilState } from "recoil";
 import { ToastMsgState, IsClipState } from "../../states/atom";
-// component
 
+// component
 import axios from "axios";
 import Layout from '../../containers/common/Layout';
+
 // for clipboard
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import ToastMsg from '../../containers/common/ToastMsg';
 import Modal from '../../components/common/modal';
+
 // asset
 const clip = "/images/sizetest/clip.svg";
 const baseurl = "https://www.resize.com";
+
 //data
 import {sizeTest_final} from '../../data/sizeTest_final_data.js';
 
@@ -163,7 +167,7 @@ const Final = ({}) => {
         <TitleContainer>
           <Title>{data[sizeID].title}</Title>
           <Title2>{data[sizeID].subtitle}</Title2>
-          <Image src= {url} width="280" height="280"/>
+          <Image src= {url} width="250" height="250"/>
         </TitleContainer>
         <Hash>{data[sizeID].hashtag}</Hash>
         <Des>{data[sizeID].description}</Des>
@@ -281,7 +285,7 @@ const Title = style.div`
 
 const Title2 = style.div`
   font-size:24px;
-  padding: 10px 0 0 0;
+  padding: 10px 0 30px 0;
   @media (max-width: 500px) {
     font-size:24px;
   }
@@ -290,14 +294,18 @@ const Title2 = style.div`
   text-align:center;
 `;
 
+const CharacterContainer = style.div`
+  maring: 10px;
+`;
+
 const Hash = style.div`
-  text-align:center;
-  font-size:16px;
+  text-align: center;
+  font-size: 16px;
   font-style: italic;
-  width:80%;
+  width: 80%;
   color: gray;
   line-height: 16px;
-  padding: 16px 0 6px 0;
+  padding: 26px 0 6px 0;
   @media (max-width: 500px) {
     font-size: 16px;
     line-height: 20px;
@@ -335,7 +343,7 @@ const Personal = style.div`
 
 const Des2 = style.div`
   font-size:12px;
-  width:90%;
+  width:95%;
   line-height: 24px;
   @media (max-width: 500px) {
     font-size: 12px;
