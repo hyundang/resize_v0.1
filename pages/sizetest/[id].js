@@ -15,8 +15,8 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import ToastMsg from '../../containers/common/ToastMsg';
 // asset
 const clip = "/images/sizetest/clip.svg";
-const baseurl = "https://www.resize.com";
-// const baseurl = "https://resize.co.kr";
+// const baseurl = "https://www.resize.com";
+const baseurl = "https://resize.co.kr";
 
 export function searchID(id) {
     var sizeID = 0;
