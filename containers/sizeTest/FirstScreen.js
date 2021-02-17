@@ -68,10 +68,7 @@ const Text = style.div`
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.9vw gray;
-  padding: 0.8vw 0;
-  @media (max-width: 1024px) {
-    padding: 1.5vw 0;
-  }
+  padding: 10px 0;
   @media (max-width: 500px) {
     padding: 2vw 0;
   }
@@ -85,11 +82,8 @@ const GoText = style.div`
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.9vw gray;
-  padding: 0.8vw 0;
-  @media (max-width: 1024px) {
-    padding: 1.5vw 0;
-  }
+  padding: 10px 0;
   @media (max-width: 500px) {
-    padding: 2vw 0;
+    padding: 20px 0;
   }
 `;
