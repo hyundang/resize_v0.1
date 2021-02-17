@@ -24,12 +24,16 @@ export default ({kategorie, quesNum, lastQuesNum}) => {
 }
 
 const Wrap = styled.div`
+    position: fixed;
+    top: 0;
+    z-index: 10;
     width: 100%;
     height: 8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: white;
 `;
 
 const TypeWrap = styled.div`
@@ -44,8 +48,11 @@ const TypeWrap = styled.div`
 
 const TypeText = styled.div`
     cursor: pointer;
-    width: 4.6rem;
-    height: 2.3rem;
+    width: 8rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.4rem;
     font-weight: normal;
     color: ${props=> (props.num == props.kategorie)? ({theme})=>theme.colors.pale_brown : '#e8d7c1'}; 
@@ -55,7 +62,7 @@ const TypeText = styled.div`
 const BarWrap = styled.div`
     position: relative;
     margin-top: 2.4rem;
-    width: 36.5rem;
+    width: 97%;
     height: 0.7rem;
     border-radius: 0.5rem;
     background-color: #e6e6e6;
@@ -65,7 +72,7 @@ const Bar = styled.div`
     position: relative;
     left: 0;
     z-index: 2;
-    width: ${props=>(36.5/props.lastQuesNum)*props.quesNum}rem;
+    width: ${props=>(97/props.lastQuesNum)*props.quesNum}%;
     height: 0.7rem;
     border-radius: 0.5rem;
     background-color: ${({theme}) => theme.colors.pale_brown};  

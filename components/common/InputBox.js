@@ -23,7 +23,7 @@ export default ({text, value, setvalue}) => {
         <>
         <Wrap>
             <Box placeholder={text} onChange={(e) => setvalue(e.target.value)} value={value}/>
-            <DelBtn isShown={isBtnShown} onClick={() => setvalue('')} src={del_icon}>x</DelBtn>
+            <DelBtn isShown={isBtnShown} onClick={() => setvalue('')} src={del_icon}/>
         </Wrap>
         </>
     )
@@ -61,7 +61,7 @@ const Box = styled.input`
     }
 `;
 
-const DelBtn = styled.image`
+const DelBtn = styled.img`
     display: ${props=>props.isShown? 'box' : 'none'};
     /* justify-content: center; */
     position: relative;
@@ -69,6 +69,7 @@ const DelBtn = styled.image`
     right: 4rem;
     width: 2.1rem;
     height: 2.1rem;
+    /* background-image: url(${del_icon}); */
     /* border-radius: 1.05rem;
     background-color: #bdbdbd; */
     /* font-size: 1.6rem; */
