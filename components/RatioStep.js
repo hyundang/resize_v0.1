@@ -92,14 +92,16 @@ const CircleWrap = styled.div`
 
 const Circle = styled.div`
     width: ${props=>props.isClick? 
-    ((props.num==props.id)? 0.9 : props.width) 
+    ((props.num==props.id)? 0.8 : props.width) 
     :props.width}rem;
     height: ${props=>props.isClick? 
-    ((props.num==props.id)? 0.9 : props.width) 
+    ((props.num==props.id)? 0.8 : props.width) 
     :props.width}rem;
     position: absolute;
     z-index: 2;
-    border-radius: 50%;
+    border-radius: ${props=>props.isClick? 
+    ((props.num==props.id)? 0.4 : props.width/2) 
+    :props.width/2}rem;
     background-color: #f3f3f3;
 `;
 
