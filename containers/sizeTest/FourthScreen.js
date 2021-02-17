@@ -17,7 +17,7 @@ const FourthScreen = () => {
                     <Text>이번엔 기필코 내 체형에 찰떡인 코디를 찾아야지!</Text>
                     <Text>괜찮은 옷 없나?</Text>
                 </TextContainer>
-                <GoText>탭하여 계속하기</GoText>
+                <GoText> 탭하여 계속하기 </GoText>
             </Container>
           </PCContainer>
         </>

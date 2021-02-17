@@ -18,7 +18,7 @@ const FirstScreen = () => {
                     <Text>리사이즈와 함께 쇼핑하러 가볼까요? </Text>
                     <Text>쇼핑 가기 전, 준비하러 가봅시다!</Text>
                 </TextContainer>
-                <GoText>탭하여 계속하기</GoText>
+                <GoText>탭하여 계속하기 </GoText>
             </Container>
           </PCContainer>
         </>

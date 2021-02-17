@@ -15,7 +15,7 @@ const ThirdScreen = () => {
                 <TextContainer>
                     <Text>앗, 열차를 놓칠 수는 없지.</Text> 
                 </TextContainer>
-                <GoText>탭하여 계속하기</GoText>
+                <GoText> 탭하여 계속하기 </GoText>
             </Container>
           </PCContainer>
         </>

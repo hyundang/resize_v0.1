@@ -16,7 +16,7 @@ const SecondScreen = () => {
                     <Text>늦었다 늦었어! </Text> 
                     <Text>얼른 지하철 타러 가야지</Text>
                 </TextContainer>
-                <GoText>탭하여 계속하기</GoText>
+                <GoText> 탭하여 계속하기 </GoText>
             </Container>
           </PCContainer>
         </>
