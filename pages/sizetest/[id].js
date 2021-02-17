@@ -2,21 +2,27 @@ import style from 'styled-components';
 import React, {useState, useCallback} from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+
 // recoil
 import { useRecoilState } from "recoil";
 import { ToastMsgState, IsClipState } from "../../states/atom";
-// component
-import {sizeTest_final} from '../../data/sizeTest_final_data.js';
 
+// component
 import axios from "axios";
 import Layout from '../../containers/common/Layout';
+
 // for clipboard
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import ToastMsg from '../../containers/common/ToastMsg';
+import Modal from '../../components/common/modal';
+
 // asset
 const clip = "/images/sizetest/clip.svg";
 // const baseurl = "https://www.resize.com";
 const baseurl = "https://resize.co.kr";
+
+//data
+import {sizeTest_final} from '../../data/sizeTest_final_data.js';
 
 export function searchID(id) {
     var sizeID = 0;
@@ -87,6 +93,8 @@ const Final = ({}) => {
   const [phoneError, setPhoneError] = useState(false);
   const [checked, onChangeChecked] = useState(false);
   const [checkedError, setCheckedError] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false)
+
   const router = useRouter();
   const {id} = router.query;
   const url = '/images/sizetest/character/'+id+'.png';
@@ -146,6 +154,13 @@ const Final = ({}) => {
     console.log("hi");
   };
 
+  const openModal = () => {
+    setModalVisible(true)
+  }
+  const closeModal = () => {
+    setModalVisible(false)
+  }
+
   return (
     <PCContainer>
       <Container>
@@ -153,13 +168,13 @@ const Final = ({}) => {
         <TitleContainer>
           <Title>{data[sizeID].title}</Title>
           <Title2>{data[sizeID].subtitle}</Title2>
-          <Image src= {url} width="280" height="280"/>
+          <Image src= {url} width="250" height="250"/>
         </TitleContainer>
         <Hash>{data[sizeID].hashtag}</Hash>
         <Des>{data[sizeID].description}</Des>
         <Personal>
           <IntroTitle>1:1 퍼스널 패션 큐레이션 서비스 이용권 받기</IntroTitle>
-          <Des2>리사이즈에서 3월 론칭 예정인<Bold>"고객님만을 위한 1:1 퍼스널 패션 큐레이션 서비스"</Bold>를 무료로 이용하고 싶으시다면, 고객님의 전화번호를 적어주세요! 적어주신 번호로 리사이즈 1:1 퍼스널 큐레이션 서비스 이용권을 드립니다.</Des2>
+          <Des2>리사이즈에서 3월 런칭 예정인<Bold>"고객님만을 위한 1:1 퍼스널 패션 큐레이션 서비스"</Bold>를 무료로 이용하고 싶으시다면, 고객님의 전화번호를 적어주세요! 적어주신 번호로 리사이즈 1:1 퍼스널 큐레이션 서비스 이용권을 드립니다.</Des2>
           <PhoneContainer>
               <input type="text" style ={{border: '1px solid #dec19f', borderColor: '#dec19f', width: '80%', padding: '10px 10px'}} value={phone} required onChange={onChangePhone} placeholder="전화번호를 입력해주세요.">
               </input>
@@ -168,8 +183,30 @@ const Final = ({}) => {
           {phoneError && <Status> 전화번호를 입력해주세요 </Status> }
           {checkedError && <Status> 개인정보 수집에 동의해주세요 </Status> }
           <AgreeContainer>
-            <BottomText>개인정보 수집에 동의합니다</BottomText>
             <input type="checkbox" checked={checked} onChange={(e) => checkHandler(e)} /> 
+            <BottomText>개인정보 수집 동의</BottomText>
+            <AgreeLink onClick={openModal}> [자세히 보기]</AgreeLink>
+              {
+                modalVisible && <Modal
+                  visible={modalVisible}
+                  closable={true}
+                  maskClosable={true}
+                  onClose={closeModal}
+                  title= {'개인정보 수집 동의'}
+                  >
+                    <Title3>1. 개인정보 수집 및 이용 안내 동의</Title3>
+                    <Des3>리사이즈는 사전예약 서비스 제공을 위해 다음과 같은 개인정보를 수집하고 있습니다.  </Des3>
+                    <Des3>개인정보 수집을 거부하는 경우 이벤트 참여에 제한이 될 수 있습니다.</Des3>
+                    <Des3>＊수집하고자 하는 항목: 전화번호 / 이벤트 참여내역</Des3>
+                    <Des3>＊개인정보 수집 목적: 무료 이용권 수령 이벤트 참여, 큐레이션 서비스 출시 알림 SMS 발송</Des3>
+                    <Des3>* 보유 및 이용 기간: 이벤트 참여자 DB이용, 큐레이션 서비스 출시 후 3개월간 보관 후 삭제</Des3>
+                    <Des3>단 관계법령에 따라 보존이 필요한 경우 해당 기간동안 보관</Des3>
+                    <Title3>2. 개인정보 제공 및 이용 안내 동의</Title3>
+                    <Des3>리사이즈는 사전예약 서비스 제공을 위해 개인 정보를 다음과 같이 제공합니다.</Des3>
+                    <Des3>＊제공 업체: 리사이즈 이외 없음</Des3>
+                    <Des3>＊개인정보 제공 목적: 큐레이션 서비스 출시 알림 안내 SMS 발송, 큐레이션 무료 이용권 전송 </Des3>
+                  </Modal>
+              }
           </AgreeContainer>
         </Personal>
         <BottomWrap>
@@ -247,23 +284,27 @@ const Title = style.div`
 
 const Title2 = style.div`
   font-size:24px;
-  padding: 10px 0 0 0;
+  padding: 10px 0 40px 0;
   @media (max-width: 500px) {
     font-size:24px;
   }
   font-weight: bold;
-  width:90%;
+  width:100%;
   text-align:center;
 `;
 
+const CharacterContainer = style.div`
+  maring: 10px;
+`;
+
 const Hash = style.div`
-  text-align:center;
-  font-size:16px;
+  text-align: center;
+  font-size: 16px;
   font-style: italic;
-  width:80%;
+  width: 80%;
   color: gray;
   line-height: 16px;
-  padding: 16px 0 6px 0;
+  padding: 40px 0 6px 0;
   @media (max-width: 500px) {
     font-size: 16px;
     line-height: 20px;
@@ -301,7 +342,7 @@ const Personal = style.div`
 
 const Des2 = style.div`
   font-size:12px;
-  width:90%;
+  width:95%;
   line-height: 24px;
   @media (max-width: 500px) {
     font-size: 12px;
@@ -389,9 +430,20 @@ const AgreeContainer = style.div`
 
 const BottomText = style.div`
   font-size: 12px;
+  padding-left: 5px;
   @media (max-width: 500px) {
     font-size: 0.8rem;
   }
+`;
+
+const AgreeLink = style.div`
+  font-size: 12px;
+  padding-left: 10px;
+  @media (max-width: 500px) {
+    font-size: 0.8rem;
+  }
+  color: #d65100;
+  cursor : pointer;
 `;
 
 const Status = style.div`
@@ -402,6 +454,21 @@ const Status = style.div`
     font-size: 0.7rem;
   }
 `
+
+const Title3 = style.div`
+  font-size:14px;
+  padding: 30px 0 16px 0;
+  font-weight: bold;
+  width:90%;
+  text-align:start;
+`;
+
+const Des3 = style.div`
+  text-align: justify;
+  font-size:12px;
+  width:80%;
+  line-height: 24px;
+`;
 
 const BottomWrap = style.div`
   box-sizing: border-box;

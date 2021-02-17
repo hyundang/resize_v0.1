@@ -17,6 +17,7 @@ const FourthScreen = () => {
                     <Text>이번엔 기필코 내 체형에 찰떡인 코디를 찾아야지!</Text>
                     <Text>괜찮은 옷 없나?</Text>
                 </TextContainer>
+                <GoText> 탭하여 계속하기 </GoText>
             </Container>
           </PCContainer>
         </>
@@ -29,7 +30,7 @@ const PCContainer = style.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items:start;
+  align-items:center;
   background-color: #f6f2eb;
 `
 
@@ -55,22 +56,33 @@ const TextContainer = style.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding : 0 5vw 0 5vw ;
+  padding : 10vw 5vw;
 `;
 
 const Text = style.div`
   justify-content:center;
   align-items: center;
   color : white;
-  font-size: 1.05rem;
-  font-weight: 400;
+  font-size: 17px;
+  font-weight:300;
   font-family: 'Noto Serif KR', serif;
-  text-shadow: 0.8vw 0.8vw 1vw gray;
-  padding: 0.8vw 0;
-  @media (max-width: 1024px) {
-    padding: 1.5vw 0;
-  }
+  text-shadow: 0.8vw 0.8vw 0.9vw gray;
+  padding: 10px 0;
   @media (max-width: 500px) {
     padding: 2vw 0;
+  }
+`;
+
+const GoText = style.div`
+  justify-content:center;
+  align-items: center;
+  color : white;
+  font-size: 14px;
+  font-weight:300;
+  font-family: 'Noto Serif KR', serif;
+  text-shadow: 0.8vw 0.8vw 0.9vw gray;
+  padding: 10px 0;
+  @media (max-width: 500px) {
+    padding: 20px 0;
   }
 `;

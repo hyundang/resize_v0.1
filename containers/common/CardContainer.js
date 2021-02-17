@@ -154,7 +154,7 @@ const QuestionN = style.div`
   font-size: 24px;
   @media (max-width: 500px) {
     margin: 3vw 2vw 4vw 2vw;
-    font-size: 1.3rem;
+    font-size: 20px;
   }
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.5vw gray;
@@ -171,7 +171,7 @@ const QuestionOne = style.div`
   font-size: 20px;
   @media (max-width: 500px) {
     margin: 3vw 2vw 4vw 2vw;
-    font-size: 1.3rem;
+    font-size: 20px;
   }
   font-weight: 500;
   font-family: 'Noto Serif KR', serif;
@@ -188,7 +188,7 @@ const QuestionTwo = style.div`
   font-size: 20px;
   @media (max-width: 500px) {
     margin: 3vw 2vw 4vw 2vw;
-    font-size: 1.3rem;
+    font-size: 20px;
   }
   font-weight: 500;
   font-family: 'Noto Serif KR', serif;
@@ -242,7 +242,7 @@ const Text = style.div`
   color : black;
   font-size: 14px;;
   @media (max-width: 500px) {
-    font-size: 0.9rem;
+    font-size: 1.4rem;
   }
   font-family: 'Noto Serif KR', serif;
 `;

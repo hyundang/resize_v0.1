@@ -7,7 +7,7 @@ const PageEleven  = () => {
     useEffect(()=>{
         setTimeout(() => {
             setIsShow(true);
-        }, 3000)
+        }, 1500)
     }, [])
 
     return(

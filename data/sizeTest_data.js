@@ -64,7 +64,7 @@ export const TestData = [
     },
     {
         id:9,
-        question1: '맘에 드는 가게에서',
+        question1: '마음에 드는 가게에서',
         question2: '점원을 마주쳤는데...',
         answers: ['"어깨가 좁은 사람에게 어울리는 옷을 찾아주세요"','"어깨가 넓은 사람에게 어울리는 옷을 찾아주세요"'],
         photo: '3_bg_blur.jpg'

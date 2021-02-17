@@ -16,6 +16,7 @@ const SecondScreen = () => {
                     <Text>늦었다 늦었어! </Text> 
                     <Text>얼른 지하철 타러 가야지</Text>
                 </TextContainer>
+                <GoText> 탭하여 계속하기 </GoText>
             </Container>
           </PCContainer>
         </>
@@ -28,7 +29,7 @@ const PCContainer = style.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items:start;
+  align-items:center;
   background-color: #f6f2eb;
 `
 
@@ -54,22 +55,33 @@ const TextContainer = style.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding : 0 5vw 0 5vw ;
+  padding : 10vw 5vw;
 `;
 
 const Text = style.div`
   justify-content:center;
   align-items: center;
   color : white;
-  font-size: 1.1rem;
+  font-size: 17px;
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.9vw gray;
-  padding: 0.8vw 0;
-  @media (max-width: 1024px) {
-    padding: 1.5vw 0;
-  }
+  padding: 10px 0;
   @media (max-width: 500px) {
     padding: 2vw 0;
+  }
+`;
+
+const GoText = style.div`
+  justify-content:center;
+  align-items: center;
+  color : white;
+  font-size: 14px;
+  font-weight:300;
+  font-family: 'Noto Serif KR', serif;
+  text-shadow: 0.8vw 0.8vw 0.9vw gray;
+  padding: 10px 0;
+  @media (max-width: 500px) {
+    padding: 20px 0;
   }
 `;
