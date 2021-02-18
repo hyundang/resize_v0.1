@@ -36,7 +36,7 @@ const fadeout = keyframes`
 const Wrap = style.div`
     position: absolute;
     z-index: 5;
-    top: 70%;
+    bottom: 0%;
     background: #3d3d3d;
     border-radius: 0.5rem;
     width: 80vw;

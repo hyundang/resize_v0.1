@@ -9,8 +9,6 @@ const baseurl = "http://localhost:3000";
 
 
 const KakaoShareBtn = ({imgurl}) => {
-    const setIsClip = useSetRecoilState(IsClipState);
-    const setIsToastMsgShow = useSetRecoilState(ToastMsgState);
     
     useEffect(()=>{
         createKakaoBtn();
@@ -49,11 +47,6 @@ const KakaoShareBtn = ({imgurl}) => {
               ],
             })
           }
-    }
-
-    const handleKtalckClick = () => {
-        setIsToastMsgShow(true);
-        setIsClip(false);
     }
 
 

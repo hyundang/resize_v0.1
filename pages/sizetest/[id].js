@@ -18,7 +18,8 @@ import Modal from '../../components/common/modal';
 
 // asset
 const clip = "/images/sizetest/clip.svg";
-const baseurl = "https://www.resize.com";
+// const baseurl = "https://www.resize.com";
+const baseurl = "https://resize.co.kr";
 
 //data
 import {sizeTest_final} from '../../data/sizeTest_final_data.js';
@@ -214,9 +215,7 @@ const Final = ({}) => {
               <IconImg src={clip}/>
             </ShareBtnWrap>
           </CopyToClipboard>
-          <KaKaoButton>
-            <Layout imgurl={url} onClick={handleKtalckClick} />
-          </KaKaoButton>
+          <Layout imgurl={url} onClick={handleKtalckClick}/>
         </BottomWrap>
         {isToastMsgShow && <ToastMsg text={isClip ? "복사되었습니다." : "공유되었습니다."}/>}
       </Container>
@@ -483,7 +482,7 @@ const BottomWrap = style.div`
 `;
 
 const ShareBtnWrap = style.div`
-  margin: 20px;
+  margin: 20px 100px 20px 20px;
   cursor: pointer;
   width: 3rem;
   height: 3rem;
