@@ -13,8 +13,9 @@ const SecondScreen = () => {
           <PCContainer>
             <Container onClick={() => setIsSecondShow(false)}>
                 <TextContainer>
-                    <Text>늦었다 늦었어! </Text> 
-                    <Text>얼른 지하철 타러 가야지</Text>
+                    <Text>앗 벌써 시간이 이렇게 됐네?</Text> 
+                    <Text>늦었다, 늦었어! </Text> 
+                    <Text>얼른 지하철 타러 가야지!</Text>
                 </TextContainer>
                 <GoText> 탭하여 계속하기 </GoText>
             </Container>
@@ -55,8 +56,12 @@ const TextContainer = style.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding : 10vw 5vw;
-  margin-bottom : 15vw;
+  padding : 30px 80px;
+  margin-top : 30px;
+  @media (max-width: 500px) {
+    padding : 10vw 12vw;
+    margin-bottom : 15vw;
+  }
   border-top: 0.5px solid white;
   border-bottom: 0.5px solid white;
 `;
@@ -84,7 +89,7 @@ const GoText = style.div`
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.9vw gray;
   margin-top : 100px;
-  padding: 10px 0;
+  padding: 100px 0 0 0;
   @media (max-width: 500px) {
     padding: 20px 0;
   }
