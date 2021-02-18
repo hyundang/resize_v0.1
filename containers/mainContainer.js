@@ -15,12 +15,12 @@ const MainContainer = () => {
        
     return (
         <>
-            <Header kategorie={0} quesNum={1} lastQuesNum={10}/>
+            {/* <Header kategorie={0} quesNum={1} lastQuesNum={10}/>
             <Link href="/sizetest">체형 TEST</Link>
             <InputBox text={"요청사항을 입력하세요"} value={inputValue} setvalue={setInputValue}/>
             <CheckBox/>
             <RatioStep/>
-            <Bottom/>
+            <Bottom/> */}
         </>
     );
 };
