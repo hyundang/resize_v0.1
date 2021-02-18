@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import style from 'styled-components';
-
+import useScript from "../../hooks/useScript";
 
 const kakaoID = "91a50f2ae6db8ae5cdaf0916886e5793";
-const baseurl = "http://resize.co.kr";
+const baseurl = "https://resize.co.kr";
 
-
+//왜안돼..
 const KakaoShareBtn = ({imgurl}) => {
+    const { loaded } = useScript("https://developers.kakao.com/sdk/js/kakao.js");
     
     useEffect(()=>{
-        console.log(imgurl)
+      if(loaded){
+        // console.log("k "+imgurl)
         createKakaoBtn();
-    }, [])
+      }
+    }, [loaded])
 
     const createKakaoBtn = () => {
         if (window.Kakao) {
@@ -62,8 +65,9 @@ const KakaoShareBtn = ({imgurl}) => {
 export default KakaoShareBtn;
 
 const BtnWrap = style.button`
-    width: 3rem;
-    height: 3rem;
+    cursor: pointer;
+    width: 4rem;
+    height: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,6 +80,6 @@ const BtnWrap = style.button`
 `;
 
 const KakaoImg = style.img`
-    width: 3.1rem;
-    height: 3.1rem;
+    width: 4.1rem;
+    height: 4.1rem;
 `;

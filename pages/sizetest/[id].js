@@ -9,7 +9,7 @@ import { ToastMsgState, IsClipState } from "../../states/atom";
 
 // component
 import axios from "axios";
-import Layout from '../../containers/common/Layout';
+import KaKaoShareButton from '../../containers/common/KakaoShareBtn';
 
 // for clipboard
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -96,7 +96,6 @@ const Final = ({}) => {
  
   const router = useRouter();
   const {id} = router.query;
-  console.log(id);
   const url = '/images/sizetest/character/'+id+'.png';
   const sizeID = parseInt(searchID(id));
   const data = sizeTest_final;
@@ -214,7 +213,7 @@ const Final = ({}) => {
               <IconImg src={clip}/>
             </ShareBtnWrap>
           </CopyToClipboard>
-          <Layout imgurl={url}/>
+          <KaKaoShareButton imgurl={url}/>
         </BottomWrap>
         {isToastMsgShow && <ToastMsg text={isClip ? "복사되었습니다." : "공유되었습니다."}/>}
       </Container>
@@ -436,7 +435,7 @@ const BottomText = style.div`
 `;
 
 const AgreeLink = style.div`
-  font-size: 12px;
+  font-size: 13px;
   padding-left: 10px;
   @media (max-width: 500px) {
     font-size: 12px;
@@ -483,8 +482,8 @@ const BottomWrap = style.div`
 const ShareBtnWrap = style.div`
   margin: 20px 100px 20px 20px;
   cursor: pointer;
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   background: #a0a0a0;
   display: flex;
