@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import style from 'styled-components';
+import useScript from "../../hooks/useScript";
 
 const kakaoID = "91a50f2ae6db8ae5cdaf0916886e5793";
 const baseurl = "https://resize.co.kr";
 
 //왜안돼..
 const KakaoShareBtn = ({imgurl}) => {
-
+    const { loaded } = useScript("https://developers.kakao.com/sdk/js/kakao.js");
+    
     useEffect(()=>{
-        console.log("k "+imgurl)
+      if(loaded){
+        // console.log("k "+imgurl)
         createKakaoBtn();
-    }, [])
+      }
+    }, [loaded])
 
     const createKakaoBtn = () => {
         if (window.Kakao) {
@@ -27,7 +31,7 @@ const KakaoShareBtn = ({imgurl}) => {
               content: {
                 title: '리사이즈 체형테스트',
                 description: '#리사이즈 #체형테스트 #무료코디 #무료스타일링',
-                imageUrl: baseurl+"/images/resizeLogo.png", // i.e. process.env.FETCH_URL + '/logo.png'
+                imageUrl: baseurl+imgurl, // i.e. process.env.FETCH_URL + '/logo.png'
                 link: {
                   mobileWebUrl: window.location.href,
                   webUrl: window.location.href,

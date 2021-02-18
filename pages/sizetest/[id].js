@@ -2,7 +2,6 @@ import style from 'styled-components';
 import React, {useState, useCallback} from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Head from "next/head";
 
 // recoil
 import { useRecoilState } from "recoil";
@@ -161,10 +160,6 @@ const Final = ({}) => {
   }
 
   return (
-    <>
-    <Head>
-      <script src="https://developers.kakao.com/sdk/js/kakao.js"/>
-    </Head>
     <PCContainer>
       <Container>
         <LogoContainer><Image src={'/images/resize_white.png'} width="160" height="50" /></LogoContainer>
@@ -218,12 +213,11 @@ const Final = ({}) => {
               <IconImg src={clip}/>
             </ShareBtnWrap>
           </CopyToClipboard>
-          <KaKaoShareButton imgurl={baseurl+`/images/sizetest/character/${id}.png`}/>
+          <KaKaoShareButton imgurl={url}/>
         </BottomWrap>
         {isToastMsgShow && <ToastMsg text={isClip ? "복사되었습니다." : "공유되었습니다."}/>}
       </Container>
     </PCContainer>
-    </>
   );
 }
 
