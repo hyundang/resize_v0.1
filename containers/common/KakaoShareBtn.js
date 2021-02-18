@@ -6,12 +6,12 @@ import useScript from "../../hooks/useScript";
 const kakaoID = "91a50f2ae6db8ae5cdaf0916886e5793";
 const baseurl = "http://resize.co.kr";
 
-
+//왜안돼..
 const KakaoShareBtn = ({imgurl}) => {
     const { loaded } = useScript("https://developers.kakao.com/sdk/js/kakao.js");  
 
     useEffect(()=>{
-      console.log(loaded);
+      console.log(loaded)
       if(loaded){
         console.log("k "+imgurl)
         createKakaoBtn();
