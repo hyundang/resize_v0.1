@@ -10,10 +10,9 @@ const MainContainer = () => {
 
     useEffect(()=>{
         Router.push('/sizetest/');
-    }
+        }
     )
        
-
     return (
         <>
             <Header kategorie={0} quesNum={1} lastQuesNum={10}/>
