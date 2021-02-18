@@ -13,8 +13,9 @@ const FourthScreen = () => {
           <PCContainer>
             <Container onClick={() => setIsFourthShow(false)}>
                 <TextContainer>
-                    <Text>드디어 쇼핑몰 도착한 당신!</Text> 
-                    <Text>이번엔 기필코 내 체형에 찰떡인 코디를 찾아야지!</Text>
+                    <Text>드디어 쇼핑몰에 도착한 당신!</Text> 
+                    <Text>이번엔 기필코 디자인, 스타일, 사이즈까지</Text>
+                    <Text>다 잡는 찰떡 코디를 찾아야지!</Text>
                     <Text>괜찮은 옷 없나?</Text>
                 </TextContainer>
                 <GoText> 탭하여 계속하기 </GoText>
@@ -32,6 +33,7 @@ const PCContainer = style.div`
   justify-content: center;
   align-items:center;
   background-color: #f6f2eb;
+  width: 100%;
 `
 
 const Container = style.div`
@@ -56,14 +58,23 @@ const TextContainer = style.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding : 10vw 5vw;
+  padding : 10px 25px;
+  margin-bottom : 15vw;
+  margin-top: 50px;
+  @media (max-width: 500px) {
+    padding : 10vw 0;
+    margin-bottom : 15vw;
+    margin-top: 0;
+  }
+  border-top: 0.5px solid white;
+  border-bottom: 0.5px solid white;
 `;
 
 const Text = style.div`
   justify-content:center;
   align-items: center;
   color : white;
-  font-size: 17px;
+  font-size: 16px;
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.9vw gray;
@@ -81,6 +92,7 @@ const GoText = style.div`
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.9vw gray;
+  margin-top : 100px;
   padding: 10px 0;
   @media (max-width: 500px) {
     padding: 20px 0;

@@ -9,7 +9,6 @@ import
   LoadingState,
   FirstBackImgState,
   SecondBackImgState,
-  ThirdBackImgState,
   FourthBackImgState
 } 
 from '../../states/atom';
@@ -28,7 +27,6 @@ import PageTen from '../../containers/sizeTest/PageTen';
 import PageEleven from '../../containers/sizeTest/PageEleven';
 import FirstScreen from '../../containers/sizeTest/FirstScreen';
 import SecondScreen from '../../containers/sizeTest/SecondScreen';
-import ThirdScreen from '../../containers/sizeTest/ThirdScreen';
 import FourthScreen from '../../containers/sizeTest/FourthScreen';
 import LoadingContainer from '../../containers/sizeTest/LoadingContainer';
 
@@ -41,7 +39,6 @@ const Test = ({}) => {
   // 화면 전환 사이 화면
   const [isFirstShow, setIsFirstShow] = useRecoilState(FirstBackImgState);
   const [isSecondShow, setIsSecondShow] = useRecoilState(SecondBackImgState);
-  const [isThirdShow, setIsThirdShow] = useRecoilState(ThirdBackImgState);  
   const [isFourthShow, setIsFourthShow] = useRecoilState(FourthBackImgState); 
 
   switch(questionNumber){
@@ -68,11 +65,7 @@ const Test = ({}) => {
       :<PageSeven/>
       )
     case 7:
-      return (
-      isThirdShow ?
-      <ThirdScreen/>
-      :<PageEight/>
-      )
+      return <PageEight/>
     case 8:
       return <PageNine/>
     case 9:
@@ -88,7 +81,7 @@ const Test = ({}) => {
         <>
           {isLoading ? 
           <LoadingContainer/>
-          :<FinalContainer answers={answers}/>
+          :<LoadingContainer/>
           }
         </>
       )

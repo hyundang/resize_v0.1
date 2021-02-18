@@ -13,8 +13,9 @@ const SecondScreen = () => {
           <PCContainer>
             <Container onClick={() => setIsSecondShow(false)}>
                 <TextContainer>
-                    <Text>늦었다 늦었어! </Text> 
-                    <Text>얼른 지하철 타러 가야지</Text>
+                    <Text>앗 벌써 시간이 이렇게 됐네?</Text> 
+                    <Text>늦었다, 늦었어! </Text> 
+                    <Text>얼른 지하철 타러 가야지!</Text>
                 </TextContainer>
                 <GoText> 탭하여 계속하기 </GoText>
             </Container>
@@ -42,7 +43,7 @@ const Container = style.div`
   top: 0;
   width: 500px;
   height: 100%;
-  background: url(/images/sizetest/background/1_bg.jpg) right top no-repeat;
+  background: url(/images/sizetest/background/2_bg.jpg) right top no-repeat;
   background-size: cover;
   @media (max-width: 500px) {
     width: 100%;
@@ -55,14 +56,21 @@ const TextContainer = style.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding : 10vw 5vw;
+  padding : 30px 80px;
+  margin-top : 30px;
+  @media (max-width: 500px) {
+    padding : 10vw 12vw;
+    margin-bottom : 15vw;
+  }
+  border-top: 0.5px solid white;
+  border-bottom: 0.5px solid white;
 `;
 
 const Text = style.div`
   justify-content:center;
   align-items: center;
   color : white;
-  font-size: 17px;
+  font-size: 16px;
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.9vw gray;
@@ -80,7 +88,8 @@ const GoText = style.div`
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.9vw gray;
-  padding: 10px 0;
+  margin-top : 100px;
+  padding: 100px 0 0 0;
   @media (max-width: 500px) {
     padding: 20px 0;
   }

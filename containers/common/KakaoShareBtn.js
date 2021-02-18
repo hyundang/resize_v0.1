@@ -3,8 +3,7 @@ import style from 'styled-components';
 
 
 const kakaoID = "91a50f2ae6db8ae5cdaf0916886e5793";
-// const baseurl = "http://localhost:3000";
-const baseurl = "https://resize.co.kr";
+const baseurl = "http://resize.co.kr";
 
 
 const KakaoShareBtn = ({imgurl}) => {
