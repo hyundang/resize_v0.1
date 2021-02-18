@@ -65,6 +65,7 @@ const KakaoShareBtn = ({imgurl}) => {
 export default KakaoShareBtn;
 
 const BtnWrap = style.button`
+    cursor: pointer;
     width: 4rem;
     height: 4rem;
     display: flex;
