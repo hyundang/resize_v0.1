@@ -19,8 +19,8 @@ const CardContainer = ({isShow}) => {
     var size = '';
     if ((answers[4] + answers[6] + answers[9])>1) size += 'W';
     else size += 'N';
-    if ((answers[0] + answers[2] + answers[10])>1) size += 'C';
-    else size += 'T';
+    if ((answers[0] + answers[2] + answers[10])>1) size += 'T';
+    else size += 'C';
     if (answers[1] == 1) size += 'S';
     else size += 'B';
     if ((answers[3] + answers[5] + answers[8])>1) size += 'M';
