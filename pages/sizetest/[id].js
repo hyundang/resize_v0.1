@@ -218,7 +218,7 @@ const Final = ({}) => {
               <IconImg src={clip}/>
             </ShareBtnWrap>
           </CopyToClipboard>
-          <KaKaoShareButton imgurl={url}/>
+          <KaKaoShareButton imgurl={baseurl+`/images/sizetest/character/${id}.png`}/>
         </BottomWrap>
         {isToastMsgShow && <ToastMsg text={isClip ? "복사되었습니다." : "공유되었습니다."}/>}
       </Container>
