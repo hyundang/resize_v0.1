@@ -15,38 +15,42 @@ const CardContainer = ({isShow}) => {
 
   const questions = TestData;
   
-  function getMySize() {
+  function getMySize(num) {
+    console.log(answers[0] + answers[2] + answers[10]);
     var size = '';
     if ((answers[4] + answers[6] + answers[9])>1) size += 'W';
     else size += 'N';
-    if ((answers[0] + answers[2] + answers[10])>1) size += 'T';
-    else size += 'C';
+    if ((answers[0] + answers[2] + num)>1) size += 'C';
+    else size += 'T';
     if (answers[1] == 1) size += 'S';
     else size += 'B';
     if ((answers[3] + answers[5] + answers[8])>1) size += 'M';
     else size += 'U';
-  
+    console.log(size);
     return size;
   }
 
+
   const onClickButton1 = () => {
-    setQuestionNumber(questionNumber+1);
     setAnswers(answers.concat([0]));
+    setQuestionNumber(questionNumber+1);
+    console.log(questionNumber , answers);
     if (questions.length-1 == (questionNumber)) {
-      const size = getMySize();
+      const size = getMySize(0);
       Router.push('/sizetest/'+size);
     }
   };
 
   const onClickButton2 = () => {
-    setQuestionNumber(questionNumber+1);
     setAnswers(answers.concat([1]));
+    setQuestionNumber(questionNumber+1);
+    console.log(questionNumber , answers);
     if (questions.length-1 == (questionNumber)) {
-      const size = getMySize();
+      const size = getMySize(1);
       Router.push('/sizetest/'+size);
     }
   };
-  
+
 
   return (
     <PCContainer>
@@ -107,7 +111,7 @@ const Card = style.div`
   flex-direction: column;
   padding: 18px;
   @media (max-width: 500px) {
-    padding: 3vw;
+    padding: 3vw 0;
     height: 90%;
   }
 `;
@@ -158,7 +162,6 @@ const QuestionN = style.div`
     font-size: 30px;
   }
   font-family: 'Noto Serif KR', serif;
-  text-shadow: 0.8vw 0.8vw 0.5vw gray;
   animation: ${fadein} 1s;
 `;
 
@@ -176,7 +179,6 @@ const QuestionOne = style.div`
   }
   font-weight: 500;
   font-family: 'Noto Serif KR', serif;
-  text-shadow: 0.8vw 0.8vw 1vw gray;
   animation: ${fadein} 2s;
 `;
 
@@ -193,7 +195,6 @@ const QuestionTwo = style.div`
   }
   font-weight: 500;
   font-family: 'Noto Serif KR', serif;
-  text-shadow: 0.8vw 0.8vw 1vw gray;
   animation: ${fadein} 3s;
 `;
 
@@ -206,7 +207,7 @@ const AnswerContainer = style.div`
   padding: 8px;
   @media (max-width: 500px) {
     padding: 1vw;
-    margin: 2vw;
+    margin: 2vw 0 ;
   }
 `;
 
@@ -220,10 +221,10 @@ const Answer = style.div`
   border-radius: 15px;
   box-shadow: 0vw 2vw 7vw 0 rgba(98, 69, 34, 0.15);
   padding: 16px;
-  margin: 18px;
+  margin: 18px 0;
   @media (max-width: 500px) {
     padding: 3vw;
-    margin: 4vw 2vw;
+    margin: 4vw 0;
   }
   background-color: white;
   cursor : pointer;
