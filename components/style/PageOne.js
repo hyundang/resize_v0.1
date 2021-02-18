@@ -1,5 +1,8 @@
 import React, {useState} from "react";
 import styled from "styled-components";
+// recoil
+import { useSetRecoilState } from "recoil";
+import { SexState } from "../../states/website_atom";
 // components
 import { Header, Bottom } from "../../components";
 import { Question, ChoiceBtn } from "../../components/common";
@@ -13,6 +16,8 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
     const [isManClick, setIsManClick] = useState(false);
     const [isWomanClick, setIsWomanClick] = useState(false);
 
+    const setSex = useSetRecoilState(SexState);
+
     return(
         <>
         <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
@@ -25,12 +30,12 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                 <ChoiceBtn 
                     text={"남"} 
                     isClick={isManClick}
-                    onClick={()=>{setIsManClick(true);setIsWomanClick(false)}}
+                    onClick={()=>{setIsManClick(true);setIsWomanClick(false);setSex(0)}}
                 />
                 <ChoiceBtn 
                     text={"여"} 
                     isClick={isWomanClick}
-                    onClick={()=>{setIsManClick(false);setIsWomanClick(true)}}
+                    onClick={()=>{setIsManClick(false);setIsWomanClick(true);setSex(1)}}
                 />
             </BtnWrap>
         </Wrap>

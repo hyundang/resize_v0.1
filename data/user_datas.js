@@ -8,7 +8,21 @@ const style_F = [
     {
         id : 1,
         questionNum : 2,
-        answers : ["캐주얼", "클래식포멀", "모던베이직", "로맨틱페미닌", "러블리", "스트릿", "빈티지", "스포티", "섹시글램", "하이틴", "힙시크", "럭셔리"],
+        // answers 부분 name, tag로 바꿔주세여
+        answers : [
+            {name: "캐주얼", tag: ["편안한","스포티한","귀여운"]},
+            {name: "클래식포멀", tag: []}, 
+            "모던베이직", 
+            "로맨틱페미닌", 
+            "러블리", 
+            "스트릿", 
+            "빈티지", 
+            "스포티", 
+            "섹시글램", 
+            "하이틴", 
+            "힙시크", 
+            "럭셔리"
+        ],
     },
     {
         id : 2,
@@ -124,7 +138,8 @@ const cody_F = {
 }
 
 const user_datas = {
-    style_two,
+    style_F,
+    size_F,
 }
 
 export default user_datas;

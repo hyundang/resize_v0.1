@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { Question, ChoiceBtn } from "../../components/common";
+import { QuestionTwo } from "../../components/common";
 // hooks
 import useWindowSize from '../../hooks/useWindowSize';
 
@@ -15,9 +15,11 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
         <>
         <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
         <Wrap height={size.height}>
-            <Question
+        <QuestionTwo
                 quesNum={quesNum}
-                quesText={"당신의 성별은 무엇인가요?"}
+                quesTextOne={"다음 중 시도해보고 싶은 스타일을"}
+                quesTextTwo={"순서대로 골라주실래요?"}
+                overlapText={"최대 3개"}
             />
         </Wrap>
         <Bottom setPageNum={setPageNum} pageNum={quesNum}/>

@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 // recoil
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { pageNumState } from "../../states/style_atom";
+import { SexState } from "../../states/website_atom";
 // components
 import { TransitionPage } from "../../components";
-import { Question } from "../../components/common";
 import {
     PageOne,
     PageEight,
@@ -27,6 +27,7 @@ import {
 
 const Start  = () => {
     const [pageNum, setPageNum] = useRecoilState(pageNumState);
+    const sex = useRecoilValue(SexState);
 
     switch(pageNum){
         case 0:
@@ -42,6 +43,13 @@ const Start  = () => {
                 setPageNum={setPageNum}
             />)
         case 2:
+            if(sex === 0){
+                //남자 데이터
+            }
+            else{
+                //여자데이터
+            }
+            // props로 데이터 넘겨주기
             return (<PageTwo
                 lastQuesNum={16}
                 quesNum={2}
