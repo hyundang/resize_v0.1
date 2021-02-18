@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import style from 'styled-components';
-// recoil
-import { useSetRecoilState } from "recoil";
-import { ToastMsgState, IsClipState } from "../../states/atom";
+
 
 const kakaoID = "91a50f2ae6db8ae5cdaf0916886e5793";
-const baseurl = "http://resize.co.kr/";
+const baseurl = "http://resize.co.kr";
 
 
 const KakaoShareBtn = ({imgurl}) => {
     
     useEffect(()=>{
+        console.log(imgurl)
         createKakaoBtn();
     }, [])
 
     const createKakaoBtn = () => {
-        console.log(imgurl);
         if (window.Kakao) {
             const kakao = window.Kakao
             // 중복 initialization 방지
