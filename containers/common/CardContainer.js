@@ -53,7 +53,7 @@ const CardContainer = ({isShow}) => {
       <Container path={questions[questionNumber].photo}>
           <Card>
           <QuestionContainer>
-              <QuestionN>Q{questionNumber+1}</QuestionN>
+              <QuestionN>Q{questionNumber+1}.</QuestionN>
               <QuestionOne>{questions[questionNumber].question1}</QuestionOne>
               <QuestionTwo>{questions[questionNumber].question2}</QuestionTwo>
           </QuestionContainer>
@@ -150,11 +150,12 @@ const QuestionN = style.div`
   top: 16%;
   color : white;
   width: 80%;
-  margin: 10px 10px;
-  font-size: 24px;
+  margin: 10px 10px 40px 10px;
+  font-size: 50px;
+  font-weight: 200;
   @media (max-width: 500px) {
-    margin: 3vw 2vw 4vw 2vw;
-    font-size: 20px;
+    margin: 3vw 2vw 6vw 2vw;
+    font-size: 50px;
   }
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.5vw gray;
@@ -167,10 +168,10 @@ const QuestionOne = style.div`
   top: 22%;
   color : white;
   width: 80%;
-  margin: 10px 10px;
+  margin: 50px 10px 0 10px;
   font-size: 20px;
   @media (max-width: 500px) {
-    margin: 3vw 2vw 4vw 2vw;
+    margin: 14vw 2vw 4vw 2vw;
     font-size: 20px;
   }
   font-weight: 500;
@@ -184,10 +185,10 @@ const QuestionTwo = style.div`
   top: 28%;
   color : white;
   width: 80%;
-  margin: 10px 10px;
+  margin: 45px 10px;
   font-size: 20px;
   @media (max-width: 500px) {
-    margin: 3vw 2vw 4vw 2vw;
+    margin: 14vw 2vw 4vw 2vw;
     font-size: 20px;
   }
   font-weight: 500;
