@@ -202,8 +202,8 @@ const Final = ({}) => {
                     <Des3>단 관계법령에 따라 보존이 필요한 경우 해당 기간동안 보관</Des3>
                     <Title3>2. 개인정보 제공 및 이용 안내 동의</Title3>
                     <Des3>리사이즈는 사전예약 서비스 제공을 위해 개인 정보를 다음과 같이 제공합니다.</Des3>
-                    <Des3>＊제공 업체: 리사이즈 이외 없음</Des3>
-                    <Des3>＊개인정보 제공 목적: 큐레이션 서비스 출시 알림 안내 SMS 발송, 큐레이션 무료 이용권 전송 </Des3>
+                    <Des3>＊제공 업체: (주)카카오, 네이버 클라우드 플랫폼</Des3>
+                    <Des3>＊개인정보 제공 목적: 큐레이션 서비스 출시 알림 안내 SMS 발송, 큐레이션 무료 이용권 알림톡 전송 </Des3>
                   </Modal>
               }
           </AgreeContainer>
@@ -431,7 +431,7 @@ const BottomText = style.div`
   font-size: 12px;
   padding-left: 5px;
   @media (max-width: 500px) {
-    font-size: 0.8rem;
+    font-size: 12px;
   }
 `;
 
@@ -439,7 +439,7 @@ const AgreeLink = style.div`
   font-size: 12px;
   padding-left: 10px;
   @media (max-width: 500px) {
-    font-size: 0.8rem;
+    font-size: 12px;
   }
   color: #d65100;
   cursor : pointer;
