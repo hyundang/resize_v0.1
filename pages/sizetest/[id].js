@@ -2,6 +2,7 @@ import style from 'styled-components';
 import React, {useState, useCallback} from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import Router from 'next/router';
 
 // recoil
 import { useRecoilState } from "recoil";
@@ -158,6 +159,9 @@ const Final = ({}) => {
   const closeModal = () => {
     setModalVisible(false)
   }
+  const onClickReturn = () => {
+    Router.push('/sizetest/');
+  };
 
   return (
     <PCContainer>
@@ -171,7 +175,7 @@ const Final = ({}) => {
         <Hash>{data[sizeID].hashtag}</Hash>
         <Des>{data[sizeID].description}</Des>
         <Personal>
-          <IntroTitle>1:1 퍼스널 패션 큐레이션 서비스 이용권 받기</IntroTitle>
+          <IntroTitle>내 체형에 어울리는 코디 무료로 받아보기</IntroTitle>
           <Des2>리사이즈에서 3월 런칭 예정인<Bold>"고객님만을 위한 1:1 퍼스널 패션 큐레이션 서비스"</Bold>를 무료로 이용하고 싶으시다면, 고객님의 전화번호를 적어주세요! 적어주신 번호로 리사이즈 1:1 퍼스널 큐레이션 서비스 이용권을 드립니다.</Des2>
           <PhoneContainer>
               <input type="text" style ={{border: '1px solid #dec19f', borderColor: '#dec19f', width: '80%', padding: '10px 10px'}} value={phone} required onChange={onChangePhone} placeholder="전화번호를 입력해주세요.">
@@ -207,6 +211,10 @@ const Final = ({}) => {
               }
           </AgreeContainer>
         </Personal>
+        <Button onClick = {onClickReturn}>
+          <ButtonText>테스트 다시하기</ButtonText>
+        </Button>
+        <Des4>친구들에게 결과 공유하기</Des4>
         <BottomWrap>
           <CopyToClipboard text={baseurl+`/sizetest/${id}`} onCopy={onCopy}>
             <ShareBtnWrap onClick={handleClipClick}>
@@ -368,7 +376,7 @@ const Text = style.div`
 `;
 
 const IntroTitle = style.div`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   padding: 30px 0 30px 0 ;
 `;
@@ -468,11 +476,19 @@ const Des3 = style.div`
   line-height: 24px;
 `;
 
+const Des4 = style.div`
+  text-align: center;
+  font-size:14px;
+  width:80%;
+  font-weight: bold;
+  margin: 15px;
+`;
+
 const BottomWrap = style.div`
   box-sizing: border-box;
-  width: 100%;
+  width: 30%;
   height: 5rem;
-  padding: 30px 5rem;
+  padding: 30px 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -480,7 +496,7 @@ const BottomWrap = style.div`
 `;
 
 const ShareBtnWrap = style.div`
-  margin: 20px 100px 20px 20px;
+  margin: 20px 70px 20px 20px;
   cursor: pointer;
   width: 4rem;
   height: 4rem;
@@ -499,6 +515,20 @@ const IconImg = style.img`
   height: 2rem;
 `;
 
-const KaKaoButton = style.div`
-  margin: 20px;
+const Button = style.div`
+  width: 80%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dec19f;
+  border-radius: 30px;
+  cursor : pointer;
+  margin : 30px 0 20px 0;
+`;
+
+const ButtonText = style.div`
+  color : #fff;
+  font-size: 15px;
+  font-family: 'Nanum Gothic', sans-serif;
 `;

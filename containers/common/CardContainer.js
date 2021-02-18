@@ -158,7 +158,6 @@ const QuestionN = style.div`
     font-size: 30px;
   }
   font-family: 'Noto Serif KR', serif;
-  text-shadow: 0.8vw 0.8vw 0.5vw gray;
   animation: ${fadein} 1s;
 `;
 
@@ -176,7 +175,6 @@ const QuestionOne = style.div`
   }
   font-weight: 500;
   font-family: 'Noto Serif KR', serif;
-  text-shadow: 0.8vw 0.8vw 1vw gray;
   animation: ${fadein} 2s;
 `;
 
@@ -193,7 +191,6 @@ const QuestionTwo = style.div`
   }
   font-weight: 500;
   font-family: 'Noto Serif KR', serif;
-  text-shadow: 0.8vw 0.8vw 1vw gray;
   animation: ${fadein} 3s;
 `;
 
