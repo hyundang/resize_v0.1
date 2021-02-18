@@ -43,15 +43,15 @@ export const TestData = [
     },
     {
         id:6,
-        question1: '가방을 멘 당신...',
-        question2: '',
+        question1: '지하철을 놓치지 않기 위해',
+        question2: '전력질주하는 당신...',
         answers: ['가방이 자꾸 흘러내려 다시 고쳐 멘다.','가방이 어깨에 딱 붙어있다.'],
         photo: '2_bg_blur.jpg'
     },
     {
         id:7,
         question1: '무작정 뛰다가 넘어졌는데...',
-        question2: '',
+        question2: '(우당탕탕)',
         answers: ['아무렇지 않게 툭툭 털며 일어난다.','사람들이 지나갈 때까지 누워서 기다린다.'],
         photo: '2_bg_blur.jpg'
     },
