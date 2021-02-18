@@ -15,7 +15,7 @@ const Start = ({}) => {
         <DesBC>
           <Link href="/sizetest/test">
             <Button>
-              <Text>G O</Text>
+              <Text>시작하기</Text>
             </Button>
           </Link>
         </DesBC>
@@ -57,10 +57,7 @@ const LogoContainer = style.div`
 `;
 
 const ImageContainer = style.div`
-  padding: 5vw 5vw 3vw 5vw;
-  @media (max-width: 500px) {
-    padding: 15vw 5vw 10vw 5vw;
-  }
+  padding: 10px 5vw 0 5vw;
 `;
 
 const DesBC = style.div`
@@ -68,9 +65,9 @@ const DesBC = style.div`
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  padding: 3vw 0;
+  padding: 0 0 5px 0;
   @media (max-width: 500px) {
-    padding: 5vw 0;
+    padding: 0 0 5px 0;
   }
 `;
 
@@ -84,6 +81,7 @@ const Button = style.div`
   box-shadow: 0vw 2vw 5vw 0 rgba(98, 69, 34, 0.4);
   border-radius: 5px;
   cursor : pointer;
+  margin : 0 0 10px 0;
 `;
 
 const Text = style.div`

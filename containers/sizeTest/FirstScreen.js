@@ -44,7 +44,7 @@ const Container = style.div`
   top: 0;
   width: 500px;
   height: 100%;
-  background: url(/images/sizetest/background/1_bg.jpg) right top no-repeat;
+  background: url(/images/sizetest/background/1_bg_blur.jpg) right top no-repeat;
   background-size: cover;
   @media (max-width: 500px) {
     width: 100%;
