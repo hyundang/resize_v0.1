@@ -94,9 +94,10 @@ const Final = ({}) => {
   const [checked, onChangeChecked] = useState(false);
   const [checkedError, setCheckedError] = useState(false);
   const [modalVisible, setModalVisible] = useState(false)
-
+ 
   const router = useRouter();
   const {id} = router.query;
+  console.log(id);
   const url = '/images/sizetest/character/'+id+'.png';
   const sizeID = parseInt(searchID(id));
   const data = sizeTest_final;
@@ -151,7 +152,6 @@ const Final = ({}) => {
   const handleKtalckClick = () => {
     setIsToastMsgShow(true);
     setIsClip(false);
-    console.log("hi");
   };
 
   const openModal = () => {
@@ -215,7 +215,7 @@ const Final = ({}) => {
               <IconImg src={clip}/>
             </ShareBtnWrap>
           </CopyToClipboard>
-          <Layout imgurl={url} onClick={handleKtalckClick}/>
+          <Layout imgurl={url}/>
         </BottomWrap>
         {isToastMsgShow && <ToastMsg text={isClip ? "복사되었습니다." : "공유되었습니다."}/>}
       </Container>
