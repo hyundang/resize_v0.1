@@ -107,7 +107,7 @@ const Card = style.div`
   flex-direction: column;
   padding: 18px;
   @media (max-width: 500px) {
-    padding: 3vw;
+    padding: 3vw 0;
     height: 90%;
   }
 `;
@@ -203,7 +203,7 @@ const AnswerContainer = style.div`
   padding: 8px;
   @media (max-width: 500px) {
     padding: 1vw;
-    margin: 2vw;
+    margin: 2vw 0 ;
   }
 `;
 
@@ -217,10 +217,10 @@ const Answer = style.div`
   border-radius: 15px;
   box-shadow: 0vw 2vw 7vw 0 rgba(98, 69, 34, 0.15);
   padding: 16px;
-  margin: 18px;
+  margin: 18px 0;
   @media (max-width: 500px) {
     padding: 3vw;
-    margin: 4vw 2vw;
+    margin: 4vw 0;
   }
   background-color: white;
   cursor : pointer;
