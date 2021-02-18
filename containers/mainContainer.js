@@ -1,11 +1,18 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Link from 'next/link';
 import {OverlapBtn, ChoiceBtn, InputBox, CheckBox} from '../components/common';
 import { Bottom, RatioStep } from "../components";
 import Header from "../components/Header";
+import Router from 'next/router';
 
 const MainContainer = () => {
     const [inputValue, setInputValue] = useState('');
+
+    useEffect(()=>{
+        Router.push('/sizetest/');
+    }
+    )
+       
 
     return (
         <>
