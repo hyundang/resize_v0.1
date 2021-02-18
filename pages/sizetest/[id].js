@@ -18,7 +18,6 @@ import Modal from '../../components/common/modal';
 
 // asset
 const clip = "/images/sizetest/clip.svg";
-// const baseurl = "https://www.resize.com";
 const baseurl = "https://resize.co.kr";
 
 //data
