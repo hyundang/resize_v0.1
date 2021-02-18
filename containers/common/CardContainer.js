@@ -15,38 +15,42 @@ const CardContainer = ({isShow}) => {
 
   const questions = TestData;
   
-  function getMySize() {
+  function getMySize(num) {
+    console.log(answers[0] + answers[2] + answers[10]);
     var size = '';
     if ((answers[4] + answers[6] + answers[9])>1) size += 'W';
     else size += 'N';
-    if ((answers[0] + answers[2] + answers[10])>1) size += 'T';
-    else size += 'C';
+    if ((answers[0] + answers[2] + num)>1) size += 'C';
+    else size += 'T';
     if (answers[1] == 1) size += 'S';
     else size += 'B';
     if ((answers[3] + answers[5] + answers[8])>1) size += 'M';
     else size += 'U';
-  
+    console.log(size);
     return size;
   }
 
+
   const onClickButton1 = () => {
-    setQuestionNumber(questionNumber+1);
     setAnswers(answers.concat([0]));
+    setQuestionNumber(questionNumber+1);
+    console.log(questionNumber , answers);
     if (questions.length-1 == (questionNumber)) {
-      const size = getMySize();
+      const size = getMySize(0);
       Router.push('/sizetest/'+size);
     }
   };
 
   const onClickButton2 = () => {
-    setQuestionNumber(questionNumber+1);
     setAnswers(answers.concat([1]));
+    setQuestionNumber(questionNumber+1);
+    console.log(questionNumber , answers);
     if (questions.length-1 == (questionNumber)) {
-      const size = getMySize();
+      const size = getMySize(1);
       Router.push('/sizetest/'+size);
     }
   };
-  
+
 
   return (
     <PCContainer>
