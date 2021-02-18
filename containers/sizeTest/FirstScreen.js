@@ -75,7 +75,6 @@ const Text = style.div`
   font-size: 16px;
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
-  text-shadow: 0.8vw 0.8vw 0.9vw gray;
   padding: 10px 0;
   @media (max-width: 500px) {
     padding: 2vw 0;
@@ -89,7 +88,6 @@ const GoText = style.div`
   font-size: 14px;
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
-  text-shadow: 0.8vw 0.8vw 0.9vw gray;
   margin-top : 160px;
   padding: 10px 0;
   @media (max-width: 500px) {

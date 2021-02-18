@@ -312,7 +312,7 @@ const Hash = style.div`
   line-height: 16px;
   padding: 40px 0 6px 0;
   @media (max-width: 500px) {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 20px;
     padding: 1vw 0 2vw 0;
   }
@@ -506,7 +506,6 @@ const ShareBtnWrap = style.div`
   justify-content: center;
   align-items: center;
   outline: none;
-  box-shadow: 0vw 2vw 5vw 0 rgba(0, 0, 0, 0.4);
 `;
 
 const IconImg = style.img`

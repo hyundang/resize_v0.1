@@ -65,6 +65,7 @@ const KakaoShareBtn = ({imgurl}) => {
 export default KakaoShareBtn;
 
 const BtnWrap = style.button`
+    margin-right: 14px;
     cursor: pointer;
     width: 4rem;
     height: 4rem;
@@ -76,7 +77,6 @@ const BtnWrap = style.button`
     background: none;
     outline: none;
     overflow: hidden;
-    box-shadow: 0vw 2vw 5vw 0 rgba(0, 0, 0, 0.4);
 `;
 
 const KakaoImg = style.img`
