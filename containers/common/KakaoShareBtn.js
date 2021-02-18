@@ -29,8 +29,8 @@ const KakaoShareBtn = ({imgurl}) => {
               container: '#kakao-link-btn',
               objectType: 'feed',
               content: {
-                title: '리사이즈 체형테스트',
-                description: '#리사이즈 #체형테스트 #무료코디 #무료스타일링',
+                title: '리사이즈 체형유형테스트',
+                description: '나도 몰랐던 체형유형과 찰떡코디 추천까지!\n#리사이즈 #체형 #무료코디 #스타일링',
                 imageUrl: baseurl+imgurl, // i.e. process.env.FETCH_URL + '/logo.png'
                 link: {
                   mobileWebUrl: window.location.href,

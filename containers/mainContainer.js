@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Link from 'next/link';
-import {OverlapBtn, ChoiceBtn, InputBox, CheckBox} from '../components/common';
-import { Bottom, RatioStep } from "../components";
+import {OverlapBtn, ChoiceBtn, InputBox, CheckBox, RatioStep} from '../components/common';
+import { Bottom } from "../components";
 import Header from "../components/Header";
 
 const MainContainer = () => {

@@ -5,3 +5,5 @@ export { default as OverlapBtnThree } from './OverlapBtnThree';
 export { default as ChoiceBtn } from './ChoiceBtn';
 export { default as InputBox } from './InputBox';
 export { default as CheckBox } from './CheckBox';
+export { default as RatioStep } from './RatioStep';
+export { default as Question } from './Question';

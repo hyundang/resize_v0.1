@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default ({text}) => {
+export default ({text, isClick, onClick}) => {
+    console.log(isClick)
     return(
         <>
-            <Wrap>
+            <Wrap isClick={isClick} onClick={onClick}>
                 {text}
             </Wrap>
         </>
@@ -19,15 +20,15 @@ const Wrap = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 1.8rem;
-    border: solid 0.1rem ${({ theme }) => theme.colors.pale_brown};
-    background-color: ${({ theme }) => theme.colors.white};
+    border: solid 0.1rem ${props=>props.isClick? 'none' : ({ theme }) => theme.colors.pale_brown};
+    background-color: ${props=>props.isClick? ({ theme }) => theme.colors.beige : ({ theme }) => theme.colors.white};
     font-size: 1.6rem;
     font-weight: 500;
     text-align: cente r;
-    color: ${({ theme }) => theme.colors.pale_brown};
-    &:hover{
+    color: ${props=>props.isClick? ({ theme }) => theme.colors.off_white : ({ theme }) => theme.colors.pale_brown};
+    /* &:hover{
         background-color: ${({ theme }) => theme.colors.beige};
         color: ${({ theme }) => theme.colors.off_white};
         border: none;
-    }
+    } */
 `;

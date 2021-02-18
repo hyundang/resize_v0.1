@@ -6,17 +6,18 @@ import black_arrow_left from "../assets/img/icons/black_arrow_left.svg";
 import black_arrow_right from "../assets/img/icons/black_arrow_right.svg";
 
 
-export default () => {
-    
+
+export default ({setPageNum, pageNum}) => {
+
     
     return(
         <>
         <Wrap>
-            <BtnWrap>
+            <BtnWrap onClick={() => setPageNum(pageNum-1)}>
                 <BtnIcon src={gray_arrow_left}/>
                 <BtnText>이전</BtnText>
             </BtnWrap>
-            <BtnWrap>
+            <BtnWrap onClick={() => setPageNum(pageNum+1)}>
                 <BtnText>다음</BtnText>
                 <BtnIcon src={gray_arrow_right}/>
             </BtnWrap>
