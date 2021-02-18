@@ -9,7 +9,7 @@ import { ToastMsgState, IsClipState } from "../../states/atom";
 
 // component
 import axios from "axios";
-import Layout from '../../containers/common/Layout';
+import KaKaoShareButton from '../../containers/common/KakaoShareBtn';
 
 // for clipboard
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -97,7 +97,6 @@ const Final = ({}) => {
  
   const router = useRouter();
   const {id} = router.query;
-  console.log(id);
   const url = '/images/sizetest/character/'+id+'.png';
   const sizeID = parseInt(searchID(id));
   const data = sizeTest_final;
@@ -215,7 +214,7 @@ const Final = ({}) => {
               <IconImg src={clip}/>
             </ShareBtnWrap>
           </CopyToClipboard>
-          <Layout imgurl={url}/>
+          <KaKaoShareButton imgurl={url}/>
         </BottomWrap>
         {isToastMsgShow && <ToastMsg text={isClip ? "복사되었습니다." : "공유되었습니다."}/>}
       </Container>
