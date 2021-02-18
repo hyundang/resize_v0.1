@@ -441,7 +441,7 @@ const BottomText = style.div`
 `;
 
 const AgreeLink = style.div`
-  font-size: 12px;
+  font-size: 13px;
   padding-left: 10px;
   @media (max-width: 500px) {
     font-size: 0.8rem;
@@ -488,8 +488,8 @@ const BottomWrap = style.div`
 const ShareBtnWrap = style.div`
   margin: 20px 100px 20px 20px;
   cursor: pointer;
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   background: #a0a0a0;
   display: flex;
