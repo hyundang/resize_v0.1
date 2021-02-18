@@ -55,13 +55,16 @@ const TextContainer = style.div`
   flex-direction: column;
   text-align: center;
   padding : 10vw 5vw;
+  margin-bottom : 15vw;
+  border-top: 0.5px solid white;
+  border-bottom: 0.5px solid white;
 `;
 
 const Text = style.div`
   justify-content:center;
   align-items: center;
   color : white;
-  font-size: 17px;
+  font-size: 16px;
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.9vw gray;
@@ -79,6 +82,7 @@ const GoText = style.div`
   font-weight:300;
   font-family: 'Noto Serif KR', serif;
   text-shadow: 0.8vw 0.8vw 0.9vw gray;
+  margin-top : 100px;
   padding: 10px 0;
   @media (max-width: 500px) {
     padding: 20px 0;

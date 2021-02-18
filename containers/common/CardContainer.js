@@ -231,7 +231,7 @@ const Answer = style.div`
     background-color: gray;
     border-color: gray;
   }
-  opacity: ${props=>props.isShow ? '0.6' : '0'};
+  opacity: ${props=>props.isShow ? '0.7' : '0'};
   transition-duration: 0.5s;
   pointer-events: ${props=>props.isShow ? 'auto' : 'none'};
 `;
@@ -243,7 +243,7 @@ const Text = style.div`
   color : black;
   font-size: 16px;
   @media (max-width: 500px) {
-    font-size: 16px;
+    font-size: 14px;
   }
   font-family: 'Noto Serif KR', serif;
 `;

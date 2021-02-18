@@ -46,7 +46,7 @@ export const TestData = [
         question1: '가방을 멘 당신...',
         question2: '',
         answers: ['가방이 자꾸 흘러내려 다시 고쳐 멘다.','가방이 어깨에 딱 붙어있다.'],
-        photo: '1_bg_blur.jpg'
+        photo: '2_bg_blur.jpg'
     },
     {
         id:7,
