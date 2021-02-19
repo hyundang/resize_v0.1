@@ -38,6 +38,7 @@ const Wrap = styled.div`
     align-items: center;
     justify-content: space-between;
     background-color: ${({theme}) => theme.colors.off_white};
+    /* box-shadow: 0 0 1rem 1rem rgba(255,255,255,1);  */
 `;
 
 const BtnWrap = styled.div`

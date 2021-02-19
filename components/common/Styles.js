@@ -32,8 +32,7 @@ export default ({data}) => {
 }
 
 const Wrap = styled.div`
-    width: 100%;
-    padding: 0 2.4rem;
+    width: 32rem;
     display: grid;
     grid-template-columns: 1fr;
 `;
@@ -42,7 +41,7 @@ const Wrap = styled.div`
 const StyleChoose = ({id, style, isOneClick, setIsOneClick, isTwoClick, setIsTwoClick, isThreeClick, setIsThreeClick, selectData, setSelectData}) => {
     return(
         <StyleWrap>
-            <div style={{display:'flex', flexDirection:'row',justifyContent:'space-between',width:'32.8rem'}}>
+            <div style={{display:'flex', flexDirection:'row',justifyContent:'space-between',width:'32rem'}}>
                 {style.imgs.map((img, idx)=>{
                     // 선택지(=이미지 칸), idx=0,1=>총9*2(=스타일 개수*2)
                     return <StyleImg 
@@ -74,68 +73,68 @@ const StyleImg = ({imgpath, id, isOneClick, setIsOneClick, isTwoClick, setIsTwoC
     useEffect(()=>{
         // 선택한 칸 다시 눌러서 취소하여 값 변화가 발생했을 때
         for(var i in selectData){
-            if(id===selectData(i)){
-                setPriority(i+1);
+            if(id===selectData[i]){
+                setPriority(Number(i)+1);
             }
         }
+        
     }, [selectData])
 
     const handleClick = (e) => {
-        if(!isOneClick){
+        if(isClicked){
+            // 선택한 것을 다시 눌러서 취소했을 때
+            if(isThreeClick){
+                // 3개가 이미 선택되어 있었을 때
+                setIsThreeClick(false);
+            }
+            else if(isTwoClick){
+                // 2개가 이미 선택되어 있었을 때
+                setIsTwoClick(false);
+            }
+            else{
+                // 1개가 이미 선택되어 있었을 때
+                setIsOneClick(false);
+            }
+            
+            // 선택한 데이터가 담긴 배열에서 현재 id값 삭제.
+            setSelectData(selectData.filter((s, idx)=>{
+                return s !== id;
+            }))
+            setIsClicked(false);
+            setPriority(0);
+        }
+        else if(!isOneClick){
             // 1순위 선택
             setIsOneClick(true);
             setIsClicked(true);
-            setSelectData([e.target.id]);
+            setSelectData([id]);
             setPriority(1);
         }
         else if(!isTwoClick){
             // 2순위 선택
             setIsTwoClick(true);
             setIsClicked(true);
-            setSelectData(selectData.concat([e.target.id]));
+            setSelectData(selectData.concat([id]));
             setPriority(2);
         }
         else if(!isThreeClick){
             // 3순위 선택
             setIsThreeClick(true);
             setIsClicked(true);
-            setSelectData(selectData.concat([e.target.id]));
+            setSelectData(selectData.concat([id]));
             setPriority(3);
-        }
-        else{
-            if(isClicked){
-                // 선택한 것을 다시 눌러서 취소했을 때
-                setIsClicked(false);
-                setPriority(0);
-                if(isThreeClick){
-                    // 3개가 이미 선택되어 있었을 때
-                    setIsThreeClick(false);
-                }
-                else if(isTwoClick){
-                    // 2개가 이미 선택되어 있었을 때
-                    setIsTwoClick(false);
-                }
-                else{
-                    // 1개가 이미 선택되어 있었을 때
-                    setIsOneClick(false);
-                }
-                // 선택한 데이터가 담긴 배열에서 현재 id값 삭제.
-                setSelectData(selectData.filter((s, idx)=>{
-                    return s !== e.target.id;
-                }))
-            }
         }
     }
 
     return(
         <StyleImgBox onClick={handleClick} imgpath={imgpath} id={id}>
-            <PriorityText isClicked={isClicked}>{priority}</PriorityText>
+            <PriorityText isClicked={isClicked}>{priority}위</PriorityText>
         </StyleImgBox>
     )
 }
 
 const StyleWrap = styled.div`
-    width: 32.8rem;
+    width: 32rem;
     margin-bottom: 3rem;
     display: flex;
     flex-direction: column;
@@ -158,6 +157,9 @@ const PriorityText = styled.div`
     align-items: center;
     justify-content: center;
     background-color: #5d5757;
+    font-size: 1.8rem;
+    font-weight: 500;
+    text-align: left;
     color: white;
 `;
 
@@ -170,7 +172,6 @@ const StyleTextWrap = styled.div`
 `;
 
 const StyleText = styled.div`
-    width: 6.4rem;
     height: 2.3rem;
     margin-right: 0.5rem;
     font-size: 1.4rem;

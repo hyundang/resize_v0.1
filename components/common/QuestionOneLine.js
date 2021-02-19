@@ -24,7 +24,7 @@ export default ({quesNum, quesText, overlapText}) => {
 }
 
 const Wrap = styled.div`
-    margin-left: 2.4rem;
+    width: 32rem;
     height: 8.5rem;
     display: flex;
     flex-direction: column;

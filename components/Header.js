@@ -28,12 +28,13 @@ const Wrap = styled.div`
     top: 0;
     z-index: 10;
     width: 100%;
-    height: 8rem;
+    height: 9rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: first baseline;
     background-color: white;
+    box-shadow: 0 0 1rem 1rem rgba(255,255,255,1); 
 `;
 
 const TypeWrap = styled.div`

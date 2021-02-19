@@ -19,34 +19,34 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
     const setSex = useSetRecoilState(SexState);
 
     return(
-        <>
-        <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-        <Wrap height={size.height}>
-            <Question
-                quesNum={quesNum}
-                quesText={"당신의 성별은 무엇인가요?"}
-            />
-            <BtnWrap>
-                <ChoiceBtn 
-                    text={"남"} 
-                    isClick={isManClick}
-                    onClick={()=>{setIsManClick(true);setIsWomanClick(false);setSex(0)}}
+        <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
+            <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
+            <Wrap height={size.height}>
+                <Question
+                    quesNum={quesNum}
+                    quesText={"당신의 성별은 무엇인가요?"}
                 />
-                <ChoiceBtn 
-                    text={"여"} 
-                    isClick={isWomanClick}
-                    onClick={()=>{setIsManClick(false);setIsWomanClick(true);setSex(1)}}
-                />
-            </BtnWrap>
-        </Wrap>
-        <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
-        </>
+                <BtnWrap>
+                    <ChoiceBtn 
+                        text={"남"} 
+                        isClick={isManClick}
+                        onClick={()=>{setIsManClick(true);setIsWomanClick(false);setSex(0)}}
+                    />
+                    <ChoiceBtn 
+                        text={"여"} 
+                        isClick={isWomanClick}
+                        onClick={()=>{setIsManClick(false);setIsWomanClick(true);setSex(1)}}
+                    />
+                </BtnWrap>
+            </Wrap>
+            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+        </div>
     )
 }
 
 const Wrap = styled.div`
     margin-top: 11.6rem;
-    width: 100%;
+    width: 32rem;
     height: ${props=>(props.height/10-20)}rem;
     display: flex;
     flex-direction: column;
@@ -55,9 +55,8 @@ const Wrap = styled.div`
 
 const BtnWrap = styled.div`
     margin-top: 11rem;
-    width: 100%;
+    width: 32rem;
     height: 3.6rem;
-    padding: 0 3rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
