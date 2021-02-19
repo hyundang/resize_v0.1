@@ -9,3 +9,4 @@ export { default as RatioStep } from './RatioStep';
 export { default as Question } from './QuestionOneLine';
 export { default as QuestionTwo } from './QuestionTwoLine';
 export { default as Styles } from './Styles';
+export { default as Circles } from './Circles';

@@ -12,7 +12,7 @@ export default ({quesNum, quesTextOne, quesTextTwo, overlapText}) => {
     
     return(
         <Wrap>
-            <QuesNum>Q{quesNum}</QuesNum>
+            <QuesNum>Q{quesNum}.</QuesNum>
             <QuestTextWrap>
                 <QuesText>{quesTextOne}</QuesText>
                 <TextWrap>

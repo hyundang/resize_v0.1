@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
@@ -7,6 +7,10 @@ import { QuestionTwo, Styles } from "../../components/common";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    }, [])
+    
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>

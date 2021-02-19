@@ -13,7 +13,7 @@ export default ({quesNum, quesText, overlapText}) => {
     return(
         <>
         <Wrap>
-            <QuesNum>Q{quesNum}</QuesNum>
+            <QuesNum>Q{quesNum}.</QuesNum>
             <QuesTextWrap>
                 <QuesText>{quesText}</QuesText>
                 <OverlapText isShow={isShow}>({overlapText})</OverlapText>

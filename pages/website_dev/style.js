@@ -35,7 +35,6 @@ const Start  = () => {
     const sex = useRecoilValue(SexState);
 
 
-
     switch(pageNum){
         case 0:
             return (<TransitionPage 
@@ -107,23 +106,68 @@ const Start  = () => {
                 />)
             }
         case 5:
-            return (<PageFive 
-                lastQuesNum={16}
-                quesNum={5}
-                setPageNum={setPageNum}
-            />)
+            if(sex === 0){
+                //남자
+                return (<PageFive
+                    lastQuesNum={16}
+                    quesNum={5}
+                    setPageNum={setPageNum}
+                    user_datas={user_datas_M.style_M[pageNum-1].answers}
+                    data_num={user_datas_M.style_M[pageNum-1].answers.length}
+                />)
+            }
+            else{
+                //여자
+                return (<PageFive
+                    lastQuesNum={16}
+                    quesNum={5}
+                    setPageNum={setPageNum}
+                    user_datas={user_datas_F.style_F[pageNum-1].answers}
+                    data_num={user_datas_F.style_F[pageNum-1].answers.length}
+                />)
+            }
         case 6:
-            return (<PageSix
-                lastQuesNum={16}
-                quesNum={6}
-                setPageNum={setPageNum}
-            />)
+            if(sex === 0){
+                //남자
+                return (<PageSix
+                    lastQuesNum={16}
+                    quesNum={6}
+                    setPageNum={setPageNum}
+                    user_datas={user_datas_M.style_M[pageNum-1].answers}
+                    data_num={user_datas_M.style_M[pageNum-1].answers.length}
+                />)
+            }
+            else{
+                //여자
+                return (<PageSix
+                    lastQuesNum={16}
+                    quesNum={6}
+                    setPageNum={setPageNum}
+                    user_datas={user_datas_F.style_F[pageNum-1].answers}
+                    data_num={user_datas_F.style_F[pageNum-1].answers.length}
+                />)
+            }
         case 7:
-            return (<PageSeven 
-                lastQuesNum={16}
-                quesNum={7}
-                setPageNum={setPageNum}
-            />)
+            if(sex === 0){
+                //남자
+                return (<PageSeven
+                    lastQuesNum={16}
+                    quesNum={7}
+                    setPageNum={setPageNum}
+                    user_datas={user_datas_M.style_M[pageNum-1].answers}
+                    data_num={user_datas_M.style_M[pageNum-1].answers.length}
+                />)
+            }
+            else{
+                //여자
+                return (<PageSeven
+                    lastQuesNum={16}
+                    quesNum={7}
+                    setPageNum={setPageNum}
+                    user_datas={user_datas_F.style_F[pageNum-1].answers}
+                    data_num={user_datas_F.style_F[pageNum-1].answers.length}
+                />)
+            }
         case 8:
             return (<PageEight
                 lastQuesNum={16}
