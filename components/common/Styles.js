@@ -33,6 +33,7 @@ export default ({data}) => {
 
 const Wrap = styled.div`
     width: 32rem;
+    margin-top: 4.1rem;
     display: grid;
     grid-template-columns: 1fr;
 `;

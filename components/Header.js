@@ -7,7 +7,6 @@ import styled from 'styled-components';
 // kategorie: 스타일/체형/코디/마무리
 export default ({kategorie, quesNum, lastQuesNum}) => {
     return(
-        <>
         <Wrap>
             <TypeWrap>
                 <TypeText num={0} kategorie={kategorie}>스타일</TypeText>
@@ -19,7 +18,6 @@ export default ({kategorie, quesNum, lastQuesNum}) => {
                 <Bar quesNum={quesNum} lastQuesNum={lastQuesNum}/>
             </BarWrap>
         </Wrap>
-        </>
     )
 }
 
@@ -48,7 +46,6 @@ const TypeWrap = styled.div`
 `;
 
 const TypeText = styled.div`
-    cursor: pointer;
     width: 8rem;
     height: 5rem;
     display: flex;

@@ -2,36 +2,31 @@ import React, {useState} from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { QuestionTwo } from "../../components/common";
-// hooks
-import useWindowSize from '../../hooks/useWindowSize';
+import { QuestionTwo, Styles } from "../../components/common";
 
 
 
-export default ({quesNum, lastQuesNum, setPageNum}) => {
-    const [size, setSize] = useState(useWindowSize());
-
+export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     return(
-        <>
-        <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-        <Wrap height={size.height}>
-            <QuestionTwo
-                quesNum={quesNum}
-                quesTextOne={"다음 중 싫어하는 스타일을"}
-                quesTextTwo={"순서대로 골라주실래요?"}
-                overlapText={"최대 3개"}
-            />
-        </Wrap>
-        <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
-        </>
+        <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
+            <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
+            <Wrap>
+                <QuestionTwo
+                    quesNum={quesNum}
+                    quesTextOne={"다음 중 싫어하는 스타일을"}
+                    quesTextTwo={"순서대로 골라주실래요?"}
+                    overlapText={"최대 3개"}
+                />
+                <Styles data={user_datas}/>
+            </Wrap>
+            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+        </div>
     )
 }
 
 const Wrap = styled.div`
     margin-top: 11.6rem;
-    width: 100%;
-    height: ${props=>(props.height/10-20)}rem;
+    margin-bottom: 8.6rem;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
 `;

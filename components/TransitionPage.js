@@ -55,7 +55,6 @@ const Text = styled.div`
 `;
 
 const BottomText = styled.div`
-    cursor: pointer;
     position: absolute;
     bottom: 8%;
     left: 50%;

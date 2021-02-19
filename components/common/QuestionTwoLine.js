@@ -11,7 +11,6 @@ export default ({quesNum, quesTextOne, quesTextTwo, overlapText}) => {
     }, [])
     
     return(
-        <>
         <Wrap>
             <QuesNum>Q{quesNum}</QuesNum>
             <QuestTextWrap>
@@ -22,7 +21,6 @@ export default ({quesNum, quesTextOne, quesTextTwo, overlapText}) => {
                 </TextWrap>
             </QuestTextWrap>
         </Wrap>
-        </>
     )
 }
 
@@ -37,6 +35,7 @@ const Wrap = styled.div`
 
 const QuesNum = styled.div`
     height: 2.9rem;
+    margin-bottom: 2.3rem;
     font-size: 2rem;
     font-weight: bold;
     letter-spacing: -0.5px;
