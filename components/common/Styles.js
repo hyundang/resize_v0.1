@@ -44,9 +44,9 @@ const StyleChoose = ({id, style, isOneClick, setIsOneClick, isTwoClick, setIsTwo
         <StyleWrap>
             <div style={{display:'flex', flexDirection:'row',justifyContent:'space-between',width:'32.8rem'}}>
                 {style.imgs.map((img, idx)=>{
-                    // 선택지(=이미지 칸), idx=0~18까지(=스타일 개수*2)
+                    // 선택지(=이미지 칸), idx=0,1=>총9*2(=스타일 개수*2)
                     return <StyleImg 
-                                imgpath={img} id={id+idx*2} 
+                                imgpath={img} id={id*2+idx} 
                                 isOneClick={isOneClick} setIsOneClick={setIsOneClick} 
                                 isTwoClick={isTwoClick} setIsTwoClick={setIsTwoClick} 
                                 isThreeClick={isThreeClick} setIsThreeClick={setIsThreeClick} 
