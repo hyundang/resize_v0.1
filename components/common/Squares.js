@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-export default ({data, data_num, isThree, isOverlap}) => {
+export default ({data, data_num, isOverlap, isNoneExist, maxNum}) => {
     const [selectData, setSelectData] = useState([]);
     const [isNoneClicked, setIsNoneClicked] = useState(false);
 
     return(
-        <Wrap isThree={isThree}>
+        <Wrap>
             {data.map((item, idx)=>{
-                return <Circle
+                return <Square
                             key={idx}
                             text={item}
                             id={idx}
-                            isOverlap={isOverlap}
                             data_num={data_num}
+                            isOverlap={isOverlap} maxNum={maxNum}
+                            isNoneExist={isNoneExist}
                             selectData={selectData} setSelectData={setSelectData}
                             isNoneClicked={isNoneClicked} setIsNoneClicked={setIsNoneClicked}
                         />
@@ -23,23 +24,27 @@ export default ({data, data_num, isThree, isOverlap}) => {
 }
 
 const Wrap = styled.div`
-    width: 32rem;
-    margin-top: 4.1rem;
+    width: 27rem;
+    margin-top: 5.3rem;
     display: grid;
-    grid-template-columns: ${props=>props.isThree? '1fr 1fr 1fr' : '1fr 1fr 1fr 1fr'};
+    grid-template-columns: 1fr 1fr;
     justify-items: center;
 `;
 
-const Circle = ({
+const Square = ({
     id, text, data_num, 
-    isOverlap,
+    isOverlap, maxNum,
+    isNoneExist,
     selectData, setSelectData, 
     isNoneClicked, setIsNoneClicked
-}) => {
+}) => 
+{
     const [isClicked, setIsClicked] = useState(false);
 
-    if(isOverlap){
+    if(isOverlap & isNoneExist){
+        //중복선택이면서 '없음'항목 존재할 때
         useEffect(()=>{
+            
             if(id !== data_num-1 & isNoneClicked){
                 setIsClicked(false);
             }
@@ -61,7 +66,7 @@ const Circle = ({
             setIsClicked(false);
         }
         else{
-            if(id === data_num-1){
+            if(isNoneExist & id === data_num-1){
                 setSelectData([id]);
                 setIsNoneClicked(true);
                 setIsClicked(true);
@@ -72,7 +77,7 @@ const Circle = ({
                 setIsClicked(true);
             }
         }
-        // console.log(selectData);
+        console.log(selectData);
     }
 
     const handleOneClick = () => {
@@ -84,27 +89,36 @@ const Circle = ({
             setIsClicked(false);
         }
         else{
-            if(selectData.length === 0){
+            if(selectData.length < maxNum){
                 setSelectData(selectData.concat([id]));
                 setIsClicked(true);
             }
         }
-        // console.log(selectData);
+        console.log(selectData);
     }
 
 
     return(
-        <CircleWrap>
-            <CircleBox onClick={isOverlap? handleOverlapClick : handleOneClick} id={id}>
-                <ClickedCircle isClicked={isClicked}>✓</ClickedCircle>
-            </CircleBox>
-            <CircleText>{text}</CircleText>
-        </CircleWrap>
+        <SquareWrap>
+            <SquareBox 
+                onClick={isOverlap? handleOverlapClick : handleOneClick} 
+                id={id}
+                isOverlap={isOverlap}
+                isNoneExist={isNoneExist}
+            >
+                <ClickedSquare 
+                    isClicked={isClicked}
+                    isOverlap={isOverlap}
+                    isNoneExist={isNoneExist}
+                >✓</ClickedSquare>
+            </SquareBox>
+            <SquareText>{text}</SquareText>
+        </SquareWrap>
     )
 }
 
-const CircleWrap = styled.div`
-    width: 7rem;
+const SquareWrap = styled.div`
+    width: 11.7rem;
     margin-bottom: 2rem;
     display:flex;
     flex-direction: column;
@@ -112,33 +126,37 @@ const CircleWrap = styled.div`
 `;
 
 
-const CircleBox = styled.div`
-    width: 7rem;
-    height: 7rem;
-    border-radius: 3.5rem;
+const SquareBox = styled.div`
+    width: 10.4rem;
+    height: 10.4rem;
+    border-radius: 1rem;
     margin-bottom: 1rem;
-    box-shadow: 0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.16);
+    border: ${props=>(props.isOverlap!==props.isNoneExist)? 'none' : 'solid 0.1rem #DAC2A3'};
+    box-shadow: ${props=>(props.isOverlap!==props.isNoneExist)? '0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.16)' : 'none'};
     display: flex;
     align-items: center;
     justify-content: center;
     /* background-image: url(); */
 `;
 
-const ClickedCircle = styled.div`
-    width: 7rem;
-    height: 7rem;
-    border-radius: 3.5rem;
-    opacity: 0.55;
+const ClickedSquare = styled.div`
+    width: ${props=>(props.isOverlap!==props.isNoneExist)? '10.4' : '10.2'}rem;
+    height: ${props=>(props.isOverlap!==props.isNoneExist)? '10.4' : '10.2'}rem;
+    border-radius: 0.9rem;
     display: ${props=>props.isClicked? 'flex' : 'none'};
     align-items: center;
     justify-content: center;
-    background-color: #5d5757;
+    background-color: rgba(0, 0, 0, 0.36);
     font-size: 1.8rem;
     font-weight: 500;
     text-align: left;
     color: white;
 `;
 
-const CircleText = styled.div`
-    font-size: 1rem;
+const SquareText = styled.div`
+    font-size: 1.2rem;
+    color: #797979;
+    text-align: center;
+    letter-spacing: -0.3px;
+    white-space: pre-line;
 `;

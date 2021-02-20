@@ -32,7 +32,7 @@ import user_datas_M from "../../data/userdata/user_datas_M";
 
 const Start  = () => {
     const [pageNum, setPageNum] = useRecoilState(pageNumState);
-    const sex = useRecoilValue(SexState);
+    const sex = useRecoilValue(SexState); // 0: 남자, 1: 여자
 
 
     switch(pageNum){
@@ -49,125 +49,77 @@ const Start  = () => {
                 setPageNum={setPageNum}
             />)
         case 2:
-            if(sex === 0){
-                //남자
-                return (<PageTwo
-                    lastQuesNum={16}
-                    quesNum={2}
-                    setPageNum={setPageNum}
-                    user_datas={user_datas_M.style_M[pageNum-1].answers}
-                />)
-            }
-            else{
-                //여자
-                return (<PageTwo
-                    lastQuesNum={16}
-                    quesNum={2}
-                    setPageNum={setPageNum}
-                    user_datas={user_datas_F.style_F[pageNum-1].answers}
-                />)
-            }
+            return (<PageTwo
+                lastQuesNum={16}
+                quesNum={2}
+                setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+            />)
         case 3:
-            if(sex === 0){
-                //남자
-                return (<PageThree
-                    lastQuesNum={16}
-                    quesNum={3}
-                    setPageNum={setPageNum}
-                    user_datas={user_datas_M.style_M[pageNum-1].answers}
-                />)
-            }
-            else{
-                //여자
-                return (<PageThree
-                    lastQuesNum={16}
-                    quesNum={3}
-                    setPageNum={setPageNum}
-                    user_datas={user_datas_F.style_F[pageNum-1].answers}
-                />)
-            }
+            return (<PageThree
+                lastQuesNum={16}
+                quesNum={3}
+                setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+            />)
         case 4:
-            if(sex === 0){
-                //남자
-                return (<PageFour
-                    lastQuesNum={16}
-                    quesNum={4}
-                    setPageNum={setPageNum}
-                    user_datas={user_datas_M.style_M[pageNum-1].answers}
-                />)
-            }
-            else{
-                //여자
-                return (<PageFour
-                    lastQuesNum={16}
-                    quesNum={4}
-                    setPageNum={setPageNum}
-                    user_datas={user_datas_F.style_F[pageNum-1].answers}
-                />)
-            }
+            return (<PageFour
+                lastQuesNum={16}
+                quesNum={4}
+                setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+            />)
         case 5:
-            if(sex === 0){
-                //남자
-                return (<PageFive
-                    lastQuesNum={16}
-                    quesNum={5}
-                    setPageNum={setPageNum}
-                    user_datas={user_datas_M.style_M[pageNum-1].answers}
-                    data_num={user_datas_M.style_M[pageNum-1].answers.length}
-                />)
-            }
-            else{
-                //여자
-                return (<PageFive
-                    lastQuesNum={16}
-                    quesNum={5}
-                    setPageNum={setPageNum}
-                    user_datas={user_datas_F.style_F[pageNum-1].answers}
-                    data_num={user_datas_F.style_F[pageNum-1].answers.length}
-                />)
-            }
+            return (<PageFive
+                lastQuesNum={16}
+                quesNum={5}
+                setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+                data_num={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers.length 
+                    : user_datas_F.style_F[pageNum-1].answers.length
+                }
+            />)
         case 6:
-            if(sex === 0){
-                //남자
-                return (<PageSix
-                    lastQuesNum={16}
-                    quesNum={6}
-                    setPageNum={setPageNum}
-                    user_datas={user_datas_M.style_M[pageNum-1].answers}
-                    data_num={user_datas_M.style_M[pageNum-1].answers.length}
-                />)
-            }
-            else{
-                //여자
-                return (<PageSix
-                    lastQuesNum={16}
-                    quesNum={6}
-                    setPageNum={setPageNum}
-                    user_datas={user_datas_F.style_F[pageNum-1].answers}
-                    data_num={user_datas_F.style_F[pageNum-1].answers.length}
-                />)
-            }
+            return (<PageSix
+                lastQuesNum={16}
+                quesNum={6}
+                setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+                data_num={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers.length 
+                    : user_datas_F.style_F[pageNum-1].answers.length
+                }
+            />)
         case 7:
-            if(sex === 0){
-                //남자
-                return (<PageSeven
-                    lastQuesNum={16}
-                    quesNum={7}
-                    setPageNum={setPageNum}
-                    user_datas={user_datas_M.style_M[pageNum-1].answers}
-                    data_num={user_datas_M.style_M[pageNum-1].answers.length}
-                />)
-            }
-            else{
-                //여자
-                return (<PageSeven
-                    lastQuesNum={16}
-                    quesNum={7}
-                    setPageNum={setPageNum}
-                    user_datas={user_datas_F.style_F[pageNum-1].answers}
-                    data_num={user_datas_F.style_F[pageNum-1].answers.length}
-                />)
-            }
+            return (<PageSeven
+                lastQuesNum={16}
+                quesNum={7}
+                setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+                data_num={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers.length 
+                    : user_datas_F.style_F[pageNum-1].answers.length
+                }
+            />)
         case 8:
             return (<PageEight
                 lastQuesNum={16}
@@ -179,36 +131,84 @@ const Start  = () => {
                 lastQuesNum={16}
                 quesNum={9}
                 setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+                data_num={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers.length 
+                    : user_datas_F.style_F[pageNum-1].answers.length
+                }
             />)
         case 10:
             return (<PageTen
                 lastQuesNum={16}
                 quesNum={10}
                 setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+                data_num={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers.length 
+                    : user_datas_F.style_F[pageNum-1].answers.length
+                }
             />)
         case 11:
-            return (<PageTenO 
+            return (<PageTenO
                 lastQuesNum={16}
                 quesNum={11}
                 setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+                data_num={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers.length 
+                    : user_datas_F.style_F[pageNum-1].answers.length
+                }
             />)
         case 12:
-            return (<PageTenTw 
+            return (<PageTenTw
                 lastQuesNum={16}
                 quesNum={12}
                 setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+                data_num={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers.length 
+                    : user_datas_F.style_F[pageNum-1].answers.length
+                }
             />)
         case 13:
             return (<PageTenTr
                 lastQuesNum={16}
                 quesNum={13}
                 setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+                data_num={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers.length 
+                    : user_datas_F.style_F[pageNum-1].answers.length
+                }
             />)
         case 14:
             return (<PageTenFo
                 lastQuesNum={16}
                 quesNum={14}
                 setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+                data_num={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers.length 
+                    : user_datas_F.style_F[pageNum-1].answers.length
+                }
             />)
         case 15:
             return (<PageTenFi

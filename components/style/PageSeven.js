@@ -21,7 +21,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     quesTextTwo={"넥라인을 모두 골라주실래요?"}
                     overlapText={"중복선택"}
                 />
-                <Circles data={user_datas} data_num={data_num}/>
+                <Circles data={user_datas} data_num={data_num} isThree={true} isOverlap={true}/>
             </Wrap>
             <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
         </div>
@@ -33,4 +33,5 @@ const Wrap = styled.div`
     margin-bottom: 8.6rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
 `;

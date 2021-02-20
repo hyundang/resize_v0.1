@@ -1,59 +1,45 @@
-import React, {useState} from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { Question, ChoiceBtn } from "../../components/common";
+import { InputBoxBig, QuestionTwo } from "../../components/common";
 // hooks
-import useWindowSize from '../../hooks/useWindowSize';
+import useInput from "../../hooks/useInput";
 
 
 
 export default ({quesNum, lastQuesNum, setPageNum}) => {
-    const [size, setSize] = useState(useWindowSize());
-    const [isManClick, setIsManClick] = useState(false);
-    const [isWomanClick, setIsWomanClick] = useState(false);
+    // 유저 input값
+    const input = useInput("");
+    
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    },[])
 
     return(
-        <>
-        <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-        <Wrap height={size.height}>
-            <Question
-                quesNum={quesNum}
-                quesText={"당신의 성별은 무엇인가요?"}
-            />
-            <BtnWrap>
-                <ChoiceBtn 
-                    text={"남"} 
-                    isClick={isManClick}
-                    onClick={()=>{setIsManClick(true);setIsWomanClick(false)}}
+        <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
+            <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
+            <Wrap>
+                <QuestionTwo
+                    quesNum={quesNum}
+                    quesTextOne={"이 외 입고 싶지 않은 옷의"}
+                    quesTextTwo={"종류가 있으면 말씀해주실래요?"}
+                    overlapText={"선택"}
                 />
-                <ChoiceBtn 
-                    text={"여"} 
-                    isClick={isWomanClick}
-                    onClick={()=>{setIsManClick(false);setIsWomanClick(true)}}
+                <InputBoxBig 
+                    text={"예) 카라티, 무스탕, 라이더 자켓, 양털 자켓"}
+                    input={input}
                 />
-            </BtnWrap>
-        </Wrap>
-        <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
-        </>
+            </Wrap>
+            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+        </div>
     )
 }
 
 const Wrap = styled.div`
     margin-top: 11.6rem;
-    width: 100%;
-    height: ${props=>(props.height/10-20)}rem;
+    margin-bottom: 8.6rem;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
-`;
-
-const BtnWrap = styled.div`
-    margin-top: 11rem;
-    width: 100%;
-    height: 3.6rem;
-    padding: 0 3rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
 `;

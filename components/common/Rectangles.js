@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-export default ({data, data_num, isThree, isOverlap}) => {
+
+
+export default ({data, data_num, isOverlap}) => {
     const [selectData, setSelectData] = useState([]);
     const [isNoneClicked, setIsNoneClicked] = useState(false);
 
     return(
-        <Wrap isThree={isThree}>
+        <Wrap>
             {data.map((item, idx)=>{
-                return <Circle
+                return <Rectangle
                             key={idx}
                             text={item}
                             id={idx}
-                            isOverlap={isOverlap}
                             data_num={data_num}
+                            isOverlap={isOverlap}
                             selectData={selectData} setSelectData={setSelectData}
                             isNoneClicked={isNoneClicked} setIsNoneClicked={setIsNoneClicked}
                         />
@@ -24,33 +26,20 @@ export default ({data, data_num, isThree, isOverlap}) => {
 
 const Wrap = styled.div`
     width: 32rem;
-    margin-top: 4.1rem;
+    margin-top: 5.3rem;
     display: grid;
-    grid-template-columns: ${props=>props.isThree? '1fr 1fr 1fr' : '1fr 1fr 1fr 1fr'};
+    grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
 `;
 
-const Circle = ({
+const Rectangle = ({
     id, text, data_num, 
     isOverlap,
     selectData, setSelectData, 
     isNoneClicked, setIsNoneClicked
-}) => {
+}) => 
+{
     const [isClicked, setIsClicked] = useState(false);
-
-    if(isOverlap){
-        useEffect(()=>{
-            if(id !== data_num-1 & isNoneClicked){
-                setIsClicked(false);
-            }
-            if(id === data_num-1 & !isNoneClicked){
-                setIsClicked(false);
-                setSelectData(selectData.filter((s, idx)=>{
-                    return s !== data_num-1;
-                }));
-            }
-        }, [isNoneClicked])
-    }
 
     const handleOverlapClick = () => {
         if(isClicked){
@@ -72,7 +61,7 @@ const Circle = ({
                 setIsClicked(true);
             }
         }
-        // console.log(selectData);
+        console.log(selectData);
     }
 
     const handleOneClick = () => {
@@ -89,22 +78,25 @@ const Circle = ({
                 setIsClicked(true);
             }
         }
-        // console.log(selectData);
+        console.log(selectData);
     }
 
 
     return(
-        <CircleWrap>
-            <CircleBox onClick={isOverlap? handleOverlapClick : handleOneClick} id={id}>
-                <ClickedCircle isClicked={isClicked}>✓</ClickedCircle>
-            </CircleBox>
-            <CircleText>{text}</CircleText>
-        </CircleWrap>
+        <RectangleWrap>
+            <RectangleBox 
+                onClick={isOverlap? handleOverlapClick : handleOneClick} 
+                id={id}
+            >
+                <ClickedRectangle isClicked={isClicked}>✓</ClickedRectangle>
+            </RectangleBox>
+            <RectangleText>{text}</RectangleText>
+        </RectangleWrap>
     )
 }
 
-const CircleWrap = styled.div`
-    width: 7rem;
+const RectangleWrap = styled.div`
+    width: 10.6rem;
     margin-bottom: 2rem;
     display:flex;
     flex-direction: column;
@@ -112,33 +104,36 @@ const CircleWrap = styled.div`
 `;
 
 
-const CircleBox = styled.div`
-    width: 7rem;
-    height: 7rem;
-    border-radius: 3.5rem;
+const RectangleBox = styled.div`
+    width: 10.2rem;
+    height: 20.2rem;
+    border-radius: 1rem;
     margin-bottom: 1rem;
-    box-shadow: 0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.16);
+    border: solid 0.1rem #DAC2A3;
     display: flex;
     align-items: center;
     justify-content: center;
     /* background-image: url(); */
 `;
 
-const ClickedCircle = styled.div`
-    width: 7rem;
-    height: 7rem;
-    border-radius: 3.5rem;
-    opacity: 0.55;
+const ClickedRectangle = styled.div`
+    width: 10rem;
+    height: 20rem;
+    border-radius: 0.9rem;
     display: ${props=>props.isClicked? 'flex' : 'none'};
     align-items: center;
     justify-content: center;
-    background-color: #5d5757;
-    font-size: 1.8rem;
-    font-weight: 500;
+    background-color: rgba(0, 0, 0, 0.36);
+    font-size: 5rem;
+    font-weight: bold;
     text-align: left;
     color: white;
 `;
 
-const CircleText = styled.div`
-    font-size: 1rem;
+const RectangleText = styled.div`
+    font-size: 1.2rem;
+    color: #797979;
+    text-align: center;
+    letter-spacing: -0.3px;
+    white-space: pre-line;
 `;
