@@ -56,7 +56,7 @@ const Box = styled.input`
     color: #767676;
     ::placeholder{
         color: #bdbdbd;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
     &:focus{
         outline: none;
