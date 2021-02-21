@@ -2,13 +2,17 @@ import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 // assets
 import del_icon from "../../assets/img/icons/del_icon.svg";
+// hooks
+import useWindowSize from "../../hooks/useWindowSize";
+
 
 // text: placeholder 문구
 // value: input값 
 // setvalue: set 함수
 export default ({text, value, setvalue}) => {
     const [isBtnShown, setIsBtnShown] = useState(false);
-    
+    const size = useWindowSize();
+
     useEffect(()=> {
         console.log(value);
         if(value !== ''){
@@ -23,7 +27,7 @@ export default ({text, value, setvalue}) => {
         <>
         <Wrap>
             <Box isShown={isBtnShown} placeholder={text} onChange={(e) => setvalue(e.target.value)} value={value}/>
-            <DelBtn isShown={isBtnShown} onClick={() => setvalue('')} src={del_icon}/>
+            <DelBtn width={size.width} isShown={isBtnShown} onClick={() => setvalue('')} src={del_icon}/>
         </Wrap>
         </>
     )
@@ -69,7 +73,7 @@ const DelBtn = styled.img`
     position: absolute;
     z-index: 2;
     margin-top: 1.1rem;
-    right: 1.7rem;
+    right: ${props=>(props.width/10-32)/2+1.7}rem;
     width: 2.1rem;
     height: 2.1rem;
 `;
