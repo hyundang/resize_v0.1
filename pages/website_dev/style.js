@@ -215,12 +215,36 @@ const Start  = () => {
                 lastQuesNum={16}
                 quesNum={15}
                 setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+                data_num={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers.length 
+                    : user_datas_F.style_F[pageNum-1].answers.length
+                }
             />)
         case 16:
             return (<PageTenS
                 lastQuesNum={16}
                 quesNum={16}
                 setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers 
+                    : user_datas_F.style_F[pageNum-1].answers
+                }
+                data_num={(sex===0)? 
+                    user_datas_M.style_M[pageNum-1].answers.length 
+                    : user_datas_F.style_F[pageNum-1].answers.length
+                }
+                inputTextOne={(sex===0)?
+                    "예) COS, LMC, 유니폼브릿지, 앤더슨벨..."
+                    : "예) ZARA, OIOI, 커먼유니크, 아뜨랑스..."
+                }
+                inputTextTwo={(sex===0)?
+                    "예) SSG닷컴, LF몰, SSF샵..."
+                    : "예) SSG닷컴, LF몰, SSF샵..."
+                }
             />)
         default:
             return (<TransitionPage 

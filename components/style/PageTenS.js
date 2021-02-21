@@ -2,58 +2,77 @@ import React, {useState} from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { Question, ChoiceBtn } from "../../components/common";
+import { OverlapBtns, QuestionTwo, InputBox, Question } from "../../components/common";
 // hooks
-import useWindowSize from '../../hooks/useWindowSize';
+import useInput from "../../hooks/useInput";
 
 
 
-export default ({quesNum, lastQuesNum, setPageNum}) => {
-    const [size, setSize] = useState(useWindowSize());
-    const [isManClick, setIsManClick] = useState(false);
-    const [isWomanClick, setIsWomanClick] = useState(false);
-
+export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num, inputTextOne, inputTextTwo}) => {
+    const brand_data = useInput("");
+    const site_data = useInput("");
+    
     return(
-        <>
-        <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-        <Wrap height={size.height}>
-            <Question
-                quesNum={quesNum}
-                quesText={"당신의 성별은 무엇인가요?"}
-            />
-            <BtnWrap>
-                <ChoiceBtn 
-                    text={"남"} 
-                    isClick={isManClick}
-                    onClick={()=>{setIsManClick(true);setIsWomanClick(false)}}
+        <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
+            <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
+            <Wrap>
+                <QuestionTwo
+                    quesNum={quesNum}
+                    quesTextOne={"평소 선호하는 브랜드/쇼핑몰의"}
+                    quesTextTwo={"이름을 적어주실래요?"}
                 />
-                <ChoiceBtn 
-                    text={"여"} 
-                    isClick={isWomanClick}
-                    onClick={()=>{setIsManClick(false);setIsWomanClick(true)}}
+                <Text>최대한 다양하게 적어주세요!</Text>
+                <InputBox
+                    text={inputTextOne}
+                    value={brand_data.value}
+                    setvalue={brand_data.setValue}
                 />
-            </BtnWrap>
-        </Wrap>
-        <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
-        </>
+                <div style={{width:'100vw', height:'3.6rem'}}/>
+                <QuestionTwo
+                    quesNum={0}
+                    quesTextOne={"온라인으로 옷을 구매 시 어떤"}
+                    quesTextTwo={"사이트/플랫폼을 이용하시나요?"}
+                    overlapText={"중복선택"}
+                />
+                <OverlapBtns
+                    data={user_datas} data_num={data_num}
+                    btnType={1}
+                    isOverlap={true} maxNum={0}
+                    isNoneExist={true}
+                />
+                <div style={{width:'100vw', height:'2.5rem'}}/>
+                <Question
+                    quesNum={0}
+                    quesText={"이 외에 이용하는 사이트를 알려주세요!"}
+                    overlapText={"선택"}
+                />
+                <div style={{width:'100vw', height:'1.9rem'}}/>
+                <InputBox
+                    text={inputTextTwo}
+                    value={site_data.value}
+                    setvalue={site_data.setValue}
+                />
+                <div style={{width:'100vw', height:'5rem'}}/>
+            </Wrap>
+            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+        </div>
     )
 }
 
 const Wrap = styled.div`
     margin-top: 11.6rem;
-    width: 100%;
-    height: ${props=>(props.height/10-20)}rem;
+    margin-bottom: 8.6rem;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    align-items: center;
 `;
 
-const BtnWrap = styled.div`
-    margin-top: 11rem;
-    width: 100%;
-    height: 3.6rem;
-    padding: 0 3rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+const Text = styled.div`
+    width: 32rem;
+    height: 1.9rem;
+    margin-top: 1rem;
+    margin-bottom: 2.3rem;
+    font-size: 1.2rem;
+    text-align: left;
+    color: #707070;
 `;

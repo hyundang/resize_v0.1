@@ -23,7 +23,7 @@ export default ({data, data_num, isThree, isOverlap}) => {
 }
 
 const Wrap = styled.div`
-    width: 32rem;
+    width: ${props=>props.isThree? '29rem' : '32rem'};
     margin-top: 4.1rem;
     display: grid;
     grid-template-columns: ${props=>props.isThree? '1fr 1fr 1fr' : '1fr 1fr 1fr 1fr'};
@@ -140,5 +140,8 @@ const ClickedCircle = styled.div`
 `;
 
 const CircleText = styled.div`
-    font-size: 1rem;
+    font-size: 1.1rem;
+    color: #797979;
+    text-align: left;
+    letter-spacing: -0.3px;
 `;

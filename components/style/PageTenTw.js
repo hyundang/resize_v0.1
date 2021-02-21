@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { QuestionTwo, Rectangle } from "../../components/common";
+import { QuestionTwo, Rectangles } from "../../components/common";
 
 
 
@@ -21,7 +21,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     quesTextTwo={"모두 골라주실래요?"}
                     overlapText={"중복선택"}
                 />
-                <Rectangle 
+                <Rectangles 
                     data={user_datas} data_num={data_num}
                     isOverlap={true}
                 />

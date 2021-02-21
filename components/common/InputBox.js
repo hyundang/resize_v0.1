@@ -22,7 +22,7 @@ export default ({text, value, setvalue}) => {
     return(
         <>
         <Wrap>
-            <Box placeholder={text} onChange={(e) => setvalue(e.target.value)} value={value}/>
+            <Box isShown={isBtnShown} placeholder={text} onChange={(e) => setvalue(e.target.value)} value={value}/>
             <DelBtn isShown={isBtnShown} onClick={() => setvalue('')} src={del_icon}/>
         </Wrap>
         </>
@@ -30,25 +30,28 @@ export default ({text, value, setvalue}) => {
 }
 
 const Wrap = styled.div`
-    display: flex;
+    width: 32rem;
+    height: 4.4rem;
+    /* display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: center; */
 `;
 
 const Box = styled.input`
-    width: 29.6rem;
+    width: 32rem;
     height: 4.4rem;
     padding-left: 1.2rem;
-    padding-right: 5.4rem;
-    display: flex;
+    padding-right: ${props=>props.isShown? '5.4rem' : '1.2rem'};
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     border-radius: 0.5rem;
     border: solid 0.1rem #bdbdbd;
     background-color: ${({ theme }) => theme.colors.white};
     font-size: 1.6rem;
     font-weight: 500;
     font-family: 'Noto Sans KR';
+    text-align: left;
     /* color: ${({ theme }) => theme.colors.brown_grey}; */
     color: #767676;
     ::placeholder{
@@ -63,16 +66,10 @@ const Box = styled.input`
 
 const DelBtn = styled.img`
     display: ${props=>props.isShown? 'box' : 'none'};
-    /* justify-content: center; */
-    position: relative;
+    position: absolute;
     z-index: 2;
-    right: 4rem;
+    margin-top: 1.1rem;
+    right: 1.7rem;
     width: 2.1rem;
     height: 2.1rem;
-    /* background-image: url(${del_icon}); */
-    /* border-radius: 1.05rem;
-    background-color: #bdbdbd; */
-    /* font-size: 1.6rem; */
-    /* color: white;
-    line-height: 1.6rem; */
 `;

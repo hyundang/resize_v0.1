@@ -13,7 +13,7 @@ export default ({quesNum, quesText, overlapText}) => {
     return(
         <>
         <Wrap>
-            <QuesNum>Q{quesNum}.</QuesNum>
+            <QuesNum quesNum={quesNum}>Q{quesNum}.</QuesNum>
             <QuesTextWrap>
                 <QuesText>{quesText}</QuesText>
                 <OverlapText isShow={isShow}>({overlapText})</OverlapText>
@@ -25,7 +25,7 @@ export default ({quesNum, quesText, overlapText}) => {
 
 const Wrap = styled.div`
     width: 32rem;
-    height: 8.5rem;
+    /* height: 8.5rem; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -33,11 +33,13 @@ const Wrap = styled.div`
 
 
 const QuesNum = styled.div`
+    display: ${props=>(props.quesNum===0)? 'none' : 'box'};
     height: 2.9rem;
     font-size: 2rem;
     font-weight: bold;
     letter-spacing: -0.5px;
     color: ${({theme}) => theme.colors.pale_brown};
+    margin-bottom: 2.9rem;
 `;
 
 const QuesTextWrap = styled.div`
@@ -50,7 +52,7 @@ const QuesTextWrap = styled.div`
 const QuesText = styled.div`
     height: 2.7rem;
     font-weight: bold;
-    font-size: 1.8rem;
+    font-size: 1.75rem;
     letter-spacing: -0.45px;
     text-align: left;
     color: ${({theme}) => theme.colors.black};
@@ -59,7 +61,7 @@ const QuesText = styled.div`
 const OverlapText = styled.div`
     display: ${props=>props.isShow? 'box' : 'none'};
     margin-left: 0.3rem;
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     font-weight: bold;
     letter-spacing: -0.35px;
     text-align: left;

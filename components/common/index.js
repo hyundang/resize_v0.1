@@ -12,5 +12,6 @@ export { default as Question } from './QuestionOneLine';
 export { default as QuestionTwo } from './QuestionTwoLine';
 export { default as Styles } from './Styles';
 export { default as Circles } from './Circles';
-export { default as Square } from './Squares';
-export { default as Rectangle } from './Rectangles';
+export { default as Squares } from './Squares';
+export { default as Rectangles } from './Rectangles';
+export { default as OverlapBtns } from './OverlapBtns';
