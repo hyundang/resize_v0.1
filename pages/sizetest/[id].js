@@ -176,7 +176,7 @@ const Final = ({}) => {
         <Des>{data[sizeID].description}</Des>
         <Personal>
           <IntroTitle>내 체형에 어울리는 코디 무료로 받아보기</IntroTitle>
-          <Des2>리사이즈에서 3월 런칭 예정인<Bold>"고객님만을 위한 1:1 퍼스널 패션 큐레이션 서비스"</Bold>를 무료로 이용하고 싶으시다면, 고객님의 전화번호를 적어주세요! 적어주신 번호로 리사이즈 1:1 퍼스널 큐레이션 서비스 이용권을 드립니다.</Des2>
+          <Des2>리사이즈에서 3월 런칭 예정인<Bold>"고객님만을 위한 1:1 퍼스널 패션 큐레이션 서비스"</Bold>를 무료로 이용하고 싶으시다면, 고객님의 전화번호를 적어주세요! 추첨을 통해 리사이즈 1:1 퍼스널 코디큐레이션 서비스 이용권을 드립니다.</Des2>
           <PhoneContainer>
               <input type="text" style ={{border: '1px solid #dec19f', borderColor: '#dec19f', width: '80%', padding: '10px 10px'}} value={phone} required onChange={onChangePhone} placeholder="전화번호를 입력해주세요.">
               </input>
