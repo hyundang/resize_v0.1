@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import '../styles/globals.css';
+import { initGA, logPageView } from '../ga/analytics'
 import Head from 'next/head';
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -15,6 +16,14 @@ const store = createStore(
 );
 
 const Resize = ({ Component, pageProps }) => {
+  useEffect(()=>{
+      if (!window.GA_INITIALIZED) {
+        initGA()
+        window.GA_INITIALIZED = true
+      }
+      logPageView()
+    }
+  )
   return (
     <ThemeProvider theme={theme}>
     <RecoilRoot>
