@@ -26,6 +26,7 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                     quesTextTwo={"종류가 있으면 말씀해주실래요?"}
                     overlapText={"선택"}
                 />
+                <div style={{marginBottom:'5.3rem'}}/>
                 <InputBoxBig 
                     text={"예) 카라티, 무스탕, 라이더 자켓, 양털 자켓"}
                     input={input}

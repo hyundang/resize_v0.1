@@ -25,7 +25,7 @@ export default ({data, data_num, isOverlap, isNoneExist, maxNum}) => {
 
 const Wrap = styled.div`
     width: 27rem;
-    margin-top: 5.3rem;
+    /* margin-top: 5.3rem; */
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;

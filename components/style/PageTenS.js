@@ -34,6 +34,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num, inputTe
                     quesTextTwo={"사이트/플랫폼을 이용하시나요?"}
                     overlapText={"중복선택"}
                 />
+                <div style={{marginBottom:'3rem'}}/>
                 <OverlapBtns
                     data={user_datas} data_num={data_num}
                     btnType={1}

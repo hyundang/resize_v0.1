@@ -24,7 +24,7 @@ export default ({data, data_num, isThree, isOverlap}) => {
 
 const Wrap = styled.div`
     width: ${props=>props.isThree? '29rem' : '32rem'};
-    margin-top: 4.1rem;
+    /* margin-top: 4.1rem; */
     display: grid;
     grid-template-columns: ${props=>props.isThree? '1fr 1fr 1fr' : '1fr 1fr 1fr 1fr'};
     justify-items: center;

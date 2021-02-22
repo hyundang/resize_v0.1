@@ -21,6 +21,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     quesTextTwo={"모두 골라주실래요?"}
                     overlapText={"중복선택"}
                 />
+                <div style={{marginBottom:'5.3rem'}}/>
                 <Circles data={user_datas} data_num={data_num} isThree={false} isOverlap={true}/>
             </Wrap>
             <Bottom setPageNum={setPageNum} pageNum={quesNum}/>

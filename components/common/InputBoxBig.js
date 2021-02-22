@@ -18,7 +18,6 @@ const Wrap = styled.textarea`
     width: 32rem;
     height: 11.6rem;
     padding: 0.9rem 1.2rem;
-    margin-top: 5.3rem;
     border-radius: 0.5rem;
     border: solid 0.1rem #bdbdbd;
     background-color: white;

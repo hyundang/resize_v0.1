@@ -75,7 +75,6 @@ export default ({data, data_num, btnType, isOverlap, maxNum, isNoneExist}) => {
 
 const Wrap = styled.div`
     width: 32rem;
-    margin-top: 3.6rem;
     display: grid;
     grid-template-columns: ${props=>(props.btnType===-1)? '1fr' 
     : (props.btnType===0)? '1fr 1fr' 

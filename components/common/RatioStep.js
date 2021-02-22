@@ -58,7 +58,7 @@ const Wrap = styled.div`
 `;
 
 const BarWrap = styled.div`
-    width: 31rem;
+    width: 32rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -74,7 +74,7 @@ const Bar = styled.div`
 const CircleListWrap = styled.div`
     position: absolute;
     z-index: 2;
-    width: 31rem;
+    width: 32rem;
     display: flex;
     flex-direction: row;
     align-items: center;

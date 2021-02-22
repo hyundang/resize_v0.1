@@ -21,6 +21,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     quesTextTwo={"골라주실래요?"}
                     overlapText={"중복선택"}
                 />
+                <div style={{marginBottom:'3.6rem'}}/>
                 <Squares 
                     data={user_datas} data_num={data_num}
                     isOverlap={true} maxNum={0}

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { QuestionTwo, Squares } from "../../components/common";
+import { QuestionTwo } from "../../components/common";
 
 
 
@@ -17,16 +17,18 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             <Wrap>
                 <QuestionTwo
                     quesNum={quesNum}
-                    quesTextOne={"평소 자주 착용하는 옷의"}
-                    quesTextTwo={"색상톤을 모두 골라주실래요?"}
+                    quesTextOne={"평소 착용하는"}
+                    quesTextTwo={"상의 사이즈는 무엇인가요?"}
                     overlapText={"중복선택"}
                 />
-                <div style={{marginBottom:'5.3rem'}}/>
-                <Squares
-                    data={user_datas} data_num={data_num}
-                    isOverlap={true} maxNum={0}
-                    isNoneExist={false}
+                <div style={{marginBottom:'2.3rem'}}/>
+                <QuestionTwo
+                    quesNum={0}
+                    quesTextOne={"평소 착용하는"}
+                    quesTextTwo={"바지 사이즈는 무엇인가요?"}
+                    overlapText={"중복선택"}
                 />
+                <div style={{marginBottom:'2.3rem'}}/>
             </Wrap>
             <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
         </div>
