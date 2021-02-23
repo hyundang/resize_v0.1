@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
-import { pageNumState } from "../../states/style_atom";
+import { StylePageNumState } from "../../states/style_atom";
 import { SexState } from "../../states/website_atom";
 // components
 import { TransitionPage } from "../../components";
@@ -31,9 +31,8 @@ import user_datas_M from "../../data/userdata/user_datas_M";
 
 
 const Start  = () => {
-    const [pageNum, setPageNum] = useRecoilState(pageNumState);
+    const [pageNum, setPageNum] = useRecoilState(StylePageNumState);
     const sex = useRecoilValue(SexState); // 0: 남자, 1: 여자
-
 
     switch(pageNum){
         case 0:
@@ -247,10 +246,7 @@ const Start  = () => {
                 }
             />)
         default:
-            return (<TransitionPage 
-                text_one={"이제 당신의 스타일을"}
-                text_two={"알아보러 가볼까요?"}
-            />)
+            break;
     }
 }
 

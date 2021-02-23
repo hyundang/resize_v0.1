@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
-import { pageNumState } from "../../states/style_atom";
+import { SizePageNumState } from "../../states/size_atom";
 import { SexState } from "../../states/website_atom";
 // components
 import { TransitionPage } from "../../components";
@@ -20,7 +20,7 @@ import user_datas_M from "../../data/userdata/user_datas_M";
 
 
 const Start  = () => {
-    const [pageNum, setPageNum] = useRecoilState(pageNumState);
+    const [pageNum, setPageNum] = useRecoilState(SizePageNumState);
     const sex = useRecoilValue(SexState); // 0: 남자, 1: 여자
 
 
@@ -68,13 +68,10 @@ const Start  = () => {
                 lastQuesNum={5}
                 quesNum={5}
                 setPageNum={setPageNum}
+                sex={sex}
                 user_datas={(sex===0)? 
-                    user_datas_M.style_M[pageNum-1].answers 
-                    : user_datas_F.style_F[pageNum-1].answers
-                }
-                data_num={(sex===0)? 
-                    user_datas_M.style_M[pageNum-1].answers.length 
-                    : user_datas_F.style_F[pageNum-1].answers.length
+                    user_datas_M.size_M[pageNum-1].answers 
+                    : user_datas_F.size_F[pageNum-1].answers
                 }
             />)
         default:

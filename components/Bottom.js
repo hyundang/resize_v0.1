@@ -4,20 +4,56 @@ import gray_arrow_left from "../assets/img/icons/gray_arrow_left.svg";
 import gray_arrow_right from "../assets/img/icons/gray_arrow_right.svg";
 import black_arrow_left from "../assets/img/icons/black_arrow_left.svg";
 import black_arrow_right from "../assets/img/icons/black_arrow_right.svg";
+// router
+import { useRouter } from "next/router";
+// recoil
+import { useSetRecoilState } from "recoil";
+import { KategorieState } from "../states/website_atom";
 
 
-
-export default ({setPageNum, pageNum}) => {
-
+export default ({setPageNum, pageNum, lastQuesNum, kategorie}) => {
+    const router = useRouter();
+    const setKategorie = useSetRecoilState(KategorieState);
+    
+    const handleLastPage = () => {
+        switch (kategorie) {
+            case 0:
+                router.push('/website_dev/size');
+                setKategorie(1);
+                break;
+            case 1:
+                router.push('/website_dev/cody');
+                setKategorie(2);
+                break;
+            case 2:
+                router.push('/website_dev/last');
+                setKategorie(3);
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
+    }
     
     return(
         <>
         <Wrap>
-            <BtnWrap onClick={() => setPageNum(pageNum-1)}>
+            <BtnWrap 
+                onClick={() => setPageNum(pageNum-1)}
+                pageNum={pageNum}
+            >
                 <BtnIcon src={gray_arrow_left}/>
                 <BtnText>이전</BtnText>
             </BtnWrap>
-            <BtnWrap onClick={() => setPageNum(pageNum+1)}>
+            <Space pageNum={pageNum}/>
+            <BtnWrap 
+                onClick={(lastQuesNum===pageNum)?
+                    handleLastPage
+                    :() => setPageNum(pageNum+1)
+                }
+                pageNum={0}
+            >
                 <BtnText>다음</BtnText>
                 <BtnIcon src={gray_arrow_right}/>
             </BtnWrap>
@@ -41,10 +77,16 @@ const Wrap = styled.div`
     /* box-shadow: 0 0 1rem 1rem rgba(255,255,255,1);  */
 `;
 
+const Space = styled.div`
+    width: 8rem;
+    height: 5.2rem;
+    display: ${props=>(props.pageNum===1)? 'box': 'none'};
+`;
+
 const BtnWrap = styled.div`
     width: 8rem;
     height: 5.2rem;
-    display: flex;
+    display: ${props=>(props.pageNum===1)? 'none' : 'flex'};
     flex-direction: row;
     align-items: center;
 `;

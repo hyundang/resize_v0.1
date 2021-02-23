@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@svgr/webpack": "^5.5.0",
+    "aos": "^2.3.4",
     "axios": "^0.21.1",
     "next": "10.0.4",
     "react": "^16.13.1",

@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { Question } from "../../components/common";
+import { QuestionTwo, OverlapBtns } from "../../components/common";
 // hooks
 import useInput from "../../hooks/useInput";
 import useWindowSize from "../../hooks/useWindowSize";
 
 
-export default ({quesNum, lastQuesNum, setPageNum}) => {
+export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     const size = useWindowSize();
     const user_height = useInput("");
     const user_weight = useInput("");
@@ -21,32 +21,26 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
-            <Header kategorie={1} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
+            <Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
             <Wrap>
-                <Question
+                <QuestionTwo
                     quesNum={quesNum}
-                    quesText={"당신의 키와 몸무게를 알려주실래요?"}
+                    quesTextOne={"해당 코디를 어떻게"}
+                    quesTextTwo={"활용하실건가요?"}
+                    overlapText={"최대 2개"}
                 />
                 <div style={{width:'100%', height:'3.6rem'}}/>
-                <Text>키</Text>
-                <div style={{width:'32rem', height:'4.4rem'}}>
-                    <InputBox
-                        placeholder="키를 입력해주세요"
-                        value={user_height.value}
-                        onChange={user_height.onChange}
-                    />
-                    <Unit width={size.width}>cm</Unit>
-                </div>
-                <div style={{width:'100%', height:'2.6rem'}}/>
-                <Text>몸무게</Text>
-                <div style={{width:'32rem', height:'4.4rem'}}>
-                    <InputBox
-                        placeholder="몸무게를 입력해주세요"
-                        value={user_weight.value}
-                        onChange={user_weight.onChange}
-                    />
-                    <Unit width={size.width}>kg</Unit>
-                </div>
+                <OverlapBtns
+                    data={user_datas}
+                    data_num={data_num}
+                    btnType={1}
+                    isOverlap={false}
+                    maxNum={2}
+                    isNoneExist={false}
+                    otherTextOne={"이외에 연출하고 싶은"}
+                    otherTextTwo={"스타일이 있다면 알려주세요!"}
+                    inputText={"예) 상견례룩을 추천해주세요!"}
+                />
             </Wrap>
             <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
         </div>

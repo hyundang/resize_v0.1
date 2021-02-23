@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const pageNumState = atom({
-    key: "pageNumState",
+export const StylePageNumState = atom({
+    key: "StylePageNumState",
     default: 0
 })

@@ -14,7 +14,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
-            <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
+            <Header kategorie={1} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
             <Wrap>
                 <Question
                     quesNum={quesNum}

@@ -1,10 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-export default ({text}) => {
+export default ({text, id, selectData, setSelectData}) => {
+    const [isClicked, setIsClicked] = useState(false);
+
+    useEffect(()=>{
+        if(id !== selectData){
+            setIsClicked(false);
+        }
+    }, [selectData])
+
+    const handleOneClick = () => {
+        if(isClicked){
+            // 선택한 데이터가 담긴 배열에서 현재 id값 삭제.
+            setSelectData(-1);
+            setIsClicked(false);
+        }
+        else{
+            if(selectData === -1){
+                setSelectData(id);
+                setIsClicked(true);
+            }
+            else{
+                setSelectData(id);
+                setIsClicked(true);
+            }
+        console.log(selectData);
+        }
+    };
+
     return(
         <>
-            <Wrap>
+            <Wrap 
+                onClick={handleOneClick}
+                isClicked={isClicked}
+            >
                 {text}
             </Wrap>
         </>
@@ -19,15 +49,15 @@ const Wrap = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 1.6rem;
-    border: solid 0.1rem ${({ theme }) => theme.colors.pale_brown};
-    background-color: ${({ theme }) => theme.colors.white};
+    border: ${props=>props.isClicked? 'none' : `solid 0.1rem #a99174`};
+    background-color: ${props=>props.isClicked? ({ theme }) => theme.colors.beige : ({ theme }) => theme.colors.white};
     font-size: 1.2rem;
     font-weight: 500;
-    text-align: cente r;
-    color: ${({ theme }) => theme.colors.pale_brown};
-    &:hover{
+    text-align: center;
+    color: ${props=>props.isClicked? ({ theme }) => theme.colors.off_white : ({ theme }) => theme.colors.pale_brown};
+    /* &:hover{
         background-color: ${({ theme }) => theme.colors.beige};
         color: ${({ theme }) => theme.colors.off_white};
         border: none;
-    }
+    } */
 `;

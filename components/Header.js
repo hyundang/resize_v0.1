@@ -1,18 +1,64 @@
 import React from "react";
 import styled from 'styled-components';
+// router
+import { useRouter } from "next/router";
+// recoil
+import { useRecoilValue } from "recoil";
+import { KategorieState } from "../states/website_atom";
 
 
 // lastQuesNum: 질문 총 개수
 // quesNum: 현재 질문 넘버
 // kategorie: 스타일/체형/코디/마무리
 export default ({kategorie, quesNum, lastQuesNum}) => {
+    const router = useRouter();
+    const maxKategorie = useRecoilValue(KategorieState);
+    
+    const handleClick = (e) => {
+        if(e.target.id <= maxKategorie){
+            console.log(e.target.id)
+            switch (Number(e.target.id)) {
+                case 0:
+                    router.push('/website_dev/style')
+                    break;
+                case 1:
+                    router.push('/website_dev/size')
+                    break;
+                case 2:
+                    router.push('/website_dev/cody')
+                    break;
+                case 3:
+                    router.push('/website_dev/last')
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
     return(
         <Wrap>
             <TypeWrap>
-                <TypeText num={0} kategorie={kategorie}>스타일</TypeText>
-                <TypeText num={1} kategorie={kategorie}>체형</TypeText>
-                <TypeText num={2} kategorie={kategorie}>코디</TypeText>
-                <TypeText num={3} kategorie={kategorie}>마무리</TypeText>
+                <TypeText 
+                    onClick={handleClick} 
+                    id={0}
+                    num={0} kategorie={kategorie}
+                >스타일</TypeText>
+                <TypeText
+                    onClick={handleClick}  
+                    id={1}
+                    num={1} kategorie={kategorie}
+                >체형</TypeText>
+                <TypeText 
+                    onClick={handleClick} 
+                    id={2}
+                    num={2} kategorie={kategorie}
+                >코디</TypeText>
+                <TypeText
+                    onClick={handleClick} 
+                    id={3} 
+                    num={3} kategorie={kategorie}
+                >마무리</TypeText>
             </TypeWrap>
             <BarWrap>
                 <Bar quesNum={quesNum} lastQuesNum={lastQuesNum}/>
@@ -53,14 +99,14 @@ const TypeText = styled.div`
     justify-content: center;
     font-size: 1.4rem;
     font-weight: normal;
-    color: ${props=> (props.num == props.kategorie)? ({theme})=>theme.colors.pale_brown : '#e8d7c1'}; 
-    font-weight: ${props=> (props.num == props.kategorie)? '900' : '500'};
+    color: ${props=> (props.num <= props.kategorie)? ({theme})=>theme.colors.pale_brown : '#e8d7c1'}; 
+    font-weight: ${props=> (props.num <= props.kategorie)? '900' : '500'};
 `;
 
 const BarWrap = styled.div`
     position: relative;
     margin-top: 2.4rem;
-    width: 97%;
+    width: 96vw;
     height: 0.7rem;
     border-radius: 0.5rem;
     background-color: #e6e6e6;
@@ -70,8 +116,8 @@ const Bar = styled.div`
     position: relative;
     left: 0;
     z-index: 2;
-    width: ${props=>(97/props.lastQuesNum)*props.quesNum}%;
+    width: ${props=>(96/props.lastQuesNum)*props.quesNum}vw;
     height: 0.7rem;
     border-radius: 0.5rem;
-    background-color: ${({theme}) => theme.colors.pale_brown};  
+    background-color: ${({theme}) => theme.colors.pale_brown};
 `;

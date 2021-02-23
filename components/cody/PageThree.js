@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { Question, RatioStep } from "../../components/common";
+import { Question, Circles, RatioStep, Rectangles } from "../../components/common";
 
 
 
@@ -10,24 +10,17 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     useEffect(()=>{
         window.scrollTo(0,0);
     }, [])
+
     
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
-            <Header kategorie={1} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
+            <Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
             <Wrap>
                 <Question
                     quesNum={quesNum}
                     quesText={"체형을 함께 분석해볼까요?"}
                 />
-                <SmallText>
-                    {"객관적인 기준을 적용하지 않아도 됩니다.\n본인이 생각하는 자신의 체형에 대해 알려주세요!"}
-                </SmallText>
-                {user_datas.map((item, idx)=>{
-                    return <Btn
-                                key={idx}
-                                data={item}
-                            />
-                })}
+               <div>Q3</div>
             </Wrap>
             <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
         </div>
@@ -51,17 +44,6 @@ const SmallText = styled.div`
     color: #707070;
     white-space: pre-line;
 `;
-
-const Btn = ({data}) => {
-    return(
-        <div style={{marginBottom:'3.6rem'}}>
-            <Text>{data.question}</Text>
-            <RatioStep
-                data={data.datas}
-            />
-        </div>
-    )
-}
 
 const Text = styled.div`
     margin-bottom: 2.5rem;

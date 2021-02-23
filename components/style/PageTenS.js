@@ -55,7 +55,10 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num, inputTe
                 />
                 <div style={{width:'100vw', height:'5rem'}}/>
             </Wrap>
-            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+            <Bottom 
+                setPageNum={setPageNum} pageNum={quesNum}
+                lastQuesNum={lastQuesNum} kategorie={0}
+            />
         </div>
     )
 }

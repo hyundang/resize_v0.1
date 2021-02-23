@@ -4,21 +4,21 @@ import styled from "styled-components";
 export default ({text_one, text_two, setPageNum}) => {
     return(
         <>
-            <Wrap>
+            <Wrap onClick={()=>setPageNum(1)}>
                 <Title>STYLING ROOM</Title>
                 <TextWrap>
                     <Text>{text_one}</Text>
                     <Text>{text_two}</Text>
                 </TextWrap>
-                <BottomText onClick={()=>setPageNum(1)}>탭해서 계속하기</BottomText>
+                <BottomText>탭해서 계속하기</BottomText>
             </Wrap>
         </>
     )
 }
 
 const Wrap = styled.div`
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     /* background-image: */
 `;
 

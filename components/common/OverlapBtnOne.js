@@ -69,7 +69,15 @@ export default ({
             }
         }
         else{
-            if(selectData.length < maxNum){
+            // 없음 클릭했을 때
+            if(isNoneExist & id === data_num-1){
+                setSelectData([id]);
+                setIsNoneClicked(true);
+                setIsClicked(true);
+                setIsOther(false);
+            }
+            else if(selectData.length < maxNum){
+                setIsNoneClicked(false);
                 if(text === "기타"){
                     setIsOther(true);
                 }

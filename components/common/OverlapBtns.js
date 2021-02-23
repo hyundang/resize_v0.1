@@ -4,9 +4,19 @@ import styled from "styled-components";
 import OverlapBtnZero from "./OverlapBtnZero";
 import OverlapBtnOne from "./OverlapBtnOne";
 import OverlapBtn from "./OverlapBtn";
+import { InputBox, QuestionTwo } from ".";
+// hooks
+import useInput from "../../hooks/useInput";
 
-export default ({data, data_num, btnType, isOverlap, maxNum, isNoneExist}) => {
+export default ({
+    data, data_num, 
+    btnType, 
+    isOverlap, maxNum, 
+    isNoneExist,
+    otherTextOne, otherTextTwo, inputText
+}) => {
     const [selectData, setSelectData] = useState([]);
+    const input = useInput("");
     const [isNoneClicked, setIsNoneClicked] = useState(false);
     const [isOther, setIsOther] = useState(false);
 
@@ -51,6 +61,7 @@ export default ({data, data_num, btnType, isOverlap, maxNum, isNoneExist}) => {
             )
         case 1:
             return(
+                <div>
                 <Wrap btnType={btnType}>
                     {data.map((item, idx)=>{
                         return <OverlapBtnOne
@@ -65,8 +76,23 @@ export default ({data, data_num, btnType, isOverlap, maxNum, isNoneExist}) => {
                                     setIsOther={setIsOther}
                                 />
                     })}
-                    <OtherWrap isOther={isOther}>기타</OtherWrap>
                 </Wrap> 
+                <OtherWrap isOther={isOther}>
+                    <QuestionTwo
+                        quesNum={0}
+                        quesTextOne={otherTextOne}
+                        quesTextTwo={otherTextTwo}
+                        overlapText={"선택"}
+                    />
+                    <div style={{marginTop:'2.3rem'}}/>
+                    <InputBox
+                        text={inputText}
+                        value={input.value}
+                        setvalue={input.setValue}
+                    />
+                    <div style={{marginTop:'3.6rem'}}/>
+                </OtherWrap>
+                </div>
             )
         default:
             break;
@@ -84,4 +110,7 @@ const Wrap = styled.div`
 
 const OtherWrap = styled.div`
     display: ${props=>props.isOther? 'flex' : 'none'};
+    flex-direction: column;
+    width: 32rem;
+    margin-top: 6.2rem;
 `;
