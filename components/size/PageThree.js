@@ -48,6 +48,12 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                 </div>
                 <div style={{marginBottom:'4.8rem'}}>
                     <Text>{user_datas[3].question}</Text>
+                    <Circles
+                        data={user_datas[3].datas}
+                        data_num={user_datas[3].datas.length}
+                        isTwo={true} 
+                        isOverlap={false}
+                    />
                 </div>
                 <div style={{marginBottom:'4.8rem'}}>
                     <Text>{user_datas[4].question}</Text>

@@ -41,6 +41,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     otherTextTwo={"스타일이 있다면 알려주세요!"}
                     inputText={"예) 상견례룩을 추천해주세요!"}
                 />
+                <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>
             <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
         </div>

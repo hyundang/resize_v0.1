@@ -1,10 +1,33 @@
 import React from "react";
 import styled from "styled-components";
+// recoil
+import { useSetRecoilState } from "recoil";
+import { KategorieState } from "../states/website_atom";
 
-export default ({text_one, text_two, setPageNum}) => {
+
+export default ({text_one, text_two, setPageNum, kategorie}) => {
+    const setKategorie = useSetRecoilState(KategorieState);
+
+    const handleClick = () =>{
+        switch (kategorie) {
+            case 0:
+                setKategorie(0);
+                break;
+            case 1:
+                setKategorie(1);
+                break;
+            case 2:
+                setKategorie(2);
+                break;
+            default:
+                break;
+        }
+        setPageNum(1);
+    }
+
     return(
         <>
-            <Wrap onClick={()=>setPageNum(1)}>
+            <Wrap onClick={handleClick}>
                 <Title>STYLING ROOM</Title>
                 <TextWrap>
                     <Text>{text_one}</Text>

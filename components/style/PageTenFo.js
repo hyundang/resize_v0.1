@@ -25,8 +25,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <Squares 
                     data={user_datas} data_num={data_num}
                     isOverlap={true} maxNum={0}
-                    isNoneExist={true}
+                    isNoneExist={false}
                 />
+                <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>
             <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
         </div>

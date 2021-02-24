@@ -1,38 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 export default ({text, id, selectData, setSelectData}) => {
     const [isClicked, setIsClicked] = useState(false);
 
-    useEffect(()=>{
-        if(id !== selectData){
-            setIsClicked(false);
-        }
-    }, [selectData])
-
-    const handleOneClick = () => {
+    const handleOverlapClick = () => {
         if(isClicked){
             // 선택한 데이터가 담긴 배열에서 현재 id값 삭제.
-            setSelectData(-1);
+            setSelectData(selectData.filter((s, idx)=>{
+                return s !== id;
+            }))
             setIsClicked(false);
         }
         else{
-            if(selectData === -1){
-                setSelectData(id);
-                setIsClicked(true);
-            }
-            else{
-                setSelectData(id);
-                setIsClicked(true);
-            }
-        console.log(selectData);
+            setSelectData(selectData.concat([id]));
+            setIsClicked(true);
         }
+        // console.log(selectData);
     };
 
     return(
         <>
             <Wrap 
-                onClick={handleOneClick}
+                onClick={handleOverlapClick}
                 isClicked={isClicked}
             >
                 {text}

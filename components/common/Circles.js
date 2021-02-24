@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-export default ({data, data_num, isThree, isOverlap}) => {
+export default ({data, data_num, isThree, isTwo, isOverlap}) => {
     const [selectData, setSelectData] = useState([]);
     const [isNoneClicked, setIsNoneClicked] = useState(false);
 
     return(
-        <Wrap isThree={isThree}>
+        <Wrap isThree={isThree} isTwo={isTwo}>
             {data.map((item, idx)=>{
                 return <Circle
                             key={idx}
@@ -23,10 +23,13 @@ export default ({data, data_num, isThree, isOverlap}) => {
 }
 
 const Wrap = styled.div`
-    width: ${props=>props.isThree? '29rem' : '32rem'};
-    /* margin-top: 4.1rem; */
+    width: ${props=>props.isThree? '28rem' 
+    : (props.isTwo? '20rem' : '32rem')};
+    margin-left: ${props=>props.isThree? '2rem'
+    : (props.isTwo? '6rem' : '0rem')};
     display: grid;
-    grid-template-columns: ${props=>props.isThree? '1fr 1fr 1fr' : '1fr 1fr 1fr 1fr'};
+    grid-template-columns: ${props=>props.isThree? '1fr 1fr 1fr' 
+    : (props.isTwo? '1fr 1fr' : '1fr 1fr 1fr 1fr')};
     justify-items: center;
 `;
 
@@ -50,6 +53,13 @@ const Circle = ({
                 }));
             }
         }, [isNoneClicked])
+    }
+    else{
+        useEffect(()=>{
+            if(selectData.length === 1 & selectData[0] !== id){
+                setIsClicked(false);
+            }
+        },[selectData])
     }
 
     const handleOverlapClick = () => {
@@ -75,7 +85,7 @@ const Circle = ({
         // console.log(selectData);
     }
 
-    const handleOneClick = () => {
+    const handleOneClick = (e) => {
         if(isClicked){
             // 선택한 데이터가 담긴 배열에서 현재 id값 삭제.
             setSelectData(selectData.filter((s, idx)=>{
@@ -84,10 +94,8 @@ const Circle = ({
             setIsClicked(false);
         }
         else{
-            if(selectData.length === 0){
-                setSelectData(selectData.concat([id]));
-                setIsClicked(true);
-            }
+            setSelectData([id]);
+            setIsClicked(true);
         }
         // console.log(selectData);
     }

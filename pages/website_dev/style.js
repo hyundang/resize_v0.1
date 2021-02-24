@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -34,12 +34,21 @@ const Start  = () => {
     const [pageNum, setPageNum] = useRecoilState(StylePageNumState);
     const sex = useRecoilValue(SexState); // 0: 남자, 1: 여자
 
+    // 페이지 새로고침 막기
+    useEffect(()=>{
+        window.addEventListener('beforeunload', (e)=>{
+            e.preventDefault();
+            e.returnValue='refresh';
+        })
+    },[])
+
     switch(pageNum){
         case 0:
             return (<TransitionPage 
                         text_one={"이제 당신의 스타일을"}
                         text_two={"알아보러 가볼까요?"}
                         setPageNum={setPageNum}
+                        kategorie={0}
                     />)
         case 1:
             return (<PageOne 

@@ -26,6 +26,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     data={user_datas} data_num={data_num}
                     isOverlap={true}
                 />
+                <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>
             <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
         </div>

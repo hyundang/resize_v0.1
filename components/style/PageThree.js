@@ -22,6 +22,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                     overlapText={"최대 3개"}
                 />
                 <Styles data={user_datas}/>
+                <div style={{marginBottom:'2.3rem'}}/>
             </Wrap>
             <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
         </div>

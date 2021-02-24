@@ -6,28 +6,22 @@ import black_arrow_left from "../assets/img/icons/black_arrow_left.svg";
 import black_arrow_right from "../assets/img/icons/black_arrow_right.svg";
 // router
 import { useRouter } from "next/router";
-// recoil
-import { useSetRecoilState } from "recoil";
-import { KategorieState } from "../states/website_atom";
 
 
 export default ({setPageNum, pageNum, lastQuesNum, kategorie}) => {
     const router = useRouter();
-    const setKategorie = useSetRecoilState(KategorieState);
+    
     
     const handleLastPage = () => {
         switch (kategorie) {
             case 0:
                 router.push('/website_dev/size');
-                setKategorie(1);
                 break;
             case 1:
                 router.push('/website_dev/cody');
-                setKategorie(2);
                 break;
             case 2:
                 router.push('/website_dev/last');
-                setKategorie(3);
                 break;
             case 3:
                 break;

@@ -23,6 +23,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'5.3rem'}}/>
                 <Circles data={user_datas} data_num={data_num} isThree={false} isOverlap={true}/>
+                <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>
             <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
         </div>

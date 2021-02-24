@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 export default ({data, data_num, isOverlap}) => {
     const [selectData, setSelectData] = useState([]);
-    const [isNoneClicked, setIsNoneClicked] = useState(false);
 
     return(
         <Wrap>
@@ -17,7 +16,6 @@ export default ({data, data_num, isOverlap}) => {
                             data_num={data_num}
                             isOverlap={isOverlap}
                             selectData={selectData} setSelectData={setSelectData}
-                            isNoneClicked={isNoneClicked} setIsNoneClicked={setIsNoneClicked}
                         />
             })}
         </Wrap>
@@ -35,11 +33,18 @@ const Wrap = styled.div`
 const Rectangle = ({
     id, text, data_num, 
     isOverlap,
-    selectData, setSelectData, 
-    isNoneClicked, setIsNoneClicked
+    selectData, setSelectData
 }) => 
 {
     const [isClicked, setIsClicked] = useState(false);
+
+    if(!isOverlap){
+        useEffect(()=>{
+            if(selectData.length === 1 & selectData[0] !== id){
+                setIsClicked(false);
+            }
+        }, [selectData])
+    }
 
     const handleOverlapClick = () => {
         if(isClicked){
@@ -52,12 +57,10 @@ const Rectangle = ({
         else{
             if(id === data_num-1){
                 setSelectData([id]);
-                setIsNoneClicked(true);
                 setIsClicked(true);
             }
             else{
                 setSelectData(selectData.concat([id]));
-                setIsNoneClicked(false);
                 setIsClicked(true);
             }
         }
@@ -73,10 +76,8 @@ const Rectangle = ({
             setIsClicked(false);
         }
         else{
-            if(selectData.length === 0){
-                setSelectData(selectData.concat([id]));
-                setIsClicked(true);
-            }
+            setSelectData([id]);
+            setIsClicked(true);
         }
         console.log(selectData);
     }

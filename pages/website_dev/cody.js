@@ -32,6 +32,7 @@ const Start  = () => {
                         text_one={"이제 당신의 코디 취향을"}
                         text_two={"알아보러 가볼까요?"}
                         setPageNum={setPageNum}
+                        kategorie={2}
                     />)
         case 1:
             return (<PageOne 

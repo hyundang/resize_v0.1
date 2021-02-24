@@ -22,7 +22,11 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     overlapText={"중복선택"}
                 />
                 <div style={{marginBottom:'5.3rem'}}/>
-                <Circles data={user_datas} data_num={data_num} isThree={true} isOverlap={true}/>
+                <Circles 
+                    data={user_datas} data_num={data_num} 
+                    isThree={true} isOverlap={true
+                }/>
+                <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>
             <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
         </div>
@@ -34,5 +38,5 @@ const Wrap = styled.div`
     margin-bottom: 8.6rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 `;
