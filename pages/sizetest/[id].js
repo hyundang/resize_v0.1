@@ -41,6 +41,7 @@ export function searchID(id) {
             break;
         case 'NCSU':
             sizeID = 4;
+            break;
         case 'NCSM':
             sizeID = 5;
             break;
