@@ -25,7 +25,7 @@ export default ({text, input}) => {
         <>
         <Wrap>
             <Box isShown={isBtnShown} placeholder={text} onChange={input.onChange} value={input.value}/>
-            <DelBtn width={size.width} isShown={isBtnShown} onClick={() => input.setvalue('')} src={del_icon}/>
+            <DelBtn width={size.width} isShown={isBtnShown} onClick={() => input.setValue('')} src={del_icon}/>
         </Wrap>
         </>
     )
