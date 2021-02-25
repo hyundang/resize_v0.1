@@ -10,6 +10,7 @@ export default ({text, input}) => {
             placeholder={text}
             value={input.value}
             onChange={input.onChange}
+            maxLength={500}
         />
     )
 }

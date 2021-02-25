@@ -5,10 +5,8 @@ import { Header, Bottom } from "../../components";
 import { QuestionTwo, OverlapBtnThree } from "../../components/common";
 // hooks
 import useWindowSize from "../../hooks/useWindowSize";
-// aos
 
-const loc_M = [28.5, 36, 54.3, 62];
-const loc_F = [28.5, 36, 43.5,];
+
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
     const size = useWindowSize();
@@ -61,6 +59,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
 
         const handleIntersection = (entries, observer) => {
             entries.forEach((entry)=>{
+                console.log(entry);
                 if(entry.isIntersecting){
                     switch (entry.target.className) {
                         case "one":
@@ -140,7 +139,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     <BlurBoxFirst width={size.width} top={36}/><BlurBoxEnd isShow={isShowTwo} top={36}/>
                     <BlurBoxFirst width={size.width} top={43.5}/><BlurBoxEnd isShow={isShowThree} top={43.5}/>
                     <BlurBoxFirst width={size.width} top={62}/><BlurBoxEnd isShow={isShowFour} top={62}/>
-                    <BlurBoxFirst width={size.width} top={68.5}/><BlurBoxEnd isShow={isShowFive} top={68.5}/>
+                    <BlurBoxFirst width={size.width} top={68.3}/><BlurBoxEnd isShow={isShowFive} top={68.3}/>
                 </>}
                 <QuestionTwo
                     quesNum={quesNum}

@@ -71,6 +71,7 @@ const Start  = () => {
                     user_datas_M.cody_M[pageNum-1].answers 
                     : user_datas_F.cody_F[pageNum-1].answers
                 }
+                sex={sex}
             />)
         case 4:
             return (<PageFour

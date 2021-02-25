@@ -15,6 +15,7 @@ export default ({
         useEffect(()=>{
             if(id !== data_num-1 & isNoneClicked){
                 setIsClicked(false);
+                setIsOther(false);
             }
             if(id === data_num-1 & !isNoneClicked){
                 setIsClicked(false);

@@ -1,12 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
 import { QuestionTwo, Squares } from "../../components/common";
+// recoil
+import { useRecoilState } from "recoil";
+import { QuesTenFoState } from "../../states/style_atom";
 
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
+    const [selectData, setSelectData] = useRecoilState(QuesTenFoState)
+    
     useEffect(()=>{
         window.scrollTo(0,0);
     },[])
@@ -26,6 +31,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     data={user_datas} data_num={data_num}
                     isOverlap={true} maxNum={0}
                     isNoneExist={false}
+                    selectData={selectData} setSelectData={setSelectData}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>

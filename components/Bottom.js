@@ -8,7 +8,11 @@ import black_arrow_right from "../assets/img/icons/black_arrow_right.svg";
 import { useRouter } from "next/router";
 
 
-export default ({setPageNum, pageNum, lastQuesNum, kategorie}) => {
+export default ({
+    setPageNum, pageNum, 
+    isCody, setInnerPageNum, innerPageNum, lastInnerPageNum,
+    lastQuesNum, kategorie
+}) => {
     const router = useRouter();
     
     
@@ -34,7 +38,10 @@ export default ({setPageNum, pageNum, lastQuesNum, kategorie}) => {
         <>
         <Wrap>
             <BtnWrap 
-                onClick={() => setPageNum(pageNum-1)}
+                onClick={
+                    isCody&(innerPageNum!==0)? 
+                        ()=>setInnerPageNum(innerPageNum-1) 
+                        :() => setPageNum(pageNum-1)}
                 pageNum={pageNum}
             >
                 <BtnIcon src={gray_arrow_left}/>
@@ -42,9 +49,13 @@ export default ({setPageNum, pageNum, lastQuesNum, kategorie}) => {
             </BtnWrap>
             <Space pageNum={pageNum}/>
             <BtnWrap 
-                onClick={(lastQuesNum===pageNum)?
-                    handleLastPage
-                    :() => setPageNum(pageNum+1)
+                onClick={
+                    (lastQuesNum===pageNum)?
+                        handleLastPage
+                        :(isCody&(innerPageNum!==lastInnerPageNum)?
+                            ()=>setInnerPageNum(innerPageNum+1)
+                            :() => setPageNum(pageNum+1)
+                    )
                 }
                 pageNum={0}
             >

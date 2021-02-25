@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-export default ({data, data_num, isOverlap, isNoneExist, maxNum}) => {
-    const [selectData, setSelectData] = useState([]);
+export default ({
+    data, data_num, 
+    isOverlap, isNoneExist, maxNum,
+    selectData, setSelectData
+}) => {
+    // const [selectData, setSelectData] = useState([]);
     const [isNoneClicked, setIsNoneClicked] = useState(false);
 
     return(
@@ -12,7 +16,7 @@ export default ({data, data_num, isOverlap, isNoneExist, maxNum}) => {
                             key={idx}
                             text={item}
                             id={idx}
-                            data_num={data_num}
+                            data_num={data_num} data={selectData}
                             isOverlap={isOverlap} maxNum={maxNum}
                             isNoneExist={isNoneExist}
                             selectData={selectData} setSelectData={setSelectData}
@@ -32,7 +36,7 @@ const Wrap = styled.div`
 `;
 
 const Square = ({
-    id, text, data_num, 
+    id, text, data, data_num, 
     isOverlap, maxNum,
     isNoneExist,
     selectData, setSelectData, 
@@ -57,6 +61,14 @@ const Square = ({
         }, [isNoneClicked])
     }
 
+    useEffect(()=>{
+        if(data!=undefined){
+            if(data.includes(id)){
+                setIsClicked(true);
+            }
+        }
+    }, [])
+
     const handleOverlapClick = () => {
         if(isClicked){
             // 선택한 데이터가 담긴 배열에서 현재 id값 삭제.
@@ -77,7 +89,7 @@ const Square = ({
                 setIsClicked(true);
             }
         }
-        console.log(selectData);
+        // console.log(selectData);
     }
 
     const handleOneClick = () => {
