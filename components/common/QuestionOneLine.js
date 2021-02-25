@@ -4,9 +4,14 @@ import styled from "styled-components";
 
 export default ({quesNum, quesText, overlapText}) => {
     const [isShow, setIsShow] = useState(false);
+    const [isStar, setIsStar] = useState(false);
+
     useEffect(()=>{
         if(overlapText !== undefined){
             setIsShow(true);
+        }
+        if(overlapText === '*'){
+            setIsStar(true);
         }
     }, [])
     
@@ -16,7 +21,7 @@ export default ({quesNum, quesText, overlapText}) => {
             <QuesNum quesNum={quesNum}>Q{quesNum}.</QuesNum>
             <QuesTextWrap>
                 <QuesText>{quesText}</QuesText>
-                <OverlapText isShow={isShow}>({overlapText})</OverlapText>
+                <OverlapText isShow={isShow} isStar={isStar}>{isStar? overlapText : '('+overlapText+')'}</OverlapText>
             </QuesTextWrap>
         </Wrap>
         </>
@@ -25,7 +30,6 @@ export default ({quesNum, quesText, overlapText}) => {
 
 const Wrap = styled.div`
     width: 32rem;
-    /* height: 8.5rem; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -65,5 +69,5 @@ const OverlapText = styled.div`
     font-weight: bold;
     letter-spacing: -0.35px;
     text-align: left;
-    color: #be9e78;
+    color: ${props=>props.isStar? 'red' : '#be9e78'};
 `;

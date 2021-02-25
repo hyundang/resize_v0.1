@@ -27,13 +27,6 @@ const Start  = () => {
 
 
     switch(pageNum){
-        case 0:
-            return (<TransitionPage 
-                        text_one={"이제 당신의 코디 취향을"}
-                        text_two={"알아보러 가볼까요?"}
-                        setPageNum={setPageNum}
-                        kategorie={2}
-                    />)
         case 1:
             return (<PageOne 
                 lastQuesNum={7}
@@ -101,10 +94,40 @@ const Start  = () => {
                     : user_datas_F.cody_F[pageNum-1].answers.length
                 }
             />)
+            case 6:
+                return (<PageSix
+                    lastQuesNum={7}
+                    quesNum={6}
+                    setPageNum={setPageNum}
+                    user_datas={(sex===0)? 
+                        user_datas_M.cody_M[pageNum-1].answers 
+                        : user_datas_F.cody_F[pageNum-1].answers
+                    }
+                    data_num={(sex===0)? 
+                        user_datas_M.cody_M[pageNum-1].answers.length 
+                        : user_datas_F.cody_F[pageNum-1].answers.length
+                    }
+                />)
+            case 7:
+                return (<PageSeven
+                    lastQuesNum={7}
+                    quesNum={7}
+                    setPageNum={setPageNum}
+                    user_datas={(sex===0)? 
+                        user_datas_M.cody_M[pageNum-1].answers 
+                        : user_datas_F.cody_F[pageNum-1].answers
+                    }
+                    data_num={(sex===0)? 
+                        user_datas_M.cody_M[pageNum-1].answers.length 
+                        : user_datas_F.cody_F[pageNum-1].answers.length
+                    }
+                />)
         default:
             return (<TransitionPage 
                 text_one={"이제 당신의 코디 취향을"}
                 text_two={"알아보러 가볼까요?"}
+                setPageNum={setPageNum}
+                kategorie={2}
             />)
     }
 }

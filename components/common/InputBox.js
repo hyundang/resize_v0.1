@@ -7,27 +7,25 @@ import useWindowSize from "../../hooks/useWindowSize";
 
 
 // text: placeholder 문구
-// value: input값 
-// setvalue: set 함수
-export default ({text, value, setvalue}) => {
+export default ({text, input}) => {
     const [isBtnShown, setIsBtnShown] = useState(false);
     const size = useWindowSize();
 
     useEffect(()=> {
-        console.log(value);
-        if(value !== ''){
+        console.log(input.value);
+        if(input.value !== ''){
             setIsBtnShown(true);
         }
         else{
             setIsBtnShown(false);
         }
-    }, [value])
+    }, [input.value])
 
     return(
         <>
         <Wrap>
-            <Box isShown={isBtnShown} placeholder={text} onChange={(e) => setvalue(e.target.value)} value={value}/>
-            <DelBtn width={size.width} isShown={isBtnShown} onClick={() => setvalue('')} src={del_icon}/>
+            <Box isShown={isBtnShown} placeholder={text} onChange={input.onChange} value={input.value}/>
+            <DelBtn width={size.width} isShown={isBtnShown} onClick={() => input.setvalue('')} src={del_icon}/>
         </Wrap>
         </>
     )
@@ -36,9 +34,6 @@ export default ({text, value, setvalue}) => {
 const Wrap = styled.div`
     width: 32rem;
     height: 4.4rem;
-    /* display: flex;
-    flex-direction: row;
-    align-items: center; */
 `;
 
 const Box = styled.input`
@@ -46,9 +41,6 @@ const Box = styled.input`
     height: 4.4rem;
     padding-left: 1.2rem;
     padding-right: ${props=>props.isShown? '5.4rem' : '1.2rem'};
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
     border-radius: 0.5rem;
     border: solid 0.1rem #bdbdbd;
     background-color: ${({ theme }) => theme.colors.white};
@@ -56,7 +48,6 @@ const Box = styled.input`
     font-weight: 500;
     font-family: 'Noto Sans KR';
     text-align: left;
-    /* color: ${({ theme }) => theme.colors.brown_grey}; */
     color: #767676;
     ::placeholder{
         color: #bdbdbd;

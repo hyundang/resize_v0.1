@@ -24,8 +24,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num, inputTe
                 <Text>최대한 다양하게 적어주세요!</Text>
                 <InputBox
                     text={inputTextOne}
-                    value={brand_data.value}
-                    setvalue={brand_data.setValue}
+                    input={brand_data}
                 />
                 <div style={{width:'100vw', height:'3.6rem'}}/>
                 <QuestionTwo
@@ -50,8 +49,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num, inputTe
                 <div style={{width:'100vw', height:'1.9rem'}}/>
                 <InputBox
                     text={inputTextTwo}
-                    value={site_data.value}
-                    setvalue={site_data.setValue}
+                    input={site_data}
                 />
                 <div style={{width:'100vw', height:'5rem'}}/>
             </Wrap>

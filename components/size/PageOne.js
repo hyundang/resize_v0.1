@@ -32,8 +32,7 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                 <div style={{width:'32rem', height:'4.4rem'}}>
                     <InputBox
                         placeholder="키를 입력해주세요"
-                        value={user_height.value}
-                        onChange={user_height.onChange}
+                        input={user_height}
                     />
                     <Unit width={size.width}>cm</Unit>
                 </div>
@@ -42,8 +41,7 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                 <div style={{width:'32rem', height:'4.4rem'}}>
                     <InputBox
                         placeholder="몸무게를 입력해주세요"
-                        value={user_weight.value}
-                        onChange={user_weight.onChange}
+                        input={user_weight}
                     />
                     <Unit width={size.width}>kg</Unit>
                 </div>

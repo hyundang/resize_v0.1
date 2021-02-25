@@ -19,6 +19,8 @@ export default ({text_one, text_two, setPageNum, kategorie}) => {
             case 2:
                 setKategorie(2);
                 break;
+            case 3:
+                setKategorie(3);
             default:
                 break;
         }

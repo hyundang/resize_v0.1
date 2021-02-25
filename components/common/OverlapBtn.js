@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-export default ({text}) => {
+export default ({text, id, selectData, setSelectData}) => {
+    const [isClicked, setIsClicked] = useState(false);
+
+    useEffect(()=>{
+        if(!selectData.includes(id)){
+            setIsClicked(false);
+        }
+    }, [selectData])
+    
+    const handleClick = () => {
+        setSelectData([id]);
+        setIsClicked(true);
+    }
+    
     return(
         <>
-            <Wrap>
+            <Wrap isClicked={isClicked} onClick={handleClick}>
                 {text}
             </Wrap>
         </>
@@ -18,16 +31,12 @@ const Wrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1.2rem;
     border-radius: 2.8rem;
-    border: solid 0.1rem ${({ theme }) => theme.colors.pale_brown};
-    background-color: ${({ theme }) => theme.colors.white};
-    font-size: 1.3rem;
+    border: ${props=>(props.isClicked? 'none' : `solid 0.1rem #a99174`)};
+    background-color: ${props=>(props.isClicked? ({ theme }) => theme.colors.beige : ({ theme }) => theme.colors.white)};
+    font-size: 1.4rem;
     font-weight: 500;
-    text-align: cente r;
-    color: ${({ theme }) => theme.colors.pale_brown};
-    &:hover{
-        background-color: ${({ theme }) => theme.colors.beige};
-        color: ${({ theme }) => theme.colors.off_white};
-        border: none;
-    }
+    text-align: center;
+    color: ${props=>(props.isClicked? ({ theme }) => theme.colors.off_white : ({ theme }) => theme.colors.pale_brown)};
 `;

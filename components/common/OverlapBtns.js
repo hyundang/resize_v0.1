@@ -87,8 +87,7 @@ export default ({
                     <div style={{marginTop:'2.3rem'}}/>
                     <InputBox
                         text={inputText}
-                        value={input.value}
-                        setvalue={input.setValue}
+                        input={input}
                     />
                     <div style={{marginTop:'3.6rem'}}/>
                 </OtherWrap>

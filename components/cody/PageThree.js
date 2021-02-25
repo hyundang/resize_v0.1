@@ -212,6 +212,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             selectData={codyCase}
                             setSelectData={setCodyCase}
                         />
+                        <div style={{height:'3.6rem'}}/>
                     </Wrap>
                     <Bottom 
                         setPageNum={setPageNum} pageNum={quesNum} 
