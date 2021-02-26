@@ -1,22 +1,51 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-export default () => {
-    const [isClick, setIsClick] = useState(false);
-    
-    return(
-        <>
-            <Wrap/>
-        </>
-    )
-}
+export default ({className, checked, ...props}) => (
+    <CheckBoxContainer className={className}>
+        <HiddenCheckBox type={'checkbox'} checked={checked} {...props}/>
+        <StyledCheckBox checked={checked}>
+            <Icon viewBox="0 0 24 24">
+                <polyline points="19 7 10 17 5 12"/>
+            </Icon>
+        </StyledCheckBox>
+    </CheckBoxContainer>
+)
 
-const Wrap = styled.input.attrs({
-    type: 'checkbox',
-})`
-    width: 2rem;
-    height: 2rem;
-    border-radius: 0.4rem;
-    border: solid 0.1rem #dddddd;
-    color: red;
+const CheckBoxContainer = styled.div`
+display: inline-block;
+vertical-align: middle;
+`;
+
+const Icon = styled.svg`
+fill: none;
+stroke: white;
+stroke-width: 2px;
+`;
+
+const HiddenCheckBox = styled.input`
+border: 0;
+clip: rect(0 0 0 0);
+clippath: inset(50%);
+height: 1px;
+margin: -1px;
+overflow: hidden;
+padding: 0;
+position: absolute;
+white-space: nowrap;
+width: 1px;
+`;
+
+const StyledCheckBox = styled.div`
+display: inline-block;
+width: 2rem;
+height: 2rem;
+border: ${props => props.checked ? 'none' : 'solid 0.1rem #dddddd'};
+background: ${props => props.checked ? '#a99174' : 'white'};
+border-radius: 0.4rem;
+transition: all 150ms;
+
+${Icon} {
+    visibility: ${props=>props.checked? 'visible': 'hidden'};
+}
 `;
