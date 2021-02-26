@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 // components
-import OverlapBtnZero from "./OverlapBtnZero";
-import OverlapBtnOne from "./OverlapBtnOne";
-import OverlapBtn from "./OverlapBtn";
-import { InputBox, QuestionTwo } from ".";
+import { InputBox, QuestionTwo, OverlapBtn, OverlapBtnTwo, OverlapBtnOne, OverlapBtnZero } from ".";
 // hooks
 import useInput from "../../hooks/useInput";
 
@@ -94,6 +91,18 @@ export default ({
                 </div>
             )
         default:
+            return(
+                <Wrap btnType={btnType}>
+                    {data.map((item, idx)=>{
+                        return <OverlapBtnTwo
+                                    key={idx}
+                                    text={item}
+                                    id={idx}
+                                    selectData={selectData} setSelectData={setSelectData}
+                                />
+                    })}
+                </Wrap> 
+            )
             break;
     }
 }
@@ -102,8 +111,9 @@ const Wrap = styled.div`
     width: 32rem;
     display: grid;
     grid-template-columns: ${props=>(props.btnType===-1)? '1fr' 
-    : (props.btnType===0)? '1fr 1fr' 
-    : '1fr 1fr 1fr'};
+        : (props.btnType===0)? '1fr 1fr' 
+            : (props.btnType===1)? '1fr 1fr 1fr'
+            : '1fr 1fr 1fr 1fr'};
     justify-items: center;
 `;
 

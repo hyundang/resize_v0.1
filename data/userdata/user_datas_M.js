@@ -290,14 +290,21 @@ const cody_M = [
         questionNum: 7,
         answers: [],
     },
-    
+]
+
+
+const userInfo_M = [
+    {
+        id: 1,
+        answers: ['초등학생', '중학생', '고등학생', '대학생', '공무원', '주부', '사업가', '대학원생', '프리랜서', '자영업자', '무직', '기타']
+    }
 ]
 
 const user_datas = {
     style_M,
     size_M,
     cody_M,
-    // userInfo_F,
+    userInfo_M,
 }
 
 export default user_datas;

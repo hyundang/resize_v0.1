@@ -316,11 +316,18 @@ const cody_F = [
     
 ]
 
+const userInfo_F = [
+    {
+        id: 1,
+        datas: ['초등학생', '중학생', '고등학생', '대학생', '공무원', '주부', '사업가', '대학원생', '프리랜서', '자영업자', '무직', '기타']
+    }
+]
+
 const user_datas = {
     style_F,
     size_F,
     cody_F,
-    // userInfo_F,
+    userInfo_F,
 }
 
 export default user_datas;

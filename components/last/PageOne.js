@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header } from "../../components";
-import { InputBox, OverlapBtnTwo, Question, CheckBox } from "../../components/common";
+import { InputBox, Question, CheckBox, OverlapBtns } from "../../components/common";
+import Modal from "../../components/common/modal";
 // hooks
 import useInput from "../../hooks/useInput";
 // router
@@ -11,10 +12,8 @@ import { useRouter } from "next/router";
 import arrow from "../../assets/img/icons/brown_arrow_right.svg";
 
 
-export default () => {
-    // 5개 만들기
-    const input = useInput("");
-    // const checked = useInput(false);
+export default ({user_datas}) => {
+    const [modalVisible, setModalVisible] = useState(false)
 
     const router = useRouter();
     const handleClick = () => {
@@ -22,7 +21,13 @@ export default () => {
         router.push('/website_dev/result');
     }
 
+    // 5개 만들기(유저 정보 데이터)
+    const input = useInput("");
+    // 직업 데이터
+    const [selectData, setSelectData] = useState([]);
+    // 약관동의 전체동의 여부
     const [checked, setChecked] = useState(false);
+    // 약관동의 된 리스트
     const [checkedList, setCheckedList] = useState([]);
 
     const handleCheckboxClick = (e) => {
@@ -58,6 +63,7 @@ export default () => {
     },[checkedList])
 
     return(
+        <>
         <Wrap>
             <Header  kategorie={3} quesNum={1} lastQuesNum={1}/>
             <Question
@@ -113,7 +119,11 @@ export default () => {
                 text={"예) instagram"}
                 input={input}
             />
-            {/* <OverlapBtnTwo/> 직업태그넣기 */}
+            <div style={{marginTop:'3.6rem'}}/>
+            <OverlapBtns
+                btnType={2}
+                data={user_datas}
+            />
             <div style={{marginTop:'3.6rem'}}/>
             <Question
                 quesNum={0}
@@ -131,22 +141,39 @@ export default () => {
                 text={"리사이즈 이용약관"}
                 checkedList={checkedList} 
                 handleCheckClick={handleCheckClick}
+                handleBtnClick={()=>setModalVisible(true)}
             />
             <PolicyBox
                 id={2}
                 text={"리사이즈 개인 정보 처리방침"}
                 checkedList={checkedList} 
                 handleCheckClick={handleCheckClick}
+                handleBtnClick={()=>setModalVisible(true)}
             />
             <PolicyBox
                 id={3}
                 text={"[선택] 마케팅 활용동의"}
                 checkedList={checkedList} 
                 handleCheckClick={handleCheckClick}
+                handleBtnClick={()=>setModalVisible(true)}
             />
             <div style={{marginTop:'3.6rem'}}/>
             <Bottom onClick={handleClick}>스타일링 끝내기</Bottom>
         </Wrap>
+        {modalVisible&&
+        <Modal
+            visible={modalVisible}
+            closable={true}
+            maskClosable={true}
+            onClose={()=>setModalVisible(false)}
+            title= {'개인정보 처리방침'}
+        >
+            <div>제 1조 [총칙]</div>
+            <div>“리사이즈”는 이용자들의 개인정보를 중요시하며 고객들의 개인정보를 보호하기 위해 최선을 다하고 있습니다. 따라서 「통신비밀보호법」 ,「정보통신망 이용촉진 및 정보보호 등에 관한 법률」  등과 관련된 법규를 준수하기 위해  [개인정보 처리방침]을 제정하고 이를 준수하고 있습니다.</div>
+            <div>리사이즈는 다음 개인정보 처리방침을 통하여 이용자들의 개인정보가 어떠한 용도로 이용되고 있으며 어떠한 방식으로 관리되고 있는지 또한 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려 드립니다.</div>
+        </Modal>
+        }
+        </>
     )
 }
 
@@ -178,7 +205,7 @@ const Bottom = styled.div`
 
 `;
 
-const PolicyBox = ({id, checkedList, handleCheckClick, text}) => {
+const PolicyBox = ({id, checkedList, handleCheckClick, text, handleBtnClick}) => {
     return(
         <BoxWrap>
             <div style={{width:'2rem',height:'2rem',marginLeft:'1.3rem'}} >
@@ -187,7 +214,7 @@ const PolicyBox = ({id, checkedList, handleCheckClick, text}) => {
                 </Icon>
             </div>
             <Text>{text}</Text>
-            <img src={arrow} style={{width:'4rem',height:'4rem'}}/>
+            <img src={arrow} style={{width:'4rem',height:'4rem'}} onClick={handleBtnClick}/>
         </BoxWrap>
     )
 }
