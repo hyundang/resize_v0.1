@@ -1,22 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
 import { QuestionTwo, OverlapBtns } from "../../components/common";
-// hooks
-import useInput from "../../hooks/useInput";
-import useWindowSize from "../../hooks/useWindowSize";
+
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
-    const size = useWindowSize();
-    const user_height = useInput("");
-    const user_weight = useInput("");
     
     useEffect(()=>{
         window.scrollTo(0,0);
     }, [])
 
+    const [selectData, setSelectData] = useState([]);
 
 
     return(
@@ -37,6 +33,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     isOverlap={false}
                     maxNum={2}
                     isNoneExist={false}
+                    selectData={selectData} setSelectData={setSelectData}
                     otherTextOne={"이외에 연출하고 싶은"}
                     otherTextTwo={"스타일이 있다면 알려주세요!"}
                     inputText={"예) 상견례룩을 추천해주세요!"}

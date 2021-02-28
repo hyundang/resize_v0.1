@@ -5,13 +5,22 @@ export default ({text, id, selectData, setSelectData}) => {
     const [isClicked, setIsClicked] = useState(false);
 
     useEffect(()=>{
-        if(!selectData.includes(id)){
+        if(selectData!==id){
             setIsClicked(false);
         }
     }, [selectData])
     
+    useEffect(()=>{
+        if(selectData!==id){
+            setIsClicked(false);
+        }
+        else{
+            setIsClicked(true);
+        }
+    }, [])
+
     const handleClick = () => {
-        setSelectData([id]);
+        setSelectData(id);
         setIsClicked(true);
     }
     

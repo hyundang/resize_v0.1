@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
@@ -10,6 +10,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     useEffect(()=>{
         window.scrollTo(0,0);
     },[])
+
+    const [selectData, setSelectData] = useState([]);
+    const [selectDataTwo, setSelectDataTwo] = useState(-1);
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
@@ -28,6 +31,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     btnType={0}
                     isOverlap={true}
                     isNoneExist={false}
+                    selectData={selectData}  setSelectData={setSelectData}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
                 <QuestionTwo
@@ -42,6 +46,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     btnType={-1}
                     isOverlap={false}
                     isNoneExist={false}
+                    selectData={selectDataTwo}  setSelectData={setSelectDataTwo}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
                 <Question
@@ -55,6 +60,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     btnType={-1}
                     isOverlap={false}
                     isNoneExist={false}
+                    selectData={selectDataTwo}  setSelectData={setSelectDataTwo}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>

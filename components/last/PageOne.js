@@ -123,6 +123,7 @@ export default ({user_datas}) => {
             <OverlapBtns
                 btnType={2}
                 data={user_datas}
+                selectData={selectData} setSelectData={setSelectData}
             />
             <div style={{marginTop:'3.6rem'}}/>
             <Question

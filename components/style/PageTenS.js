@@ -11,6 +11,8 @@ import useInput from "../../hooks/useInput";
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num, inputTextOne, inputTextTwo}) => {
     const brand_data = useInput("");
     const site_data = useInput("");
+
+    const [selectData, setSelectData] = useState([]);
     
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
@@ -39,6 +41,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num, inputTe
                     btnType={1}
                     isOverlap={true} maxNum={0}
                     isNoneExist={true}
+                    selectData={selectData} setSelectData={setSelectData}
                 />
                 <div style={{width:'100vw', height:'2.5rem'}}/>
                 <Question

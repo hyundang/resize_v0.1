@@ -6,6 +6,10 @@ import black_arrow_left from "../assets/img/icons/black_arrow_left.svg";
 import black_arrow_right from "../assets/img/icons/black_arrow_right.svg";
 // router
 import { useRouter } from "next/router";
+// recoil
+import { useSetRecoilState } from "recoil";
+import { StylePageNumState } from "../states/style_atom";
+import { SizePageNumState } from "../states/size_atom";
 
 
 export default ({
@@ -14,10 +18,21 @@ export default ({
     lastQuesNum, kategorie
 }) => {
     const router = useRouter();
-    
+    const setStlyePageNum = useSetRecoilState(StylePageNumState);
+    const setSizePageNum = useSetRecoilState(SizePageNumState);
+
     
     const handleLastPage = () => {
         switch (kategorie) {
+            case -1:
+                // 이미 저장되어있는 유저 전화번호일때
+                // 서버로 부터 데이터 받아오기.
+                // 그 후 recoil에 받아온 데이터들 저장.
+                // 그 후 router.push();
+                setStlyePageNum(1);
+                setSizePageNum(1);
+                router.push('/website_dev/cody');
+                break;
             case 0:
                 router.push('/website_dev/size');
                 break;

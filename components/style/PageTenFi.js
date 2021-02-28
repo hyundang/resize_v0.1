@@ -12,6 +12,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     const [isShow, setIsShow] = useState(false);
     const size = useWindowSize();
 
+    const [selectData, setSelectData] = useState([]);
     
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
@@ -53,6 +54,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     btnType={0}
                     isOverlap={true} maxNum={0}
                     isNoneExist={true}
+                    selectData={selectData} setSelectData={setSelectData}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>

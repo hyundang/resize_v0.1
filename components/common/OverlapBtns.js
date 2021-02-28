@@ -10,9 +10,9 @@ export default ({
     btnType, 
     isOverlap, maxNum, 
     isNoneExist,
-    otherTextOne, otherTextTwo, inputText
+    otherTextOne, otherTextTwo, inputText,
+    selectData, setSelectData
 }) => {
-    const [selectData, setSelectData] = useState([]);
     const input = useInput("");
     const [isNoneClicked, setIsNoneClicked] = useState(false);
     const [isOther, setIsOther] = useState(false);
