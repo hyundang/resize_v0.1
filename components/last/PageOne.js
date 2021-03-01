@@ -86,6 +86,9 @@ export default ({user_datas}) => {
             setIsNextOkay(true);
             // console.log(1);
         }
+        else{
+            setIsNextOkay(false);
+        }
     },[result, checkedList, selectData]);
 
     return(
@@ -237,9 +240,9 @@ const Bottom = styled.div`
 const PolicyBox = ({id, checkedList, handleCheckClick, text, handleBtnClick}) => {
     return(
         <BoxWrap>
-            <div style={{width:'2rem',height:'2rem',marginLeft:'1.3rem'}} >
-                <Icon viewBox="0 0 24 24" checked={checkedList.includes(`${id}`)?true:false} onClick={handleCheckClick} id={id}>
-                    <polyline points="19 7 10 17 5 12"/>
+            <div style={{width:'2rem',height:'2rem',marginLeft:'1.3rem'}} id={id} onClick={handleCheckClick}>
+                <Icon viewBox="0 0 24 24" checked={checkedList.includes(`${id}`)?true:false} id={id}>
+                    <polyline points="19 7 10 17 5 12" id={id} onClick={handleCheckClick}/>
                 </Icon>
             </div>
             <Text>{text}</Text>
