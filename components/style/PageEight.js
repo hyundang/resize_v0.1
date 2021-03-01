@@ -4,13 +4,16 @@ import styled from "styled-components";
 import { Header, Bottom } from "../../components";
 import { InputBoxBig, QuestionTwo } from "../../components/common";
 // hooks
-import useInput from "../../hooks/useInput";
-
+// import useInput from "../../hooks/useInput";
+import useInput from "../../hooks/useRecoilInput";
+// recoil
+// import { useRecoilState } from "recoil";
+import { QuesEightState } from "../../states/style_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum}) => {
     // 유저 input값
-    const input = useInput("");
+    const input = useInput(QuesEightState);
     
     useEffect(()=>{
         window.scrollTo(0,0);

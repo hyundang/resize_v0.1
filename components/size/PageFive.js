@@ -5,17 +5,19 @@ import { Header, Bottom } from "../../components";
 import { QuestionTwo, OverlapBtnThree } from "../../components/common";
 // hooks
 import useWindowSize from "../../hooks/useWindowSize";
-
+// recoil
+import { useRecoilState } from "recoil";
+import { ClothesSizeState } from "../../states/size_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
     const size = useWindowSize();
     // 항목 개수에 맞게 만들기
-    const [selectOneData, setSelectOneData] = useState([]);
-    const [selectTwoData, setSelectTwoData] = useState([]);
-    const [selectThreeData, setSelectThreeData] = useState([]);
-    const [selectFourData, setSelectFourData] = useState([]);
-    const [selectFiveData, setSelectFiveData] = useState([]);
+    const [selectOneData, setSelectOneData] = useRecoilState(ClothesSizeState(0));
+    const [selectTwoData, setSelectTwoData] = useRecoilState(ClothesSizeState(1));
+    const [selectThreeData, setSelectThreeData] = useRecoilState(ClothesSizeState(2));
+    const [selectFourData, setSelectFourData] = useRecoilState(ClothesSizeState(3));
+    const [selectFiveData, setSelectFiveData] = useRecoilState(ClothesSizeState(4));
 
     const [isShowOne, setIsShowOne] = useState(false);
     const [isShowTwo, setIsShowTwo] = useState(false);

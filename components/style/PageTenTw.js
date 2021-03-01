@@ -3,10 +3,15 @@ import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
 import { QuestionTwo, Rectangles } from "../../components/common";
-
+// recoil
+import { useRecoilState } from "recoil";
+import { QuesTenTwState } from "../../states/style_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
+    // 선택한 데이터가 담긴 배열
+    const [selectData, setSelectData] = useRecoilState(QuesTenTwState);
+    
     useEffect(()=>{
         window.scrollTo(0,0);
     },[])
@@ -25,6 +30,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <Rectangles 
                     data={user_datas} data_num={data_num}
                     isOverlap={true}
+                    selectData={selectData}
+                    setSelectData={setSelectData}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>

@@ -5,25 +5,41 @@ export default ({
     id, text, data_num,
     isOverlap, maxNum, isNoneExist,
     selectData, setSelectData, 
-    isNoneClicked, setIsNoneClicked,
     setIsOther
 }) => {
     const [isClicked, setIsClicked] = useState(false);
 
-    if(isNoneExist){
-        //'없음'항목 존재할 때
-        useEffect(()=>{
-            if(id !== data_num-1 & isNoneClicked){
+    // 처음 렌더링 되었을 때
+    useEffect(()=>{
+        if(selectData.includes(id)){
+            setIsClicked(true);
+        }
+    }, [])
+
+
+    useEffect(()=>{
+        // '없음' 항목이 존재하는 경우
+        if(isNoneExist){
+            if(id !== data_num-1 & selectData.length===1 & selectData.includes(data_num-1)){
                 setIsClicked(false);
             }
-            if(id === data_num-1 & !isNoneClicked){
+            if(id === data_num-1 & selectData.length===2 & selectData.includes(id)){
                 setIsClicked(false);
                 setSelectData(selectData.filter((s, idx)=>{
                     return s !== data_num-1;
                 }));
             }
-        }, [isNoneClicked]);
-    };
+        }
+        else{
+            if(selectData.includes(id)){
+                setIsClicked(true);
+            }
+            else{
+                setIsClicked(false);
+            }
+        }
+    }, [selectData])
+
 
     const handleOverlapClick = () => {
         if(isClicked){
@@ -38,11 +54,7 @@ export default ({
         }
         else{
             if(isNoneExist & id === data_num-1){
-                if(text === "기타"){
-                    setIsOther(true);
-                }
                 setSelectData([id]);
-                setIsNoneClicked(true);
                 setIsClicked(true);
             }
             else{
@@ -50,11 +62,10 @@ export default ({
                     setIsOther(true);
                 }
                 setSelectData(selectData.concat([id]));
-                setIsNoneClicked(false);
                 setIsClicked(true);
             }
         }
-        console.log(selectData);
+        // console.log(selectData);
     };
 
     const handleTwoClick = () => {
@@ -76,7 +87,7 @@ export default ({
                 setSelectData(selectData.concat([id]));
                 setIsClicked(true);
             }
-        console.log(selectData);
+        // console.log(selectData);
         }
     };
     

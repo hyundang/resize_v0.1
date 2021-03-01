@@ -30,7 +30,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <Squares
                     data={user_datas} data_num={data_num}
                     isOverlap={true} maxNum={0}
-                    isNoneExist={false}
+                    isBorderLine={false}
                     selectData={selecData} setSelectData={setSelectData}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>

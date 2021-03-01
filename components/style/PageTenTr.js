@@ -10,6 +10,7 @@ import { QuesTenTrState } from "../../states/style_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
+    // 선택한 데이터가 담긴 배열
     const [selectData, setSelectData] = useRecoilState(QuesTenTrState)
 
     useEffect(()=>{
@@ -30,7 +31,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <Squares 
                     data={user_datas} data_num={data_num}
                     isOverlap={true} maxNum={0}
-                    isNoneExist={false}
+                    isBorderLine={true}
                     selectData={selectData} setSelectData={setSelectData}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>

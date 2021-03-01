@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const datas = ["작다", "", "중간", "", "크다"];
 
-export default ({data}) => {
-    const [btnNum, setBtnNum] = useState(-1);
+export default ({data, selectData, setSelectData}) => {
+    // const [btnNum, setBtnNum] = useState(-1);
     
     return(
         <>
@@ -13,7 +13,7 @@ export default ({data}) => {
                 <Bar/>
                 <CircleListWrap>
                     {datas.map((data, idx)=>{
-                        return <CircleBtn id={idx} num={btnNum} setnum={setBtnNum}/>
+                        return <CircleBtn id={idx} num={selectData} setnum={setSelectData}/>
                     })}
                 </CircleListWrap>
             </BarWrap>
@@ -30,6 +30,12 @@ export default ({data}) => {
 const CircleBtn = ({id, num, setnum}) => {
     const [isClick, setIsClick] = useState(false);
     
+    useEffect(()=>{
+        if(num===id){
+            setIsClick(true);
+        }
+    }, [])
+
     let width = 1.2;
     if(id == 0 || id == 4){
         width = 1.5;

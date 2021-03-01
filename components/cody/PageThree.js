@@ -56,8 +56,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             data={user_datas[itemList[0]].datas}
                             data_num={user_datas[itemList[0]].datas.length}
                             btnType={1}
-                            isOverlap={true}
-                            isNoneExist={true}
+                            isOverlap={true} isNoneExist={true}
                             selectData={selectData} setSelectData={setSelectData}
                             otherTextOne={"이외에 포함하고 싶지 않은"}
                             otherTextTwo={`${user_datas[itemList[0]].question}가 있다면 알려주세요!`}
@@ -88,8 +87,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             data={user_datas[itemList[1]].datas}
                             data_num={user_datas[itemList[1]].datas.length}
                             btnType={1}
-                            isOverlap={true}
-                            isNoneExist={true}
+                            isOverlap={true} isNoneExist={true}
                             selectData={selectData} setSelectData={setSelectData}
                             otherTextOne={"이외에 포함하고 싶지 않은"}
                             otherTextTwo={`${user_datas[itemList[1]].question}가 있다면 알려주세요!`}
@@ -120,8 +118,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             data={user_datas[itemList[2]].datas}
                             data_num={user_datas[itemList[2]].datas.length}
                             btnType={1}
-                            isOverlap={true}
-                            isNoneExist={true}
+                            isOverlap={true} isNoneExist={true}
                             selectData={selectData} setSelectData={setSelectData}
                             otherTextOne={"이외에 포함하고 싶지 않은"}
                             otherTextTwo={`${user_datas[itemList[2]].question}가 있다면 알려주세요!`}
@@ -152,8 +149,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             data={user_datas[itemList[3]].datas}
                             data_num={user_datas[itemList[3]].datas.length}
                             btnType={1}
-                            isOverlap={true}
-                            isNoneExist={true}
+                            isOverlap={true} isNoneExist={true}
                             selectData={selectData} setSelectData={setSelectData}
                             otherTextOne={"이외에 포함하고 싶지 않은"}
                             otherTextTwo={`${user_datas[itemList[3]].question}가 있다면 알려주세요!`}
@@ -184,8 +180,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             data={user_datas[itemList[4]].datas}
                             data_num={user_datas[itemList[4]].datas.length}
                             btnType={1}
-                            isOverlap={true}
-                            isNoneExist={true}
+                            isOverlap={true} isNoneExist={true}
                             selectData={selectData} setSelectData={setSelectData}
                             otherTextOne={"이외에 포함하고 싶지 않은"}
                             otherTextTwo={`${user_datas[itemList[4]].question}가 있다면 알려주세요!`}
@@ -216,7 +211,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             data={user_datas[0].datas}
                             data_num={user_datas[0].datas.length}
                             isOverlap={false} maxNum={2}
-                            isNoneExist={false}
+                            isBorderLine={true}
                             selectData={codyCase}
                             setSelectData={setCodyCase}
                         />

@@ -3,13 +3,16 @@ import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
 import { Question, RatioStep } from "../../components/common";
-
+// recoil
+import { useRecoilState } from "recoil";
+import { BodySizeState } from "../../states/size_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     useEffect(()=>{
         window.scrollTo(0,0);
     }, [])
+    
     
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
@@ -25,6 +28,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                 {user_datas.map((item, idx)=>{
                     return <Btn
                                 key={idx}
+                                id={idx}
                                 data={item}
                             />
                 })}
@@ -52,12 +56,16 @@ const SmallText = styled.div`
     white-space: pre-line;
 `;
 
-const Btn = ({data}) => {
+const Btn = ({data, id}) => {
+    const [selectData, setSelectData] = useRecoilState(BodySizeState(id));
+
     return(
         <div style={{marginBottom:'3.6rem'}}>
             <Text>{data.question}</Text>
             <RatioStep
                 data={data.datas}
+                selectData={selectData}
+                setSelectData={setSelectData}
             />
         </div>
     )

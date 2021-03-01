@@ -5,14 +5,17 @@ import { Header, Bottom } from "../../components";
 import { OverlapBtns, QuestionTwo } from "../../components/common";
 // hooks
 import useWindowSize from "../../hooks/useWindowSize";
-
+// recoil
+import { useRecoilState } from "recoil";
+import { QuesTenFiState } from "../../states/style_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     const [isShow, setIsShow] = useState(false);
     const size = useWindowSize();
 
-    const [selectData, setSelectData] = useState([]);
+    // 선택한 데이터가 담긴 배열
+    const [selectData, setSelectData] = useRecoilState(QuesTenFiState);
     
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>

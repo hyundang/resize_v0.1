@@ -3,10 +3,14 @@ import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
 import { Circles, QuestionTwo } from "../../components/common";
-
+// recoil
+import { useRecoilState } from "recoil";
+import { CodyColorstate } from "../../states/cody_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
+    const [selectData, setSelectData] = useRecoilState(CodyColorstate(0));
+    
     useEffect(()=>{
         window.scrollTo(0,0);
     },[])
@@ -22,7 +26,12 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     overlapText={"중복선택"}
                 />
                 <div style={{marginBottom:'3.4rem'}}/>
-                <Circles data={user_datas} data_num={data_num} isThree={false} isOverlap={true}/>
+                <Circles 
+                    data={user_datas} data_num={data_num} 
+                    isThree={false} isOverlap={true}
+                    isNoneExist={true}
+                    selectData={selectData} setSelectData={setSelectData}
+                />
                 <div style={{height:'3.6rem'}}/>
             </Wrap>
             <Bottom setPageNum={setPageNum} pageNum={quesNum}/>

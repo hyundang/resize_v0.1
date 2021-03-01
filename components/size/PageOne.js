@@ -4,19 +4,22 @@ import styled from "styled-components";
 import { Header, Bottom } from "../../components";
 import { Question } from "../../components/common";
 // hooks
-import useInput from "../../hooks/useInput";
+import useRecoilInput from "../../hooks/useRecoilInput";
 import useWindowSize from "../../hooks/useWindowSize";
+// recoil
+import { UserHnWState } from "../../states/size_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum}) => {
     const size = useWindowSize();
-    const user_height = useInput("");
-    const user_weight = useInput("");
+
+    // 유저 input 데이터
+    const user_height = useRecoilInput(UserHnWState(0));
+    const user_weight = useRecoilInput(UserHnWState(1));
     
     useEffect(()=>{
         window.scrollTo(0,0);
     }, [])
-
 
 
     return(
@@ -32,7 +35,8 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                 <div style={{width:'32rem', height:'4.4rem'}}>
                     <InputBox
                         placeholder="키를 입력해주세요"
-                        input={user_height}
+                        value={user_height.value}
+                        onChange={user_height.onChange}
                     />
                     <Unit width={size.width}>cm</Unit>
                 </div>
@@ -41,7 +45,8 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                 <div style={{width:'32rem', height:'4.4rem'}}>
                     <InputBox
                         placeholder="몸무게를 입력해주세요"
-                        input={user_weight}
+                        value={user_weight.value}
+                        onChange={user_weight.onChange}
                     />
                     <Unit width={size.width}>kg</Unit>
                 </div>

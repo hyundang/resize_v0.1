@@ -1,13 +1,8 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 
 export const StylePageNumState = atom({
     key: "StylePageNumState",
     default: 0
-})
-
-export const QuesOneState = atom({
-    key: "QuesOneState",
-    default: []
 })
 
 export const QuesTwoState = atom({
@@ -42,7 +37,7 @@ export const QuesSevenState = atom({
 
 export const QuesEightState = atom({
     key: "QuesEightState",
-    default: []
+    default: ""
 })
 
 export const QuesNineState = atom({
@@ -76,12 +71,35 @@ export const QuesTenFoState = atom({
 })
 
 export const QuesTenFiState = atom({
-    key: "QuesFiState",
+    key: "QuesTenFiState",
     default: []
 })
 
-export const QuesTenSState = atom({
+export const SiteState = atom({
+    key: "SiteState",
+    default: []
+})
+
+export const BrandNameState = atom({
+    key: "BrandNameState",
+    default: ""
+})
+
+export const SiteNameState = atom({
+    key: "SiteNameState",
+    default: ""
+})
+
+export const QuesTenSState = selector({
     key: "QuesTenSState",
-    default: []
+    get: ({ get }) => {
+        let site = get(SiteState);
+        let brand = get(BrandNameState);
+        let site_name = get(SiteNameState);
+        return {
+            brand: brand,
+            site: site,
+            siteName: site_name
+        }
+    }
 })
-

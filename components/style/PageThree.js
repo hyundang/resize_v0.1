@@ -3,10 +3,15 @@ import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
 import { QuestionTwo, Styles } from "../../components/common";
-
+// recoil
+import { useRecoilState } from "recoil";
+import { QuesThreeState } from "../../states/style_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
+    // 선택한 데이터가 담긴 배열(1순위: index=0, 2순위: index=1..) ex)[3,11,9]-> 1순위는 id=3인 이미지
+    const [selectData, setSelectData] = useRecoilState(QuesThreeState);
+    
     useEffect(()=>{
         window.scrollTo(0,0);
     }, [])
@@ -21,7 +26,11 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                     quesTextTwo={"순서대로 골라주실래요?"}
                     overlapText={"최대 3개"}
                 />
-                <Styles data={user_datas}/>
+                <Styles 
+                    data={user_datas}
+                    selectData={selectData}
+                    setSelectData={setSelectData}
+                />
                 <div style={{marginBottom:'2.3rem'}}/>
             </Wrap>
             <Bottom setPageNum={setPageNum} pageNum={quesNum}/>

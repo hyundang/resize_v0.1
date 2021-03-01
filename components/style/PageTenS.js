@@ -4,15 +4,22 @@ import styled from "styled-components";
 import { Header, Bottom } from "../../components";
 import { OverlapBtns, QuestionTwo, InputBox, Question } from "../../components/common";
 // hooks
-import useInput from "../../hooks/useInput";
+// import useInput from "../../hooks/useInput";
+import useRecoilInput from "../../hooks/useRecoilInput";
+// recoil
+import { useRecoilState } from "recoil";
+import { SiteState, BrandNameState, SiteNameState } from "../../states/style_atom";
 
 
+export default ({
+    quesNum, lastQuesNum, setPageNum, 
+    user_datas, data_num, 
+    inputTextOne, inputTextTwo
+}) => {
+    const brand_data = useRecoilInput(BrandNameState);
+    const site_data = useRecoilInput(SiteNameState);
 
-export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num, inputTextOne, inputTextTwo}) => {
-    const brand_data = useInput("");
-    const site_data = useInput("");
-
-    const [selectData, setSelectData] = useState([]);
+    const [selectData, setSelectData] = useRecoilState(SiteState);
     
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>

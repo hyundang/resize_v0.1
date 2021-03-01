@@ -5,15 +5,18 @@ import { Header } from "../../components";
 import { InputBox, Question, CheckBox, OverlapBtns } from "../../components/common";
 import Modal from "../../components/common/modal";
 // hooks
-import useInput from "../../hooks/useInput";
+import useRecoilInput from "../../hooks/useRecoilInput";
 // router
 import { useRouter } from "next/router";
 // assets
 import arrow from "../../assets/img/icons/brown_arrow_right.svg";
+// recoil
+import { useRecoilState, useRecoilValue } from "recoil";
+import { UserInfoState, UserJobState, CheckedListState, TotalUserInfoState } from "../../states/last_atom";
 
 
 export default ({user_datas}) => {
-    const [modalVisible, setModalVisible] = useState(false)
+    const [modalVisible, setModalVisible] = useState(false);
 
     const router = useRouter();
     const handleClick = () => {
@@ -21,14 +24,25 @@ export default ({user_datas}) => {
         router.push('/website_dev/result');
     }
 
-    // 5개 만들기(유저 정보 데이터)
-    const input = useInput("");
+    // 유저 정보 데이터
+    const name = useRecoilInput(UserInfoState(0));
+    const birth = useRecoilInput(UserInfoState(1));
+    const phone = useRecoilInput(UserInfoState(2));
+    const email = useRecoilInput(UserInfoState(3));
+    const instagram = useRecoilInput(UserInfoState(4));
     // 직업 데이터
-    const [selectData, setSelectData] = useState([]);
+    const [selectData, setSelectData] = useRecoilState(UserJobState);
+    // 전체 데이터
+    const result = useRecoilValue(TotalUserInfoState);
+
+    
     // 약관동의 전체동의 여부
     const [checked, setChecked] = useState(false);
     // 약관동의 된 리스트
-    const [checkedList, setCheckedList] = useState([]);
+    const [checkedList, setCheckedList] = useRecoilState(CheckedListState);
+
+    // 다음 단계 진행 가능 여부
+    const [isNextOkay, setIsNextOkay] = useState(false);
 
     const handleCheckboxClick = (e) => {
         if(e.target.checked){
@@ -62,6 +76,18 @@ export default ({user_datas}) => {
         }
     },[checkedList])
 
+    // 다음 단계로 진행 가능 여부 판단
+    useEffect(()=>{
+        console.log(checkedList);
+        if(result.name!=="" & result.birth!==""
+        & result.phone!=="" & result.email!==""
+        & selectData!==-1
+        & checkedList.includes('1') & checkedList.includes('2')){
+            setIsNextOkay(true);
+            // console.log(1);
+        }
+    },[result, checkedList, selectData]);
+
     return(
         <>
         <Wrap>
@@ -74,7 +100,7 @@ export default ({user_datas}) => {
             <div style={{marginTop:'2.4rem'}}/>
             <InputBox
                 text={"예) 홍길동"}
-                input={input}
+                input={name}
             />
             <div style={{marginTop:'3.2rem'}}/>
             <Question
@@ -85,7 +111,7 @@ export default ({user_datas}) => {
             <div style={{marginTop:'2.4rem'}}/>
             <InputBox
                 text={"예) 2021.01.01"}
-                input={input}
+                input={birth}
             />
             <div style={{marginTop:'3.2rem'}}/>
             <Question
@@ -96,7 +122,7 @@ export default ({user_datas}) => {
             <div style={{marginTop:'2.4rem'}}/>
             <InputBox
                 text={"예) 01012345678"}
-                input={input}
+                input={phone}
             />
             <div style={{marginTop:'3.2rem'}}/>
             <Question
@@ -107,7 +133,7 @@ export default ({user_datas}) => {
             <div style={{marginTop:'2.4rem'}}/>
             <InputBox
                 text={"예) resize@gmail.com"}
-                input={input}
+                input={email}
             />
             <div style={{marginTop:'3.2rem'}}/>
             <Question
@@ -117,12 +143,14 @@ export default ({user_datas}) => {
             <div style={{marginTop:'2.4rem'}}/>
             <InputBox
                 text={"예) instagram"}
-                input={input}
+                input={instagram}
             />
             <div style={{marginTop:'3.6rem'}}/>
             <OverlapBtns
                 btnType={2}
                 data={user_datas}
+                isOverlap={false} maxNum={1}
+                isNoneExist={false}
                 selectData={selectData} setSelectData={setSelectData}
             />
             <div style={{marginTop:'3.6rem'}}/>
@@ -159,7 +187,7 @@ export default ({user_datas}) => {
                 handleBtnClick={()=>setModalVisible(true)}
             />
             <div style={{marginTop:'3.6rem'}}/>
-            <Bottom onClick={handleClick}>스타일링 끝내기</Bottom>
+            <Bottom onClick={isNextOkay? handleClick : ()=>{}}>스타일링 끝내기</Bottom>
         </Wrap>
         {modalVisible&&
         <Modal

@@ -4,13 +4,14 @@ import styled from "styled-components";
 import { Header, Bottom } from "../../components";
 import { InputBoxBig, Question } from "../../components/common";
 // hooks
-import useInput from "../../hooks/useInput";
-
+import useRecoilInput from "../../hooks/useRecoilInput";
+// recoil
+import { BodyPnCState } from "../../states/size_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum}) => {
-    const pros = useInput("");
-    const cons = useInput("");
+    const pros = useRecoilInput(BodyPnCState(0));
+    const cons = useRecoilInput(BodyPnCState(1));
     
     useEffect(()=>{
         window.scrollTo(0,0);

@@ -3,28 +3,66 @@ import styled from 'styled-components';
 
 export default ({
     id, text, data_num,
-    isOverlap, maxNum, isNoneExist,
+    btnType,
+    isOverlap, maxNum, 
+    isNoneExist,
     selectData, setSelectData, 
-    isNoneClicked, setIsNoneClicked,
     setIsOther
 }) => {
     const [isClicked, setIsClicked] = useState(false);
 
-    if(isNoneExist){
-        //'없음'항목 존재할 때
+
+    if(isOverlap | maxNum===2){
+        // 중복선택일 경우 또는 최대 2개 선택일 경우
+        // 처음 렌더링 되었을 때
         useEffect(()=>{
-            if(id !== data_num-1 & isNoneClicked){
-                setIsClicked(false);
-                setIsOther(false);
+            if(selectData.includes(id)){
+                setIsClicked(true);
             }
-            if(id === data_num-1 & !isNoneClicked){
-                setIsClicked(false);
-                setSelectData(selectData.filter((s, idx)=>{
-                    return s !== data_num-1;
-                }));
+        }, [])
+
+        useEffect(()=>{
+            // '없음' 항목이 존재하는 경우
+            if(isNoneExist){
+                if(id !== data_num-1 & selectData.length===1 & selectData.includes(data_num-1)){
+                    setIsClicked(false);
+                }
+                if(id === data_num-1 & selectData.length===2 & selectData.includes(id)){
+                    setIsClicked(false);
+                    setSelectData(selectData.filter((s, idx)=>{
+                        return s !== data_num-1;
+                    }));
+                }
             }
-        }, [isNoneClicked]);
-    };
+            else{
+                if(selectData.includes(id)){
+                    setIsClicked(true);
+                }
+                else{
+                    setIsClicked(false);
+                }
+            }
+        }, [selectData])
+    }
+    else{
+        // 1개만 선택하는 경우
+        // 처음 렌더링 되었을 때
+        useEffect(()=>{
+            if(selectData===id){
+                setIsClicked(true);
+            }
+        }, [])
+
+        useEffect(()=>{
+            if(selectData===id){
+                setIsClicked(true);
+            }
+            else{
+                setIsClicked(false);
+            }
+        }, [selectData])
+    }
+
 
     const handleOverlapClick = () => {
         if(isClicked){
@@ -39,11 +77,7 @@ export default ({
         }
         else{
             if(isNoneExist & id === data_num-1){
-                if(text === "기타"){
-                    setIsOther(true);
-                }
                 setSelectData([id]);
-                setIsNoneClicked(true);
                 setIsClicked(true);
             }
             else{
@@ -51,11 +85,10 @@ export default ({
                     setIsOther(true);
                 }
                 setSelectData(selectData.concat([id]));
-                setIsNoneClicked(false);
                 setIsClicked(true);
             }
         }
-        console.log(selectData);
+        // console.log(selectData);
     };
 
     const handleTwoClick = () => {
@@ -85,13 +118,27 @@ export default ({
                 setSelectData(selectData.concat([id]));
                 setIsClicked(true);
             }
-        console.log(selectData);
+        // console.log(selectData);
         }
     };
+
+
+    const handleOneClick = () => {
+        setSelectData(id);
+        setIsClicked(true);
+    }
+
+    
     
     return(
             <Wrap
-                onClick={isOverlap? handleOverlapClick : handleTwoClick}
+                onClick=
+                {isOverlap? 
+                    handleOverlapClick 
+                    : (maxNum===2)? 
+                        handleTwoClick 
+                        : handleOneClick }
+                btnType={btnType}
                 isClicked={isClicked}
             >
                 {text}
@@ -100,16 +147,31 @@ export default ({
 }
 
 const Wrap = styled.div`
-    width: 10rem;
-    height: 4.2rem;
-    margin-bottom: 1.5rem;
+    width: ${props=>(props.btnType===-1)? '29rem'
+            : (props.btnType===0)? '15.5rem'
+                : (props.btnType===1)? '10rem'
+                    :'7.6rem'};
+    height: ${props=>(props.btnType===-1)? '5.6rem'
+            : (props.btnType===0)? '5.6rem'
+                : (props.btnType===1)? '4.2rem'
+                    :'3.8rem'};
+    margin-bottom: ${props=>(props.btnType===-1)? '1.2rem'
+                    : (props.btnType===0)? '1.2rem'
+                        : (props.btnType===1)? '1.5rem'
+                            :'1rem'};
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 2.1rem;
+    border-radius: ${props=>(props.btnType===-1)? '2.8rem'
+                    : (props.btnType===0)? '2.8rem'
+                        : (props.btnType===1)? '2.1rem'
+                            :'1.9rem'};
     border: ${props=>(props.isClicked? 'none' : `solid 0.1rem #a99174`)};
     background-color: ${props=>(props.isClicked? ({ theme }) => theme.colors.beige : ({ theme }) => theme.colors.white)};
-    font-size: 1.2rem;
+    font-size: ${props=>(props.btnType===-1)? '1.4rem'
+                    : (props.btnType===0)? '1.4rem'
+                        : (props.btnType===1)? '1.2rem'
+                            :'1.2rem'};
     font-weight: 500;
     text-align: center;
     color: ${props=>(props.isClicked? ({ theme }) => theme.colors.off_white : ({ theme }) => theme.colors.pale_brown)};

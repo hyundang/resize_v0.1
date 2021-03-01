@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 export default ({text, id, selectData, setSelectData}) => {
     const [isClicked, setIsClicked] = useState(false);
+
+    useEffect(()=>{
+        if(selectData.includes(id)){
+            setIsClicked(true);
+        }
+    }, [])
 
     const handleOverlapClick = () => {
         if(isClicked){
@@ -45,9 +51,4 @@ const Wrap = styled.div`
     font-weight: 500;
     text-align: center;
     color: ${props=>props.isClicked? ({ theme }) => theme.colors.off_white : ({ theme }) => theme.colors.pale_brown};
-    /* &:hover{
-        background-color: ${({ theme }) => theme.colors.beige};
-        color: ${({ theme }) => theme.colors.off_white};
-        border: none;
-    } */
 `;

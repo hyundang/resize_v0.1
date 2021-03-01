@@ -12,7 +12,7 @@ export default ({text, input}) => {
     const size = useWindowSize();
 
     useEffect(()=> {
-        console.log(input.value);
+        // console.log(input.value);
         if(input.value !== ''){
             setIsBtnShown(true);
         }

@@ -3,10 +3,19 @@ import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
 import { Question, Circles, RatioStep, Rectangles } from "../../components/common";
-
+// recoil
+import { useRecoilState } from "recoil";
+import { BodyDetailState } from "../../states/size_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
+    const [ratio, setRatio] = useRecoilState(BodyDetailState(0));
+    const [bodytype, setBodytype] = useRecoilState(BodyDetailState(1));
+    const [facetype, setFacetype] = useRecoilState(BodyDetailState(2));
+    const [skintype, setSkintype] = useRecoilState(BodyDetailState(3));
+    const [shoultype, setShoultype] = useRecoilState(BodyDetailState(4));
+    
+
     useEffect(()=>{
         window.scrollTo(0,0);
     }, [])
@@ -27,6 +36,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                     <Text>{user_datas[0].question}</Text>
                     <RatioStep
                         data={user_datas[0].datas}
+                        selectData={ratio} setSelectData={setRatio}
                     />
                 </div>
                 <div style={{marginBottom:'4.8rem'}}>
@@ -35,6 +45,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                         data={user_datas[1].datas}
                         data_num={user_datas[1].datas.length}
                         isOverlap={false}
+                        selectData={bodytype} setSelectData={setBodytype}
                     />
                 </div>
                 <div style={{marginBottom:'4.8rem'}}>
@@ -44,6 +55,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                         data_num={user_datas[2].datas.length}
                         isThree={true}
                         isOverlap={false}
+                        selectData={facetype} setSelectData={setFacetype}
                     />
                 </div>
                 <div style={{marginBottom:'4.8rem'}}>
@@ -53,6 +65,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                         data_num={user_datas[3].datas.length}
                         isTwo={true} 
                         isOverlap={false}
+                        selectData={skintype} setSelectData={setSkintype}
                     />
                 </div>
                 <div style={{marginBottom:'4.8rem'}}>
@@ -62,6 +75,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                         data_num={user_datas[4].datas.length}
                         isThree={true}
                         isOverlap={false}
+                        selectData={shoultype} setSelectData={setShoultype}
                     />
                 </div>
             </Wrap>

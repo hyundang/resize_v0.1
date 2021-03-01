@@ -29,8 +29,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     data={user_datas[0].datas} 
                     data_num={user_datas[0].datas.length}
                     btnType={0}
-                    isOverlap={true}
-                    isNoneExist={false}
+                    isOverlap={true} isNoneExist={false}
                     selectData={selectData}  setSelectData={setSelectData}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
@@ -44,7 +43,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     data={user_datas[1].datas}
                     data_num={user_datas[1].datas.length}
                     btnType={-1}
-                    isOverlap={false}
+                    isOverlap={false} maxNum={1} 
                     isNoneExist={false}
                     selectData={selectDataTwo}  setSelectData={setSelectDataTwo}
                 />
@@ -58,7 +57,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     data={user_datas[2].datas}
                     data_num={user_datas[2].datas.length}
                     btnType={-1}
-                    isOverlap={false}
+                    isOverlap={false} maxNum={1}
                     isNoneExist={false}
                     selectData={selectDataTwo}  setSelectData={setSelectDataTwo}
                 />

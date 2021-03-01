@@ -2,13 +2,12 @@ import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 
 
-export default ({data}) => {
+export default ({data, selectData, setSelectData}) => {
+    // 몇 번째로 클릭된 것인지 확인하도록 하는 state
     const [isOneClick, setIsOneClick] = useState(false);
     const [isTwoClick, setIsTwoClick] = useState(false);
     const [isThreeClick, setIsThreeClick] = useState(false);
     
-    // 선택한 데이터가 담긴 배열(1순위: index=0, 2순위: index=1..) ex)[3,11,9]-> 1순위는 id=3인 이미지
-    const [selectData, setSelectData] = useState([]);
     
     return(
         <>
@@ -31,6 +30,8 @@ export default ({data}) => {
     )
 }
 
+
+
 const Wrap = styled.div`
     width: 32rem;
     margin-top: 4.1rem;
@@ -46,6 +47,7 @@ const StyleChoose = ({id, style, isOneClick, setIsOneClick, isTwoClick, setIsTwo
                 {style.imgs.map((img, idx)=>{
                     // 선택지(=이미지 칸), idx=0,1=>총9*2(=스타일 개수*2)
                     return <StyleImg 
+                                key={idx}
                                 imgpath={img} id={id*2+idx} 
                                 isOneClick={isOneClick} setIsOneClick={setIsOneClick} 
                                 isTwoClick={isTwoClick} setIsTwoClick={setIsTwoClick} 
@@ -71,8 +73,28 @@ const StyleImg = ({imgpath, id, isOneClick, setIsOneClick, isTwoClick, setIsTwoC
     const [isClicked, setIsClicked] = useState(false);
     const [priority, setPriority] = useState(0);
 
+    // 렌더링 되었을 때 선택된 데이터들이 다시 뜨도록
     useEffect(()=>{
-        // 선택한 칸 다시 눌러서 취소하여 값 변화가 발생했을 때
+        if(selectData.includes(id)){
+            setIsClicked(true);
+        }
+        if(selectData.length===1){
+            setIsOneClick(true);
+        }
+        else if(selectData.length===2){
+            setIsOneClick(true);
+            setIsTwoClick(true);
+        }
+        else if(selectData.length===3){
+            setIsOneClick(true);
+            setIsTwoClick(true);
+            setIsThreeClick(true);
+        }
+    }, [])
+
+
+    // 선택한 칸 다시 눌러서 취소하여 값 변화가 발생했을 때
+    useEffect(()=>{
         for(var i in selectData){
             if(id===selectData[i]){
                 setPriority(Number(i)+1);
@@ -80,6 +102,7 @@ const StyleImg = ({imgpath, id, isOneClick, setIsOneClick, isTwoClick, setIsTwoC
         }
         
     }, [selectData])
+
 
     const handleClick = (e) => {
         if(isClicked){

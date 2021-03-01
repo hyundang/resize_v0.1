@@ -3,12 +3,10 @@ import styled from "styled-components";
 
 export default ({
     data, data_num, 
-    isOverlap, isNoneExist, maxNum,
+    isOverlap, maxNum,
+    isBorderLine,
     selectData, setSelectData
 }) => {
-    // const [selectData, setSelectData] = useState([]);
-    const [isNoneClicked, setIsNoneClicked] = useState(false);
-
     return(
         <Wrap>
             {data.map((item, idx)=>{
@@ -16,11 +14,10 @@ export default ({
                             key={idx}
                             text={item}
                             id={idx}
-                            data_num={data_num} data={selectData}
+                            data={selectData}
                             isOverlap={isOverlap} maxNum={maxNum}
-                            isNoneExist={isNoneExist}
+                            isBorderLine={isBorderLine}
                             selectData={selectData} setSelectData={setSelectData}
-                            isNoneClicked={isNoneClicked} setIsNoneClicked={setIsNoneClicked}
                         />
             })}
         </Wrap>
@@ -36,31 +33,14 @@ const Wrap = styled.div`
 `;
 
 const Square = ({
-    id, text, data, data_num, 
+    id, text, data,
     isOverlap, maxNum,
-    isNoneExist,
+    isBorderLine,
     selectData, setSelectData, 
-    isNoneClicked, setIsNoneClicked
-}) => 
-{
+}) => {
     const [isClicked, setIsClicked] = useState(false);
 
-    if(isOverlap & isNoneExist){
-        //중복선택이면서 '없음'항목 존재할 때
-        useEffect(()=>{
-            
-            if(id !== data_num-1 & isNoneClicked){
-                setIsClicked(false);
-            }
-            if(id === data_num-1 & !isNoneClicked){
-                setIsClicked(false);
-                setSelectData(selectData.filter((s, idx)=>{
-                    return s !== data_num-1;
-                }));
-            }
-        }, [isNoneClicked])
-    }
-
+    // 처음 렌더링 됐을 때
     useEffect(()=>{
         if(data!=undefined){
             if(data.includes(id)){
@@ -68,6 +48,17 @@ const Square = ({
             }
         }
     }, [])
+
+    // 유저 선택 값이 변경 될 때마다
+    useEffect(()=>{
+        if(selectData.includes(id)){
+            setIsClicked(true);
+        }
+        else{
+            setIsClicked(false);
+        }
+    }, [selectData])
+
 
     const handleOverlapClick = () => {
         if(isClicked){
@@ -78,16 +69,8 @@ const Square = ({
             setIsClicked(false);
         }
         else{
-            if(isNoneExist & id === data_num-1){
-                setSelectData([id]);
-                setIsNoneClicked(true);
-                setIsClicked(true);
-            }
-            else{
-                setSelectData(selectData.concat([id]));
-                setIsNoneClicked(false);
-                setIsClicked(true);
-            }
+            setSelectData(selectData.concat([id]));
+            setIsClicked(true);
         }
         // console.log(selectData);
     }
@@ -106,7 +89,7 @@ const Square = ({
                 setIsClicked(true);
             }
         }
-        console.log(selectData);
+        // console.log(selectData);
     }
 
 
@@ -115,13 +98,11 @@ const Square = ({
             <SquareBox 
                 onClick={isOverlap? handleOverlapClick : handleOneClick} 
                 id={id}
-                isOverlap={isOverlap}
-                isNoneExist={isNoneExist}
+                isBorderLine={isBorderLine}
             >
                 <ClickedSquare 
                     isClicked={isClicked}
-                    isOverlap={isOverlap}
-                    isNoneExist={isNoneExist}
+                    isBorderLine={isBorderLine}
                 >✓</ClickedSquare>
             </SquareBox>
             <SquareText>{text}</SquareText>
@@ -143,8 +124,8 @@ const SquareBox = styled.div`
     height: 10.4rem;
     border-radius: 1rem;
     margin-bottom: 1rem;
-    border: ${props=>(props.isOverlap!==props.isNoneExist)? 'none' : 'solid 0.1rem #DAC2A3'};
-    box-shadow: ${props=>(props.isOverlap!==props.isNoneExist)? '0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.16)' : 'none'};
+    border: ${props=>!props.isBorderLine? 'none' : 'solid 0.1rem #DAC2A3'};
+    box-shadow: ${props=>!props.isBorderLine? '0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.16)' : 'none'};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,8 +133,8 @@ const SquareBox = styled.div`
 `;
 
 const ClickedSquare = styled.div`
-    width: ${props=>(props.isOverlap!==props.isNoneExist)? '10.4' : '10.2'}rem;
-    height: ${props=>(props.isOverlap!==props.isNoneExist)? '10.4' : '10.2'}rem;
+    width: ${props=>!props.isBorderLine? '10.4' : '10.2'}rem;
+    height: ${props=>!props.isBorderLine? '10.4' : '10.2'}rem;
     border-radius: 0.9rem;
     display: ${props=>props.isClicked? 'flex' : 'none'};
     align-items: center;

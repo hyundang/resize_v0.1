@@ -3,9 +3,11 @@ import styled from "styled-components";
 
 
 
-export default ({data, data_num, isOverlap}) => {
-    const [selectData, setSelectData] = useState([]);
-
+export default ({
+    data, data_num, 
+    isOverlap,
+    selectData, setSelectData
+}) => {
     return(
         <Wrap>
             {data.map((item, idx)=>{
@@ -38,14 +40,22 @@ const Rectangle = ({
 {
     const [isClicked, setIsClicked] = useState(false);
 
-    if(!isOverlap){
+    if(isOverlap){
         useEffect(()=>{
-            if(selectData.length === 1 & selectData[0] !== id){
-                setIsClicked(false);
+            if(selectData.includes(id)){
+                setIsClicked(true);
             }
-        }, [selectData])
+        }, [])
+    }
+    else{
+        useEffect(()=>{
+            if(selectData===id){
+                setIsClicked(true);
+            }
+        }, [])
     }
 
+    // 중복선택 할 경우
     const handleOverlapClick = () => {
         if(isClicked){
             // 선택한 데이터가 담긴 배열에서 현재 id값 삭제.
@@ -55,31 +65,25 @@ const Rectangle = ({
             setIsClicked(false);
         }
         else{
-            if(id === data_num-1){
-                setSelectData([id]);
-                setIsClicked(true);
-            }
-            else{
-                setSelectData(selectData.concat([id]));
-                setIsClicked(true);
-            }
+
+            setSelectData(selectData.concat([id]));
+            setIsClicked(true);
         }
-        console.log(selectData);
+        // console.log(selectData);
     }
 
+    // 한 개만 선택할 경우
     const handleOneClick = () => {
         if(isClicked){
             // 선택한 데이터가 담긴 배열에서 현재 id값 삭제.
-            setSelectData(selectData.filter((s, idx)=>{
-                return s !== id;
-            }))
+            setSelectData(-1);
             setIsClicked(false);
         }
         else{
-            setSelectData([id]);
+            setSelectData(id);
             setIsClicked(true);
         }
-        console.log(selectData);
+        // console.log(selectData);
     }
 
 
