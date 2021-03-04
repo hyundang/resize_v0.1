@@ -3,7 +3,9 @@ import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
 import { OverlapBtns, Question, QuestionTwo } from "../../components/common";
-
+// recoil
+import { useRecoilState } from "recoil";
+import { CodyTagState, CodyOneTagState } from "../../states/cody_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
@@ -11,8 +13,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         window.scrollTo(0,0);
     },[])
 
-    const [selectData, setSelectData] = useState([]);
-    const [selectDataTwo, setSelectDataTwo] = useState(-1);
+    const [selectDataOne, setSelectDataOne] = useRecoilState(CodyTagState(7));
+    const [selectDataTwo, setSelectDataTwo] = useRecoilState(CodyOneTagState(0));
+    const [selectDataThree, setSelectDataThree] = useRecoilState(CodyOneTagState(1));
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
@@ -30,7 +33,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     data_num={user_datas[0].datas.length}
                     btnType={0}
                     isOverlap={true} isNoneExist={false}
-                    selectData={selectData}  setSelectData={setSelectData}
+                    selectData={selectDataOne}  setSelectData={setSelectDataOne}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
                 <QuestionTwo
@@ -59,7 +62,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     btnType={-1}
                     isOverlap={false} maxNum={1}
                     isNoneExist={false}
-                    selectData={selectDataTwo}  setSelectData={setSelectDataTwo}
+                    selectData={selectDataThree}  setSelectData={setSelectDataThree}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>

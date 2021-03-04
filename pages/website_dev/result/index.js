@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // component
-import { KakaoChannel } from "../../components";
+import { KakaoChannel } from "../../../components";
 
 const Start = () => {
     return(
@@ -13,7 +13,7 @@ const Start = () => {
             <div style={{
                 fontSize:'1.6rem',letterSpacing:'-0.04rem',
                 textAlign:'center',fontWeight:'bold',color:'#191919'
-            }}>정말 멋진 취향을 가지고 계시네요! 👏</div>
+            }}>코디 큐레이션이 접수 되었습니다!</div>
             <div style={{height:'3.1rem'}}/>
             <div style={{
                 fontSize:'1.35rem',textAlign:'center',
@@ -53,6 +53,11 @@ const Header = styled.div`
     justify-content: center;
     background-color: white;
     box-shadow: 0 0 0.6rem 0 rgba(0, 0, 0, 0.16);
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: -0.45px;
+    text-align: left;
+    color: ${({theme})=>theme.colors.black};
 `;
 
 const Wrap = styled.div`

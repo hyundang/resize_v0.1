@@ -4,14 +4,18 @@ import styled from "styled-components";
 import { Header, Bottom } from "../../components";
 import { InputBoxBig, QuestionTwo, Question } from "../../components/common";
 // hooks
-import useInput from "../../hooks/useInput";
+import useRecoilInput from "../../hooks/useRecoilInput";
+// recoil
+import { useRecoilState } from "recoil";
+import { CodyOtherState } from "../../states/cody_atom";
 
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     // input 여러 개 만들기
-    const input = useInput("");
-    
+    const inputOne = useRecoilInput(CodyOtherState(7));
+    const inputTwo = useRecoilInput(CodyOtherState(8));
+
 
     useEffect(()=>{
         window.scrollTo(0,0);
@@ -30,7 +34,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <div style={{marginBottom:'2.3rem'}}/>
                 <InputBoxBig
                     text={"예) 뽀얀 흰색의 양털 후리스, 워싱이 없는 진청 색상의 청바지는 꼭 포함하고 싶어요!"}
-                    input={input}
+                    input={inputOne}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
                 <QuestionTwo
@@ -49,7 +53,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <div style={{marginBottom:'2.3rem'}}/>
                 <InputBoxBig
                     text={"예) 연예인 이동휘나 류준열 느낌의 코디를 추천해주세요!"}
-                    input={input}
+                    input={inputTwo}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>

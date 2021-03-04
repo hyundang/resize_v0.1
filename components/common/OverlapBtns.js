@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { InputBox, QuestionTwo, OverlapBtn } from ".";
@@ -12,9 +12,11 @@ export default ({
     isNoneExist,
     otherTextOne, otherTextTwo, inputText,
     selectData, setSelectData,
-    input
+    input,
+    innerPageNum
 }) => {
     const [isOther, setIsOther] = useState(false);
+
 
     return(
         <div>
@@ -30,6 +32,7 @@ export default ({
                             isNoneExist={isNoneExist}
                             selectData={selectData} setSelectData={setSelectData}
                             setIsOther={setIsOther}
+                            innerPageNum={innerPageNum}
                         />
             })}
         </Wrap> 

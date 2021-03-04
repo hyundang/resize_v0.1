@@ -12,13 +12,13 @@ export default ({data, selectData, setSelectData}) => {
             <BarWrap>
                 <Bar/>
                 <CircleListWrap>
-                    {datas.map((data, idx)=>{
+                    {data.map((data, idx)=>{
                         return <CircleBtn id={idx} num={selectData} setnum={setSelectData}/>
                     })}
                 </CircleListWrap>
             </BarWrap>
             <TextWrap>
-                {datas.map((data, idx)=>{
+                {data.map((data, idx)=>{
                     return <Text>{data}</Text>
                 })}
             </TextWrap>
@@ -122,7 +122,7 @@ const CircleActive = styled.div`
 `;
 
 const TextWrap = styled.div`
-    width: 31rem;
+    width: 32rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -131,8 +131,9 @@ const TextWrap = styled.div`
 `;
 
 const Text = styled.div`
-    width: 2.3rem;
+    width: 3.2rem;
     height: 1.8rem;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+    text-align: center;
     color: ${({theme})=>theme.colors.black};
 `;

@@ -18,12 +18,12 @@ export default ({text, input}) => {
 const Wrap = styled.textarea`
     width: 32rem;
     height: 11.6rem;
-    padding: 0.9rem 1.2rem;
+    padding: 1.2rem 1.2rem;
     border-radius: 0.5rem;
     border: solid 0.1rem #bdbdbd;
     background-color: white;
     font-family: "Noto Sans KR";
-    font-size: 1.55rem;
+    font-size: 1.35rem;
     text-align: left;
     color: #767676;
     ::placeholder{

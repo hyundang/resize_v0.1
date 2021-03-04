@@ -7,7 +7,8 @@ export default ({
     isOverlap, maxNum, 
     isNoneExist,
     selectData, setSelectData, 
-    setIsOther
+    setIsOther,
+    innerPageNum
 }) => {
     const [isClicked, setIsClicked] = useState(false);
 
@@ -16,10 +17,41 @@ export default ({
         // 중복선택일 경우 또는 최대 2개 선택일 경우
         // 처음 렌더링 되었을 때
         useEffect(()=>{
+            // 선택된 값들 클릭으로 표시
             if(selectData.includes(id)){
                 setIsClicked(true);
             }
+            if(isNoneExist){
+                // 기타 입력란 뜨도록 
+                if(selectData.includes(data_num-2)){
+                    setIsOther(true);
+                }
+            }
+            else{
+                // 기타 입력란 뜨도록 
+                if(selectData.includes(data_num-1)){
+                    setIsOther(true);
+                }
+            }
+
         }, [])
+
+        useEffect(()=>{
+            //cody question 3에서 inner page 전환 시 태그 클릭 여부 결정
+            if(selectData.includes(id)){
+                setIsClicked(true);
+            }
+            else{
+                setIsClicked(false);
+            }
+            // cody question 3에서 inner page 전환 시 기타 항목 표시 여부 결정
+            if(selectData.includes(data_num-2)){
+                setIsOther(true);
+            }
+            else{
+                setIsOther(false);
+            }
+        }, [innerPageNum])
 
         useEffect(()=>{
             // '없음' 항목이 존재하는 경우
@@ -79,6 +111,7 @@ export default ({
             if(isNoneExist & id === data_num-1){
                 setSelectData([id]);
                 setIsClicked(true);
+                setIsOther(false);
             }
             else{
                 if(text === "기타"){
@@ -106,12 +139,12 @@ export default ({
             // 없음 클릭했을 때
             if(isNoneExist & id === data_num-1){
                 setSelectData([id]);
-                setIsNoneClicked(true);
+                // setIsNoneClicked(true);
                 setIsClicked(true);
                 setIsOther(false);
             }
             else if(selectData.length < maxNum){
-                setIsNoneClicked(false);
+                // setIsNoneClicked(false);
                 if(text === "기타"){
                     setIsOther(true);
                 }

@@ -53,6 +53,15 @@ const Rectangle = ({
                 setIsClicked(true);
             }
         }, [])
+
+        useEffect(()=>{
+            if(selectData===id){
+                setIsClicked(true);
+            }
+            else{
+                setIsClicked(false);
+            }
+        }, [selectData])
     }
 
     // 중복선택 할 경우

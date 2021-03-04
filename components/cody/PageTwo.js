@@ -3,16 +3,20 @@ import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
 import { QuestionTwo, OverlapBtns } from "../../components/common";
-
+// hooks
+import useRecoilInput from "../../hooks/useRecoilInput";
+// recoil
+import { useRecoilState } from "recoil";
+import { CodyTagState, CodyOtherState } from "../../states/cody_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
-    
     useEffect(()=>{
         window.scrollTo(0,0);
     }, [])
 
-    const [selectData, setSelectData] = useState([]);
+    const [selectData, setSelectData] = useRecoilState(CodyTagState(1));
+    const input = useRecoilInput(CodyOtherState(1));
 
 
     return(
@@ -35,6 +39,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     otherTextOne={"이외에 연출하고 싶은"}
                     otherTextTwo={"스타일이 있다면 알려주세요!"}
                     inputText={"예) 상견례룩을 추천해주세요!"}
+                    input={input}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>

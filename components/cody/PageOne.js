@@ -7,7 +7,7 @@ import { QuestionTwo, OverlapBtns } from "../../components/common";
 import useRecoilInput from "../../hooks/useRecoilInput";
 // recoil
 import { useRecoilState } from "recoil";
-// import {  } from "../../states/cody_atom";
+import { CodyTagState, CodyOtherState } from "../../states/cody_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
@@ -15,7 +15,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         window.scrollTo(0,0);
     }, [])
 
-    const [selectData, setSelectData] = useState([]);
+    const [selectData, setSelectData] = useRecoilState(CodyTagState(0));
+    const input = useRecoilInput(CodyOtherState(0));
 
 
     return(
@@ -33,12 +34,12 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     data={user_datas} data_num={data_num}
                     btnType={1}
                     isOverlap={false} maxNum={2}
-                    isNoneExist={false}
+                    isNoneExist={true}
                     selectData={selectData} setSelectData={setSelectData}
                     otherTextOne={"이외에 연출하고 싶은"}
                     otherTextTwo={"스타일이 있다면 알려주세요!"}
                     inputText={"예) 락시크룩도 추천해주세요!"}
-                    // input={}
+                    input={input}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>
