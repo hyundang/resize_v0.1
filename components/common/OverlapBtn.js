@@ -13,7 +13,7 @@ export default ({
     const [isClicked, setIsClicked] = useState(false);
 
 
-    if(isOverlap | maxNum===2){
+    if(isOverlap | maxNum===2 | maxNum===3){
         // 중복선택일 경우 또는 최대 2개 선택일 경우
         // 처음 렌더링 되었을 때
         useEffect(()=>{
@@ -168,7 +168,7 @@ export default ({
                 onClick=
                 {isOverlap? 
                     handleOverlapClick 
-                    : (maxNum===2)? 
+                    : (maxNum===2|maxNum===3)? 
                         handleTwoClick 
                         : handleOneClick }
                 btnType={btnType}

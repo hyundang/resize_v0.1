@@ -61,7 +61,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     <Wrap>
                         <QuestionTwo
                             quesNum={0}
-                            quesTextOne={"해당 코디에 포함하고 싶지 않은"}
+                            quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
                             quesTextTwo={`${user_datas[itemList[0]].question} 종류는 무엇인가요?`}
                             overlapText={"중복선택"}
                         />
@@ -72,7 +72,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataOne} setSelectData={setSelectDataOne}
-                            otherTextOne={"이외에 포함하고 싶지 않은"}
+                            otherTextOne={"이외에 ❌포함하고 싶지 않은❌"}
                             otherTextTwo={`${user_datas[itemList[0]].question}가 있다면 알려주세요!`}
                             inputText={user_datas[itemList[0]].inputText}
                             input={inputOne}
@@ -94,7 +94,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     <Wrap>
                         <QuestionTwo
                             quesNum={0}
-                            quesTextOne={"해당 코디에 포함하고 싶지 않은"}
+                            quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
                             quesTextTwo={`${user_datas[itemList[1]].question} 종류는 무엇인가요?`}
                             overlapText={"중복선택"}
                         />
@@ -105,7 +105,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataTwo} setSelectData={setSelectDataTwo}
-                            otherTextOne={"이외에 포함하고 싶지 않은"}
+                            otherTextOne={"이외에 ❌포함하고 싶지 않은❌"}
                             otherTextTwo={`${user_datas[itemList[1]].question}가 있다면 알려주세요!`}
                             inputText={user_datas[itemList[1]].inputText}
                             input={inputTwo}
@@ -127,7 +127,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     <Wrap>
                         <QuestionTwo
                             quesNum={0}
-                            quesTextOne={"해당 코디에 포함하고 싶지 않은"}
+                            quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
                             quesTextTwo={`${user_datas[itemList[2]].question} 종류는 무엇인가요?`}
                             overlapText={"중복선택"}
                         />
@@ -138,7 +138,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataThree} setSelectData={setSelectDataThree}
-                            otherTextOne={"이외에 포함하고 싶지 않은"}
+                            otherTextOne={"이외에 ❌포함하고 싶지 않은❌"}
                             otherTextTwo={`${user_datas[itemList[2]].question}가 있다면 알려주세요!`}
                             inputText={user_datas[itemList[2]].inputText}
                             input={inputThree}
@@ -161,7 +161,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     <Wrap>
                         <QuestionTwo
                             quesNum={0}
-                            quesTextOne={"해당 코디에 포함하고 싶지 않은"}
+                            quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
                             quesTextTwo={`${user_datas[itemList[3]].question} 종류는 무엇인가요?`}
                             overlapText={"중복선택"}
                         />
@@ -172,7 +172,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataFour} setSelectData={setSelectDataFour}
-                            otherTextOne={"이외에 포함하고 싶지 않은"}
+                            otherTextOne={"이외에 ❌포함하고 싶지 않은❌"}
                             otherTextTwo={`${user_datas[itemList[3]].question}가 있다면 알려주세요!`}
                             inputText={user_datas[itemList[3]].inputText}
                             input={inputFour}
@@ -194,7 +194,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     <Wrap>
                         <QuestionTwo
                             quesNum={0}
-                            quesTextOne={"해당 코디에 포함하고 싶지 않은"}
+                            quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
                             quesTextTwo={`${user_datas[itemList[4]].question} 종류는 무엇인가요?`}
                             overlapText={"중복선택"}
                         />
@@ -205,7 +205,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataFive} setSelectData={setSelectDataFive}
-                            otherTextOne={"이외에 포함하고 싶지 않은"}
+                            otherTextOne={"이외에 ❌포함하고 싶지 않은❌"}
                             otherTextTwo={`${user_datas[itemList[4]].question}가 있다면 알려주세요!`}
                             inputText={user_datas[itemList[4]].inputText}
                             input={inputFive}

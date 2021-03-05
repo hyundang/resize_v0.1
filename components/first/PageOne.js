@@ -21,6 +21,7 @@ export default ({setPageNum}) => {
             url={"/images/website/background.png"}
             isClicked={isClicked}
         >
+            <div style={{height:'15rem'}}/>
             <TextOne isShown={isShown} isClicked={isClicked}>
                 <div>
                     <span style={{fontWeight:'bold'}}>RE</span>
@@ -32,6 +33,7 @@ export default ({setPageNum}) => {
                     <span style={{fontWeight:'bold'}}>SIZE</span>
                 </div>
             </TextOne>
+            <div style={{height:'16rem'}}/>
             <TextTwo isShown={isShown} isClicked={isClicked}>
                 <div>리사이즈에서는</div>
                 <div>고객님의 체형과 취향을 기반으로,</div>
@@ -51,7 +53,7 @@ export default ({setPageNum}) => {
 }
 
 const Wrap = styled.div`
-    position: absolute;
+    /* position: absolute; */
     width: 100vw;
     height: 100vh;
     background-image: url(${props=>props.url});
@@ -63,7 +65,7 @@ const Wrap = styled.div`
 const TextOne = styled.div`
     width: 32rem;
     position: absolute;
-    top: 32%;
+    /* top: 18%; */
     left: 5%;
     color: white;
     font-size: 3.45rem;
@@ -78,7 +80,7 @@ const TextOne = styled.div`
 const TextTwo = styled.div`
     width: 32rem;
     position: absolute;
-    top: 32%;
+    top: 24%;
     left: 5%;
     color: white;
     font-size: 1.75rem;
@@ -93,7 +95,7 @@ const TextTwo = styled.div`
 
 const SmallText = styled.div`
     position: absolute;
-    top: 65%;
+    /* top: 40%; */
     left: 5%;
     width: 32rem;
     color: white;

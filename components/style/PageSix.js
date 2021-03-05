@@ -22,7 +22,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             <Wrap>
                 <QuestionTwo
                     quesNum={quesNum}
-                    quesTextOne={"다음 중 싫어하는 옷의"}
+                    quesTextOne={"다음 중 ❌싫어하는❌ 옷의"}
                     quesTextTwo={"소재를 모두 골라주실래요?"}
                     overlapText={"중복선택"}
                 />

@@ -135,7 +135,7 @@ export default ({user_datas}) => {
                 placeholder={"예) 01012345678"}
                 value={phone.value}
                 onChange={phone.onChange}
-                type="number"
+                type="number" pattern="\d*"
             />
             <div style={{marginTop:'3.2rem'}}/>
             <Question
@@ -179,6 +179,12 @@ export default ({user_datas}) => {
                 input={instagram}
             />
             <div style={{marginTop:'3.6rem'}}/>
+            <Question
+                quesNum={0}
+                quesText={"직업"}
+                overlapText={"*"}
+            />
+            <div style={{marginTop:'2.4rem'}}/>
             <OverlapBtns
                 btnType={2}
                 data={user_datas}
@@ -378,7 +384,7 @@ const BoxWrap = styled.div`
 
 const Icon = styled.svg`
 fill: none;
-stroke: ${props=>props.checked? '#a99174': 'black'};
+stroke: ${props=>props.checked? '#a99174': '#e5e5e5'};
 stroke-width: 2px;
 `;
 

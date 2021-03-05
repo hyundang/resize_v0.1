@@ -92,13 +92,12 @@ const HelpBox = styled.div`
     top: 20.7rem;
     left: ${props=>(props.width/10-32)/2+10.1}rem;
     width: 17rem;
-    height: 31.8rem;
     padding: 1.1rem 1.6rem;
     opacity: 0.83;
 	background: #797979;
     border-radius: 0.8rem;
     color: white;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: normal;
     white-space: pre-line;
     ::after{

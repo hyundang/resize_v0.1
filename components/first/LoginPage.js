@@ -26,7 +26,7 @@ export default () => {
                 placeholder={"휴대폰 번호를 입력하세요."}
                 value={input.value}
                 onChange={input.onChange}
-                type="number"
+                type="number" pattern="\d*"
             />
             <Bottom
                 pageNum={pageNum}

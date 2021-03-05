@@ -127,7 +127,7 @@ const Circle = ({
     }
 
 
-    return(
+    return (
         <CircleWrap>
             <CircleBox onClick={isOverlap? handleOverlapClick : handleOneClick} id={id}>
                 <ClickedCircle isClicked={isClicked}>✓</ClickedCircle>

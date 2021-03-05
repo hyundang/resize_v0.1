@@ -27,13 +27,13 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     quesNum={quesNum}
                     quesTextOne={"해당 코디를 어떻게"}
                     quesTextTwo={"활용하실건가요?"}
-                    overlapText={"최대 2개"}
+                    overlapText={"최대 3개"}
                 />
                 <div style={{width:'100%', height:'3.6rem'}}/>
                 <OverlapBtns
                     data={user_datas} data_num={data_num}
                     btnType={1}
-                    isOverlap={false} maxNum={2}
+                    isOverlap={false} maxNum={3}
                     isNoneExist={false}
                     selectData={selectData} setSelectData={setSelectData}
                     otherTextOne={"이외에 연출하고 싶은"}

@@ -13,7 +13,7 @@ const Start = () => {
             <div style={{
                 fontSize:'1.6rem',letterSpacing:'-0.04rem',
                 textAlign:'center',fontWeight:'bold',color:'#191919'
-            }}>코디 큐레이션이 접수 되었습니다!</div>
+            }}>코디 큐레이션 요청이 접수 되었습니다!</div>
             <div style={{height:'3.1rem'}}/>
             <div style={{
                 fontSize:'1.35rem',textAlign:'center',
@@ -26,7 +26,7 @@ const Start = () => {
             <div style={{
                 fontSize:'1.35rem',textAlign:'center',
                 fontWeight:'normal',color:'#191919'
-            }}>카카오톡으 보내드릴게요.</div>
+            }}>카카오톡으로 보내드릴게요.</div>
             <div style={{height:'3.1rem'}}/>
             <div style={{
                 fontSize:'1.35rem',textAlign:'center',

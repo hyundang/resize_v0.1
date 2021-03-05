@@ -37,7 +37,7 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                         placeholder="키를 입력해주세요"
                         value={user_height.value}
                         onChange={user_height.onChange}
-                        type="number"
+                        type="number" pattern="\d*"
                     />
                     <Unit width={size.width}>cm</Unit>
                 </div>
@@ -48,7 +48,7 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                         placeholder="몸무게를 입력해주세요"
                         value={user_weight.value}
                         onChange={user_weight.onChange}
-                        type="number"
+                        type="number" pattern="\d*"
                     />
                     <Unit width={size.width}>kg</Unit>
                 </div>
