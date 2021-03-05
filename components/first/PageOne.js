@@ -16,7 +16,11 @@ export default ({setPageNum}) => {
     }, [isClicked])
 
     return(
-        <Wrap onClick={()=>setIsClicked(true)}>
+        <Wrap
+            onClick={()=>setIsClicked(true)} 
+            url={"/images/website/background.png"}
+            isClicked={isClicked}
+        >
             <TextOne isShown={isShown} isClicked={isClicked}>
                 <div>
                     <span style={{fontWeight:'bold'}}>RE</span>
@@ -43,11 +47,16 @@ export default ({setPageNum}) => {
 }
 
 const Wrap = styled.div`
+    position: absolute;
     width: 100vw;
     height: 100vh;
-    background: pink;
-    /* background-image: url(); */
+    /* background: pink; */
+    background-image: url(${props=>props.url});
+    background-position: ${props=>props.isClicked? 'right' : 'left'};
+    /* transform: ${props=>props.isClicked? 'translate(-50%, 0)': 'none'}; */
+    transition-duration: 1s;
 `;
+
 
 const TextOne = styled.div`
     width: 32rem;

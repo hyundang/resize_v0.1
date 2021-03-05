@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useSetRecoilState, useRecoilState } from "recoil";
 import { VisitState, PageNumState } from "../../states/website_atom";
 // components
-import { InputBox } from "../../components/common";
+// import { InputBox } from "../../components/common";
 import { Bottom } from "../../components";
 // hooks
 import useInput from "../../hooks/useInput";
@@ -23,8 +23,10 @@ export default () => {
             <Text>{"이전에 입력한 큐레이션 정보를 불러오고\n싶다면 휴대폰 번호를 입력해주세요."}</Text>
             <div style={{height:'13.7rem'}}/>
             <InputBox
-                text={"휴대폰 번호를 입력하세요."}
-                input={input}
+                placeholder={"휴대폰 번호를 입력하세요."}
+                value={input.value}
+                onChange={input.onChange}
+                type="number"
             />
             <Bottom
                 pageNum={pageNum}
@@ -59,6 +61,28 @@ const Header = styled.div`
     letter-spacing: -0.5px;
     text-align: center;
     color: ${({theme})=>theme.colors.black};
+`;
+
+const InputBox = styled.input`
+    width: 32rem;
+    height: 4.4rem;
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+    border: solid 0.1rem #bdbdbd;
+    background-color: ${({ theme }) => theme.colors.white};
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-family: 'Noto Sans KR';
+    text-align: left;
+    color: #767676;
+    ::placeholder{
+        color: #bdbdbd;
+        font-size: 1.4rem;
+    }
+    &:focus{
+        outline: none;
+        border: solid 0.1rem #767676;
+    }
 `;
 
 const Text = styled.div`
