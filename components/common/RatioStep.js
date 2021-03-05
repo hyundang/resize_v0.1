@@ -105,9 +105,9 @@ const Circle = styled.div`
     :props.width}rem;
     position: absolute;
     z-index: 2;
-    border-radius: ${props=>props.isClick? 
+    /* border-radius: ${props=>props.isClick? 
     ((props.num==props.id)? 0.4 : props.width/2) 
-    :props.width/2}rem;
+    :props.width/2}rem; */
     background-color: #f3f3f3;
 `;
 
@@ -117,7 +117,7 @@ const CircleActive = styled.div`
     display: ${props=>props.isClick? 
     ((props.num==props.id)? 'box' : 'none') 
     :'none'};
-    border-radius: 1.2rem;
+    /* border-radius: 1.2rem; */
     background-color: #be9e78;
 `;
 
