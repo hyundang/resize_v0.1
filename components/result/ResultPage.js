@@ -143,7 +143,7 @@ const Wrap = styled.div`
 `;
 
 const Title = styled.div`
-    width: 6rem;
+    width: 6.5rem;
     height: 2.4rem;
     border-bottom: solid 0.4rem #f5f2ec;
     font-size: 1.55rem;
