@@ -151,7 +151,7 @@ const CircleBox = styled.div`
     height: 7rem;
     border-radius: 3.5rem;
     margin-bottom: 1rem;
-    border: solid 1px black;
+    border: solid 0.1rem #be9e78;
     /* background-color: pink; */
     /* box-shadow: 0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.16); */
     display: flex;

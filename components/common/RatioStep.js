@@ -48,8 +48,7 @@ const CircleBtn = ({id, num, setnum}) => {
 
     return(
         <CircleWrap onClick={handleBtnClick}>
-            <Circle width={width} isClick={isClick} id={id} num={num}/>
-            
+            <Circle width={width} isClick={isClick} id={id} num={num}/>    
         </CircleWrap>
     )
 }
@@ -103,8 +102,6 @@ const Circle = styled.div`
     height: ${props=>props.isClick? 
     ((props.num==props.id)? 2.4 : props.width) 
     :props.width}rem;
-    /* position: absolute;
-    z-index: 2; */
     border-radius: ${props=>props.isClick? 
     ((props.num==props.id)? 1.2 : props.width/2) 
     :props.width/2}rem;
@@ -112,15 +109,6 @@ const Circle = styled.div`
     background-color: #f3f3f3;
 `;
 
-const CircleActive = styled.div`
-    width: 2.4rem;
-    height: 2.4rem;
-    display: ${props=>props.isClick? 
-    ((props.num==props.id)? 'box' : 'none') 
-    :'none'};
-    /* border-radius: 1.2rem; */
-    background-color: #be9e78;
-`;
 
 const TextWrap = styled.div`
     width: 32rem;
