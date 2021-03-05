@@ -38,6 +38,10 @@ export default ({setPageNum}) => {
                 <div>꼭 맞는 상품과 코디를 1:1로 추천해드려요.</div>
             </TextTwo>
             <SmallText>당신의 체형과 취향에 맞는 퍼스널 패션 큐레이션</SmallText>
+            <TextOne isClicked={isClicked} 
+                style={{width:'auto',fontSize:'1.8rem',top:'90%',left:'50%',transform:'translate(-50%, 0)'}}>
+                <div>탭하여 계속하기</div>
+            </TextOne>
             <Btn isShown={isShown} isClicked={isClicked} onClick={()=>setPageNum(1)}>
                 스타일링룸 입장하기
                 <IconImg src={arrow_icon}/>
@@ -50,10 +54,8 @@ const Wrap = styled.div`
     position: absolute;
     width: 100vw;
     height: 100vh;
-    /* background: pink; */
     background-image: url(${props=>props.url});
     background-position: ${props=>props.isClicked? 'right' : 'left'};
-    /* transform: ${props=>props.isClicked? 'translate(-50%, 0)': 'none'}; */
     transition-duration: 1s;
 `;
 
