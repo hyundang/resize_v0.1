@@ -23,6 +23,7 @@ export default () => {
             <Text>{"이전에 입력한 큐레이션 정보를 불러오고\n싶다면 휴대폰 번호를 입력해주세요."}</Text>
             <div style={{height:'13.7rem'}}/>
             <InputBox
+                style={{imeMode:'disabled'}}
                 placeholder={"휴대폰 번호를 입력하세요."}
                 value={input.value}
                 onChange={input.onChange}

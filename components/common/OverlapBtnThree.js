@@ -5,7 +5,7 @@ export default ({text, id, selectData, setSelectData}) => {
     const [isClicked, setIsClicked] = useState(false);
 
     useEffect(()=>{
-        if(selectData.includes(id)){
+        if(selectData.includes(text)){
             setIsClicked(true);
         }
     }, [])
@@ -14,12 +14,12 @@ export default ({text, id, selectData, setSelectData}) => {
         if(isClicked){
             // 선택한 데이터가 담긴 배열에서 현재 id값 삭제.
             setSelectData(selectData.filter((s, idx)=>{
-                return s !== id;
+                return s !== text;
             }))
             setIsClicked(false);
         }
         else{
-            setSelectData(selectData.concat([id]));
+            setSelectData(selectData.concat([text]));
             setIsClicked(true);
         }
         // console.log(selectData);

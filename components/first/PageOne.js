@@ -80,7 +80,7 @@ const TextOne = styled.div`
 const TextTwo = styled.div`
     width: 32rem;
     position: absolute;
-    top: 24%;
+    top: 23%;
     left: 5%;
     color: white;
     font-size: 1.75rem;

@@ -59,6 +59,10 @@ const SmallText = styled.div`
 const Btn = ({data, id}) => {
     const [selectData, setSelectData] = useRecoilState(BodySizeState(id));
 
+    // useEffect(()=>{
+    //     console.log(selectData);
+    // },[selectData])
+
     return(
         <div style={{marginBottom:'3.6rem'}}>
             <Text>{data.question}</Text>

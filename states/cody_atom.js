@@ -87,7 +87,7 @@ export const CodyQuesFiveState = selector({
 // 태그 한 개만 선택될 때 사용되는 state
 export const CodyOneTagState = atomFamily({
     key: "CodyOneTagState",
-    default: -1
+    default: ""
 })
 
 export const CodyQuesSixState = selector({

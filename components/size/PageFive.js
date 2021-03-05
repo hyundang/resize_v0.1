@@ -19,6 +19,10 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
     const [selectFourData, setSelectFourData] = useRecoilState(ClothesSizeState(3));
     const [selectFiveData, setSelectFiveData] = useRecoilState(ClothesSizeState(4));
 
+    // useEffect(()=>{
+    //     console.log(selectOneData);
+    // },[selectOneData])
+
     const [isShowOne, setIsShowOne] = useState(false);
     const [isShowTwo, setIsShowTwo] = useState(false);
     const [isShowThree, setIsShowThree] = useState(false);

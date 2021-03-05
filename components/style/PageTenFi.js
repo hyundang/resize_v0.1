@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
@@ -16,6 +16,14 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
 
     // 선택한 데이터가 담긴 배열
     const [selectData, setSelectData] = useRecoilState(QuesTenFiState);
+    
+    useEffect(()=>{
+        window.scroll(0, 0);
+    }, [])
+    
+    // useEffect(()=>{
+    //     console.log(selectData);
+    // }, [selectData])
     
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>

@@ -20,7 +20,7 @@ const Start  = () => {
                         setPageNum={setPageNum}
                     />
         case 2:
-            if(isVisited===1){
+            if(isVisited.includes("아니요")){
                 return <LoginPage/>
             }
             else{

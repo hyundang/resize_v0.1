@@ -68,6 +68,11 @@ export default ({user_datas}) => {
             setCheckedList(checkedList.concat(e.target.id))
         }
     }
+
+    useEffect(()=>{
+        window.scroll(0, 0);
+        emailback.setValue("gmail.com")
+    }, [])
     
     useEffect(()=>{
         if(checkedList.length === 3){
@@ -82,7 +87,7 @@ export default ({user_datas}) => {
     useEffect(()=>{
         // console.log(checkedList);
         if(result.name!=="" & result.birth!==""
-        & result.phone!=="" & result.email!==""
+        & result.phone!=="" & result.emailfront!==""
         & selectData!==-1
         & checkedList.includes('1') & checkedList.includes('2')){
             setIsNextOkay(true);
@@ -93,9 +98,9 @@ export default ({user_datas}) => {
         }
     },[result, checkedList, selectData]);
 
-    // useEffect(()=>{
-    //     console.log(result);
-    // }, [result])
+    useEffect(()=>{
+        console.log(result);
+    }, [result])
 
     return(
         <>

@@ -17,3 +17,18 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+.swiper-pagination-bullets {
+  position: absolute !important;
+  bottom: 0% !important;
+}
+
+.swiper-pagination-bullet {
+  background: white !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #A18870 !important;
+}

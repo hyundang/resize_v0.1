@@ -17,6 +17,10 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     const [selectDataTwo, setSelectDataTwo] = useRecoilState(CodyOneTagState(0));
     const [selectDataThree, setSelectDataThree] = useRecoilState(CodyOneTagState(1));
 
+    // useEffect(()=>{
+    //     console.log(selectDataThree);
+    // },[selectDataThree])
+
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>

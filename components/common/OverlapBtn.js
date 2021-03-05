@@ -13,23 +13,23 @@ export default ({
     const [isClicked, setIsClicked] = useState(false);
 
 
-    if(isOverlap | maxNum===2 | maxNum===3){
+    if(isOverlap | maxNum>1){
         // 중복선택일 경우 또는 최대 2개 선택일 경우
         // 처음 렌더링 되었을 때
         useEffect(()=>{
             // 선택된 값들 클릭으로 표시
-            if(selectData.includes(id)){
+            if(selectData.includes(text)){
                 setIsClicked(true);
             }
             if(isNoneExist){
                 // 기타 입력란 뜨도록 
-                if(selectData.includes(data_num-2)){
+                if(selectData.includes("기타")){
                     setIsOther(true);
                 }
             }
             else{
                 // 기타 입력란 뜨도록 
-                if(selectData.includes(data_num-1)){
+                if(selectData.includes("기타")){
                     setIsOther(true);
                 }
             }
@@ -38,14 +38,14 @@ export default ({
 
         useEffect(()=>{
             //cody question 3에서 inner page 전환 시 태그 클릭 여부 결정
-            if(selectData.includes(id)){
+            if(selectData.includes(text)){
                 setIsClicked(true);
             }
             else{
                 setIsClicked(false);
             }
             // cody question 3에서 inner page 전환 시 기타 항목 표시 여부 결정
-            if(selectData.includes(data_num-2)){
+            if(selectData.includes("기타")){
                 setIsOther(true);
             }
             else{
@@ -56,18 +56,18 @@ export default ({
         useEffect(()=>{
             // '없음' 항목이 존재하는 경우
             if(isNoneExist){
-                if(id !== data_num-1 & selectData.length===1 & selectData.includes(data_num-1)){
+                if(id !== data_num-1 & selectData.length===1 & selectData.includes("없음")){
                     setIsClicked(false);
                 }
-                if(id === data_num-1 & selectData.length===2 & selectData.includes(id)){
+                if(id === data_num-1 & selectData.length>1 & selectData.includes(text)){
                     setIsClicked(false);
                     setSelectData(selectData.filter((s, idx)=>{
-                        return s !== data_num-1;
+                        return s !== text;
                     }));
                 }
             }
             else{
-                if(selectData.includes(id)){
+                if(selectData.includes(text)){
                     setIsClicked(true);
                 }
                 else{
@@ -80,13 +80,13 @@ export default ({
         // 1개만 선택하는 경우
         // 처음 렌더링 되었을 때
         useEffect(()=>{
-            if(selectData===id){
+            if(selectData===text){
                 setIsClicked(true);
             }
         }, [])
 
         useEffect(()=>{
-            if(selectData===id){
+            if(selectData===text){
                 setIsClicked(true);
             }
             else{
@@ -100,7 +100,7 @@ export default ({
         if(isClicked){
             // 선택한 데이터가 담긴 배열에서 현재 id값 삭제.
             setSelectData(selectData.filter((s, idx)=>{
-                return s !== id;
+                return s !== text;
             }))
             setIsClicked(false);
             if(text === "기타"){
@@ -109,7 +109,7 @@ export default ({
         }
         else{
             if(isNoneExist & id === data_num-1){
-                setSelectData([id]);
+                setSelectData([text]);
                 setIsClicked(true);
                 setIsOther(false);
             }
@@ -117,7 +117,7 @@ export default ({
                 if(text === "기타"){
                     setIsOther(true);
                 }
-                setSelectData(selectData.concat([id]));
+                setSelectData(selectData.concat([text]));
                 setIsClicked(true);
             }
         }
@@ -128,7 +128,7 @@ export default ({
         if(isClicked){
             // 선택한 데이터가 담긴 배열에서 현재 id값 삭제.
             setSelectData(selectData.filter((s, idx)=>{
-                return s !== id;
+                return s !== text;
             }))
             setIsClicked(false);
             if(text === "기타"){
@@ -137,8 +137,8 @@ export default ({
         }
         else{
             // 없음 클릭했을 때
-            if(isNoneExist & id === data_num-1){
-                setSelectData([id]);
+            if(isNoneExist & text === "없음"){
+                setSelectData([text]);
                 // setIsNoneClicked(true);
                 setIsClicked(true);
                 setIsOther(false);
@@ -148,7 +148,7 @@ export default ({
                 if(text === "기타"){
                     setIsOther(true);
                 }
-                setSelectData(selectData.concat([id]));
+                setSelectData(selectData.concat([text]));
                 setIsClicked(true);
             }
         // console.log(selectData);
@@ -157,7 +157,7 @@ export default ({
 
 
     const handleOneClick = () => {
-        setSelectData(id);
+        setSelectData(text);
         setIsClicked(true);
     }
 
@@ -168,7 +168,7 @@ export default ({
                 onClick=
                 {isOverlap? 
                     handleOverlapClick 
-                    : (maxNum===2|maxNum===3)? 
+                    : (maxNum>1)? 
                         handleTwoClick 
                         : handleOneClick }
                 btnType={btnType}

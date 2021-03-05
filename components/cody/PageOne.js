@@ -15,9 +15,12 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         window.scrollTo(0,0);
     }, [])
 
+
     const [selectData, setSelectData] = useRecoilState(CodyTagState(0));
     const input = useRecoilInput(CodyOtherState(0));
-
+    // useEffect(()=>{
+    //     console.log(selectData);
+    // }, [selectData])
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>

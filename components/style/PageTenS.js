@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
@@ -21,6 +21,15 @@ export default ({
 
     const [selectData, setSelectData] = useRecoilState(SiteState);
     
+
+    useEffect(()=>{
+        window.scroll(0, 0);
+    }, [])
+
+    // useEffect(()=>{
+    //     console.log(selectData);
+    // },[selectData])
+
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>

@@ -9,6 +9,8 @@ import {createStore} from 'redux';
 import {RecoilRoot} from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import theme from '../assets/themes';
+import "swiper/swiper.scss";
+import 'swiper/components/pagination/pagination.scss';
 
 const store = createStore(
   rootReducer,
@@ -37,7 +39,7 @@ const Resize = ({ Component, pageProps }) => {
           <meta name="description" property="og:description" content="나와 비슷한 체형의 동물이 존재한다구? 나도 몰랐던 체형유형과 이에 맞는 찰떡 코디 추천까지!"/>
           <meta name="image" property="og:image" content="/images/sizetest/preview.png" />
         </Head>
-          <Component />
+          <Component {...pageProps}/>
       </Provider>
     </RecoilRoot>
     </ThemeProvider>

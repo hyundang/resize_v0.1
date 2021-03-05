@@ -1,7 +1,5 @@
 export { default as OverlapBtn } from './OverlapBtn';
-export { default as OverlapBtnZero } from './OverlapBtnZero';
-export { default as OverlapBtnOne } from './OverlapBtnOne';
-export { default as OverlapBtnTwo } from './OverlapBtnTwo';
+export { default as OverlapBtns } from './OverlapBtns';
 export { default as OverlapBtnThree } from './OverlapBtnThree';
 export { default as ChoiceBtn } from './ChoiceBtn';
 export { default as InputBox } from './InputBox';
@@ -14,4 +12,3 @@ export { default as Styles } from './Styles';
 export { default as Circles } from './Circles';
 export { default as Squares } from './Squares';
 export { default as Rectangles } from './Rectangles';
-export { default as OverlapBtns } from './OverlapBtns';
