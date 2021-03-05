@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
@@ -11,15 +11,26 @@ import { UserHnWState } from "../../states/size_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum}) => {
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    }, [])
+    
     const size = useWindowSize();
 
     // 유저 input 데이터
     const user_height = useRecoilInput(UserHnWState(0));
     const user_weight = useRecoilInput(UserHnWState(1));
     
+    const [isRightOkay, setIsRightOkay] = useState(false);
+
     useEffect(()=>{
-        window.scrollTo(0,0);
-    }, [])
+        if(user_height.value.length>=3 & user_weight.value.length>=2){
+            setIsRightOkay(true);
+        }
+        else{
+            setIsRightOkay(false);
+        }
+    }, [user_height, user_weight])
 
 
     return(
@@ -53,7 +64,10 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                     <Unit width={size.width}>kg</Unit>
                 </div>
             </Wrap>
-            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+            <Bottom 
+                setPageNum={setPageNum} pageNum={quesNum}
+                isRightOkay={isRightOkay}
+            />
         </div>
     )
 }

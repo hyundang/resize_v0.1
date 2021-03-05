@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
 import { Question, RatioStep } from "../../components/common";
 // recoil
-import { useRecoilState } from "recoil";
-import { BodySizeState } from "../../states/size_atom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { BodySizeState, SizeQuesTwoState } from "../../states/size_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
@@ -13,7 +13,19 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
         window.scrollTo(0,0);
     }, [])
     
-    
+    const [isRightOkay, setIsRightOkay] = useState(false);
+    const res = useRecoilValue(SizeQuesTwoState);
+
+    useEffect(()=>{
+        if(res.includes(-1)){
+            setIsRightOkay(false);
+        }
+        else{
+            setIsRightOkay(true);
+        }
+    }, [res])
+
+
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={1} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
@@ -33,7 +45,10 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                             />
                 })}
             </Wrap>
-            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+            <Bottom 
+                setPageNum={setPageNum} pageNum={quesNum}
+                isLeftOkay={true} isRightOkay={isRightOkay}
+            />
         </div>
     )
 }

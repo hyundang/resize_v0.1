@@ -2,7 +2,7 @@ import { atom } from 'recoil';
 
 export const SexState = atom({
     key: "SexState",
-    default: 0
+    default: -1
 })
 
 export const KategorieState = atom({
@@ -12,7 +12,7 @@ export const KategorieState = atom({
 
 export const VisitState = atom({
     key: "VisitState",
-    default: -1
+    default: ""
 })
 
 export const PageNumState = atom({

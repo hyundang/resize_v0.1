@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
@@ -9,12 +9,24 @@ import { QuesFiveState } from "../../states/style_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
-    // 선택한 데이터가 담긴 배열(1순위: index=0, 2순위: index=1..) ex)[3,11,9]-> 1순위는 id=3인 이미지
-    const [selectData, setSelectData] = useRecoilState(QuesFiveState);
-    
     useEffect(()=>{
         window.scrollTo(0,0);
     },[])
+    
+    // 선택한 데이터가 담긴 배열(1순위: index=0, 2순위: index=1..) ex)[3,11,9]-> 1순위는 id=3인 이미지
+    const [selectData, setSelectData] = useRecoilState(QuesFiveState);
+    
+    const [isRightOkay, setIsRightOkay] = useState(false);
+
+    useEffect(()=>{
+        if(selectData.length!==0){
+            setIsRightOkay(true);
+        }
+        else{
+            setIsRightOkay(false);
+        }
+    }, [selectData])
+
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
@@ -36,7 +48,10 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>
-            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+            <Bottom 
+                setPageNum={setPageNum} pageNum={quesNum}
+                isLeftOkay={true} isRightOkay={isRightOkay}
+            />
         </div>
     )
 }

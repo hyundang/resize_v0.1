@@ -11,15 +11,27 @@ import { QuesTenFiState } from "../../states/style_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
+    useEffect(()=>{
+        window.scroll(0, 0);
+    }, [])
+    
     const [isShow, setIsShow] = useState(false);
     const size = useWindowSize();
 
     // 선택한 데이터가 담긴 배열
     const [selectData, setSelectData] = useRecoilState(QuesTenFiState);
     
+    const [isRightOkay, setIsRightOkay] = useState(false);
+
     useEffect(()=>{
-        window.scroll(0, 0);
-    }, [])
+        if(selectData.length!==0){
+            setIsRightOkay(true);
+        }
+        else{
+            setIsRightOkay(false);
+        }
+    }, [selectData])
+    
     
     // useEffect(()=>{
     //     console.log(selectData);
@@ -69,7 +81,10 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>
-            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+            <Bottom 
+                setPageNum={setPageNum} pageNum={quesNum}
+                isLeftOkay={true} isRightOkay={isRightOkay}
+            />
         </div>
     )
 }

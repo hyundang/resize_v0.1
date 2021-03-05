@@ -88,6 +88,7 @@ export default ({user_datas}) => {
         // console.log(checkedList);
         if(result.name!=="" & result.birth!==""
         & result.phone!=="" & result.emailfront!==""
+        & result.phone.length===11
         & selectData!==-1
         & checkedList.includes('1') & checkedList.includes('2')){
             setIsNextOkay(true);

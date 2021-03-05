@@ -35,7 +35,10 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                     input={input}
                 />
             </Wrap>
-            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+            <Bottom 
+                setPageNum={setPageNum} pageNum={quesNum}
+                isLeftOkay={true} isRightOkay={true}
+            />
         </div>
     )
 }

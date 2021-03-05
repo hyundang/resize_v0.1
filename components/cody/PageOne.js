@@ -6,8 +6,9 @@ import { QuestionTwo, OverlapBtns } from "../../components/common";
 // hooks
 import useRecoilInput from "../../hooks/useRecoilInput";
 // recoil
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import { CodyTagState, CodyOtherState } from "../../states/cody_atom";
+import { VisitState } from "../../states/website_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
@@ -18,14 +19,26 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
 
     const [selectData, setSelectData] = useRecoilState(CodyTagState(0));
     const input = useRecoilInput(CodyOtherState(0));
+    const isVisited = useRecoilValue(VisitState);
     // useEffect(()=>{
     //     console.log(selectData);
     // }, [selectData])
+    const [isRightOkay, setIsRightOkay] = useState(false);
+
+    // 다음 페이지로 넘어갈 수 있는지 판단
+    useEffect(()=>{
+        if(selectData.length!==0){
+            setIsRightOkay(true);
+        }
+        else{
+            setIsRightOkay(false);
+        }
+    }, [selectData])
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
-            <Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-            <Wrap>
+            {(isVisited.includes("네"))&&<Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>}
+            <Wrap isVisited={isVisited.includes("네")}>
                 <QuestionTwo
                     quesNum={quesNum}
                     quesTextOne={"해당 코디로 연출하고 싶은"}
@@ -46,13 +59,16 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>
-            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+            <Bottom 
+                setPageNum={setPageNum} pageNum={quesNum}
+                isRightOkay={isRightOkay}
+            />
         </div>
     )
 }
 
 const Wrap = styled.div`
-    margin-top: 11.6rem;
+    margin-top: ${props=>props.isVisited? '11.6' : '4'}rem;
     margin-bottom: 8.6rem;
     display: flex;
     flex-direction: column;

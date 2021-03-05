@@ -6,25 +6,27 @@ import { InputBoxBig, QuestionTwo, Question } from "../../components/common";
 // hooks
 import useRecoilInput from "../../hooks/useRecoilInput";
 // recoil
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import { CodyOtherState } from "../../states/cody_atom";
-
+import { VisitState } from "../../states/website_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    },[])
+    
     // input 여러 개 만들기
     const inputOne = useRecoilInput(CodyOtherState(7));
     const inputTwo = useRecoilInput(CodyOtherState(8));
 
+    const isVisited = useRecoilValue(VisitState);
 
-    useEffect(()=>{
-        window.scrollTo(0,0);
-    },[])
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
-            <Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-            <Wrap>
+            {(isVisited.includes("네"))&&<Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>}
+            <Wrap isVisited={isVisited.includes("네")}>
                 <QuestionTwo
                     quesNum={quesNum}
                     quesTextOne={"해당 코디에 꼭 포함하고"}
@@ -60,13 +62,14 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             <Bottom 
                 setPageNum={setPageNum} pageNum={quesNum}
                 lastQuesNum={lastQuesNum} kategorie={2}
+                isLeftOkay={true} isRightOkay={true}
             />
         </div>
     )
 }
 
 const Wrap = styled.div`
-    margin-top: 11.6rem;
+    margin-top: ${props=>props.isVisited? '11.6' : '4'}rem;
     margin-bottom: 8.6rem;
     display: flex;
     flex-direction: column;

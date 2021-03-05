@@ -19,9 +19,16 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
     const [selectFourData, setSelectFourData] = useRecoilState(ClothesSizeState(3));
     const [selectFiveData, setSelectFiveData] = useRecoilState(ClothesSizeState(4));
 
-    // useEffect(()=>{
-    //     console.log(selectOneData);
-    // },[selectOneData])
+    const [isRightOkay, setIsRightOkay] = useState(false);
+
+    useEffect(()=>{
+        if(selectOneData.length!==0 & selectTwoData.length!==0 & selectThreeData.length!==0 & selectFourData.length!==0 & selectFiveData.length!==0){
+            setIsRightOkay(true);
+        }
+        else{
+            setIsRightOkay(false);
+        }
+    }, [selectOneData, selectTwoData, selectThreeData, selectFourData, selectFiveData])
 
     const [isShowOne, setIsShowOne] = useState(false);
     const [isShowTwo, setIsShowTwo] = useState(false);
@@ -319,6 +326,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
             <Bottom 
                 setPageNum={setPageNum} pageNum={quesNum}
                 lastQuesNum={lastQuesNum} kategorie={1}
+                isLeftOkay={true} isRightOkay={isRightOkay}
             />
         </div>
     )

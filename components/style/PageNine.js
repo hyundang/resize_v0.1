@@ -10,11 +10,23 @@ import { QuesNineState } from "../../states/style_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
-    const [selecData, setSelectData] = useRecoilState(QuesNineState)
-    
     useEffect(()=>{
         window.scrollTo(0,0);
     },[])
+    
+    const [selectData, setSelectData] = useRecoilState(QuesNineState)
+    
+    const [isRightOkay, setIsRightOkay] = useState(false);
+
+    useEffect(()=>{
+        if(selectData.length!==0){
+            setIsRightOkay(true);
+        }
+        else{
+            setIsRightOkay(false);
+        }
+    }, [selectData])
+    
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
@@ -31,11 +43,14 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     data={user_datas} data_num={data_num}
                     isOverlap={true} maxNum={0}
                     isBorderLine={false}
-                    selectData={selecData} setSelectData={setSelectData}
+                    selectData={selectData} setSelectData={setSelectData}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>
-            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+            <Bottom 
+                setPageNum={setPageNum} pageNum={quesNum}
+                isLeftOkay={true} isRightOkay={isRightOkay}
+            />
         </div>
     )
 }

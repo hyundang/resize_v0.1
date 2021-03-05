@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 // assets
 import gray_arrow_left from "../assets/img/icons/gray_arrow_left.svg";
@@ -7,21 +8,43 @@ import black_arrow_right from "../assets/img/icons/black_arrow_right.svg";
 // router
 import { useRouter } from "next/router";
 // recoil
-import { useSetRecoilState } from "recoil";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 import { StylePageNumState } from "../states/style_atom";
 import { SizePageNumState } from "../states/size_atom";
+import { VisitState } from "../states/website_atom";
 
 
 export default ({
     setPageNum, pageNum, 
     isCody, setInnerPageNum, innerPageNum, lastInnerPageNum,
-    lastQuesNum, kategorie
+    lastQuesNum, kategorie,
+    isLeftOkay, isRightOkay
 }) => {
     const router = useRouter();
     const setStlyePageNum = useSetRecoilState(StylePageNumState);
     const setSizePageNum = useSetRecoilState(SizePageNumState);
 
+    const isVisited = useRecoilValue(VisitState);
+
+    const [isLeftActive, setIsLeftActive] = useState(false);
+    const [isRightActive, setIsRightActive] = useState(false);
+
+    useEffect(()=>{
+        if(isLeftOkay){
+            setIsLeftActive(true);
+        }
+    }, [])
+
+    useEffect(()=>{
+        if(isRightOkay){
+            setIsRightActive(true);
+        }
+        else{
+            setIsRightActive(false);
+        }
+    }, [isRightOkay])
     
+
     const handleLastPage = () => {
         switch (kategorie) {
             case -1:
@@ -40,7 +63,12 @@ export default ({
                 router.push('/website_dev/cody');
                 break;
             case 2:
-                router.push('/website_dev/last');
+                if(isVisited.includes("네")){
+                    router.push('/website_dev/last');
+                }
+                else{
+                    router.push('/website_dev/result');
+                }
                 break;
             case 3:
                 break;
@@ -54,28 +82,31 @@ export default ({
         <Wrap>
             <BtnWrap 
                 onClick={
-                    isCody&(innerPageNum!==0)? 
-                        ()=>setInnerPageNum(innerPageNum-1) 
-                        :() => setPageNum(pageNum-1)}
+                    isLeftActive?
+                        (isCody&(innerPageNum!==0)? 
+                            ()=>setInnerPageNum(innerPageNum-1) 
+                            :() => setPageNum(pageNum-1))
+                    :()=>{}}
                 pageNum={pageNum}
             >
-                <BtnIcon src={gray_arrow_left}/>
-                <BtnText>이전</BtnText>
+                <BtnIcon src={(isLeftActive)? black_arrow_left : gray_arrow_left}/>
+                <BtnText isActive={isLeftActive}>이전</BtnText>
             </BtnWrap>
             <Space pageNum={pageNum}/>
             <BtnWrap 
                 onClick={
-                    (lastQuesNum===pageNum)?
+                    isRightActive?
+                    ((lastQuesNum===pageNum)?
                         handleLastPage
                         :(isCody&(innerPageNum!==lastInnerPageNum)?
                             ()=>setInnerPageNum(innerPageNum+1)
-                            :() => setPageNum(pageNum+1)
-                    )
+                            :() => setPageNum(pageNum+1)))
+                    : ()=>{}
                 }
                 pageNum={0}
             >
-                <BtnText>다음</BtnText>
-                <BtnIcon src={gray_arrow_right}/>
+                <BtnText isActive={isRightActive}>다음</BtnText>
+                <BtnIcon src={isRightActive? black_arrow_right : gray_arrow_right}/>
             </BtnWrap>
         </Wrap>
         </>
@@ -113,7 +144,8 @@ const BtnWrap = styled.div`
 
 const BtnText = styled.div`
     font-size: 1.6rem;
-    color: ${({theme}) => theme.colors.brown_grey};
+    color: ${props=>props.isActive? ({theme}) => theme.colors.black : ({theme}) => theme.colors.brown_grey};
+    font-weight: bold;
     line-height: 1.6rem;
 `;
 

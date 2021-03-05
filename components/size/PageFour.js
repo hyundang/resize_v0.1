@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
@@ -10,12 +10,23 @@ import { BodyPnCState } from "../../states/size_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum}) => {
-    const pros = useRecoilInput(BodyPnCState(0));
-    const cons = useRecoilInput(BodyPnCState(1));
-    
     useEffect(()=>{
         window.scrollTo(0,0);
     }, [])
+    
+    const pros = useRecoilInput(BodyPnCState(0));
+    const cons = useRecoilInput(BodyPnCState(1));
+
+    const [isRightOkay, setIsRightOkay] = useState(false);
+
+    useEffect(()=>{
+        if(pros.value!=="" & cons.value!==""){
+            setIsRightOkay(true);
+        }
+        else{
+            setIsRightOkay(false);
+        }
+    }, [pros.value, cons.value])
     
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
@@ -43,7 +54,10 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                 />
                 <div style={{marginBottom:'3.3rem'}}/>
             </Wrap>
-            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+            <Bottom 
+                setPageNum={setPageNum} pageNum={quesNum}
+                isLeftOkay={true} isRightOkay={isRightOkay}
+            />
         </div>
     )
 }

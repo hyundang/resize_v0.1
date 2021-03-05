@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // recoil
-import { useSetRecoilState, useRecoilState } from "recoil";
-import { VisitState, PageNumState } from "../../states/website_atom";
+import { useRecoilState } from "recoil";
+import { PageNumState } from "../../states/website_atom";
 // components
-// import { InputBox } from "../../components/common";
 import { Bottom } from "../../components";
 // hooks
 import useInput from "../../hooks/useInput";
@@ -12,9 +11,21 @@ import useInput from "../../hooks/useInput";
 
 export default () => {
     const [pageNum, setPageNum] = useRecoilState(PageNumState);
-    const [isVisited, setVisited] = useRecoilState(VisitState);
 
     const input = useInput("");
+
+    const [isRightOkay, setIsRightOkay] = useState(false);
+
+    useEffect(()=>{
+        console.log(input.value)
+        if(input.value.length===11){
+            setIsRightOkay(true);
+        }
+        else{
+            setIsRightOkay(false);
+        }
+    }, [input.value])
+
 
     return(
         <Wrap>
@@ -33,6 +44,8 @@ export default () => {
                 pageNum={pageNum}
                 setPageNum={setPageNum}
                 kategorie={-1} lastQuesNum={2}
+                isLeftOkay={true}
+                isRightOkay={isRightOkay}
             />
         </Wrap>
     )

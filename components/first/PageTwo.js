@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // recoil
 import { useSetRecoilState, useRecoilState } from "recoil";
@@ -12,6 +12,14 @@ const question = ["네, 처음이에요!", "아니요, 해본 적 있어요!"];
 export default () => {
     const [pageNum, setPageNum] = useRecoilState(PageNumState);
     const [isVisited, setVisited] = useRecoilState(VisitState);
+    const [isRightOkay, setIsRightOkay] = useState(false);
+
+    useEffect(()=>{
+        // console.log(isVisited)
+        if(isVisited!==""){
+            setIsRightOkay(true);
+        }
+    }, [isVisited])
 
     return(
         <Wrap>
@@ -30,6 +38,7 @@ export default () => {
             <Bottom
                 pageNum={pageNum}
                 setPageNum={setPageNum}
+                isRightOkay={isRightOkay}
             />
         </Wrap>
     )

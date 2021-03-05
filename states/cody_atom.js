@@ -52,7 +52,13 @@ export const CodyItemListState = atom({
 export const CodyQuesThreeState = selector({
     key: "CodyQuesThreeState",
     get: ({ get })=>{
-        let max_num = get(CodyItemListState).length;
+        let max_num = 0;
+        if(get(CodyItemListState)==undefined){
+            max_num = 0;
+        }
+        else{
+            max_num = get(CodyItemListState).length;
+        }
         let result = [];
         for(let i=0; i<max_num; i++){
             result = result.concat([{

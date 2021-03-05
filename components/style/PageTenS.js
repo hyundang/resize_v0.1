@@ -16,16 +16,27 @@ export default ({
     user_datas, data_num, 
     inputTextOne, inputTextTwo
 }) => {
+    useEffect(()=>{
+        window.scroll(0, 0);
+    }, [])
+    
     const brand_data = useRecoilInput(BrandNameState);
     const site_data = useRecoilInput(SiteNameState);
 
     const [selectData, setSelectData] = useRecoilState(SiteState);
     
+    const [isRightOkay, setIsRightOkay] = useState(false);
 
     useEffect(()=>{
-        window.scroll(0, 0);
-    }, [])
+        if(selectData.length!==0 & brand_data.value!==""){
+            setIsRightOkay(true);
+        }
+        else{
+            setIsRightOkay(false);
+        }
+    }, [selectData, brand_data.value])
 
+    
     // useEffect(()=>{
     //     console.log(selectData);
     // },[selectData])
@@ -75,6 +86,7 @@ export default ({
             <Bottom 
                 setPageNum={setPageNum} pageNum={quesNum}
                 lastQuesNum={lastQuesNum} kategorie={0}
+                isLeftOkay={true} isRightOkay={isRightOkay}
             />
         </div>
     )

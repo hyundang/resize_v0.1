@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 // recoil
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { SexState } from "../../states/website_atom";
 // components
 import { Header, Bottom } from "../../components";
@@ -16,7 +16,27 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
     const [isManClick, setIsManClick] = useState(false);
     const [isWomanClick, setIsWomanClick] = useState(false);
 
-    const setSex = useSetRecoilState(SexState);
+    const [isRightOkay, setIsRightOkay] = useState(false);
+
+    const [sex, setSex] = useRecoilState(SexState);
+
+    useEffect(()=>{
+        if(sex===0){
+            setIsManClick(true);
+        }
+        else if(sex===1){
+            setIsWomanClick(true);
+        }
+    }, [])
+
+    useEffect(()=>{
+        if(sex!==-1){
+            setIsRightOkay(true);
+        }
+        else{
+            setIsRightOkay(false);
+        }
+    }, [sex])
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
@@ -39,7 +59,10 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                     />
                 </BtnWrap>
             </Wrap>
-            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+            <Bottom 
+                setPageNum={setPageNum} pageNum={quesNum}
+                isRightOkay={isRightOkay}
+            />
         </div>
     )
 }

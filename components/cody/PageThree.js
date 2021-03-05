@@ -9,12 +9,16 @@ import cody_case_M from "../../lib/cody_case_M";
 // hooks
 import useRecoilInput from "../../hooks/useRecoilInput";
 // recoil
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import { CodyCaseState, CodyItemListState, CodyOtherState, CodyQuesThreeState, CodyTagState } from "../../states/cody_atom";
-
+import { VisitState } from "../../states/website_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
+    const isVisited = useRecoilValue(VisitState);
+    
+    const [codyCase, setCodyCase] = useRecoilState(CodyCaseState);
+
     const [innerPageNum, setInnerPageNum] = useState(0);
     const [itemList, setItemList] = useRecoilState(CodyItemListState);
     
@@ -30,8 +34,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
     const inputFour = useRecoilInput(CodyOtherState(5));
     const inputFive = useRecoilInput(CodyOtherState(6));
     
-    // const [res, setRes] = useRecoilState(CodyQuesThreeState);
-    const [codyCase, setCodyCase] = useRecoilState(CodyCaseState);
+    const [isRightOkay, setIsRightOkay] = useState(false);
+    const [res, setRes] = useRecoilState(CodyQuesThreeState);
 
     useEffect(()=>{
         window.scrollTo(0,0);
@@ -52,13 +56,68 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
         }
     }, [codyCase])
 
-    
+    // 다음 페이지로 넘어갈 수 있는지 판단
+    useEffect(()=>{
+        switch (innerPageNum) {
+            case 1:
+                if(selectDataOne.length!==0){
+                    setIsRightOkay(true);
+                }
+                else{
+                    setIsRightOkay(false);
+                }
+                break;
+            case 2:
+                if(selectDataTwo.length!==0){
+                    setIsRightOkay(true);
+                }
+                else{
+                    setIsRightOkay(false);
+                }
+                break;
+            case 3:
+                if(selectDataThree.length!==0){
+                    setIsRightOkay(true);
+                }
+                else{
+                    setIsRightOkay(false);
+                }
+                break;
+            case 4:
+                if(selectDataFour.length!==0){
+                    setIsRightOkay(true);
+                }
+                else{
+                    setIsRightOkay(false);
+                }
+                break;
+            case 5:
+                if(selectDataFive.length!==0){
+                    setIsRightOkay(true);
+                }
+                else{
+                    setIsRightOkay(false);
+                }
+                break;
+            default:
+                if(codyCase.length!==0){
+                    setIsRightOkay(true);
+                }
+                else{
+                    setIsRightOkay(false);
+                }
+                break;
+        }
+    }, [res, innerPageNum])
+
+
+
     switch (innerPageNum) {
         case 1:
             return(
                 <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
-                    <Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-                    <Wrap>
+                    {(isVisited.includes("네"))&&<Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>}
+                    <Wrap isVisited={isVisited.includes("네")}>
                         <QuestionTwo
                             quesNum={0}
                             quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
@@ -84,14 +143,15 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                         isCody={true} 
                         setInnerPageNum={setInnerPageNum} innerPageNum={innerPageNum} 
                         lastInnerPageNum={itemList.length}
+                        isLeftOkay={true} isRightOkay={isRightOkay}
                     />
                 </div>
             )
         case 2:
             return(
                 <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
-                    <Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-                    <Wrap>
+                    {(isVisited.includes("네"))&&<Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>}
+                    <Wrap isVisited={isVisited.includes("네")}>
                         <QuestionTwo
                             quesNum={0}
                             quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
@@ -117,14 +177,15 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                         isCody={true} 
                         setInnerPageNum={setInnerPageNum} innerPageNum={innerPageNum} 
                         lastInnerPageNum={itemList.length}
+                        isLeftOkay={true} isRightOkay={isRightOkay}
                     />
                 </div>
             )
         case 3:
             return(
                 <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
-                    <Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-                    <Wrap>
+                    {(isVisited.includes("네"))&&<Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>}
+                    <Wrap isVisited={isVisited.includes("네")}>
                         <QuestionTwo
                             quesNum={0}
                             quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
@@ -151,14 +212,15 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                         setInnerPageNum={setInnerPageNum} innerPageNum={innerPageNum} 
                         lastInnerPageNum={itemList.length}
                         innerPageNum={innerPageNum}
+                        isLeftOkay={true} isRightOkay={isRightOkay}
                     />
                 </div>
             )
         case 4:
             return(
                 <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
-                    <Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-                    <Wrap>
+                    {(isVisited.includes("네"))&&<Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>}
+                    <Wrap isVisited={isVisited.includes("네")}>
                         <QuestionTwo
                             quesNum={0}
                             quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
@@ -184,14 +246,15 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                         isCody={true} 
                         setInnerPageNum={setInnerPageNum} innerPageNum={innerPageNum} 
                         lastInnerPageNum={itemList.length}
+                        isLeftOkay={true} isRightOkay={isRightOkay}
                     />
                 </div>
             )
         case 5:
             return(
                 <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
-                    <Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-                    <Wrap>
+                    {(isVisited.includes("네"))&&<Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>}
+                    <Wrap isVisited={isVisited.includes("네")}>
                         <QuestionTwo
                             quesNum={0}
                             quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
@@ -217,14 +280,15 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                         isCody={true} 
                         setInnerPageNum={setInnerPageNum} innerPageNum={innerPageNum} 
                         lastInnerPageNum={itemList.length}
+                        isLeftOkay={true} isRightOkay={isRightOkay}
                     />
                 </div>
             )
         default:
             return(
                 <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
-                    <Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-                    <Wrap>
+                    {(isVisited.includes("네"))&&<Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>}
+                    <Wrap isVisited={isVisited.includes("네")}>
                         <QuestionTwo
                             quesNum={quesNum}
                             quesTextOne={"받아보고 싶은 코디에 포함하고"}
@@ -247,6 +311,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                         isCody={true} 
                         setInnerPageNum={setInnerPageNum} innerPageNum={innerPageNum}
                         lastInnerPageNum={5}
+                        isLeftOkay={true} isRightOkay={isRightOkay}
                     />
                 </div>
             )
@@ -254,7 +319,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
 }
 
 const Wrap = styled.div`
-    margin-top: 11.6rem;
+    margin-top: ${props=>props.isVisited? '11.6' : '4'}rem;
     margin-bottom: 8.6rem;
     display: flex;
     flex-direction: column;

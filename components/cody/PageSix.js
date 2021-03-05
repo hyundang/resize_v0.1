@@ -4,8 +4,9 @@ import styled from "styled-components";
 import { Header, Bottom } from "../../components";
 import { OverlapBtns, Question, QuestionTwo } from "../../components/common";
 // recoil
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import { CodyTagState, CodyOneTagState } from "../../states/cody_atom";
+import { VisitState } from "../../states/website_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
@@ -17,14 +18,28 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     const [selectDataTwo, setSelectDataTwo] = useRecoilState(CodyOneTagState(0));
     const [selectDataThree, setSelectDataThree] = useRecoilState(CodyOneTagState(1));
 
+    const isVisited = useRecoilValue(VisitState);
+
+    const [isRightOkay, setIsRightOkay] = useState(false);
+
+    // 다음 페이지로 넘어갈 수 있는지 판단
+    useEffect(()=>{
+        if(selectDataOne.length!==0 & selectDataTwo.length!==0 & selectDataThree.length!==0){
+            setIsRightOkay(true);
+        }
+        else{
+            setIsRightOkay(false);
+        }
+    }, [selectDataOne, selectDataTwo, selectDataThree])
+
     // useEffect(()=>{
     //     console.log(selectDataThree);
     // },[selectDataThree])
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
-            <Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-            <Wrap>
+             {(isVisited.includes("네"))&&<Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>}
+            <Wrap isVisited={isVisited.includes("네")}>
                 <QuestionTwo
                     quesNum={quesNum}
                     quesTextOne={user_datas[0].question[0]}
@@ -70,13 +85,16 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>
-            <Bottom setPageNum={setPageNum} pageNum={quesNum}/>
+            <Bottom 
+                setPageNum={setPageNum} pageNum={quesNum}
+                isLeftOkay={true} isRightOkay={isRightOkay}
+            />
         </div>
     )
 }
 
 const Wrap = styled.div`
-    margin-top: 11.6rem;
+    margin-top: ${props=>props.isVisited? '11.6' : '4'}rem;    
     margin-bottom: 8.6rem;
     display: flex;
     flex-direction: column;
