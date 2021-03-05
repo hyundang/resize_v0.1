@@ -48,7 +48,7 @@ const StyleChoose = ({id, style, isOneClick, setIsOneClick, isTwoClick, setIsTwo
                     // 선택지(=이미지 칸), idx=0,1=>총9*2(=스타일 개수*2)
                     return <StyleImg 
                                 key={idx}
-                                imgpath={img} id={id*2+idx} 
+                                imgpath={img} id={style.name+String(idx)} 
                                 isOneClick={isOneClick} setIsOneClick={setIsOneClick} 
                                 isTwoClick={isTwoClick} setIsTwoClick={setIsTwoClick} 
                                 isThreeClick={isThreeClick} setIsThreeClick={setIsThreeClick} 

@@ -27,8 +27,8 @@ export const TotalUserInfoState = selector({
             name: get(UserInfoState(0)),
             birth: get(UserInfoState(1)),
             phone: get(UserInfoState(2)),
-            email: get(UserInfoState(3)),
-            instagram: get(UserInfoState(4)),
+            email: get(UserInfoState(3))+'@'+get(UserInfoState(4)),
+            instagram: get(UserInfoState(5)),
             job: get(UserJobState),
             policy: get(CheckedListState)
         }

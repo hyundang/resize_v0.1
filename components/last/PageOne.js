@@ -27,9 +27,11 @@ export default ({user_datas}) => {
     // 유저 정보 데이터
     const name = useRecoilInput(UserInfoState(0));
     const birth = useRecoilInput(UserInfoState(1));
+    // const [birth, setBirth] = useState(0);
     const phone = useRecoilInput(UserInfoState(2));
-    const email = useRecoilInput(UserInfoState(3));
-    const instagram = useRecoilInput(UserInfoState(4));
+    const emailfront = useRecoilInput(UserInfoState(3));
+    const emailback = useRecoilInput(UserInfoState(4));
+    const instagram = useRecoilInput(UserInfoState(5));
     // 직업 데이터
     const [selectData, setSelectData] = useRecoilState(UserJobState);
     // 전체 데이터
@@ -78,7 +80,7 @@ export default ({user_datas}) => {
 
     // 다음 단계로 진행 가능 여부 판단
     useEffect(()=>{
-        console.log(checkedList);
+        // console.log(checkedList);
         if(result.name!=="" & result.birth!==""
         & result.phone!=="" & result.email!==""
         & selectData!==-1
@@ -90,6 +92,10 @@ export default ({user_datas}) => {
             setIsNextOkay(false);
         }
     },[result, checkedList, selectData]);
+
+    // useEffect(()=>{
+    //     console.log(result);
+    // }, [result])
 
     return(
         <>
@@ -112,9 +118,11 @@ export default ({user_datas}) => {
                 overlapText={"*"}
             />
             <div style={{marginTop:'2.4rem'}}/>
-            <InputBox
-                text={"예) 2021.01.01"}
-                input={birth}
+            <InputBirth 
+                type="date" min="1960-01-01" max="2021-01-01"  
+                placeholder={"연도-월-일"}
+                value={birth.value} 
+                onChange={birth.onChange}
             />
             <div style={{marginTop:'3.2rem'}}/>
             <Question
@@ -123,9 +131,11 @@ export default ({user_datas}) => {
                 overlapText={"*"}
             />
             <div style={{marginTop:'2.4rem'}}/>
-            <InputBox
-                text={"예) 01012345678"}
-                input={phone}
+            <InputPhone
+                placeholder={"예) 01012345678"}
+                value={phone.value}
+                onChange={phone.onChange}
+                type="number"
             />
             <div style={{marginTop:'3.2rem'}}/>
             <Question
@@ -134,10 +144,30 @@ export default ({user_datas}) => {
                 overlapText={"*"}
             />
             <div style={{marginTop:'2.4rem'}}/>
-            <InputBox
-                text={"예) resize@gmail.com"}
-                input={email}
-            />
+            <div style={{
+                display:'flex',flexDirection:'row',
+                alignItems:'center',justifyContent:'space-between',
+                width:'32rem', height:'4.4rem'
+            }}>
+                <InputEmailfront
+                    type="text"
+                    placeholder={"이메일"}
+                    value={emailfront.value}
+                    onChange={emailfront.onChange}
+                />
+                <div style={{width:'1.4rem',height:'1.4rem',fontSize:'1.4rem',lineHeight:'1.4rem'}}>@</div>
+                <InputEmailBack name="email" 
+                    value={emailback.value} onChange={emailback.onChange}
+                >
+                    <optgroup>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="hanmail.net">hanmail.net</option>
+                        <option value="nate.com">nate.com</option>
+                        <option value="daum.net">daum.net</option>
+                    </optgroup>
+                </InputEmailBack>
+            </div>
             <div style={{marginTop:'3.2rem'}}/>
             <Question
                 quesNum={0}
@@ -235,6 +265,89 @@ const Bottom = styled.div`
     color: black;
     letter-spacing: -0.4px;
 
+`;
+
+const InputBirth = styled.input`
+    width: 32rem;
+    height: 4.4rem;
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+    border: solid 0.1rem #bdbdbd;
+    background-color: ${({ theme }) => theme.colors.white};
+    font-size: 1.4rem;
+    font-weight: 500;
+    font-family: 'Noto Sans KR';
+    text-align: left;
+    color: #767676;
+    &:focus{
+        outline: none;
+        border: solid 0.1rem #767676;
+    }
+`;
+
+const InputPhone = styled.input`
+    width: 32rem;
+    height: 4.4rem;
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+    border: solid 0.1rem #bdbdbd;
+    background-color: ${({ theme }) => theme.colors.white};
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-family: 'Noto Sans KR';
+    text-align: left;
+    color: #767676;
+    ::placeholder{
+        color: #bdbdbd;
+        font-size: 1.4rem;
+    }
+    &:focus{
+        outline: none;
+        border: solid 0.1rem #767676;
+    }
+`;
+
+const InputEmailfront = styled.input`
+    width: 14rem;
+    height: 4.4rem;
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+    border: solid 0.1rem #bdbdbd;
+    background-color: ${({ theme }) => theme.colors.white};
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-family: 'Noto Sans KR';
+    text-align: left;
+    color: #bdbdbd;
+    ::placeholder{
+        color: #bdbdbd;
+        font-size: 1.4rem;
+    }
+    &:focus{
+        outline: none;
+        border: solid 0.1rem #767676;
+    }
+`;
+
+const InputEmailBack = styled.select`
+    width: 14rem;
+    height: 4.4rem;
+    padding: 1rem 1.2rem;
+    border-radius: 0.5rem;
+    border: solid 0.1rem #bdbdbd;
+    background-color: ${({ theme }) => theme.colors.white};
+    font-size: 1.4rem;
+    font-weight: 500;
+    font-family: 'Noto Sans KR';
+    text-align: left;
+    color: #bdbdbd;
+    ::placeholder{
+        color: #bdbdbd;
+    }
+    &:focus{
+        outline: none;
+        border: solid 0.1rem #767676;
+    }
 `;
 
 const PolicyBox = ({id, checkedList, handleCheckClick, text, handleBtnClick}) => {

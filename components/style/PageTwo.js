@@ -15,6 +15,10 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     useEffect(()=>{
         window.scrollTo(0,0);
     }, [])
+
+    // useEffect(()=>{
+    //     console.log(selectData);
+    // },[selectData])
     
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
@@ -22,7 +26,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
             <Wrap>
                 <QuestionTwo
                     quesNum={quesNum}
-                    quesTextOne={"평소 선호하는 브랜드/쇼핑몰의"}
+                    quesTextOne={"평소에 자주 입는 스타일을"}
                     quesTextTwo={"순서대로 골라주실래요?"}
                     overlapText={"최대 3개"}
                 />
