@@ -22,7 +22,7 @@ export default () => {
 
     useEffect(()=>{
         window.scroll(0,0);
-    },[])
+    },[innerPageNum])
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>

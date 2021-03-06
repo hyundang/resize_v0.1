@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
-import { Header, Bottom } from "./common";
+import { Header, Bottom, TagBtns } from "./common";
 import { InputBoxBig } from "../common";
 // hooks
 import useInput from "../../hooks/useInput";
@@ -9,9 +9,11 @@ import useInput from "../../hooks/useInput";
 import { useRouter } from "next/router";
 
 
+const data=["색상이 마음에 안 들어서", '디자인이 마음에 안 들어서', '가격이 마음에 안 들어서', '품질이 마음에 안 들어서', '기타'];
+
 export default () => {
     const input = useInput("");
-    const [selectData, setSelectData] = useState([]);
+    const [selectData, setSelectData] = useState("");
     
     const router = useRouter();
     
@@ -24,7 +26,13 @@ export default () => {
             <Header text={"코디 큐레이션 재요청하기"}/>
             <Wrap>
                 <div style={{height:'2rem'}}/>
-                <Title>코디 큐레이션을 재요청하는 이유가 무엇인가요</Title>
+                <Title>코디 큐레이션을 재요청하는 이유가 무엇인가요?</Title>
+                <div style={{height:'2rem'}}/>
+                <TagBtns 
+                    data={data}
+                    selectData={selectData}
+                    setSelectData={setSelectData} 
+                />
                 <div style={{height:'3.6rem'}}/>
                 <Title>구체적으로 불만족한 부분을 설명해주세요.</Title>
                 <div style={{height:'2rem'}}/>
