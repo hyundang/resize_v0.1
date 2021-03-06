@@ -6,8 +6,9 @@ import { OverlapBtns, QuestionTwo } from "../../components/common";
 // hooks
 import useWindowSize from "../../hooks/useWindowSize";
 // recoil
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import { QuesTenFiState } from "../../states/style_atom";
+import { SexState } from "../../states/website_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
@@ -20,7 +21,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
 
     // 선택한 데이터가 담긴 배열
     const [selectData, setSelectData] = useRecoilState(QuesTenFiState);
-    
+    const sex = useRecoilValue(SexState);
+
     const [isRightOkay, setIsRightOkay] = useState(false);
 
     useEffect(()=>{
@@ -42,29 +44,28 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
             <Wrap>
                 <Icon width={size.width} onClick={()=>setIsShow(true)} onMouseLeave={()=>setIsShow(false)}>?</Icon>
-                {isShow&&
-                <HelpBox width={size.width}>
+                {isShow&&( <HelpBox width={size.width}>
                     <span style={{fontWeight:'bold'}}>SPA 브랜드:</span>
-                    {"\nH&M, 지오다노, 유니클로 등"}
+                    {"\nZARA, 스파오, 유니클로 등"}
                     <div style={{height:'0.8rem'}}/>
                     <span style={{fontWeight:'bold'}}>아웃도어 브랜드:</span>
                     {"\n나이키, 아디다스 등"}
                     <div style={{height:'0.8rem'}}/>
                     <span style={{fontWeight:'bold'}}>디자이너 브랜드:</span>
-                    {"\nLMC, 커버낫, 앤더슨벨 등"}
+                    {"\nOIOI, Dunst, 앤더슨벨 등"}
                     <div style={{height:'0.8rem'}}/>
                     <span style={{fontWeight:'bold'}}>고가 디자이너 브랜드:</span>
-                    {"\n춘자, 우영미 등"}
+                    {"\nTheory, TIME, sandro 등"}
                     <div style={{height:'0.8rem'}}/>
-                    <span style={{fontWeight:'bold'}}>남성복 브랜드:</span>
-                    {"\n반스, 닥스 등"}
+                    <span style={{fontWeight:'bold'}}>여성복 브랜드:</span>
+                    {"\n스튜디오 톰보이, NAIN 등"}
                     <div style={{height:'0.8rem'}}/>
                     <span style={{fontWeight:'bold'}}>보세(브랜드 없는):</span>
                     {"\n인터넷쇼핑몰, 지하상가 등"}
                     <div style={{height:'0.8rem'}}/>
                     <span style={{fontWeight:'bold'}}>하이엔드(명품) 브랜드:</span>
-                    {"\n구찌, 발렌시아가 등"}
-                </HelpBox>}
+                    {"\n구찌, 셀린느, 디올 등"}
+                </HelpBox>)}
                 <QuestionTwo
                     quesNum={quesNum}
                     quesTextOne={"평소 선호하는 브랜드를"}

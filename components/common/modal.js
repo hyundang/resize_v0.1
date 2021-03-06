@@ -34,7 +34,7 @@ function Modal({
         visible={visible}
       >
         <ModalInner tabIndex="0" className="modal-inner">
-          {closable && <CloseButton className="modal-close" onClick={close}  src={del_icon}>x</CloseButton>}
+        {closable && <CloseButton className="modal-close" onClick={close}  src={del_icon}>×</CloseButton>}
           <Title>{title}</Title>
           <Description>{children}</Description>
         </ModalInner>
@@ -84,16 +84,17 @@ const ModalInner = styled.div`
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
   background-color: #fff;
   border-radius: 10px;
-  width: 360px;
+  width: 300px;
   max-width: 480px;
   top: 50%;
   transform: translateY(-50%);
   margin: 0 auto;
   padding: 40px 20px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  text-align: left;
 `
 
 const Title = styled.div`
@@ -110,11 +111,13 @@ const Description = styled.div`
 `
 
 const CloseButton = styled.div`
-    right: 5px;
+    right: 0px;
     top: 5px;
     position: absolute;
     width: 3rem;
     height: 3rem;
+    font-size: 1.8rem;
+    font-weight: bold;
     cursor : pointer;
 `;
 
