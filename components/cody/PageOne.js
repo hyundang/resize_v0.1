@@ -50,7 +50,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     data={user_datas} data_num={data_num}
                     btnType={1}
                     isOverlap={false} maxNum={3}
-                    isNoneExist={true}
+                    isNoneExist={false}
                     selectData={selectData} setSelectData={setSelectData}
                     otherTextOne={"이외에 연출하고 싶은"}
                     otherTextTwo={"스타일이 있다면 알려주세요!"}

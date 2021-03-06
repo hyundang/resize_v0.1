@@ -44,7 +44,30 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
             <Wrap>
                 <Icon width={size.width} onClick={()=>setIsShow(true)} onMouseLeave={()=>setIsShow(false)}>?</Icon>
-                {isShow&&( <HelpBox width={size.width}>
+                {isShow&&((sex===0)?
+                <HelpBox width={size.width}>
+                    <span style={{fontWeight:'bold'}}>SPA 브랜드:</span>
+                    {"\nH&M, 지오다노, 유니클로 등"}
+                    <div style={{height:'0.8rem'}}/>
+                    <span style={{fontWeight:'bold'}}>아웃도어 브랜드:</span>
+                    {"\n나이키, 아디다스 등"}
+                    <div style={{height:'0.8rem'}}/>
+                    <span style={{fontWeight:'bold'}}>디자이너 브랜드:</span>
+                    {"\nLMC, 커버낫, 앤더슨벨 등"}
+                    <div style={{height:'0.8rem'}}/>
+                    <span style={{fontWeight:'bold'}}>고가 디자이너 브랜드:</span>
+                    {"\n춘자, 우영미 등"}
+                    <div style={{height:'0.8rem'}}/>
+                    <span style={{fontWeight:'bold'}}>남성복 브랜드:</span>
+                    {"\n반스, 닥스 등"}
+                    <div style={{height:'0.8rem'}}/>
+                    <span style={{fontWeight:'bold'}}>보세(브랜드 없는):</span>
+                    {"\n인터넷쇼핑몰, 지하상가 등"}
+                    <div style={{height:'0.8rem'}}/>
+                    <span style={{fontWeight:'bold'}}>하이엔드(명품) 브랜드:</span>
+                    {"\n구찌, 발렌시아가 등"}
+                </HelpBox>  
+                : <HelpBox width={size.width}>
                     <span style={{fontWeight:'bold'}}>SPA 브랜드:</span>
                     {"\nZARA, 스파오, 유니클로 등"}
                     <div style={{height:'0.8rem'}}/>

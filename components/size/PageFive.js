@@ -22,8 +22,17 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
     const [isRightOkay, setIsRightOkay] = useState(false);
 
     useEffect(()=>{
-        if(selectOneData.length!==0 & selectTwoData.length!==0 & selectThreeData.length!==0 & selectFourData.length!==0 & selectFiveData.length!==0){
-            setIsRightOkay(true);
+        if(selectOneData.length!==0 & selectTwoData.length!==0 & selectThreeData.length!==0 & selectFourData.length!==0){
+            if(sex===1){
+                if(selectFiveData.length!==0)
+                    setIsRightOkay(true);
+                else{
+                    setIsRightOkay(false);
+                }
+            }
+            else{
+                setIsRightOkay(true);
+            }
         }
         else{
             setIsRightOkay(false);
@@ -189,7 +198,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     <BtnOutterWrap width={size.width} ref={veiwport_two}>
                         <BtnsInnerWrap num={user_datas[1].datas.length}>
                             <div style={{width:'1.4rem', height:'3.3rem'}}/>
-                            {user_datas[0].datas.map((item, idx)=>{
+                            {user_datas[1].datas.map((item, idx)=>{
                                 return (
                                 <div key={idx} ref={target_two} className="two">
                                 <OverlapBtnThree
