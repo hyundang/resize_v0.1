@@ -4,25 +4,58 @@ import styled from "styled-components";
 import { Header, Bottom, ClothesBox } from "./common";
 import { RatioStep } from "../common";
 // hooks
-import useInput from "../../hooks/useInput";
+import useInput from "../../hooks/useRecoilInput";
 // recoil
-import { useSetRecoilState } from "recoil";
-import { DetailPageNumState } from "../../states/result_atom"
+import { useSetRecoilState, useRecoilState } from "recoil";
+import { DetailPageLikeState, DetailPageNumState, DetailPageOpinionState,  } from "../../states/result_atom"
 
 
 const data = ["0%", "25%", "50%", "75%", "100%"];
 
 export default () => {
-    const input = useInput("");
-    const [selectData, setSelectData] = useState(-1);
+    const inputOne = useInput(DetailPageOpinionState(0));
+    const inputTwo = useInput(DetailPageOpinionState(1));
+    const [selectDataOne, setSelectDataOne] = useRecoilState(DetailPageLikeState(0));
+    const [selectDataTwo, setSelectDataTwo] = useRecoilState(DetailPageLikeState(1));
 
     const [innerPageNum, setInnerPageNum] = useState(1);
     const setPageNum = useSetRecoilState(DetailPageNumState);
 
+    const [isActive, setIsActive] = useState(false);
 
     useEffect(()=>{
         window.scroll(0,0);
     },[innerPageNum])
+
+    useEffect(()=>{
+        if(innerPageNum===1){
+            if(inputOne.value!=="" & selectDataOne!==-1){
+                setIsActive(true);
+            }
+            else{
+                setIsActive(false);
+            }
+        }
+        else{
+            if(inputTwo.value!=="" & selectDataTwo!==-1){
+                setIsActive(true);
+            }
+            else{
+                setIsActive(false);
+            }
+        }
+    }, [innerPageNum, selectDataTwo, selectDataOne, inputTwo.value, inputOne.value])
+
+
+    const handleClick = () => {
+        if(innerPageNum===1){
+            setInnerPageNum(2);
+        }
+        else{
+            setInnerPageNum(1);
+        }
+    }
+
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
@@ -91,8 +124,8 @@ export default () => {
                 <div style={{height:'2rem'}}/>
                 <RatioStep
                     data={data}
-                    selectData={selectData}
-                    setSelectData={setSelectData}
+                    selectData={(innerPageNum===1)? selectDataOne : selectDataTwo}
+                    setSelectData={(innerPageNum===1)? setSelectDataOne: setSelectDataTwo}
                 />
                 <div 
                     style={{width:'31.5rem',
@@ -112,8 +145,8 @@ export default () => {
                 <div style={{height:'2rem'}}/>
                 <InputBox
                     placeholder={"부츠컷 슬랙스를 안 좋아해서 아쉬웠어요. 다른 부분은 다 만족스럽습니다!"}
-                    value={input.value}
-                    onChange={input.onChange}    
+                    value={(innerPageNum===1)? inputOne.value : inputTwo.value}
+                    onChange={(innerPageNum===1)? inputOne.onChange : inputTwo.onChange}    
                 />
                 {(innerPageNum===2)&&
                 <>
@@ -122,13 +155,17 @@ export default () => {
                         {"코디 큐레이션에 불만족하셨나요?\n코디가 마음에 안 드셨다면 1회에 한해 재요청이 가능해요!"}
                     </TitleLineNone>
                     <div style={{height:'3rem'}}/>
-                    <RequestBtn onClick={()=>setPageNum(1)}>코디 큐레이션 재요청하기</RequestBtn>
+                    <RequestBtn 
+                        onClick={isActive?()=>setPageNum(1) : ()=>{}}
+                        isActive={isActive}
+                    >코디 큐레이션 재요청하기</RequestBtn>
                 </>}
                 <div style={{height:'7rem'}}/>
             </Wrap>
             <Bottom 
                 text={(innerPageNum===1)?"다음 코디 보러가기":"이전 코디 보러가기"}
-                onClick={(innerPageNum===1)?()=>setInnerPageNum(2):()=>setInnerPageNum(1)}
+                onClick={isActive? handleClick : ()=>{}}
+                isActive={isActive}
             />
         </div>
     )
@@ -239,9 +276,10 @@ const RequestBtn = styled.div`
     width: 32rem;
     height: 5.3rem;
     border-radius: 0.5rem;
-    background-color: #e6e6e6;
+    background-color: ${props=>props.isActive? '#DDC9B2' : '#e6e6e6'};
     font-size: 1.4rem;
     text-align: center;
     line-height: 5.1rem;
     color: white;
+    transition: 0.5s;
 `;

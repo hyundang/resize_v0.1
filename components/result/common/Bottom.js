@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export default ({text, onClick}) => {
+export default ({text, onClick, isActive}) => {
     return(
-        <Wrap onClick={onClick}>
+        <Wrap 
+            onClick={onClick}
+            isActive={isActive}
+        >
             {text}
         </Wrap>
     )
@@ -20,10 +23,10 @@ const Wrap = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: #e6e6e6;
+    background-color: ${props=>props.isActive? '#DDC9B2' : '#e6e6e6'};
     font-size: 1.6rem;
     font-weight: bold;
-    color: black;
+    color: ${props=>props.isActive? 'white' : 'black'};
     letter-spacing: -0.4px;
-
+    transition: 0.5s;
 `;
