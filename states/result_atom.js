@@ -23,10 +23,31 @@ export const DetailPageDataState = selector({
                 like: get(DetailPageLikeState(0)),
                 opinion: get(DetailPageOpinionState(0))
             },
-            questwo: {
+            quesTwo: {
                 like: get(DetailPageLikeState(1)),
                 opinion: get(DetailPageOpinionState(1))
             }
+        }
+    }
+})
+
+export const RequestReasonState = atom({
+    key: "RequestReasonState",
+    default: -1
+})
+
+export const RequestDetailState = atomFamily({
+    key: "RequestDetailState",
+    default: ""
+})
+
+export const RequestDataState = selector({
+    key: "RequestDataState",
+    get: ({get}) => {
+        return {
+            quesOne: get(RequestReasonState),
+            quesTwo: get(RequestDetailState(0)),
+            quesThree: get(RequestDetailState(1))
         }
     }
 })
