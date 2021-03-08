@@ -21,6 +21,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     
     const sex = useRecoilValue(SexState);
 
+    // 서버에서 받아온 데이터 저장됨.
     const [fitType, setFitType] = useState([]);
     const [faceType, setFaceType] = useState([]);
     const [skinTone, setSkinTone] = useState([]);
