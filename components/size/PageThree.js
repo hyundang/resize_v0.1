@@ -6,6 +6,10 @@ import { Question, Circles, RatioStep, Rectangles } from "../../components/commo
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
 import { BodyDetailState, SizeQuesThreeState } from "../../states/size_atom";
+import { SexState } from "../../states/website_atom";
+// axios
+import { getApi } from "../../lib/api";
+
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
@@ -15,12 +19,41 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     const [skintype, setSkintype] = useRecoilState(BodyDetailState(3));
     const [shoultype, setShoultype] = useRecoilState(BodyDetailState(4));
     
+    const sex = useRecoilValue(SexState);
 
-    useEffect(()=>{
+    const [fitType, setFitType] = useState([]);
+    const [faceType, setFaceType] = useState([]);
+    const [skinTone, setSkinTone] = useState([]);
+    const [shoulderType, setShoulderType] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(async ()=>{
+        // 스크롤 초기화하기
         window.scrollTo(0,0);
+        // 서버에서 데이터 받아오기
+        let isMorF = 'M';
+        if(sex===0){
+            isMorF = 'M';
+        }
+        else{
+            isMorF = 'F';
+        }
+        const fitType_result = await getApi.getFitType(isMorF);
+        setFitType(fitType_result.results);
+        const faceType_result = await getApi.getFaceType(isMorF);
+        setFaceType(faceType_result.results);
+        const skinTone_result = await getApi.getSkinTone(isMorF);
+        setSkinTone(skinTone_result.results);
+        const shoulderType_result = await getApi.getShoulderType(isMorF);
+        setFaceType(shoulderType_result.results);
+        // 로딩 종료
+        setIsLoading(false);
     }, [])
 
+    // 다음 버튼 활성화 여부
     const [isRightOkay, setIsRightOkay] = useState(false);
+    
+    // 페이지 데이터
     const res = useRecoilValue(SizeQuesThreeState);
 
     useEffect(()=>{
@@ -35,7 +68,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={1} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-            <Wrap>
+            {!isLoading? <Wrap>
                 <Question
                     quesNum={quesNum}
                     quesText={"체형을 함께 분석해볼까요?"}
@@ -53,8 +86,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                 <div style={{marginBottom:'4.8rem'}}>
                     <Text>{user_datas[1].question}</Text>
                     <Rectangles
+                        // data={fitType}
+                        // data_num={fitType.length}
                         data={user_datas[1].datas}
-                        data_num={user_datas[1].datas.length}
                         isOverlap={false}
                         selectData={bodytype} setSelectData={setBodytype}
                     />
@@ -62,6 +96,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                 <div style={{marginBottom:'4.8rem'}}>
                     <Text>{user_datas[2].question}</Text>
                     <Circles
+                        // data={faceType}
+                        // data_num={faceType.length}
                         data={user_datas[2].datas}
                         data_num={user_datas[2].datas.length}
                         isThree={true}
@@ -72,6 +108,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                 <div style={{marginBottom:'4.8rem'}}>
                     <Text>{user_datas[3].question}</Text>
                     <Circles
+                        // data={skinTone}
+                        // data_num={skinTone.length}
                         data={user_datas[3].datas}
                         data_num={user_datas[3].datas.length}
                         isTwo={true} 
@@ -82,6 +120,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                 <div style={{marginBottom:'4.8rem'}}>
                     <Text>{user_datas[4].question}</Text>
                     <Circles
+                        // data={shoulderType}
+                        // data_num={shoulderType.length}
                         data={user_datas[4].datas}
                         data_num={user_datas[4].datas.length}
                         isThree={true}
@@ -90,6 +130,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                     />
                 </div>
             </Wrap>
+            :<div>로딩중...</div>
+            }
             <Bottom 
                 setPageNum={setPageNum} pageNum={quesNum}
                 isLeftOkay={true} isRightOkay={isRightOkay}

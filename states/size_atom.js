@@ -102,3 +102,68 @@ export const SizeQuesFiveState = selector({
         }
     }
 })
+
+
+// post 하는 데이터
+export const TotalSizeDataState = selector({
+    key: "TotalSizeDataState",
+    get: ({ get }) => {
+        if(get(SexState)===0){
+            return {
+                height: get(SizeQuesOneState).height,
+                weight: get(SizeQuesOneState).weight,
+                size_face: get(SizeQuesTwoState)[0],
+                size_neck: get(SizeQuesTwoState)[1],
+                size_shoulder: get(SizeQuesTwoState)[2],
+                size_arm: get(SizeQuesTwoState)[3],
+                size_chest: get(SizeQuesTwoState)[4],
+                size_waist: get(SizeQuesTwoState)[5],
+                size_pelvis: get(SizeQuesTwoState)[6],
+                size_hip: get(SizeQuesTwoState)[7],
+                size_thigh: get(SizeQuesTwoState)[8],
+                size_calf: get(SizeQuesTwoState)[9],
+                size_ratio: get(SizeQuesThreeState)[0],
+                fit_hate: get(SizeQuesFourState).cons,
+                fit_like: get(SizeQuesFourState).pros,
+                size_top1: get(SizeQuesFiveState).one,
+                size_top2: get(SizeQuesFiveState).two,
+                size_pants1: get(SizeQuesFiveState).three,
+                size_pants2: get(SizeQuesFiveState).four,
+                user: 2,
+                fit_type: get(SizeQuesThreeState)[1],
+                face_type: get(SizeQuesThreeState)[2],
+                skin_tone: get(SizeQuesThreeState)[3],
+                shoulder_type: get(SizeQuesThreeState)[4]
+            }
+        }
+        else{
+            return {
+                height: get(SizeQuesOneState).height,
+                weight: get(SizeQuesOneState).weight,
+                size_face: get(SizeQuesTwoState)[0],
+                size_neck: get(SizeQuesTwoState)[1],
+                size_shoulder: get(SizeQuesTwoState)[2],
+                size_arm: get(SizeQuesTwoState)[3],
+                size_chest: get(SizeQuesTwoState)[4],
+                size_waist: get(SizeQuesTwoState)[5],
+                size_pelvis: get(SizeQuesTwoState)[6],
+                size_hip: get(SizeQuesTwoState)[7],
+                size_thigh: get(SizeQuesTwoState)[8],
+                size_calf: get(SizeQuesTwoState)[9],
+                size_ratio: get(SizeQuesThreeState)[0],
+                fit_hate: get(SizeQuesFourState).cons,
+                fit_like: get(SizeQuesFourState).pros,
+                size_top1: get(SizeQuesFiveState).one,
+                size_top2: get(SizeQuesFiveState).two,
+                size_top3: get(SizeQuesFiveState).three,
+                size_pants1: get(SizeQuesFiveState).four,
+                size_pants2: get(SizeQuesFiveState).five,
+                user: 2,
+                fit_type: get(SizeQuesThreeState)[1],
+                face_type: get(SizeQuesThreeState)[2],
+                skin_tone: get(SizeQuesThreeState)[3],
+                shoulder_type: get(SizeQuesThreeState)[4]
+            }
+        }
+    }
+})

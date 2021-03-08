@@ -92,7 +92,7 @@ const InnerWrap = styled.div`
 
 const Title = styled.div`
     position: relative;
-    top: 3%;
+    top: 0%;
     font-size: 2.2rem;
     font-weight: bold;
     font-stretch: normal;

@@ -13,16 +13,12 @@ import arrow from "../../assets/img/icons/brown_arrow_right.svg";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
 import { UserInfoState, UserJobState, CheckedListState, TotalUserInfoState } from "../../states/last_atom";
+// axios
+import { postApi } from "../../lib/api";
 
 
 export default ({user_datas}) => {
     const [modalVisible, setModalVisible] = useState(false);
-
-    const router = useRouter();
-    const handleClick = () => {
-        // 스타일링 끝내기 눌렀을 때
-        router.push('/website_dev/result');
-    }
 
     // 유저 정보 데이터
     const name = useRecoilInput(UserInfoState(0));
@@ -45,6 +41,17 @@ export default ({user_datas}) => {
 
     // 다음 단계 진행 가능 여부
     const [isNextOkay, setIsNextOkay] = useState(false);
+
+    const router = useRouter();
+
+    // 스타일링 끝내기 눌렀을 때
+    // 유저 데이테와 스타일링 데이터 서버에 전송
+    const handleClick = async () => {
+        const userToken = await postApi.userSignup(result);
+        // userToken 에서 유저 id값 받은 후 스타일 데이터 보낼 때 넣어서 같이 post
+        
+        router.push('/website_dev/result');
+    }
 
     const handleCheckboxClick = (e) => {
         if(e.target.checked){

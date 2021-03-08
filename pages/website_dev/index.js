@@ -14,18 +14,27 @@ const Start  = () => {
     const [pageNum, setPageNum] = useRecoilState(PageNumState);
     const isVisited = useRecoilValue(VisitState);
 
+    // switch (pageNum) {
+    //     case 1:
+    //         return <PageTwo
+    //                     setPageNum={setPageNum}
+    //                 />
+    //     case 2:
+    //         if(isVisited.includes("아니요")){
+    //             return <LoginPage/>
+    //         }
+    //         else{
+    //             return <GuidePage/>
+    //         }
+    //     default:
+    //         return <PageOne
+    //                     setPageNum={setPageNum}
+    //                 />
+    // }
+
     switch (pageNum) {
         case 1:
-            return <PageTwo
-                        setPageNum={setPageNum}
-                    />
-        case 2:
-            if(isVisited.includes("아니요")){
-                return <LoginPage/>
-            }
-            else{
-                return <GuidePage/>
-            }
+            return <GuidePage/>
         default:
             return <PageOne
                         setPageNum={setPageNum}

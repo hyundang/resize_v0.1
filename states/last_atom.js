@@ -1,4 +1,6 @@
 import { atom, atomFamily, selector } from 'recoil';
+import { SexState } from "./website_atom";
+
 
 export const LastPageNumState = atom({
     key: "LastPageNumState",
@@ -23,14 +25,33 @@ export const CheckedListState = atom({
 export const TotalUserInfoState = selector({
     key: "TotalUserInfoState",
     get: ({ get })=>{
+        let isService = false;
+        let isPolicy = false;
+        let isMarketing = false;
+        if(get(CheckedListState).includes('1')){
+            isService = true;
+        }
+        if(get(CheckedListState).includes('2')){
+            isPolicy = true;
+        }
+        if(get(CheckedListState).includes('3')){
+            isMarketing = true;
+        }
+
         return {
             name: get(UserInfoState(0)),
-            birth: get(UserInfoState(1)),
+            gender: get(SexState),
+            date_of_birth: get(UserInfoState(1)),
             phone: get(UserInfoState(2)),
             email: get(UserInfoState(3))+'@'+get(UserInfoState(4)),
-            instagram: get(UserInfoState(5)),
+            instragram: get(UserInfoState(5)),
             job: get(UserJobState),
-            policy: get(CheckedListState)
+            job_etc: "",
+            is_terms_of_service: isService,
+            is_privacy_policy: isPolicy,
+            is_marketing: isMarketing,
+            is_active: false,
+            is_admin: false
         }
     }
 })

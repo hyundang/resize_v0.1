@@ -13,13 +13,18 @@ export default ({data, selectData, setSelectData}) => {
                 <Bar/>
                 <CircleListWrap>
                     {data.map((data, idx)=>{
-                        return <CircleBtn id={idx} num={selectData} setnum={setSelectData}/>
+                        return <CircleBtn 
+                            key={idx}
+                            id={idx} 
+                            num={selectData} 
+                            setnum={setSelectData}
+                        />
                     })}
                 </CircleListWrap>
             </BarWrap>
             <TextWrap>
                 {data.map((data, idx)=>{
-                    return <Text>{data}</Text>
+                    return <Text key={idx}>{data}</Text>
                 })}
             </TextWrap>
         </Wrap>

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 
 export default ({
-    data, data_num, 
+    data,
     isOverlap,
     selectData, setSelectData
 }) => {
@@ -13,9 +13,11 @@ export default ({
             {data.map((item, idx)=>{
                 return <Rectangle
                             key={idx}
+                            // text={item.name}
+                            // id={item.id}
                             text={item}
                             id={idx}
-                            data_num={data_num}
+                            url={item.photo}
                             isOverlap={isOverlap}
                             selectData={selectData} setSelectData={setSelectData}
                         />
@@ -33,12 +35,15 @@ const Wrap = styled.div`
 `;
 
 const Rectangle = ({
-    id, text, data_num, 
+    id, text, url,
     isOverlap,
     selectData, setSelectData
 }) => 
 {
     const [isClicked, setIsClicked] = useState(false);
+
+    // console.log(text);
+    // console.log("가슴, 엉덩이가\n허리보다 가늘어요")
 
     if(isOverlap){
         useEffect(()=>{
@@ -101,6 +106,7 @@ const Rectangle = ({
             <RectangleBox 
                 onClick={isOverlap? handleOverlapClick : handleOneClick} 
                 id={id}
+                url={url}
             >
                 <ClickedRectangle isClicked={isClicked}>✓</ClickedRectangle>
             </RectangleBox>
@@ -127,7 +133,7 @@ const RectangleBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-image: url(); */
+    background: url(${props=>props.url}) center center / cover;
 `;
 
 const ClickedRectangle = styled.div`

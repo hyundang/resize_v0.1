@@ -103,3 +103,17 @@ export const QuesTenSState = selector({
         }
     }
 })
+
+export const TotalStyleDataState = selector({
+    key: 'TotalStyleDataState',
+    get: ({ get }) => {
+        return {
+            style_like: get(QuesTwoState),
+            style_hate: get(QuesThreeState),
+            style_want: get(QuesFourState),
+            brand: get(QuesTenFiState),
+            brandName: get(QuesTenSState).brand,
+            platform: get(QuesTenSState).site,
+        }
+    }
+})
