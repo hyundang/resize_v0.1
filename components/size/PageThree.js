@@ -39,14 +39,14 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
         else{
             isMorF = 'F';
         }
-        const fitType_result = await getApi.getFitType(isMorF);
+        const fitType_result = await getApi.getImgData('size', isMorF, 'Fit_Type');
         setFitType(fitType_result.results);
-        const faceType_result = await getApi.getFaceType(isMorF);
+        const faceType_result = await getApi.getImgData('size', isMorF, 'Face_Type');
         setFaceType(faceType_result.results);
-        const skinTone_result = await getApi.getSkinTone(isMorF);
+        const skinTone_result = await getApi.getImgData('size', isMorF, 'Skin_Tone');
         setSkinTone(skinTone_result.results);
-        const shoulderType_result = await getApi.getShoulderType(isMorF);
-        setFaceType(shoulderType_result.results);
+        const shoulderType_result = await getApi.getImgData('size', isMorF, 'Shoulder_Type');
+        setShoulderType(shoulderType_result.results);
         // 로딩 종료
         setIsLoading(false);
     }, [])
@@ -69,7 +69,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={1} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-            {!isLoading? <Wrap>
+            <Wrap>
+            {!isLoading? 
+                <>
                 <Question
                     quesNum={quesNum}
                     quesText={"체형을 함께 분석해볼까요?"}
@@ -130,9 +132,10 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                         selectData={shoultype} setSelectData={setShoultype}
                     />
                 </div>
-            </Wrap>
-            :<div>로딩중...</div>
+                </>
+                :<div>로딩중...</div>
             }
+            </Wrap>
             <Bottom 
                 setPageNum={setPageNum} pageNum={quesNum}
                 isLeftOkay={true} isRightOkay={isRightOkay}

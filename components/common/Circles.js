@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export default ({
-    data, data_num,
+    data, 
     isNoneExist, isOverlap,
     isThree, isTwo,
     selectData, setSelectData
@@ -12,10 +12,12 @@ export default ({
             {data.map((item, idx)=>{
                 return <Circle
                             key={idx}
+                            //text={item.name}
+                            //id={item.id}
+                            //url={item.photo}
                             text={item}
                             id={idx}
                             isOverlap={isOverlap} isNoneExist={isNoneExist}
-                            data_num={data_num}
                             selectData={selectData} setSelectData={setSelectData}
                         />
             })}
@@ -35,12 +37,11 @@ const Wrap = styled.div`
 `;
 
 const Circle = ({
-    id, text, data_num, 
+    id, text, url,
     isOverlap, isNoneExist,
     selectData, setSelectData, 
 }) => {
     const [isClicked, setIsClicked] = useState(false);
-
     
     if(isOverlap){
         // 처음 렌더링 시
@@ -50,26 +51,23 @@ const Circle = ({
             }
         }, [])
 
+
         useEffect(()=>{
             // '없음' 항목이 존재하는 경우
             if(isNoneExist){
-                if(id !== data_num-1 & selectData.length===1 & selectData.includes(data_num-1)){
-                    setIsClicked(false);
-                }
-                if(id === data_num-1 & selectData.length===2 & selectData.includes(id)){
+                if(text === '없음' & selectData.length===2 & selectData.includes(id)){
                     setIsClicked(false);
                     setSelectData(selectData.filter((s, idx)=>{
-                        return s !== data_num-1;
+                        return s !== id;
                     }));
                 }
             }
+            
+            if(selectData.includes(id)){
+                setIsClicked(true);
+            }
             else{
-                if(selectData.includes(id)){
-                    setIsClicked(true);
-                }
-                else{
-                    setIsClicked(false);
-                }
+                setIsClicked(false);
             }
         }, [selectData])
     }
@@ -99,7 +97,7 @@ const Circle = ({
             setIsClicked(false);
         }
         else{
-            if(id === data_num-1){
+            if(text === '없음'){
                 setSelectData([id]);
                 setIsClicked(true);
             }
@@ -129,7 +127,11 @@ const Circle = ({
 
     return (
         <CircleWrap>
-            <CircleBox onClick={isOverlap? handleOverlapClick : handleOneClick} id={id}>
+            <CircleBox 
+                onClick={isOverlap? handleOverlapClick : handleOneClick} 
+                id={id}
+                url={url}
+            >
                 <ClickedCircle isClicked={isClicked}>✓</ClickedCircle>
             </CircleBox>
             <CircleText>{text}</CircleText>
@@ -157,7 +159,7 @@ const CircleBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-image: url(); */
+    /* background: url(${props=>props.url}) center center / cover; */
 `;
 
 const ClickedCircle = styled.div`

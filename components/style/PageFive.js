@@ -4,13 +4,33 @@ import styled from "styled-components";
 import { Header, Bottom } from "../../components";
 import { Circles, QuestionTwo } from "../../components/common";
 // recoil
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { QuesFiveState } from "../../states/style_atom";
+import { SexState } from "../../states/website_atom";
+// axios
+import { getApi } from "../../lib/api";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
-    useEffect(()=>{
+    const sex = useRecoilValue(SexState);
+    
+    const [detail, setDetail] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    
+    useEffect( ()=>{
         window.scrollTo(0,0);
+
+        // let isMorF = 'M';
+        // if(sex===0){
+        //     isMorF = 'M';
+        // }
+        // else{
+        //     isMorF = 'F';
+        // }
+        // // 서버로 부터 데이터 받아오기
+        // const detail_result = await getApi.getImgData('style', isMorF, 'Detail');
+        // setDetail(detail_result);
+        setIsLoading(false);
     },[])
     
     // 선택한 데이터가 담긴 배열(1순위: index=0, 2순위: index=1..) ex)[3,11,9]-> 1순위는 id=3인 이미지
@@ -32,6 +52,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
             <Wrap>
+            {!isLoading? 
+                <>
                 <QuestionTwo
                     quesNum={quesNum}
                     quesTextOne={"다음 중 ❌싫어하는❌ 옷의"}
@@ -40,6 +62,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'5.3rem'}}/>
                 <Circles 
+                    //data={detail}
+                    //data_num={detail.length}
                     data={user_datas} data_num={data_num} 
                     isThree={false} isOverlap={true}
                     isNoneExist={true}
@@ -47,6 +71,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     setSelectData={setSelectData}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
+                </>
+                : <div>로딩중...</div>
+            }
             </Wrap>
             <Bottom 
                 setPageNum={setPageNum} pageNum={quesNum}

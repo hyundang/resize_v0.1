@@ -4,14 +4,33 @@ import styled from "styled-components";
 import { Header, Bottom } from "../../components";
 import { QuestionTwo, Squares } from "../../components/common";
 // recoil
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { QuesNineState } from "../../states/style_atom";
-
+import { SexState } from "../../states/website_atom";
+// axios
+import { getApi } from "../../lib/api";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
-    useEffect(()=>{
+    const sex = useRecoilValue(SexState);
+    
+    const [colorTone, setColorTone] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    
+    useEffect(async ()=>{
         window.scrollTo(0,0);
+
+        let isMorF = 'M';
+        if(sex===0){
+            isMorF = 'M';
+        }
+        else{
+            isMorF = 'F';
+        }
+        // 서버로 부터 데이터 받아오기
+        const colorTone_result = await getApi.getImgData('style', isMorF, 'ColorTone');
+        setColorTone(colorTone_result);
+        setIsLoading(false);
     },[])
     
     const [selectData, setSelectData] = useRecoilState(QuesNineState)
@@ -32,6 +51,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
             <Wrap>
+            {!isLoading?
+                <>
                 <QuestionTwo
                     quesNum={quesNum}
                     quesTextOne={"평소 자주 착용하는 옷의"}
@@ -40,12 +61,16 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'5.3rem'}}/>
                 <Squares
-                    data={user_datas} data_num={data_num}
+                    //data={colorTone}
+                    data={user_datas}
                     isOverlap={true} maxNum={0}
                     isBorderLine={false}
                     selectData={selectData} setSelectData={setSelectData}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
+                </>
+                : <div>로딩중...</div>
+            }
             </Wrap>
             <Bottom 
                 setPageNum={setPageNum} pageNum={quesNum}

@@ -15,9 +15,9 @@ export default ({
                             key={idx}
                             // text={item.name}
                             // id={item.id}
+                            url={item.photo}
                             text={item}
                             id={idx}
-                            url={item.photo}
                             isOverlap={isOverlap}
                             selectData={selectData} setSelectData={setSelectData}
                         />

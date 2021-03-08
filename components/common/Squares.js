@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export default ({
-    data, data_num, 
+    data,
     isOverlap, maxNum,
     isBorderLine,
     selectData, setSelectData
@@ -12,6 +12,9 @@ export default ({
             {data.map((item, idx)=>{
                 return <Square
                             key={idx}
+                            //text={item.name}
+                            //id={item.id}
+                            //url={item.photo}
                             text={item}
                             id={idx}
                             data={selectData}
@@ -33,7 +36,8 @@ const Wrap = styled.div`
 `;
 
 const Square = ({
-    id, text, data,
+    id, text, url, 
+    data,
     isOverlap, maxNum,
     isBorderLine,
     selectData, setSelectData, 
@@ -99,6 +103,7 @@ const Square = ({
                 onClick={isOverlap? handleOverlapClick : handleOneClick} 
                 id={id}
                 isBorderLine={isBorderLine}
+                url={url}
             >
                 <ClickedSquare 
                     isClicked={isClicked}
@@ -129,7 +134,7 @@ const SquareBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-image: url(); */
+    /* background: url(${props=>props.url}) center center / cover; */
 `;
 
 const ClickedSquare = styled.div`
