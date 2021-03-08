@@ -17,9 +17,13 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     const [colorTone, setColorTone] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
-    useEffect(async ()=>{
+    useEffect(()=>{
         window.scrollTo(0,0);
-
+        // 서버로 부터 데이터 받아오기
+        getData();
+    },[])
+    
+    const getData = async () => {
         let isMorF = 'M';
         if(sex===0){
             isMorF = 'M';
@@ -27,12 +31,11 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         else{
             isMorF = 'F';
         }
-        // 서버로 부터 데이터 받아오기
         const colorTone_result = await getApi.getImgData('style', isMorF, 'ColorTone');
         setColorTone(colorTone_result);
         setIsLoading(false);
-    },[])
-    
+    }
+
     const [selectData, setSelectData] = useRecoilState(QuesNineState)
     
     const [isRightOkay, setIsRightOkay] = useState(false);

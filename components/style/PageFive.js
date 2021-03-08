@@ -17,21 +17,24 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     const [detail, setDetail] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
-    useEffect( ()=>{
+    useEffect(()=>{
         window.scrollTo(0,0);
-
-        // let isMorF = 'M';
-        // if(sex===0){
-        //     isMorF = 'M';
-        // }
-        // else{
-        //     isMorF = 'F';
-        // }
-        // // 서버로 부터 데이터 받아오기
-        // const detail_result = await getApi.getImgData('style', isMorF, 'Detail');
-        // setDetail(detail_result);
-        setIsLoading(false);
+        // 서버로 부터 데이터 받아오기
+        getData();
     },[])
+
+    const getData = async () => {
+        let isMorF = 'M';
+        if(sex===0){
+            isMorF = 'M';
+        }
+        else{
+            isMorF = 'F';
+        }
+        const detail_result = await getApi.getImgData('style', isMorF, 'Detail');
+        setDetail(detail_result);
+        setIsLoading(false);
+    }
     
     // 선택한 데이터가 담긴 배열(1순위: index=0, 2순위: index=1..) ex)[3,11,9]-> 1순위는 id=3인 이미지
     const [selectData, setSelectData] = useRecoilState(QuesFiveState);
@@ -63,8 +66,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <div style={{marginBottom:'5.3rem'}}/>
                 <Circles 
                     //data={detail}
-                    //data_num={detail.length}
-                    data={user_datas} data_num={data_num} 
+                    data={user_datas}
                     isThree={false} isOverlap={true}
                     isNoneExist={true}
                     selectData={selectData}

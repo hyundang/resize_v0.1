@@ -18,9 +18,13 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     const [neckline, setNeckline] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
-    useEffect(async ()=>{
+    useEffect(()=>{
         window.scrollTo(0,0);
+        // 서버로 부터 데이터 받아오기
+        getData();
+    },[])
 
+    const getData = async () => {
         let isMorF = 'M';
         if(sex===0){
             isMorF = 'M';
@@ -28,11 +32,10 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         else{
             isMorF = 'F';
         }
-        // 서버로 부터 데이터 받아오기
         const neckline_result = await getApi.getImgData('style', isMorF, 'Neck');
         setNeckline(neckline_result);
         setIsLoading(false);
-    },[])
+    }
     
     // 선택한 데이터가 담긴 배열
     const [selectData, setSelectData] = useRecoilState(QuesSevenState);
