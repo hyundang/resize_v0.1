@@ -28,10 +28,14 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     const [shoulderType, setShoulderType] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(async ()=>{
+    useEffect(()=>{
         // 스크롤 초기화하기
         window.scrollTo(0,0);
         // 서버에서 데이터 받아오기
+        getData();
+    }, [])
+
+    const getData = async () => {
         let isMorF = 'M';
         if(sex===0){
             isMorF = 'M';
@@ -49,7 +53,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
         setShoulderType(shoulderType_result.results);
         // 로딩 종료
         setIsLoading(false);
-    }, [])
+    }
 
     // 다음 버튼 활성화 여부
     const [isRightOkay, setIsRightOkay] = useState(false);
