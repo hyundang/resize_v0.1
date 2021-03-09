@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
+// assets
+import QRcode from "../public/images/website/preparePage/QRcode.svg";
 
 export default () => {
     return(
@@ -29,7 +30,7 @@ export default () => {
                 display:'flex', flexDirection:'row',
                 alignItems:'flex-end', justifyContent:'space-between'
             }}>
-                <QRImg/>
+                <QRImg src={QRcode}/>
                 <div style={{width:'28px'}}/>
                 <TextSmall style={{
                     fontWeight:'500',textAlign:'left'
