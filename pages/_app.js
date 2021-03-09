@@ -2,17 +2,22 @@ import React, {useEffect, useState} from 'react';
 import '../styles/globals.css';
 import { initGA, logPageView } from '../ga/analytics'
 import Head from 'next/head';
+// redux
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "../reducers/index";
 import {createStore} from 'redux';
+// recoil
 import {RecoilRoot} from 'recoil';
+// theme
 import { ThemeProvider } from 'styled-components';
 import theme from '../assets/themes';
+// swiper
 import "swiper/swiper.scss";
 import 'swiper/components/pagination/pagination.scss';
+// mediaquery
 import { Mobile, PC } from "../lib/mediaQuery";
-import { PreparePage } from "../components";
+import { PreparePage, PreparePagePC } from "../components";
 
 
 const store = createStore(
@@ -23,7 +28,8 @@ const store = createStore(
 const Resize = ({ Component, pageProps }) => {
   let filter = "win16|win32|win64|mac|macintel";
   
-  const [isPC, setIsPC] = useState(false);
+  const [isPC, setIsPC] = useState(true);
+  // const [isPC, setIsPC] = useState(false);
 
   useEffect(()=>{
       if (!window.GA_INITIALIZED) {
@@ -35,14 +41,14 @@ const Resize = ({ Component, pageProps }) => {
   )
 
   // 접속 기기가 pc인지 확인
-  // useEffect(()=>{
-  //   if(navigator.platform) {
-  //     if(filter.indexOf(navigator.platform.toLowerCase())<0){
-  //       setIsPC(false);
-  //       console.log(isPC);
-  //     }
-  //   }
-  // }, [])
+  useEffect(()=>{
+    if(navigator.platform) {
+      if(filter.indexOf(navigator.platform.toLowerCase())<0){
+        setIsPC(false);
+        console.log(isPC);
+      }
+    }
+  }, [])
 
   return (
     <ThemeProvider theme={theme}>
@@ -58,9 +64,14 @@ const Resize = ({ Component, pageProps }) => {
           <meta name="image" property="og:image" content="/images/sizetest/preview.png" />
         </Head>
         {isPC?
+        <>
           <PC>
-            <PreparePage/>
+            <PreparePagePC/>
           </PC>
+          <Mobile>
+            <PreparePage/>
+          </Mobile>
+        </>
         : <Component {...pageProps}/>
         }
       </Provider>
