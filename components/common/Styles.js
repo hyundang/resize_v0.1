@@ -200,7 +200,7 @@ const StyleText = styled.div`
     margin-right: 0.5rem;
     font-size: 1.4rem;
     font-weight: bold;
-    letter-spacing: -0.35px;
+    letter-spacing: -0.035rem;
     color: ${({theme})=>theme.colors.beige};
 `;
 
@@ -212,4 +212,8 @@ const StyleTag = styled.div`
     border-radius: 1.1rem;
     border: solid 0.1rem #707070;
     background-color: white;
+    font-size: 1rem;
+    letter-spacing: -0.03rem;
+    text-align: left;
+    color: #797979;
 `;

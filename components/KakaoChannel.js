@@ -14,11 +14,11 @@ const baseurl = "https://resize.co.kr";
 export default () => {
     const { loaded } = useScript("https://developers.kakao.com/sdk/js/kakao.js");
     
-    useEffect(()=>{
-      if(loaded){
-        createKakaoBtn();
-      }
-    }, [loaded])
+    // useEffect(()=>{
+    //   if(loaded){
+    //     createKakaoBtn();
+    //   }
+    // }, [loaded])
 
     const createKakaoBtn = () => {
         if (window.Kakao) {
@@ -28,27 +28,24 @@ export default () => {
               // 두번째 step 에서 가져온 javascript key 를 이용하여 initialize
               kakao.init(kakaoID)
             }
-            // kakao.Channel.addChannel({
-            //   channelPublicId: '_exlQLxb'
-            // });
-            kakao.Channel.createAddChannelButton({
-                container: '#kakao-add-channel-btn',
-                channelPublicId: '_exlQLxb'
-              });
+            kakao.Channel.addChannel({
+              channelPublicId: '_exlQLxb'
+            });
         }
     }
 
 
 
     return(
-            <div id="kakao-add-channel-btn"/>
-            // <Image
-            //     src={'/images/add_channel.png'}
-            //     width={114}
-            //     height={45}
-            //     alt={"add_channel"}
-            //     onClick={createKakaoBtn}
-            // />
+            <img
+                src={'/images/add_channel.png'}
+                style={{
+                  width: '11.4rem',
+                  height: '4.5rem'
+                }}
+                alt={"add_channel"}
+                onClick={createKakaoBtn}
+            />
             
     )
 }

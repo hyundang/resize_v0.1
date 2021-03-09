@@ -125,12 +125,16 @@ const Icon = styled.div`
     position: absolute;
     top: 17.3rem;
     left: ${props=>(props.width/10-32)/2+17.8}rem;
+    @media screen and (min-width: 500px) {
+        left: ${props=>(props.width/18-32)/2+17.8}rem;
+    }
     width: 1.6rem;
     height: 1.6rem;
     border-radius: 0.8rem;
     background-color: #B9B9B9;
     text-align: center;
     color: white;
+    font-size: 1rem;
 `;
 
 const HelpBox = styled.div`
@@ -138,6 +142,9 @@ const HelpBox = styled.div`
     z-index: 2;
     top: 20.7rem;
     left: ${props=>(props.width/10-32)/2+10.1}rem;
+    @media screen and (min-width: 500px) {
+        left: ${props=>(props.width/18-32)/2+10.1}rem;
+    }
     width: 17rem;
     padding: 1.1rem 1.6rem;
     opacity: 0.83;

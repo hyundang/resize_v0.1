@@ -39,9 +39,9 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
     }, [sex])
 
     return(
-        <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
+        <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
-            <Wrap height={size.height}>
+            <Wrap>
                 <Question
                     quesNum={quesNum}
                     quesText={"당신의 성별은 무엇인가요?"}
@@ -69,11 +69,10 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
 
 const Wrap = styled.div`
     margin-top: 11.6rem;
-    width: 32rem;
-    height: ${props=>(props.height/10-20)}rem;
+    margin-bottom: 8.6rem;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    align-items: center;
 `;
 
 const BtnWrap = styled.div`

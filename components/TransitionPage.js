@@ -50,7 +50,10 @@ const Wrap = styled.div`
 const Title = styled.div`
     position: absolute;
     top: 31%;
-    left: 2.4rem;
+    left: 7%;
+    @media screen and (min-width: 500px) {
+        left: 10%;
+    }
     width: 22.7rem;
     height: 5.7rem;
     border-radius: 3.4rem;
@@ -66,7 +69,10 @@ const Title = styled.div`
 const TextWrap = styled.div`
     position: absolute;
     top: 50%;
-    left: 2.4rem;
+    left: 7%;
+    @media screen and (min-width: 500px) {
+        left: 10%;
+    }
     height: 8.8rem;
     display: flex;
     flex-direction: column;
@@ -84,10 +90,11 @@ const BottomText = styled.div`
     bottom: 8%;
     left: 50%;
     transform: translate(-50%, 0);
-    width: 10.5rem;
+    width: 10.6rem;
     height: 2.4rem;
     font-size: 1.6rem;
-    letter-spacing: -0.4px;
+    /* font-weight: bold; */
+    letter-spacing: -0.04rem;
     color: ${({theme})=>theme.colors.white};
     background-color: black;
 `;

@@ -41,7 +41,11 @@ export default ({setPageNum}) => {
             </TextTwo>
             <SmallText>당신의 체형과 취향에 맞는 퍼스널 패션 큐레이션</SmallText>
             <TextOne isClicked={isClicked} 
-                style={{width:'auto',fontSize:'1.8rem',top:'90%',left:'50%',transform:'translate(-50%, 0)'}}>
+                style={
+                    {width:'auto',top:'90%',left:'50%',
+                    transform:'translate(-50%, 0)',
+                    fontSize:'1.8rem', fontWeight:'500'
+            }}>
                 <div>탭하여 계속하기</div>
             </TextOne>
             <Btn isShown={isShown} isClicked={isClicked} onClick={()=>setPageNum(1)}>
@@ -56,7 +60,7 @@ const Wrap = styled.div`
     /* position: absolute; */
     width: 100vw;
     height: 100vh;
-    background-image: url(${props=>props.url});
+    background: url(${props=>props.url}) center center / cover;
     background-position: ${props=>props.isClicked? 'right' : 'left'};
     transition-duration: 1s;
 `;

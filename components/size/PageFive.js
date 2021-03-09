@@ -360,6 +360,9 @@ const Text = styled.div`
 
 const BtnOutterWrap = styled.div`
     width: ${props=>(props.width/10-32)/2+32}rem;
+    @media screen and (min-width: 500px) {
+        width: ${props=>(props.width/18-32)/2+32}rem;
+    }
     overflow: scroll;
     -ms-overflow-style: none; /* IE and Edge */
     ::-webkit-scrollbar {
@@ -390,6 +393,9 @@ const BlurBoxFirst = styled.div`
     z-index: 2;
     top: ${props=>props.top}rem;
     left: ${props=>(props.width/10-32)/2}rem;
+    @media screen and (min-width: 500px) {
+        left: ${props=>(props.width/18-32)/2}rem;
+    }
     height: 1.7rem;
     box-shadow: 0 0 1rem 1rem rgba(255, 255, 255, 1);
 `;

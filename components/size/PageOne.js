@@ -118,6 +118,9 @@ const Unit = styled.div`
     z-index: 2;
     margin-top: 1.1rem;
     right: ${props=>(props.width/10-32)/2+1.7}rem;
+    @media screen and (min-width: 500px) {
+        right: ${props=>(props.width/18-32)/2+1.7}rem;
+    }
     width: 2rem;
     height: 2rem;
     font-size: 1.35rem;

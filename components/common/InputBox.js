@@ -65,6 +65,9 @@ const DelBtn = styled.img`
     z-index: 2;
     margin-top: 1.1rem;
     right: ${props=>(props.width/10-32)/2+1.7}rem;
+    @media screen and (min-width: 500px) {
+        right: ${props=>(props.width/18-32)/2+1.7}rem;
+    }
     width: 2.1rem;
     height: 2.1rem;
 `;

@@ -81,20 +81,21 @@ const ModalOverlay = styled.div`
 const ModalInner = styled.div`
   box-sizing: border-box;
   position: relative;
-  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0.6rem 0 rgba(0, 0, 0, 0.5);
   background-color: #fff;
-  border-radius: 10px;
-  width: 300px;
-  max-width: 480px;
+  border-radius: 1rem;
+  width: 30rem;
+  max-width: 48rem;
   top: 50%;
   transform: translateY(-50%);
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 4rem 2rem;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
   text-align: left;
+  font-size: 1rem;
 `
 
 const Title = styled.div`

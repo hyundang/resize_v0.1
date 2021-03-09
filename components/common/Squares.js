@@ -116,7 +116,7 @@ const Square = ({
 }
 
 const SquareWrap = styled.div`
-    width: 11.7rem;
+    width: 12rem;
     margin-bottom: 2rem;
     display:flex;
     flex-direction: column;

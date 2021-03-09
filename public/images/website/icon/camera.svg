@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="43.752" viewBox="0 0 50 43.752">
+  <g id="그룹_19496" data-name="그룹 19496" transform="translate(-162.5 -581.553)">
+    <g id="camera" transform="translate(162.5 581.5)">
+      <path id="Path" d="M10.67,1.831a6.25,6.25,0,1,1-8.839,0,6.25,6.25,0,0,1,8.839,0" transform="translate(18.749 17.241)" fill="#d5d5d5"/>
+      <path id="Shape" d="M6.251,43.752A6.259,6.259,0,0,1,0,37.5L.017,12.508A6.26,6.26,0,0,1,6.256,6.261l4.313-.008L13.693,0H36.305l3.127,6.251H43.75A6.256,6.256,0,0,1,50,12.5v25a6.257,6.257,0,0,1-6.25,6.25Z" transform="translate(0 0.053)" fill="#d5d5d5"/>
+    </g>
+    <path id="패스_7705" data-name="패스 7705" d="M9,0A9,9,0,1,1,0,9,9,9,0,0,1,9,0Z" transform="translate(179 597)" fill="gray"/>
+  </g>
+</svg>
