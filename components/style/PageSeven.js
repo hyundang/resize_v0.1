@@ -33,7 +33,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             isMorF = 'F';
         }
         const neckline_result = await getApi.getImgData('style', isMorF, 'Neck');
-        setNeckline(neckline_result);
+        setNeckline(neckline_result.results);
         setIsLoading(false);
     }
     
@@ -66,9 +66,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'5.3rem'}}/>
                 <Circles 
-                    //data={neckline}
-                    //data_num={neckline.length}
-                    data={user_datas} data_num={data_num} 
+                    data={neckline}
+                    // data={user_datas} 
                     isThree={false} isOverlap={true}
                     isNoneExist={true}
                     selectData={selectData}

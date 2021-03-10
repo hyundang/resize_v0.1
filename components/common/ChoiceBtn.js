@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default ({text, isClick, onClick}) => {
-    console.log(isClick)
     return(
         <>
             <Wrap isClick={isClick} onClick={onClick}>
@@ -26,9 +25,4 @@ const Wrap = styled.div`
     font-weight: 500;
     text-align: cente r;
     color: ${props=>props.isClick? ({ theme }) => theme.colors.off_white : ({ theme }) => theme.colors.pale_brown};
-    /* &:hover{
-        background-color: ${({ theme }) => theme.colors.beige};
-        color: ${({ theme }) => theme.colors.off_white};
-        border: none;
-    } */
 `;

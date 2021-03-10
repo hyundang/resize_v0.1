@@ -32,7 +32,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             isMorF = 'F';
         }
         const material_result = await getApi.getImgData('style', isMorF, 'Material');
-        setMaterial(material_result);
+        setMaterial(material_result.results);
         setIsLoading(false);
     }
     
@@ -65,9 +65,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'5.3rem'}}/>
                 <Circles 
-                    //data={material}
-                    //data_num={material.length}
-                    data={user_datas} data_num={data_num} 
+                    data={material}
+                    // data={user_datas}
                     isThree={false} isOverlap={true}
                     isNoneExist={true}
                     selectData={selectData}

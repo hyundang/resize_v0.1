@@ -31,8 +31,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         else{
             isMorF = 'F';
         }
-        const pointColor_result = await getApi.getImgData('style', isMorF, 'Color_Point');
-        setPointColor(pointColor_result);
+        const pointColor_result = await getApi.getColor();
+        setPointColor(pointColor_result.results);
         setIsLoading(false);
     }
     
@@ -65,8 +65,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'5.3rem'}}/>
                 <Circles 
-                    //data={pointColor}
-                    data={user_datas} 
+                    data={pointColor}
+                    isColor={true}
+                    // data={user_datas} 
                     isThree={false} isOverlap={true}
                     isNoneExist={true}
                     selectData={selectData}

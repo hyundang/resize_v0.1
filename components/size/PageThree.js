@@ -68,6 +68,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
         else{
             setIsRightOkay(true);
         }
+        // console.log(res)
     }, [res])
     
     return(
@@ -93,9 +94,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                 <div style={{marginBottom:'4.8rem'}}>
                     <Text>{user_datas[1].question}</Text>
                     <Rectangles
-                        // data={fitType}
-                        // data_num={fitType.length}
-                        data={user_datas[1].datas}
+                        data={fitType}
+                        // data={user_datas[1].datas}
                         isOverlap={false}
                         selectData={bodytype} setSelectData={setBodytype}
                     />
@@ -103,10 +103,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                 <div style={{marginBottom:'4.8rem'}}>
                     <Text>{user_datas[2].question}</Text>
                     <Circles
-                        // data={faceType}
-                        // data_num={faceType.length}
-                        data={user_datas[2].datas}
-                        data_num={user_datas[2].datas.length}
+                        data={faceType}
+                        // data={user_datas[2].datas}
                         isThree={true}
                         isOverlap={false}
                         selectData={facetype} setSelectData={setFacetype}
@@ -115,10 +113,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                 <div style={{marginBottom:'4.8rem'}}>
                     <Text>{user_datas[3].question}</Text>
                     <Circles
-                        // data={skinTone}
-                        // data_num={skinTone.length}
-                        data={user_datas[3].datas}
-                        data_num={user_datas[3].datas.length}
+                        data={skinTone}
+                        // data={user_datas[3].datas}
                         isTwo={true} 
                         isOverlap={false}
                         selectData={skintype} setSelectData={setSkintype}
@@ -127,10 +123,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                 <div style={{marginBottom:'4.8rem'}}>
                     <Text>{user_datas[4].question}</Text>
                     <Circles
-                        // data={shoulderType}
-                        // data_num={shoulderType.length}
-                        data={user_datas[4].datas}
-                        data_num={user_datas[4].datas.length}
+                        data={shoulderType}
+                        // data={user_datas[4].datas}
                         isThree={true}
                         isOverlap={false}
                         selectData={shoultype} setSelectData={setShoultype}

@@ -12,6 +12,9 @@ import useRecoilInput from "../../hooks/useRecoilInput";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { CodyCaseState, CodyItemListState, CodyOtherState, CodyQuesThreeState, CodyTagState } from "../../states/cody_atom";
 import { VisitState } from "../../states/website_atom";
+// axios
+import { getApi } from "../../lib/api";
+
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
@@ -22,6 +25,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
     const [innerPageNum, setInnerPageNum] = useState(0);
     const [itemList, setItemList] = useRecoilState(CodyItemListState);
     
+    // 선택될 데이터 담김.
     const [selectDataOne, setSelectDataOne] = useRecoilState(CodyTagState(2));
     const [selectDataTwo, setSelectDataTwo] = useRecoilState(CodyTagState(3));
     const [selectDataThree, setSelectDataThree] = useRecoilState(CodyTagState(4));
@@ -36,10 +40,28 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
     
     const [isRightOkay, setIsRightOkay] = useState(false);
     const [res, setRes] = useRecoilState(CodyQuesThreeState);
+    
+    const [combination, setCombination] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(()=>{
         window.scrollTo(0,0);
-    }, [])
+        // 서버로 부터 데이터 받아오기
+        getData();
+    },[])
+
+    const getData = async () => {
+        let isMorF = 'M';
+        if(sex===0){
+            isMorF = 'M';
+        }
+        else{
+            isMorF = 'F';
+        }
+        const combination_result = await getApi.getImgData('cody', isMorF, 'Cody_Combination');
+        setCombination(combination_result.results);
+        setIsLoading(false);
+    }
 
     // useEffect(()=>{
     //     console.log(res);
@@ -54,6 +76,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
             //recoil을 이용한 페이지 데이터 들어감
             setItemList(cody_case_F(codyCase));
         }
+        console.log(codyCase)
     }, [codyCase])
 
     // 다음 페이지로 넘어갈 수 있는지 판단
@@ -289,6 +312,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                 <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
                     {(isVisited.includes("네"))&&<Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>}
                     <Wrap isVisited={isVisited.includes("네")}>
+                    {!isLoading? 
+                        <>
                         <QuestionTwo
                             quesNum={quesNum}
                             quesTextOne={"받아보고 싶은 코디에 포함하고"}
@@ -297,14 +322,17 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                         />
                         <div style={{height:'4rem'}}/>
                         <Squares
-                            data={user_datas[0].datas}
-                            data_num={user_datas[0].datas.length}
+                            data={combination}
+                            // data={user_datas[0].datas}
                             isOverlap={false} maxNum={2}
                             isBorderLine={true}
                             selectData={codyCase}
                             setSelectData={setCodyCase}
                         />
                         <div style={{height:'3.6rem'}}/>
+                        </>
+                        : <div>로딩중...</div>
+                    }
                     </Wrap>
                     <Bottom 
                         setPageNum={setPageNum} pageNum={quesNum} 

@@ -32,7 +32,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             isMorF = 'F';
         }
         const pantsFit_result = await getApi.getImgData('style', isMorF, 'Pants_Fit');
-        setPantsFit(pantsFit_result);
+        setPantsFit(pantsFit_result.results);
         setIsLoading(false);
     }
     
@@ -65,8 +65,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
                 <Rectangles 
-                    //data={pantsFit}
-                    data={user_datas}
+                    data={pantsFit}
+                    // data={user_datas}
                     isOverlap={true}
                     selectData={selectData}
                     setSelectData={setSelectData}

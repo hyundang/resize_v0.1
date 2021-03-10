@@ -31,8 +31,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         else{
             isMorF = 'F';
         }
-        const mainColor_result = await getApi.getImgData('style', isMorF, 'Color_Main');
-        setMainColor(mainColor_result);
+        const mainColor_result = await getApi.getColor();
+        setMainColor(mainColor_result.results);
         setIsLoading(false);
     }
     
@@ -48,6 +48,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         else{
             setIsRightOkay(false);
         }
+        // console.log(selectData);
     }, [selectData])
     
 
@@ -65,8 +66,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'5.3rem'}}/>
                 <Circles 
-                    //data={mainColor}
-                    data={user_datas}
+                    data={mainColor}
+                    isColor={true}
+                    // data={user_datas}
                     isThree={false} isOverlap={true}
                     isNoneExist={true}
                     selectData={selectData}

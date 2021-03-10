@@ -32,7 +32,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             isMorF = 'F';
         }
         const pantsWaist_result = await getApi.getImgData('style', isMorF, 'Pants_Waist');
-        setPantsWaist(pantsWaist_result);
+        setPantsWaist(pantsWaist_result.results);
         setIsLoading(false);
     }
     
@@ -48,6 +48,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         else{
             setIsRightOkay(false);
         }
+        // console.log(selectData)
     }, [selectData])
     
 
@@ -65,8 +66,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
                 <Squares 
-                    //data={pantsWaist}
-                    data={user_datas}
+                    data={pantsWaist}
+                    // data={user_datas}
                     isOverlap={true} maxNum={0}
                     isBorderLine={true}
                     selectData={selectData} setSelectData={setSelectData}

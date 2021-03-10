@@ -81,7 +81,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
 
         const handleIntersection = (entries, observer) => {
             entries.forEach((entry)=>{
-                console.log(entry);
+                // console.log(entry);
                 if(entry.isIntersecting){
                     switch (entry.target.className) {
                         case "one":

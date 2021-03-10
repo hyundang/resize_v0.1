@@ -6,13 +6,35 @@ import { Circles, QuestionTwo } from "../../components/common";
 // recoil
 import { useRecoilValue, useRecoilState } from "recoil";
 import { CodyColorstate } from "../../states/cody_atom";
-import { VisitState } from "../../states/website_atom";
+import { VisitState, SexState } from "../../states/website_atom";
+// axios
+import { getApi } from "../../lib/api";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
+    const sex = useRecoilValue(SexState);
+    
+    const [color, setColor] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    
     useEffect(()=>{
         window.scrollTo(0,0);
+        // 서버로 부터 데이터 받아오기
+        getData();
     },[])
+    
+    const getData = async () => {
+        let isMorF = 'M';
+        if(sex===0){
+            isMorF = 'M';
+        }
+        else{
+            isMorF = 'F';
+        }
+        const color_result = await getApi.getColor();
+        setColor(color_result.results);
+        setIsLoading(false);
+    }
     
     const [selectData, setSelectData] = useRecoilState(CodyColorstate(1));
     const isVisited = useRecoilValue(VisitState);
@@ -34,6 +56,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             {(isVisited.includes("네"))&&<Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>}
             <Wrap isVisited={isVisited.includes("네")}>
+            {!isLoading?
+                <>    
                 <QuestionTwo
                     quesNum={quesNum}
                     quesTextOne={"해당 코디에 포함하고 싶은 포인트/서브"}
@@ -42,12 +66,17 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'3.4rem'}}/>
                 <Circles 
-                    data={user_datas} data_num={data_num} 
+                    data={color}
+                    isColor={true}
+                    // data={user_datas}
                     isThree={false} isOverlap={true}
                     isNoneExist={true}
                     selectData={selectData} setSelectData={setSelectData}
                 />
                 <div style={{height:'3.6rem'}}/>
+                </>
+                : <div>로딩중...</div>
+            }
             </Wrap>
             <Bottom 
                 setPageNum={setPageNum} pageNum={quesNum}

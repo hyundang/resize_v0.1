@@ -12,11 +12,11 @@ export default ({
         <Wrap>
             {data.map((item, idx)=>{
                 return <Rectangle
-                            key={idx}
-                            // text={item.name}
-                            // id={item.id}
+                            // key={idx}
+                            text={item.name}
+                            id={item.id}
                             url={item.photo}
-                            text={item}
+                            // text={item}
                             id={idx}
                             isOverlap={isOverlap}
                             selectData={selectData} setSelectData={setSelectData}

@@ -5,6 +5,7 @@ export default ({
     data, 
     isNoneExist, isOverlap,
     isThree, isTwo,
+    isColor,
     selectData, setSelectData
 }) => {
     return(
@@ -12,11 +13,11 @@ export default ({
             {data.map((item, idx)=>{
                 return <Circle
                             key={idx}
-                            //text={item.name}
-                            //id={item.id}
-                            //url={item.photo}
-                            text={item}
-                            id={idx}
+                            text={item.name}
+                            id={isColor? item.name : item.id}
+                            url={item.photo}
+                            // text={item}
+                            // id={idx}
                             isOverlap={isOverlap} isNoneExist={isNoneExist}
                             selectData={selectData} setSelectData={setSelectData}
                         />
@@ -159,7 +160,7 @@ const CircleBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background: url(${props=>props.url}) center center / cover; */
+    background: url(${props=>props.url}) center center / cover;
 `;
 
 const ClickedCircle = styled.div`

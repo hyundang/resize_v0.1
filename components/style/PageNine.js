@@ -32,7 +32,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             isMorF = 'F';
         }
         const colorTone_result = await getApi.getImgData('style', isMorF, 'ColorTone');
-        setColorTone(colorTone_result);
+        setColorTone(colorTone_result.results);
         setIsLoading(false);
     }
 
@@ -47,6 +47,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         else{
             setIsRightOkay(false);
         }
+        // console.log(selectData);
     }, [selectData])
     
 
@@ -64,8 +65,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'5.3rem'}}/>
                 <Squares
-                    //data={colorTone}
-                    data={user_datas}
+                    data={colorTone}
+                    // data={user_datas}
                     isOverlap={true} maxNum={0}
                     isBorderLine={false}
                     selectData={selectData} setSelectData={setSelectData}

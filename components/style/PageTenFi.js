@@ -32,6 +32,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         else{
             setIsRightOkay(false);
         }
+        // console.log(selectData)
     }, [selectData])
     
     
