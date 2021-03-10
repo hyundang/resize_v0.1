@@ -12,11 +12,11 @@ export default ({
             {data.map((item, idx)=>{
                 return <Square
                             key={idx}
-                            //text={item.name}
-                            //id={item.id}
-                            //url={item.photo}
-                            text={item}
-                            id={idx}
+                            text={item.name}
+                            id={item.id}
+                            url={item.photo}
+                            // text={item}
+                            // id={idx}
                             data={selectData}
                             isOverlap={isOverlap} maxNum={maxNum}
                             isBorderLine={isBorderLine}
@@ -134,7 +134,7 @@ const SquareBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background: url(${props=>props.url}) center center / cover; */
+    background: url(${props=>props.url}) center center / cover;
 `;
 
 const ClickedSquare = styled.div`

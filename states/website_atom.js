@@ -12,7 +12,7 @@ export const KategorieState = atom({
 
 export const VisitState = atom({
     key: "VisitState",
-    default: ""
+    default: "네"
 })
 
 export const PageNumState = atom({

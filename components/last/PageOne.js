@@ -47,9 +47,12 @@ export default ({user_datas}) => {
     // 스타일링 끝내기 눌렀을 때
     // 유저 데이테와 스타일링 데이터 서버에 전송
     const handleClick = async () => {
-        const userToken = await postApi.userSignup(result);
-        // userToken 에서 유저 id값 받은 후 스타일 데이터 보낼 때 넣어서 같이 post
-        
+        const res_signup = await postApi.userSignup(result);
+        const userToken = res_signup.data.Token;
+        const userID = res_signup.data.id;
+        // res_signup 에서 유저 id값 받은 후 스타일 데이터 보낼 때 넣어서 같이 post
+        // post 될 동안 로딩 화면 보여주어야 할 듯!!
+        // console.log(userToken);
         router.push('/website_dev/result');
     }
 

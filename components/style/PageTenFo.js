@@ -32,7 +32,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             isMorF = 'F';
         }
         const topLength_result = await getApi.getImgData('style', isMorF, 'Top_Length');
-        setTopLength(topLength_result);
+        setTopLength(topLength_result.results);
         setIsLoading(false);
     }
 
@@ -50,6 +50,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         else{
             setIsRightOkay(false);
         }
+        console.log(selectData)
     }, [selectData])
     
     
@@ -67,8 +68,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
                 <Squares 
-                    //data={topLength}
-                    data={user_datas} 
+                    data={topLength}
+                    // data={user_datas} 
                     isOverlap={true} maxNum={0}
                     isBorderLine={true}
                     selectData={selectData} setSelectData={setSelectData}
