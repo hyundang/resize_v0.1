@@ -12,6 +12,8 @@ import { CodyOtherState, CodyImgState } from "../../states/cody_atom";
 import { VisitState } from "../../states/website_atom";
 // assets
 import camera_icon from "../../public/images/website/icon/camera.svg";
+import del_icon from "../../public/images/website/icon/del_icon.svg";
+
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     useEffect(()=>{
@@ -26,9 +28,15 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
 
     const imginput = useImgInput(CodyImgState);
 
-    useEffect(()=>{
-        // console.log(imginput)
-    }, [imginput])
+    const handleDelClick = (e) => {
+        imginput.setValue(imginput.value.filter((item, idx)=>{
+            return e.target.id != idx;
+        }))
+    }
+
+    // useEffect(()=>{
+    //     console.log(imginput.value)
+    // }, [imginput.value])
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
@@ -90,7 +98,13 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                                         key={idx}
                                         id={idx}
                                         url={item}
-                                    />
+                                    >
+                                        <DelIcon 
+                                            src={del_icon}
+                                            id={idx}
+                                            onClick={handleDelClick}
+                                        />
+                                    </Picture>
                         })
                     }
                     </div>
@@ -146,6 +160,15 @@ const Picture = styled.div`
     width: 14rem;
     height: 14rem;
     border-radius: 0.8rem;
+    border: solid 0.1rem #d6d6d6;
     margin-left: 1rem;
     background: url(${props=>props.url}) center center / cover;
+`;
+
+const DelIcon = styled.img`
+    position: relative;
+    width: 1.8rem;
+    height: 1.8rem;
+    top: 0.5rem;
+    left: 83%;
 `;
