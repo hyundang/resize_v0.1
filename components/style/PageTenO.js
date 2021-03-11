@@ -10,7 +10,7 @@ import { SexState } from "../../states/website_atom";
 // axios
 import { getApi } from "../../lib/api";
 // lib
-import SortData from "../../lib/sort_data";
+import SortData from "../../lib/SortData";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
