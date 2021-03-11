@@ -108,6 +108,11 @@ export const CodyQuesSixState = selector({
     }
 })
 
+export const CodyImgState = atom({
+    key: "CodyImgState",
+    default: []
+})
+
 export const CodyQuesSevenState = selector({
     key: "CodyQuesSevenState",
     get: ({ get })=>{
