@@ -152,6 +152,7 @@ export default ({user_datas}) => {
                 value={phone.value}
                 onChange={phone.onChange}
                 type="number" pattern="\d*"
+                min="0" max="99999999999"
             />
             <div style={{marginTop:'3.2rem'}}/>
             <Question

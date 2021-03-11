@@ -9,6 +9,8 @@ import { CodyColorstate } from "../../states/cody_atom";
 import { SexState, VisitState } from "../../states/website_atom";
 // axios
 import { getApi } from "../../lib/api";
+// lib
+import SortData from "../../lib/sort_data";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
@@ -33,6 +35,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         }
         const color_result = await getApi.getColor();
         setColor(color_result.results);
+        const sorted_data = await SortData(color_result.results);
+        setColor(sorted_data);
         setIsLoading(false);
     }
     

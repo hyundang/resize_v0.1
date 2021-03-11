@@ -9,6 +9,8 @@ import { QuesTenOState } from "../../states/style_atom";
 import { SexState } from "../../states/website_atom";
 // axios
 import { getApi } from "../../lib/api";
+// lib
+import SortData from "../../lib/sort_data";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
@@ -33,6 +35,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         }
         const pointColor_result = await getApi.getColor();
         setPointColor(pointColor_result.results);
+        const sorted_data = await SortData(pointColor_result.results);
+        setPointColor(sorted_data);
         setIsLoading(false);
     }
     

@@ -9,7 +9,8 @@ import { QuesSevenState } from "../../states/style_atom";
 import { SexState } from "../../states/website_atom";
 // axios
 import { getApi } from "../../lib/api";
-
+// lib
+import SortData from "../../lib/sort_data";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
@@ -34,6 +35,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         }
         const neckline_result = await getApi.getImgData('style', isMorF, 'Neck');
         setNeckline(neckline_result.results);
+        const sorted_data = await SortData(neckline_result.results);
+        setNeckline(sorted_data);
         setIsLoading(false);
     }
     

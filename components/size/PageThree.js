@@ -9,7 +9,8 @@ import { BodyDetailState, SizeQuesThreeState } from "../../states/size_atom";
 import { SexState } from "../../states/website_atom";
 // axios
 import { getApi } from "../../lib/api";
-
+// lib
+import SortData from "../../lib/sort_data";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
@@ -45,12 +46,24 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
         }
         const fitType_result = await getApi.getImgData('size', isMorF, 'Fit_Type');
         setFitType(fitType_result.results);
+        let sorted_data = await SortData(fitType_result.results);
+        setFitType(sorted_data);
+
         const faceType_result = await getApi.getImgData('size', isMorF, 'Face_Type');
         setFaceType(faceType_result.results);
+        sorted_data = await SortData(faceType_result.results);
+        setFaceType(sorted_data);
+
         const skinTone_result = await getApi.getImgData('size', isMorF, 'Skin_Tone');
         setSkinTone(skinTone_result.results);
+        sorted_data = await SortData(skinTone_result.results);
+        setSkinTone(sorted_data);
+
         const shoulderType_result = await getApi.getImgData('size', isMorF, 'Shoulder_Type');
         setShoulderType(shoulderType_result.results);
+        sorted_data = await SortData(shoulderType_result.results);
+        setShoulderType(sorted_data);
+
         // 로딩 종료
         setIsLoading(false);
     }
