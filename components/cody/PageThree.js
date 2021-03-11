@@ -14,7 +14,8 @@ import { CodyCaseState, CodyItemListState, CodyOtherState, CodyQuesThreeState, C
 import { VisitState } from "../../states/website_atom";
 // axios
 import { getApi } from "../../lib/api";
-
+// lib
+import SortData from "../../lib/SortData";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
@@ -60,6 +61,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
         }
         const combination_result = await getApi.getImgData('cody', isMorF, 'Cody_Combination');
         setCombination(combination_result.results);
+        const sorted_data = await SortData(combination_result.results);
+        setCombination(sorted_data);
         setIsLoading(false);
     }
 

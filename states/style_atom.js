@@ -1,4 +1,5 @@
 import { atom, selector } from 'recoil';
+import { UserIDState } from "./last_atom";
 
 export const StylePageNumState = atom({
     key: "StylePageNumState",
@@ -108,12 +109,23 @@ export const TotalStyleDataState = selector({
     key: 'TotalStyleDataState',
     get: ({ get }) => {
         return {
-            style_like: get(QuesTwoState),
-            style_hate: get(QuesThreeState),
-            style_want: get(QuesFourState),
-            brand: get(QuesTenFiState),
+            user: get(UserIDState),
+            style_like: get(QuesTwoState).join(','),
+            style_hate: get(QuesThreeState).join(','),
+            style_want: get(QuesFourState).join(','),
+            type_hate: get(QuesEightState),
+            brand: get(QuesTenFiState).join(','),
             brandName: get(QuesTenSState).brand,
-            platform: get(QuesTenSState).site,
+            platform: get(QuesTenSState).site.join(','),
+            color_main: get(QuesTenState).join(','),
+            color_point: get(QuesTenOState).join(','),
+            detail: get(QuesFiveState),
+            material: get(QuesSixState),
+            neck: get(QuesSevenState),
+            color_tone: get(QuesNineState),
+            pants_fit: get(QuesTenTwState),
+            pants_waist: get(QuesTenTrState),
+            top_length: get(QuesTenFoState),
         }
     }
 })

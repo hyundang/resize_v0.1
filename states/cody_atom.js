@@ -1,4 +1,5 @@
 import { atom, atomFamily, selector } from 'recoil';
+import { UserIDState } from "./last_atom";
 
 export const CodyPageNumState = atom({
     key: "CodyPageNumState",
@@ -79,14 +80,14 @@ export const CodyColorstate = atomFamily({
 export const CodyQuesFourState = selector({
     key: "CodyQuesFourState",
     get: ({ get }) => {
-        return get(Colorstate(0));
+        return get(CodyColorstate(0));
     }
 })
 
 export const CodyQuesFiveState = selector({
     key: "CodyQuesFiveState",
     get: ({ get }) => {
-        return get(Colorstate(1));
+        return get(CodyColorstate(1));
     }
 })
 
@@ -111,9 +112,44 @@ export const CodyQuesSevenState = selector({
     key: "CodyQuesSevenState",
     get: ({ get })=>{
         return {
-            quesOne: get(CodyOneTagState(7)),
+            quesOne: get(CodyOtherState(7)),
             quesTwo: "img url 배열",
             quesThree: get(CodyOtherState(8))
         };
     }
+})
+
+export const TotalCodyDataState = selector({
+    key: "TotalCodyDataState",
+    get: ({ get }) => {
+        return {
+            user: get(UserIDState),
+            style: get(CodyQuesOneState).data.join(','),
+            style_etc: get(CodyQuesOneState).ect,
+            TPO: get(CodyQuesTwoState).data.join(','),
+            TPO_etc: get(CodyQuesTwoState).ect,
+            hate_top: get(CodyTagState(2)).join(','),
+            hate_top_etc: get(CodyOtherState(2)),
+            hate_pants: get(CodyTagState(3)).join(','),
+            hate_pants_etc: get(CodyOtherState(3)),
+            hate_skirt: get(CodyTagState(4)).join(','),
+            hate_skirt_etc: get(CodyOtherState(4)),
+            hate_dress: get(CodyTagState(5)).join(','),
+            hate_dress_etc: get(CodyOtherState(5)),
+            hate_outer: get(CodyTagState(6)).join(','),
+            hate_outer_etc: get(CodyOtherState(6)),
+            color_main: get(CodyQuesFourState).join(','),
+            color_point: get(CodyQuesFiveState).join(','),
+            cody_price: get(CodyQuesSixState).quesOne.join(','),
+            cody_quality: get(CodyQuesSixState).quesTwo,
+            cody_trend: get(CodyQuesSixState).quesThree,
+            cody_essential: get(CodyQuesSevenState).quesOne,
+            cody_photo1: null,
+            cody_photo2: null,
+            cody_photo3: null,
+            request: get(CodyQuesSevenState).quesThree,
+            cody_combination: get(CodyCaseState),
+        }
+    }
+
 })

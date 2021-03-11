@@ -55,3 +55,8 @@ export const TotalUserInfoState = selector({
         }
     }
 })
+
+export const UserIDState = atom({
+    key: "UserIDState",
+    default: 0
+})

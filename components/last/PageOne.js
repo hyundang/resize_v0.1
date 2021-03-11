@@ -12,7 +12,11 @@ import { useRouter } from "next/router";
 import arrow from "../../assets/img/icons/brown_arrow_right.svg";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
-import { UserInfoState, UserJobState, CheckedListState, TotalUserInfoState } from "../../states/last_atom";
+import { UserInfoState, UserJobState, CheckedListState, TotalUserInfoState, UserIDState } from "../../states/last_atom";
+import { TotalStyleDataState } from "../../states/style_atom";
+import { TotalSizeDataState } from "../../states/size_atom";
+import { TotalCodyDataState } from "../../states/cody_atom";
+import { SexState } from "../../states/website_atom";
 // axios
 import { postApi } from "../../lib/api";
 
@@ -44,15 +48,36 @@ export default ({user_datas}) => {
 
     const router = useRouter();
 
+    // post 할 데이터
+    const [styleData, setStyleData] = useRecoilState(TotalStyleDataState);
+    const [sizeData, setSizeData] = useRecoilState(TotalSizeDataState);
+    const [codyData, setCodyData] = useRecoilState(TotalCodyDataState);
+    // 성별
+    const sex = useRecoilValue(SexState);
+    // id
+    const [id, setId] = useRecoilState(UserIDState);
+
     // 스타일링 끝내기 눌렀을 때
     // 유저 데이테와 스타일링 데이터 서버에 전송
     const handleClick = async () => {
         const res_signup = await postApi.userSignup(result);
         const userToken = res_signup.data.Token;
         const userID = res_signup.data.id;
+        setId(userID);
         // res_signup 에서 유저 id값 받은 후 스타일 데이터 보낼 때 넣어서 같이 post
         // post 될 동안 로딩 화면 보여주어야 할 듯!!
-        // console.log(userToken);
+
+        let isMorF = 'M';
+        if(sex===0){
+            isMorF = 'M';
+        }
+        else{
+            isMorF = 'F';
+        }
+        const style = await postApi.PostData(styleData, isMorF, 'style', 'Style');
+        const size = await postApi.PostData(sizeData, isMorF, 'size', 'Size');
+        const cody = await postApi.PostData(codyData, isMorF, 'cody', 'Cody');
+        
         router.push('/website_dev/result');
     }
 
@@ -112,6 +137,12 @@ export default ({user_datas}) => {
     useEffect(()=>{
         console.log(result);
     }, [result])
+
+    // useEffect(()=>{
+    //     console.log(styleData);
+    //     console.log(sizeData);
+    //     console.log(codyData);
+    // }, [])
 
     return(
         <>

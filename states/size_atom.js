@@ -1,5 +1,6 @@
 import { atom, selector, atomFamily } from 'recoil';
 import { SexState } from "./website_atom";
+import { UserIDState } from "./last_atom";
 
 export const SizePageNumState = atom({
     key: "SizePageNumState",
@@ -110,8 +111,9 @@ export const TotalSizeDataState = selector({
     get: ({ get }) => {
         if(get(SexState)===0){
             return {
-                height: get(SizeQuesOneState).height,
-                weight: get(SizeQuesOneState).weight,
+                user: get(UserIDState),
+                height: Number(get(SizeQuesOneState).height),
+                weight: Number(get(SizeQuesOneState).weight),
                 size_face: get(SizeQuesTwoState)[0],
                 size_neck: get(SizeQuesTwoState)[1],
                 size_shoulder: get(SizeQuesTwoState)[2],
@@ -125,11 +127,10 @@ export const TotalSizeDataState = selector({
                 size_ratio: get(SizeQuesThreeState)[0],
                 fit_hate: get(SizeQuesFourState).cons,
                 fit_like: get(SizeQuesFourState).pros,
-                size_top1: get(SizeQuesFiveState).one,
-                size_top2: get(SizeQuesFiveState).two,
-                size_pants1: get(SizeQuesFiveState).three,
-                size_pants2: get(SizeQuesFiveState).four,
-                user: 2,
+                size_top1: get(SizeQuesFiveState).one.join(','),
+                size_top2: get(SizeQuesFiveState).two.join(','),
+                size_pants1: get(SizeQuesFiveState).three.join(','),
+                size_pants2: get(SizeQuesFiveState).four.join(','),
                 fit_type: get(SizeQuesThreeState)[1],
                 face_type: get(SizeQuesThreeState)[2],
                 skin_tone: get(SizeQuesThreeState)[3],
@@ -138,8 +139,9 @@ export const TotalSizeDataState = selector({
         }
         else{
             return {
-                height: get(SizeQuesOneState).height,
-                weight: get(SizeQuesOneState).weight,
+                user: get(UserIDState),
+                height: Number(get(SizeQuesOneState).height),
+                weight: Number(get(SizeQuesOneState).weight),
                 size_face: get(SizeQuesTwoState)[0],
                 size_neck: get(SizeQuesTwoState)[1],
                 size_shoulder: get(SizeQuesTwoState)[2],
@@ -153,12 +155,11 @@ export const TotalSizeDataState = selector({
                 size_ratio: get(SizeQuesThreeState)[0],
                 fit_hate: get(SizeQuesFourState).cons,
                 fit_like: get(SizeQuesFourState).pros,
-                size_top1: get(SizeQuesFiveState).one,
-                size_top2: get(SizeQuesFiveState).two,
-                size_top3: get(SizeQuesFiveState).three,
-                size_pants1: get(SizeQuesFiveState).four,
-                size_pants2: get(SizeQuesFiveState).five,
-                user: 2,
+                size_top1: get(SizeQuesFiveState).one.join(','),
+                size_top2: get(SizeQuesFiveState).two.join(','),
+                size_top3: get(SizeQuesFiveState).three.join(','),
+                size_pants1: get(SizeQuesFiveState).four.join(','),
+                size_pants2: get(SizeQuesFiveState).five.join(','),
                 fit_type: get(SizeQuesThreeState)[1],
                 face_type: get(SizeQuesThreeState)[2],
                 skin_tone: get(SizeQuesThreeState)[3],
