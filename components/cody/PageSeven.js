@@ -61,7 +61,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     <div style={{
                         display:'flex',flexDirection:'row',
                         alignItems:'flex-start',
-                        width:'60rem'
+                        width:`${14+15*imginput.value.length}rem`
                         }}>
                     <div>
                     <ImgInputBox htmlFor="file">
@@ -78,13 +78,12 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     <input
                         type="file"
                         id="file"
-                        multiple="multiple"
+                        // multiple="multiple"
                         accept="image/jpeg, image/jpg, image/png"
                         onChange={imginput.onChange}
                         style={{width:'0', height:'0'}}
                     />
                     </div>
-                    
                     {
                         imginput.value.map((item, idx)=>{
                             return <Picture

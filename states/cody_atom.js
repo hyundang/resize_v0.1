@@ -149,9 +149,9 @@ export const TotalCodyDataState = selector({
             cody_quality: get(CodyQuesSixState).quesTwo,
             cody_trend: get(CodyQuesSixState).quesThree,
             cody_essential: get(CodyQuesSevenState).quesOne,
-            cody_photo1: null,
-            cody_photo2: null,
-            cody_photo3: null,
+            cody_photo1: (get(CodyImgState).length>0?get(CodyImgState)[0]:""),
+            cody_photo2: (get(CodyImgState).length>1?get(CodyImgState)[1]:""),
+            cody_photo3: (get(CodyImgState).length>2?get(CodyImgState)[2]:""),
             request: get(CodyQuesSevenState).quesThree,
             cody_combination: get(CodyCaseState),
         }
