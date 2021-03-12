@@ -409,7 +409,7 @@ const InputEmailfront = styled.input`
     font-weight: 500;
     font-family: 'Noto Sans KR';
     text-align: left;
-    color: #bdbdbd;
+    color: #767676;
     ::placeholder{
         color: #bdbdbd;
         font-size: 1.4rem;

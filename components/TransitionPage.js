@@ -103,5 +103,5 @@ const BottomText = styled.div`
     /* font-weight: bold; */
     letter-spacing: -0.04rem;
     color: ${({theme})=>theme.colors.white};
-    background-color: black;
+    /* background-color: black; */
 `;

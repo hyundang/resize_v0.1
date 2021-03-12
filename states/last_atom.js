@@ -50,7 +50,7 @@ export const TotalUserInfoState = selector({
             is_terms_of_service: isService,
             is_privacy_policy: isPolicy,
             is_marketing: isMarketing,
-            is_active: false,
+            is_active: true,
             is_admin: false
         }
     }

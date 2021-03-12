@@ -1,5 +1,6 @@
 import { atom, atomFamily, selector } from 'recoil';
 import { UserIDState } from "./last_atom";
+import { SexState } from "./website_atom";
 
 export const CodyPageNumState = atom({
     key: "CodyPageNumState",
@@ -127,33 +128,61 @@ export const CodyQuesSevenState = selector({
 export const TotalCodyDataState = selector({
     key: "TotalCodyDataState",
     get: ({ get }) => {
+        if(get(SexState)===0){
+            return {
+                user: get(UserIDState),
+                style: get(CodyQuesOneState).data.join(','),
+                style_etc: get(CodyQuesOneState).ect,
+                TPO: get(CodyQuesTwoState).data.join(','),
+                TPO_etc: get(CodyQuesTwoState).ect,
+                hate_clothes1: get(CodyTagState(2)).join(','),
+                hate_clothes1_etc: get(CodyOtherState(2)),
+                hate_clothes2: get(CodyTagState(3)).join(','),
+                hate_clothes2_etc: get(CodyOtherState(3)),
+                hate_clothes3: get(CodyTagState(4)).join(','),
+                hate_clothes3_etc: get(CodyOtherState(4)),
+                color_main: get(CodyQuesFourState).join(','),
+                color_point: get(CodyQuesFiveState).join(','),
+                cody_price: get(CodyQuesSixState).quesOne.join(','),
+                cody_quality: get(CodyQuesSixState).quesTwo,
+                cody_trend: get(CodyQuesSixState).quesThree,
+                cody_essential: get(CodyQuesSevenState).quesOne,
+                cody_photo1: (get(CodyImgState).length>0?get(CodyImgState)[0]:""),
+                cody_photo2: (get(CodyImgState).length>1?get(CodyImgState)[1]:""),
+                cody_photo3: (get(CodyImgState).length>2?get(CodyImgState)[2]:""),
+                request: get(CodyQuesSevenState).quesThree,
+                cody_combination: get(CodyCaseState),
+            }
+        }
+        else{
         return {
-            user: get(UserIDState),
-            style: get(CodyQuesOneState).data.join(','),
-            style_etc: get(CodyQuesOneState).ect,
-            TPO: get(CodyQuesTwoState).data.join(','),
-            TPO_etc: get(CodyQuesTwoState).ect,
-            hate_top: get(CodyTagState(2)).join(','),
-            hate_top_etc: get(CodyOtherState(2)),
-            hate_pants: get(CodyTagState(3)).join(','),
-            hate_pants_etc: get(CodyOtherState(3)),
-            hate_skirt: get(CodyTagState(4)).join(','),
-            hate_skirt_etc: get(CodyOtherState(4)),
-            hate_dress: get(CodyTagState(5)).join(','),
-            hate_dress_etc: get(CodyOtherState(5)),
-            hate_outer: get(CodyTagState(6)).join(','),
-            hate_outer_etc: get(CodyOtherState(6)),
-            color_main: get(CodyQuesFourState).join(','),
-            color_point: get(CodyQuesFiveState).join(','),
-            cody_price: get(CodyQuesSixState).quesOne.join(','),
-            cody_quality: get(CodyQuesSixState).quesTwo,
-            cody_trend: get(CodyQuesSixState).quesThree,
-            cody_essential: get(CodyQuesSevenState).quesOne,
-            cody_photo1: (get(CodyImgState).length>0?get(CodyImgState)[0]:""),
-            cody_photo2: (get(CodyImgState).length>1?get(CodyImgState)[1]:""),
-            cody_photo3: (get(CodyImgState).length>2?get(CodyImgState)[2]:""),
-            request: get(CodyQuesSevenState).quesThree,
-            cody_combination: get(CodyCaseState),
+                user: get(UserIDState),
+                style: get(CodyQuesOneState).data.join(','),
+                style_etc: get(CodyQuesOneState).ect,
+                TPO: get(CodyQuesTwoState).data.join(','),
+                TPO_etc: get(CodyQuesTwoState).ect,
+                hate_clothes1: get(CodyTagState(2)).join(','),
+                hate_clothes1_etc: get(CodyOtherState(2)),
+                hate_clothes2: get(CodyTagState(3)).join(','),
+                hate_clothes2_etc: get(CodyOtherState(3)),
+                hate_clothes3: get(CodyTagState(4)).join(','),
+                hate_clothes3_etc: get(CodyOtherState(4)),
+                hate_clothes4: get(CodyTagState(5)).join(','),
+                hate_clothes4_etc: get(CodyOtherState(5)),
+                hate_clothes5: get(CodyTagState(6)).join(','),
+                hate_clothes5_etc: get(CodyOtherState(6)),
+                color_main: get(CodyQuesFourState).join(','),
+                color_point: get(CodyQuesFiveState).join(','),
+                cody_price: get(CodyQuesSixState).quesOne.join(','),
+                cody_quality: get(CodyQuesSixState).quesTwo,
+                cody_trend: get(CodyQuesSixState).quesThree,
+                cody_essential: get(CodyQuesSevenState).quesOne,
+                cody_photo1: (get(CodyImgState).length>0?get(CodyImgState)[0]:""),
+                cody_photo2: (get(CodyImgState).length>1?get(CodyImgState)[1]:""),
+                cody_photo3: (get(CodyImgState).length>2?get(CodyImgState)[2]:""),
+                request: get(CodyQuesSevenState).quesThree,
+                cody_combination: get(CodyCaseState),
+            }
         }
     }
 

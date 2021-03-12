@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
-import { Header, Bottom } from "../../components";
+import { Header, Bottom, Loading } from "../../components";
 import { OverlapBtns, QuestionTwo, Squares } from "../../components/common";
 // function
 import cody_case_F from "../../lib/cody_case_F";

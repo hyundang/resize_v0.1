@@ -169,18 +169,17 @@ const StyleImgBox = styled.div`
     height: 15.6rem;
     border-radius: 2.3rem;
     border: solid 0.1rem #dac2a3;
-    /* background-image: url() / center center; */
+    background: url(${props=>props.imgpath}) center center / cover;
 `;
 
 const PriorityText = styled.div`
     width: 15.4rem;
     height: 15.4rem;
     border-radius: 2.2rem;
-    opacity: 0.55;
     display: ${props=>props.isClicked? 'flex' : 'none'};
     align-items: center;
     justify-content: center;
-    background-color: #5d5757;
+    background-color: rgba(0, 0, 0, 0.5);
     font-size: 1.8rem;
     font-weight: 500;
     text-align: left;

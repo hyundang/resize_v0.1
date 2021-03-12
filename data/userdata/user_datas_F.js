@@ -10,54 +10,198 @@ const style_F = [
         questionNum : 2,
         // answers 부분 name, tag로 바꿔주세여
         answers : [
-            {name: "캐주얼", tag: ["편안한","스포티한","귀여운"], imgs:["0","0"]},
-            {name: "클래식포멀", tag: ["단정한", "격식있는", "세련된"], imgs:["0","0"]}, 
-            {name: "모던베이직", tag: ["깔끔한", "단정한", "심플한"], imgs:["0","0"]}, 
-            {name: "로맨틱페미닌", tag: ["단아한", "성숙한", "우아한"], imgs:["0","0"]}, 
-            {name: "러블리", tag: ["러블리한", "귀여운", "사랑스러운"], imgs:["0","0"]}, 
-            {name: "스트릿", tag: ["힙한", "개성있는", "유니크한"], imgs:["0","0"]}, 
-            {name: "빈티지", tag: ["개성있는", "편안한", "따뜻한"], imgs:["0","0"]}, 
-            {name: "스포티", tag: ["캐주얼한", "활동성있는", "편한"], imgs:["0","0"]}, 
-            {name: "섹시글램", tag: ["섹시한", "화려한", "볼륨감있는"], imgs:["0","0"]}, 
-            {name: "하이틴", tag: ["러블리한", "발랄한", "하이틴의"], imgs:["0","0"]}, 
-            {name: "힙시크", tag: ["힙한", "시크한", "개성있는"], imgs:["0","0"]}, 
-            {name: "럭셔리", tag: ["고급스러운", "화려한"], imgs:["0","0"]}, 
+            {
+                name: "캐주얼", 
+                tag: ["편안한","스포티한","귀여운"], 
+                imgs:["/images/website/style/woman/female-casual1.jpg","/images/website/style/woman/female-casual2.jpg"]
+            },
+            {
+                name: "클래식포멀", 
+                tag: ["단정한", "격식있는", "세련된"], 
+                imgs:["/images/website/style/woman/female-classicformal1.png","/images/website/style/woman/female-classicformal2.png"]
+            }, 
+            {
+                name: "모던베이직", 
+                tag: ["깔끔한", "단정한", "심플한"], 
+                imgs:["/images/website/style/woman/female-modernbasic1.jpg","/images/website/style/woman/female-modernbasic2.jpg"]
+            }, 
+            {
+                name: "로맨틱페미닌", 
+                tag: ["단아한", "성숙한", "우아한"], 
+                imgs:["/images/website/style/woman/female-romanticfeminine1.jpg","/images/website/style/woman/female-romanticfeminine2.png"]
+            }, 
+            {
+                name: "러블리", 
+                tag: ["러블리한", "귀여운", "사랑스러운"], 
+                imgs:["/images/website/style/woman/female-lovely1.png","/images/website/style/woman/female-lovely2.jpg"]
+            }, 
+            {
+                name: "스트릿", 
+                tag: ["힙한", "개성있는", "유니크한"], 
+                imgs:["/images/website/style/woman/female-street1.jpg","/images/website/style/woman/female-street2.jpg"]
+            }, 
+            {
+                name: "빈티지", 
+                tag: ["개성있는", "편안한", "따뜻한"], 
+                imgs:["/images/website/style/woman/female-vintage1.jpg","/images/website/style/woman/female-vintage2.jpg"]
+            }, 
+            {
+                name: "스포티", 
+                tag: ["캐주얼한", "활동성있는", "편한"], 
+                imgs:["/images/website/style/woman/female-sporty1.jpg","/images/website/style/woman/female-sporty2.jpg"]
+            }, 
+            {
+                name: "섹시글램", 
+                tag: ["섹시한", "화려한", "볼륨감있는"], 
+                imgs:["/images/website/style/woman/female-sexyglam1.jpg","/images/website/style/woman/female-sexyglam2.jpg"]
+            }, 
+            {
+                name: "하이틴", 
+                tag: ["러블리한", "발랄한", "하이틴의"], 
+                imgs:["/images/website/style/woman/female-highteen1.jpg","/images/website/style/woman/female-highteen2.jpg"]
+            }, 
+            {
+                name: "힙시크", 
+                tag: ["힙한", "시크한", "개성있는"], 
+                imgs:["/images/website/style/woman/female-hipchic1.jpg","/images/website/style/woman/female-hipchic2.jpg"]
+            }, 
+            {
+                name: "럭셔리", 
+                tag: ["고급스러운", "화려한"], 
+                imgs:["/images/website/style/woman/female-luxury1.jpg","/images/website/style/woman/female-luxury2.jpg"]
+            }, 
         ],
     },
     {
         id : 2,
         questionNum : 3,
         answers : [
-            {name: "캐주얼", tag: ["편안한","스포티한","귀여운"], imgs:["0","0"]},
-            {name: "클래식포멀", tag: ["단정한", "격식있는", "세련된"], imgs:["0","0"]}, 
-            {name: "모던베이직", tag: ["깔끔한", "단정한", "심플한"], imgs:["0","0"]}, 
-            {name: "로맨틱페미닌", tag: ["단아한", "성숙한", "우아한"], imgs:["0","0"]}, 
-            {name: "러블리", tag: ["러블리한", "귀여운", "사랑스러운"], imgs:["0","0"]}, 
-            {name: "스트릿", tag: ["힙한", "개성있는", "유니크한"], imgs:["0","0"]}, 
-            {name: "빈티지", tag: ["개성있는", "편안한", "따뜻한"], imgs:["0","0"]}, 
-            {name: "스포티", tag: ["캐주얼한", "활동성있는", "편한"], imgs:["0","0"]}, 
-            {name: "섹시글램", tag: ["섹시한", "화려한", "볼륨감있는"], imgs:["0","0"]}, 
-            {name: "하이틴", tag: ["러블리한", "발랄한", "하이틴의"], imgs:["0","0"]}, 
-            {name: "힙시크", tag: ["힙한", "시크한", "개성있는"], imgs:["0","0"]}, 
-            {name: "럭셔리", tag: ["고급스러운", "화려한"], imgs:["0","0"]}, 
+            {
+                name: "캐주얼", 
+                tag: ["편안한","스포티한","귀여운"], 
+                imgs:["/images/website/style/woman/female-casual1.jpg","/images/website/style/woman/female-casual2.jpg"]
+            },
+            {
+                name: "클래식포멀", 
+                tag: ["단정한", "격식있는", "세련된"], 
+                imgs:["/images/website/style/woman/female-classicformal1.png","/images/website/style/woman/female-classicformal2.png"]
+            }, 
+            {
+                name: "모던베이직", 
+                tag: ["깔끔한", "단정한", "심플한"], 
+                imgs:["/images/website/style/woman/female-modernbasic1.jpg","/images/website/style/woman/female-modernbasic2.jpg"]
+            }, 
+            {
+                name: "로맨틱페미닌", 
+                tag: ["단아한", "성숙한", "우아한"], 
+                imgs:["/images/website/style/woman/female-romanticfeminine1.jpg","/images/website/style/woman/female-romanticfeminine2.png"]
+            }, 
+            {
+                name: "러블리", 
+                tag: ["러블리한", "귀여운", "사랑스러운"], 
+                imgs:["/images/website/style/woman/female-lovely1.png","/images/website/style/woman/female-lovely2.jpg"]
+            }, 
+            {
+                name: "스트릿", 
+                tag: ["힙한", "개성있는", "유니크한"], 
+                imgs:["/images/website/style/woman/female-street1.jpg","/images/website/style/woman/female-street2.jpg"]
+            }, 
+            {
+                name: "빈티지", 
+                tag: ["개성있는", "편안한", "따뜻한"], 
+                imgs:["/images/website/style/woman/female-vintage1.jpg","/images/website/style/woman/female-vintage2.jpg"]
+            }, 
+            {
+                name: "스포티", 
+                tag: ["캐주얼한", "활동성있는", "편한"], 
+                imgs:["/images/website/style/woman/female-sporty1.jpg","/images/website/style/woman/female-sporty2.jpg"]
+            }, 
+            {
+                name: "섹시글램", 
+                tag: ["섹시한", "화려한", "볼륨감있는"], 
+                imgs:["/images/website/style/woman/female-sexyglam1.jpg","/images/website/style/woman/female-sexyglam2.jpg"]
+            }, 
+            {
+                name: "하이틴", 
+                tag: ["러블리한", "발랄한", "하이틴의"], 
+                imgs:["/images/website/style/woman/female-highteen1.jpg","/images/website/style/woman/female-highteen2.jpg"]
+            }, 
+            {
+                name: "힙시크", 
+                tag: ["힙한", "시크한", "개성있는"], 
+                imgs:["/images/website/style/woman/female-hipchic1.jpg","/images/website/style/woman/female-hipchic2.jpg"]
+            }, 
+            {
+                name: "럭셔리", 
+                tag: ["고급스러운", "화려한"], 
+                imgs:["/images/website/style/woman/female-luxury1.jpg","/images/website/style/woman/female-luxury2.jpg"]
+            },
         ],
     },
     {
         id : 3,
         questionNum : 4,
         answers : [
-            {name: "캐주얼", tag: ["편안한","스포티한","귀여운"], imgs:["0","0"]},
-            {name: "클래식포멀", tag: ["단정한", "격식있는", "세련된"], imgs:["0","0"]}, 
-            {name: "모던베이직", tag: ["깔끔한", "단정한", "심플한"], imgs:["0","0"]}, 
-            {name: "로맨틱페미닌", tag: ["단아한", "성숙한", "우아한"], imgs:["0","0"]}, 
-            {name: "러블리", tag: ["러블리한", "귀여운", "사랑스러운"], imgs:["0","0"]}, 
-            {name: "스트릿", tag: ["힙한", "개성있는", "유니크한"], imgs:["0","0"]}, 
-            {name: "빈티지", tag: ["개성있는", "편안한", "따뜻한"], imgs:["0","0"]}, 
-            {name: "스포티", tag: ["캐주얼한", "활동성있는", "편한"], imgs:["0","0"]}, 
-            {name: "섹시글램", tag: ["섹시한", "화려한", "볼륨감있는"], imgs:["0","0"]}, 
-            {name: "하이틴", tag: ["러블리한", "발랄한", "하이틴의"], imgs:["0","0"]}, 
-            {name: "힙시크", tag: ["힙한", "시크한", "개성있는"], imgs:["0","0"]}, 
-            {name: "럭셔리", tag: ["고급스러운", "화려한"], imgs:["0","0"]}, 
+            {
+                name: "캐주얼", 
+                tag: ["편안한","스포티한","귀여운"], 
+                imgs:["/images/website/style/woman/female-casual1.jpg","/images/website/style/woman/female-casual2.jpg"]
+            },
+            {
+                name: "클래식포멀", 
+                tag: ["단정한", "격식있는", "세련된"], 
+                imgs:["/images/website/style/woman/female-classicformal1.png","/images/website/style/woman/female-classicformal2.png"]
+            }, 
+            {
+                name: "모던베이직", 
+                tag: ["깔끔한", "단정한", "심플한"], 
+                imgs:["/images/website/style/woman/female-modernbasic1.jpg","/images/website/style/woman/female-modernbasic2.jpg"]
+            }, 
+            {
+                name: "로맨틱페미닌", 
+                tag: ["단아한", "성숙한", "우아한"], 
+                imgs:["/images/website/style/woman/female-romanticfeminine1.jpg","/images/website/style/woman/female-romanticfeminine2.png"]
+            }, 
+            {
+                name: "러블리", 
+                tag: ["러블리한", "귀여운", "사랑스러운"], 
+                imgs:["/images/website/style/woman/female-lovely1.png","/images/website/style/woman/female-lovely2.jpg"]
+            }, 
+            {
+                name: "스트릿", 
+                tag: ["힙한", "개성있는", "유니크한"], 
+                imgs:["/images/website/style/woman/female-street1.jpg","/images/website/style/woman/female-street2.jpg"]
+            }, 
+            {
+                name: "빈티지", 
+                tag: ["개성있는", "편안한", "따뜻한"], 
+                imgs:["/images/website/style/woman/female-vintage1.jpg","/images/website/style/woman/female-vintage2.jpg"]
+            }, 
+            {
+                name: "스포티", 
+                tag: ["캐주얼한", "활동성있는", "편한"], 
+                imgs:["/images/website/style/woman/female-sporty1.jpg","/images/website/style/woman/female-sporty2.jpg"]
+            }, 
+            {
+                name: "섹시글램", 
+                tag: ["섹시한", "화려한", "볼륨감있는"], 
+                imgs:["/images/website/style/woman/female-sexyglam1.jpg","/images/website/style/woman/female-sexyglam2.jpg"]
+            }, 
+            {
+                name: "하이틴", 
+                tag: ["러블리한", "발랄한", "하이틴의"], 
+                imgs:["/images/website/style/woman/female-highteen1.jpg","/images/website/style/woman/female-highteen2.jpg"]
+            }, 
+            {
+                name: "힙시크", 
+                tag: ["힙한", "시크한", "개성있는"], 
+                imgs:["/images/website/style/woman/female-hipchic1.jpg","/images/website/style/woman/female-hipchic2.jpg"]
+            }, 
+            {
+                name: "럭셔리", 
+                tag: ["고급스러운", "화려한"], 
+                imgs:["/images/website/style/woman/female-luxury1.jpg","/images/website/style/woman/female-luxury2.jpg"]
+            },
         ],
     },
     {

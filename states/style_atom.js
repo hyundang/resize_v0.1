@@ -117,6 +117,7 @@ export const TotalStyleDataState = selector({
             brand: get(QuesTenFiState).join(','),
             brandName: get(QuesTenSState).brand,
             platform: get(QuesTenSState).site.join(','),
+            platform_etc: get(QuesTenSState).siteName,
             color_main: get(QuesTenState).join(','),
             color_point: get(QuesTenOState).join(','),
             detail: get(QuesFiveState),

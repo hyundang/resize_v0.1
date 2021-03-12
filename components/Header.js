@@ -99,8 +99,8 @@ const TypeText = styled.div`
     justify-content: center;
     font-size: 1.4rem;
     font-weight: normal;
-    color: ${props=> (props.num <= props.kategorie)? ({theme})=>theme.colors.pale_brown : '#e8d7c1'}; 
-    font-weight: ${props=> (props.num <= props.kategorie)? '900' : '500'};
+    color: ${props=> (props.num === props.kategorie)? ({theme})=>theme.colors.pale_brown : '#e8d7c1'}; 
+    font-weight: ${props=> (props.num === props.kategorie)? '900' : '500'};
 `;
 
 const BarWrap = styled.div`
