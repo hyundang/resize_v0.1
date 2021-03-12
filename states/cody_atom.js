@@ -1,5 +1,6 @@
 import { atom, atomFamily, selector } from 'recoil';
 import { UserIDState } from "./last_atom";
+import { SizeID } from './size_atom';
 import { SexState } from "./website_atom";
 
 export const CodyPageNumState = atom({
@@ -131,6 +132,7 @@ export const TotalCodyDataState = selector({
         if(get(SexState)===0){
             return {
                 user: get(UserIDState),
+                size: get(SizeID),
                 style: get(CodyQuesOneState).data.join(','),
                 style_etc: get(CodyQuesOneState).ect,
                 TPO: get(CodyQuesTwoState).data.join(','),
@@ -147,16 +149,21 @@ export const TotalCodyDataState = selector({
                 cody_quality: get(CodyQuesSixState).quesTwo,
                 cody_trend: get(CodyQuesSixState).quesThree,
                 cody_essential: get(CodyQuesSevenState).quesOne,
-                cody_photo1: (get(CodyImgState).length>0?get(CodyImgState)[0]:""),
-                cody_photo2: (get(CodyImgState).length>1?get(CodyImgState)[1]:""),
-                cody_photo3: (get(CodyImgState).length>2?get(CodyImgState)[2]:""),
+                cody_photo1: (get(CodyImgState).length>0?get(CodyImgState)[0].photo : ""),
+                cody_photo2: (get(CodyImgState).length>1?get(CodyImgState)[1].photo : ""),
+                cody_photo3: (get(CodyImgState).length>2?get(CodyImgState)[2].photo : ""),
                 request: get(CodyQuesSevenState).quesThree,
                 cody_combination: get(CodyCaseState),
+                is_rereservation: false,
+                reason: "",
+                reason_detail: "",
+                reason_detail2: "",
             }
         }
         else{
             return {
                 user: get(UserIDState),
+                size: get(SizeID),
                 style: get(CodyQuesOneState).data.join(','),
                 style_etc: get(CodyQuesOneState).ect,
                 TPO: get(CodyQuesTwoState).data.join(','),
@@ -177,11 +184,15 @@ export const TotalCodyDataState = selector({
                 cody_quality: get(CodyQuesSixState).quesTwo,
                 cody_trend: get(CodyQuesSixState).quesThree,
                 cody_essential: get(CodyQuesSevenState).quesOne,
-                cody_photo1: (get(CodyImgState).length>0?get(CodyImgState)[0]:""),
-                cody_photo2: (get(CodyImgState).length>1?get(CodyImgState)[1]:""),
-                cody_photo3: (get(CodyImgState).length>2?get(CodyImgState)[2]:""),
+                cody_photo1: (get(CodyImgState).length>0? get(CodyImgState)[0].photo : ""),
+                cody_photo2: (get(CodyImgState).length>1? get(CodyImgState)[1].photo : ""),
+                cody_photo3: (get(CodyImgState).length>2? get(CodyImgState)[2].photo : ""),
                 request: get(CodyQuesSevenState).quesThree,
                 cody_combination: get(CodyCaseState),
+                is_rereservation: false,
+                reason: "",
+                reason_detail: "",
+                reason_detail2: "",
             }
         }
     }

@@ -14,12 +14,11 @@ import arrow from "../../assets/img/icons/brown_arrow_right.svg";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { UserInfoState, UserJobState, CheckedListState, TotalUserInfoState, UserIDState } from "../../states/last_atom";
 import { TotalStyleDataState } from "../../states/style_atom";
-import { TotalSizeDataState } from "../../states/size_atom";
+import { SizeID, TotalSizeDataState } from "../../states/size_atom";
 import { TotalCodyDataState } from "../../states/cody_atom";
 import { SexState } from "../../states/website_atom";
 // axios
 import { postApi } from "../../lib/api";
-import { set } from "react-ga";
 
 
 export default ({user_datas}) => {
@@ -57,8 +56,10 @@ export default ({user_datas}) => {
     const [isLoading, setIsLoading] = useState(false);
     // 성별
     const sex = useRecoilValue(SexState);
-    // id
+    // user id
     const [id, setId] = useRecoilState(UserIDState);
+    // size id
+    const [sizeid, setSizeId] = useRecoilState(SizeID);
 
     // 스타일링 끝내기 눌렀을 때
     // 유저 데이테와 스타일링 데이터 서버에 전송
@@ -76,7 +77,6 @@ export default ({user_datas}) => {
     useEffect(()=>{
         if(id!==0){
             postData();
-            router.push('/website_dev/result');
         }
     }, [id])
 
@@ -88,8 +88,31 @@ export default ({user_datas}) => {
         else{
             isMorF = 'F';
         }
+        // console.log(codyData);
         const style = await postApi.PostData(styleData, isMorF, 'style', 'Style');
         const size = await postApi.PostData(sizeData, isMorF, 'size', 'Size');
+        // console.log(size.data.id);
+        // return size.data.id;
+        setSizeId(size.data.id);
+    }
+
+    useEffect(()=>{
+        console.log('?',sizeid);
+        if(sizeid!==0){
+            PostCody();
+            router.push('/website_dev/result');
+        }
+    }, [sizeid])
+
+    const PostCody = async () => {
+        let isMorF = 'M';
+        if(sex===0){
+            isMorF = 'M';
+        }
+        else{
+            isMorF = 'F';
+        }
+        console.log(codyData)
         const cody = await postApi.PostData(codyData, isMorF, 'cody', 'Cody');
     }
 
@@ -146,15 +169,10 @@ export default ({user_datas}) => {
         }
     },[result, checkedList, selectData]);
 
-    useEffect(()=>{
-        console.log(result);
-    }, [result])
-
     // useEffect(()=>{
-    //     console.log(styleData);
-    //     console.log(sizeData);
-    //     console.log(codyData);
-    // }, [])
+    //     // console.log(result);
+    // }, [result])
+
 
     return(
         <>

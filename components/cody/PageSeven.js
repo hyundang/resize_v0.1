@@ -9,10 +9,12 @@ import useImgInput from "../../hooks/useImgInput";
 // recoil
 import { useRecoilValue, useRecoilState } from "recoil";
 import { CodyOtherState, CodyImgState } from "../../states/cody_atom";
-import { VisitState } from "../../states/website_atom";
+import { SexState, VisitState } from "../../states/website_atom";
 // assets
 import camera_icon from "../../public/images/website/icon/camera.svg";
 import del_icon from "../../public/images/website/icon/del_icon.svg";
+// axios
+import { deleteApi } from "../../lib/api";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
@@ -23,15 +25,22 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     // input 여러 개 만들기
     const inputOne = useRecoilInput(CodyOtherState(7));
     const inputTwo = useRecoilInput(CodyOtherState(8));
+    const imginput = useImgInput(CodyImgState);
 
     const isVisited = useRecoilValue(VisitState);
 
-    const imginput = useImgInput(CodyImgState);
+    const sex = useRecoilValue(SexState);
 
-    const handleDelClick = (e) => {
+    const handleDelClick = async (e) => {
         imginput.setValue(imginput.value.filter((item, idx)=>{
-            return e.target.id != idx;
+            return e.target.id != item.id;
         }))
+        if(sex === 0){
+            const response = await deleteApi.DeleteImg(e.target.id, 'M');
+        }
+        else{
+            const response = await deleteApi.DeleteImg(e.target.id, 'F');
+        }
     }
 
     // useEffect(()=>{
@@ -96,12 +105,12 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                         imginput.value.map((item, idx)=>{
                             return <Picture
                                         key={idx}
-                                        id={idx}
-                                        url={item}
+                                        id={item.id}
+                                        url={item.photo}
                                     >
                                         <DelIcon 
                                             src={del_icon}
-                                            id={idx}
+                                            id={item.id}
                                             onClick={handleDelClick}
                                         />
                                     </Picture>

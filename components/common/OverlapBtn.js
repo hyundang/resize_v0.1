@@ -59,6 +59,9 @@ export default ({
             if(isNoneExist){
                 if(id !== data_num-1 & selectData.length===1 & selectData.includes("없음")){
                     setIsClicked(false);
+                    if(setIsEct!==undefined){
+                        setIsEct(false);
+                    }
                 }
                 if(id === data_num-1 & selectData.length>1 & selectData.includes(text)){
                     setIsClicked(false);
@@ -116,6 +119,9 @@ export default ({
                 setSelectData([text]);
                 setIsClicked(true);
                 setIsOther(false);
+                if(setIsEct!==undefined){
+                    setIsEct(false);
+                }
             }
             else{
                 if(text === "기타"){
@@ -152,6 +158,9 @@ export default ({
                 // setIsNoneClicked(true);
                 setIsClicked(true);
                 setIsOther(false);
+                if(setIsEct!==undefined){
+                    setIsEct(false);
+                }
             }
             else if(selectData.length < maxNum){
                 // setIsNoneClicked(false);

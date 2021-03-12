@@ -104,6 +104,11 @@ export const SizeQuesFiveState = selector({
     }
 })
 
+export const SizeID = atom({
+    key:"SizeID",
+    default: 0
+})
+
 
 // post 하는 데이터
 export const TotalSizeDataState = selector({
