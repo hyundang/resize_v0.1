@@ -9,16 +9,16 @@ export default () => {
             <Logo url={'/images/website/preparePage/resizelogo.png'}/>
             <div style={{height:'142px'}}/>
             <TextSmall>
-                나의
-                <span style={{fontWeight:'bold'}}>체형과 취향에</span>
-                맞는 
-                <span style={{fontWeight:'bold'}}>상품과 코디</span>
+                나의&nbsp;
+                <span style={{fontWeight:'bold'}}>체형과 취향에&nbsp;</span>
+                맞는&nbsp; 
+                <span style={{fontWeight:'bold'}}>상품과 코디&nbsp;</span>
                 를 알고 싶다면?
             </TextSmall>
             <div style={{height:'10px'}}/>
             <TextBig>
-                나에게 맞는
-                <span style={{color:'#867561'}}>코디 큐레이션</span>
+                나에게 맞는&nbsp;
+                <span style={{color:'#867561'}}>코디 큐레이션&nbsp;</span>
                 받으러가기
             </TextBig>
             <div style={{height:'38px'}}/>

@@ -29,7 +29,14 @@ export default ({text_one, text_two, setPageNum, kategorie}) => {
 
     return(
         <>
-            <Wrap onClick={handleClick}>
+            <Wrap onClick={handleClick} 
+                url={
+                kategorie===0?
+                "/images/website/style/style.png"
+                : (kategorie===1? "/images/website/size/size.png"
+                    : kategorie===2? "/images/website/cody/cody.png"
+                        : "")
+            }>
                 <Title>STYLING ROOM</Title>
                 <TextWrap>
                     <Text>{text_one}</Text>
@@ -44,7 +51,7 @@ export default ({text_one, text_two, setPageNum, kategorie}) => {
 const Wrap = styled.div`
     width: 100vw;
     height: 100vh;
-    /* background-image: */
+    background: url(${props=>props.url}) center center / cover;
 `;
 
 const Title = styled.div`

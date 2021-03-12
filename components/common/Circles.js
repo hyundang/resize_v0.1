@@ -154,7 +154,7 @@ const CircleBox = styled.div`
     height: 7rem;
     border-radius: 3.5rem;
     margin-bottom: 1rem;
-    border: solid 0.1rem #DAC2A3;
+    border: solid 0.1rem #b0b0b0;
     /* background-color: pink; */
     /* box-shadow: 0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.16); */
     display: flex;
@@ -167,11 +167,10 @@ const ClickedCircle = styled.div`
     width: 7rem;
     height: 7rem;
     border-radius: 3.5rem;
-    opacity: 0.55;
     display: ${props=>props.isClicked? 'flex' : 'none'};
     align-items: center;
     justify-content: center;
-    background-color: #5d5757;
+    background-color: rgba(0,0,0,0.5);
     font-size: 1.8rem;
     font-weight: 500;
     text-align: left;

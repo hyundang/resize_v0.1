@@ -84,7 +84,7 @@ const Bar = styled.div`
 const CircleListWrap = styled.div`
     position: absolute;
     z-index: 2;
-    width: 32rem;
+    width: 31rem;
     display: flex;
     flex-direction: row;
     align-items: center;

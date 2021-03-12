@@ -13,7 +13,8 @@ export default ({
     otherTextOne, otherTextTwo, inputText,
     selectData, setSelectData,
     input,
-    innerPageNum
+    innerPageNum,
+    isEssential,
 }) => {
     const [isOther, setIsOther] = useState(false);
 
@@ -41,7 +42,7 @@ export default ({
                 quesNum={0}
                 quesTextOne={otherTextOne}
                 quesTextTwo={otherTextTwo}
-                overlapText={"선택"}
+                overlapText={isEssential? "필수" : "선택" }
             />
             <div style={{marginTop:'2.3rem'}}/>
             <InputBox

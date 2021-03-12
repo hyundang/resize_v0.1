@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
-import { Header, Bottom } from "../../components";
+import { Header, Bottom, Loading } from "../../components";
 import { Question, Circles, RatioStep, Rectangles } from "../../components/common";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -144,7 +144,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                     />
                 </div>
                 </>
-                :<div>로딩중...</div>
+                : <Loading/>
             }
             </Wrap>
             <Bottom 

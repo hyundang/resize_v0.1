@@ -5,6 +5,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination, Autoplay } from 'swiper';
 // router
 import { useRouter } from "next/router";
+// assets
+import arrow_icon from "../../assets/img/icons/white_arrow_right.svg";
+// import img_one from "../../public/images/website/guide/1.png";
+// import img_two from "../../public/images/website/guide/2.png";
+// import img_four from "../../public/images/website/guide/4.png";
+
 
 SwiperCore.use([Pagination, Autoplay]);
 
@@ -14,7 +20,7 @@ export default () => {
     const [isShown, setIsShown] = useState(false);
 
     return(
-        <Wrap onClick={()=>{if(isShown){router.push('/website_dev/style')}}}>
+        <Wrap onClick={()=>{if(isShown){}}}>
             <InnerWrap>
                 <Title>리사이즈 이용 가이드</Title>
                 <Swiper
@@ -26,7 +32,7 @@ export default () => {
                     onSlideChange={(e)=>{if(e.activeIndex===4){setIsShown(true)}}}
                 >
                     <SwiperSlide>
-                        <Img style={{background:'red',marginLeft:'6.4rem'}}/>
+                        <Img style={{background:'red',marginLeft:'9.5rem'}} src={"/images/website/guide/1.png"}/>
                         <div style={{height:'11.7rem',marginTop:'4rem'}}>
                             <Text big={true}>스타일링룸이란?</Text>
                             <div style={{height:'3.5rem'}}/>
@@ -35,7 +41,7 @@ export default () => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Img style={{background:'orange',marginLeft:'6.4rem'}}/>
+                        <Img style={{background:'orange',marginLeft:'9.5rem'}} src={"/images/website/guide/2.png"}/>
                         <div style={{height:'11.7rem',marginTop:'4rem'}}>
                             <Text big={true}>1. 스타일링 질문에 답하기</Text>
                             <div style={{height:'3.5rem'}}/>
@@ -44,7 +50,7 @@ export default () => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Img style={{background:'green',marginLeft:'6.4rem'}}/>
+                        <Img style={{background:'green',marginLeft:'9.5rem'}} />
                         <div style={{height:'11.7rem',marginTop:'4rem'}}>
                             <Text big={true}>2. '나만을 위한 코디' 카카오톡으로 받기</Text>
                             <div style={{height:'2.5rem'}}/>
@@ -54,7 +60,7 @@ export default () => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Img style={{background:'blue',marginLeft:'6.4rem'}}/>
+                        <Img style={{background:'blue',marginLeft:'9.5rem'}} src={"/images/website/guide/4.png"}/>
                         <div style={{height:'11.7rem',marginTop:'4rem'}}>
                             <Text big={true}>3. 코디 만족도 응답하기</Text>
                             <div style={{height:'2.5rem'}}/>
@@ -62,6 +68,10 @@ export default () => {
                             <Text>다음 코디에서부터 바로 반영하여</Text>
                             <Text>더욱 만족스러운 코디를 제공해드릴게요.</Text>
                         </div>
+                        <Btn onClick={()=>router.push('website_dev/style')}>
+                            시작하기
+                            {/* <IconImg src={arrow_icon}/> */}
+                        </Btn>
                     </SwiperSlide>
                 </Swiper>
                 
@@ -106,10 +116,11 @@ const Title = styled.div`
 const Img = styled.img`
     position: relative;
     top: 5%;    
-    width: 19.2rem;
-    height: 30rem;
+    width: 13rem;
+    height: 25rem;
     border-radius: 0.6rem;
-    border: solid 0.1rem #707070;
+    /* border: solid 0.1rem #707070; */
+    /* background: url(${props=>props.url}) center center / cover; */
 `;
 
 const Text = styled.div`
@@ -119,4 +130,30 @@ const Text = styled.div`
     letter-spacing: normal;
     text-align: center;
     color: #ffffff;
+`;
+
+const Btn = styled.div`
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 19.2rem;
+    height: 4rem;
+    /* padding: 1rem 2.5rem 1rem 6rem; */
+    margin-top: 3rem;
+    border-radius: 0.4rem;
+    background-color: ${({theme})=>theme.colors.black}; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: -0.05rem;
+    text-align: center;
+`;
+
+const IconImg = styled.img`
+    width: 4rem;
+    height: 4rem;
 `;

@@ -8,7 +8,7 @@ const Start = () => {
     <>
         <Header>코디 큐레이션</Header>
         <Wrap>
-            <Img/>
+            <Img src={"/images/website/last/presentbox.png"}/>
             <div style={{height:'3.8rem'}}/>
             <div style={{
                 fontSize:'1.6rem',letterSpacing:'-0.04rem',

@@ -4,3 +4,4 @@ export { default as TransitionPage } from './TransitionPage';
 export { default as KakaoChannel } from './KakaoChannel';
 export { default as PreparePage } from './PreparePage';
 export { default as PreparePagePC } from './PreparePagePC';
+export { default as Loading } from './Lodaing';

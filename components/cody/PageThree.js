@@ -79,8 +79,10 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
             //recoil을 이용한 페이지 데이터 들어감
             setItemList(cody_case_F(codyCase));
         }
-        console.log(codyCase)
+        // console.log(codyCase)
+        // console.log(itemList[0])
     }, [codyCase])
+
 
     // 다음 페이지로 넘어갈 수 있는지 판단
     useEffect(()=>{
@@ -162,6 +164,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             inputText={user_datas[itemList[0]].inputText}
                             input={inputOne}
                             innerPageNum={innerPageNum}
+                            isEssential={true}
                         />
                     </Wrap>
                     <Bottom 
@@ -196,6 +199,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             inputText={user_datas[itemList[1]].inputText}
                             input={inputTwo}
                             innerPageNum={innerPageNum}
+                            isEssential={true}
                         />
                     </Wrap>
                     <Bottom 
@@ -230,6 +234,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             inputText={user_datas[itemList[2]].inputText}
                             input={inputThree}
                             innerPageNum={innerPageNum}
+                            isEssential={true}
                         />
                     </Wrap>
                     <Bottom 
@@ -265,6 +270,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             inputText={user_datas[itemList[3]].inputText}
                             input={inputFour}
                             innerPageNum={innerPageNum}
+                            isEssential={true}
                         />
                     </Wrap>
                     <Bottom 
@@ -299,6 +305,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             inputText={user_datas[itemList[4]].inputText}
                             input={inputFive}
                             innerPageNum={innerPageNum}
+                            isEssential={true}
                         />
                     </Wrap>
                     <Bottom 
@@ -334,7 +341,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                         />
                         <div style={{height:'3.6rem'}}/>
                         </>
-                        : <div>로딩중...</div>
+                        : <Loading/>
                     }
                     </Wrap>
                     <Bottom 
