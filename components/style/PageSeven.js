@@ -71,7 +71,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <Circles 
                     data={neckline}
                     // data={user_datas} 
-                    isThree={false} isOverlap={true}
+                    isThree={true} isOverlap={true}
                     isNoneExist={true}
                     selectData={selectData}
                     setSelectData={setSelectData}

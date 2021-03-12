@@ -16,6 +16,7 @@ import { VisitState } from "../../states/website_atom";
 import { getApi } from "../../lib/api";
 // lib
 import SortData from "../../lib/SortData";
+import { set } from "react-ga";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
@@ -39,6 +40,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
     const inputFour = useRecoilInput(CodyOtherState(5));
     const inputFive = useRecoilInput(CodyOtherState(6));
     
+    const [isEct, setIsEct] = useState(false);
+
+
     const [isRightOkay, setIsRightOkay] = useState(false);
     const [res, setRes] = useRecoilState(CodyQuesThreeState);
     
@@ -86,10 +90,15 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
 
     // 다음 페이지로 넘어갈 수 있는지 판단
     useEffect(()=>{
+        setIsEct(false);
         switch (innerPageNum) {
             case 1:
                 if(selectDataOne.length!==0){
-                    setIsRightOkay(true);
+                    if(isEct){
+                        if(inputOne.value.length!==0){setIsRightOkay(true);}
+                        else{setIsRightOkay(false);}
+                    }
+                    else{setIsRightOkay(true);}
                 }
                 else{
                     setIsRightOkay(false);
@@ -97,7 +106,11 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                 break;
             case 2:
                 if(selectDataTwo.length!==0){
-                    setIsRightOkay(true);
+                    if(isEct){
+                        if(inputTwo.value.length!==0){setIsRightOkay(true);}
+                        else{setIsRightOkay(false);}
+                    }
+                    else{setIsRightOkay(true);}
                 }
                 else{
                     setIsRightOkay(false);
@@ -105,7 +118,11 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                 break;
             case 3:
                 if(selectDataThree.length!==0){
-                    setIsRightOkay(true);
+                    if(isEct){
+                        if(inputThree.value.length!==0){setIsRightOkay(true);}
+                        else{setIsRightOkay(false);}
+                    }
+                    else{setIsRightOkay(true);}
                 }
                 else{
                     setIsRightOkay(false);
@@ -113,7 +130,11 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                 break;
             case 4:
                 if(selectDataFour.length!==0){
-                    setIsRightOkay(true);
+                    if(isEct){
+                        if(inputFour.value.length!==0){setIsRightOkay(true);}
+                        else{setIsRightOkay(false);}
+                    }
+                    else{setIsRightOkay(true);}
                 }
                 else{
                     setIsRightOkay(false);
@@ -121,7 +142,11 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                 break;
             case 5:
                 if(selectDataFive.length!==0){
-                    setIsRightOkay(true);
+                    if(isEct){
+                        if(inputFive.value.length!==0){setIsRightOkay(true);}
+                        else{setIsRightOkay(false);}
+                    }
+                    else{setIsRightOkay(true);}
                 }
                 else{
                     setIsRightOkay(false);
@@ -165,6 +190,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             input={inputOne}
                             innerPageNum={innerPageNum}
                             isEssential={true}
+                            setIsEct={setIsEct}
                         />
                     </Wrap>
                     <Bottom 
@@ -200,6 +226,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             input={inputTwo}
                             innerPageNum={innerPageNum}
                             isEssential={true}
+                            setIsEct={setIsEct}
                         />
                     </Wrap>
                     <Bottom 
@@ -235,6 +262,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             input={inputThree}
                             innerPageNum={innerPageNum}
                             isEssential={true}
+                            setIsEct={setIsEct}
                         />
                     </Wrap>
                     <Bottom 
@@ -271,6 +299,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             input={inputFour}
                             innerPageNum={innerPageNum}
                             isEssential={true}
+                            setIsEct={setIsEct}
                         />
                     </Wrap>
                     <Bottom 
@@ -306,6 +335,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             input={inputFive}
                             innerPageNum={innerPageNum}
                             isEssential={true}
+                            setIsEct={setIsEct}
                         />
                     </Wrap>
                     <Bottom 

@@ -25,10 +25,15 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     // }, [selectData])
     const [isRightOkay, setIsRightOkay] = useState(false);
 
+    const [isEct, setIsEct] = useState(false);
+
     // 다음 페이지로 넘어갈 수 있는지 판단
     useEffect(()=>{
         if(selectData.length!==0){
-            setIsRightOkay(true);
+            if(isEct){
+                if(input.value.length!==0){setIsRightOkay(true);}
+                else{setIsRightOkay(false);}
+            }
         }
         else{
             setIsRightOkay(false);
@@ -56,6 +61,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     otherTextTwo={"스타일이 있다면 알려주세요!"}
                     inputText={"예) 락시크룩도 추천해주세요!"}
                     input={input}
+                    isEssential={true}
+                    setIsEct={isEct}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>

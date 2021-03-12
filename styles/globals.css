@@ -10,14 +10,14 @@ body {
 }
 
 /* 모바일 */
-@media screen and (max-width: 767px) and (min-width: 500px) {
+@media screen and (max-width: 766px) and (min-width: 500px) {
   html {
     font-size: 15px;
   }
 }
 
 /* 태블릿 */
-@media screen and (max-width: 1023px) and (min-width: 768px) {
+@media screen and (max-width: 1025px) and (min-width: 767px) {
   html {
     font-size: 18px;
   }

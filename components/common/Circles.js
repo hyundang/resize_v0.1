@@ -170,7 +170,7 @@ const ClickedCircle = styled.div`
     display: ${props=>props.isClicked? 'flex' : 'none'};
     align-items: center;
     justify-content: center;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.36);
     font-size: 1.8rem;
     font-weight: 500;
     text-align: left;

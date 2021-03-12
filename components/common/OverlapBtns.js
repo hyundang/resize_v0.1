@@ -15,6 +15,7 @@ export default ({
     input,
     innerPageNum,
     isEssential,
+    setIsEct,
 }) => {
     const [isOther, setIsOther] = useState(false);
 
@@ -34,6 +35,7 @@ export default ({
                             selectData={selectData} setSelectData={setSelectData}
                             setIsOther={setIsOther}
                             innerPageNum={innerPageNum}
+                            setIsEct={setIsEct}
                         />
             })}
         </Wrap> 

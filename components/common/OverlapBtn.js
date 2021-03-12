@@ -8,7 +8,8 @@ export default ({
     isNoneExist,
     selectData, setSelectData, 
     setIsOther,
-    innerPageNum
+    innerPageNum,
+    setIsEct,
 }) => {
     const [isClicked, setIsClicked] = useState(false);
 
@@ -105,6 +106,9 @@ export default ({
             setIsClicked(false);
             if(text === "기타"){
                 setIsOther(false);
+                if(setIsEct!==undefined){
+                    setIsEct(false);
+                }
             }
         }
         else{
@@ -116,6 +120,9 @@ export default ({
             else{
                 if(text === "기타"){
                     setIsOther(true);
+                    if(setIsEct!==undefined){
+                        setIsEct(true);
+                    }
                 }
                 setSelectData(selectData.concat([text]));
                 setIsClicked(true);
