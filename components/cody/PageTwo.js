@@ -30,11 +30,14 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 if(input.value.length!==0){setIsRightOkay(true);}
                 else{setIsRightOkay(false);}
             }
+            else{
+                setIsRightOkay(true);
+            }
         }
         else{
             setIsRightOkay(false);
         }
-    }, [selectData])
+    }, [selectData, input.value])
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
@@ -58,7 +61,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     inputText={"예) 상견례룩을 추천해주세요!"}
                     input={input}
                     isEssential={true}
-                    setIsEct={isEct}
+                    setIsEct={setIsEct}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>
