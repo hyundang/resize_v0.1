@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
-import { Header } from "../../components";
+import { Header, Loading } from "../../components";
 import { InputBox, Question, CheckBox, OverlapBtns } from "../../components/common";
 import Modal from "../../components/common/modal";
 // hooks
@@ -19,6 +19,7 @@ import { TotalCodyDataState } from "../../states/cody_atom";
 import { SexState } from "../../states/website_atom";
 // axios
 import { postApi } from "../../lib/api";
+import { set } from "react-ga";
 
 
 export default ({user_datas}) => {
@@ -52,6 +53,8 @@ export default ({user_datas}) => {
     const [styleData, setStyleData] = useRecoilState(TotalStyleDataState);
     const [sizeData, setSizeData] = useRecoilState(TotalSizeDataState);
     const [codyData, setCodyData] = useRecoilState(TotalCodyDataState);
+    // loading 여부
+    const [isLoading, setIsLoading] = useState(false);
     // 성별
     const sex = useRecoilValue(SexState);
     // id
@@ -60,6 +63,7 @@ export default ({user_datas}) => {
     // 스타일링 끝내기 눌렀을 때
     // 유저 데이테와 스타일링 데이터 서버에 전송
     const handleClick = async () => {
+        setIsLoading(true);
         const res_signup = await postApi.userSignup(result);
         const userToken = res_signup.data.Token;
         const userID = res_signup.data.id;
@@ -67,6 +71,16 @@ export default ({user_datas}) => {
         // res_signup 에서 유저 id값 받은 후 스타일 데이터 보낼 때 넣어서 같이 post
         // post 될 동안 로딩 화면 보여주어야 할 듯!!
 
+    }
+
+    useEffect(()=>{
+        if(id!==0){
+            postData();
+            router.push('/website_dev/result');
+        }
+    }, [id])
+
+    const postData = async () => {
         let isMorF = 'M';
         if(sex===0){
             isMorF = 'M';
@@ -77,8 +91,6 @@ export default ({user_datas}) => {
         const style = await postApi.PostData(styleData, isMorF, 'style', 'Style');
         const size = await postApi.PostData(sizeData, isMorF, 'size', 'Size');
         const cody = await postApi.PostData(codyData, isMorF, 'cody', 'Cody');
-        
-        router.push('/website_dev/result');
     }
 
     const handleCheckboxClick = (e) => {
@@ -146,6 +158,7 @@ export default ({user_datas}) => {
 
     return(
         <>
+        {!isLoading?
         <Wrap>
             <Header  kategorie={3} quesNum={1} lastQuesNum={1}/>
             <Question
@@ -276,6 +289,8 @@ export default ({user_datas}) => {
             <div style={{marginTop:'3.6rem'}}/>
             <Bottom onClick={isNextOkay? handleClick : ()=>{}}>스타일링 끝내기</Bottom>
         </Wrap>
+        :<Loading/>
+        }
         {modalVisible&&
         <Modal
             visible={modalVisible}

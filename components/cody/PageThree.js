@@ -40,7 +40,11 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
     const inputFour = useRecoilInput(CodyOtherState(5));
     const inputFive = useRecoilInput(CodyOtherState(6));
     
-    const [isEct, setIsEct] = useState(false);
+    const [isEctOne, setIsEctOne] = useState(false);
+    const [isEctTwo, setIsEctTwo] = useState(false);
+    const [isEctThree, setIsEctThree] = useState(false);
+    const [isEctFour, setIsEctFour] = useState(false);
+    const [isEctFive, setIsEctFive] = useState(false);
 
 
     const [isRightOkay, setIsRightOkay] = useState(false);
@@ -90,11 +94,10 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
 
     // 다음 페이지로 넘어갈 수 있는지 판단
     useEffect(()=>{
-        setIsEct(false);
         switch (innerPageNum) {
             case 1:
                 if(selectDataOne.length!==0){
-                    if(isEct){
+                    if(isEctOne){
                         if(inputOne.value.length!==0){setIsRightOkay(true);}
                         else{setIsRightOkay(false);}
                     }
@@ -106,7 +109,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                 break;
             case 2:
                 if(selectDataTwo.length!==0){
-                    if(isEct){
+                    if(isEctTwo){
                         if(inputTwo.value.length!==0){setIsRightOkay(true);}
                         else{setIsRightOkay(false);}
                     }
@@ -118,7 +121,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                 break;
             case 3:
                 if(selectDataThree.length!==0){
-                    if(isEct){
+                    if(isEctThree){
                         if(inputThree.value.length!==0){setIsRightOkay(true);}
                         else{setIsRightOkay(false);}
                     }
@@ -130,7 +133,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                 break;
             case 4:
                 if(selectDataFour.length!==0){
-                    if(isEct){
+                    if(isEctFour){
                         if(inputFour.value.length!==0){setIsRightOkay(true);}
                         else{setIsRightOkay(false);}
                     }
@@ -142,7 +145,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                 break;
             case 5:
                 if(selectDataFive.length!==0){
-                    if(isEct){
+                    if(isEctFive){
                         if(inputFive.value.length!==0){setIsRightOkay(true);}
                         else{setIsRightOkay(false);}
                     }
@@ -190,7 +193,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             input={inputOne}
                             innerPageNum={innerPageNum}
                             isEssential={true}
-                            setIsEct={setIsEct}
+                            setIsEct={setIsEctOne}
                         />
                     </Wrap>
                     <Bottom 
@@ -226,7 +229,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             input={inputTwo}
                             innerPageNum={innerPageNum}
                             isEssential={true}
-                            setIsEct={setIsEct}
+                            setIsEct={setIsEctTwo}
                         />
                     </Wrap>
                     <Bottom 
@@ -262,7 +265,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             input={inputThree}
                             innerPageNum={innerPageNum}
                             isEssential={true}
-                            setIsEct={setIsEct}
+                            setIsEct={setIsEctThree}
                         />
                     </Wrap>
                     <Bottom 
@@ -299,7 +302,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             input={inputFour}
                             innerPageNum={innerPageNum}
                             isEssential={true}
-                            setIsEct={setIsEct}
+                            setIsEct={setIsEctFour}
                         />
                     </Wrap>
                     <Bottom 
@@ -335,7 +338,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             input={inputFive}
                             innerPageNum={innerPageNum}
                             isEssential={true}
-                            setIsEct={setIsEct}
+                            setIsEct={setIsEctFive}
                         />
                     </Wrap>
                     <Bottom 

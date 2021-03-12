@@ -155,7 +155,7 @@ export const TotalCodyDataState = selector({
             }
         }
         else{
-        return {
+            return {
                 user: get(UserIDState),
                 style: get(CodyQuesOneState).data.join(','),
                 style_etc: get(CodyQuesOneState).ect,
