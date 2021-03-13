@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
-import { Header, Bottom, TagBtns } from "./common";
+import { Header, Bottom, TagBtns, Modal } from "./common";
 import { InputBoxBig } from "../common";
 // hooks
 import useInput from "../../hooks/useRecoilInput";
@@ -23,6 +23,7 @@ export default () => {
     const router = useRouter();
     
     const [isActive, setIsActive] = useState(false);
+    const [isModalShown, setIsModalShown] = useState(false);
 
     useEffect(()=>{
         window.scroll(0,0);
@@ -68,9 +69,14 @@ export default () => {
             </Wrap>
             <Bottom 
                 text={"코디 큐레이션 재요청하기"}
-                onClick={isActive?()=>router.push('/website_dev/result') : ()=>{}}
+                onClick={isActive?()=>router.push('/website_dev/result') : ()=>setIsModalShown(true)}
                 isActive={isActive}
             />
+            {isModalShown && <Modal
+                                setIsShown={setIsModalShown}
+                                innerPageNum={0}
+                            />
+            }
         </div>
     )
 }

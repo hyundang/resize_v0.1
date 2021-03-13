@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
-import { Header, Bottom, ClothesBox } from "./common";
+import { Header, Bottom, ClothesBox, Modal } from "./common";
 import { RatioStep } from "../common";
 // hooks
 import useInput from "../../hooks/useRecoilInput";
 // recoil
 import { useSetRecoilState, useRecoilState } from "recoil";
 import { DetailPageLikeState, DetailPageNumState, DetailPageOpinionState,  } from "../../states/result_atom"
+// router
+import { useRouter } from "next/router";
 
 
 const data = ["0%", "25%", "50%", "75%", "100%"];
@@ -22,6 +24,9 @@ export default () => {
     const setPageNum = useSetRecoilState(DetailPageNumState);
 
     const [isActive, setIsActive] = useState(false);
+    const [isModalShown, setIsModalShown] = useState(false);
+
+    const router = useRouter();
 
     useEffect(()=>{
         window.scroll(0,0);
@@ -47,7 +52,7 @@ export default () => {
     }, [innerPageNum, selectDataTwo, selectDataOne, inputTwo.value, inputOne.value])
 
 
-    const handleClick = () => {
+    const handleBtnClick = () => {
         if(innerPageNum===1){
             setInnerPageNum(2);
         }
@@ -56,6 +61,11 @@ export default () => {
         }
     }
 
+    const handleSubmitClick = () => {
+        // 유저가 써놓은 것 post 보내기
+
+        router.push('/website_dev');
+    }
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
@@ -156,17 +166,40 @@ export default () => {
                     </TitleLineNone>
                     <div style={{height:'3rem'}}/>
                     <RequestBtn 
-                        onClick={isActive?()=>setPageNum(1) : ()=>{}}
+                        onClick={isActive?()=>setPageNum(1) : ()=>setIsModalShown(true)}
                         isActive={isActive}
                     >코디 큐레이션 재요청하기</RequestBtn>
                 </>}
                 <div style={{height:'7rem'}}/>
             </Wrap>
+            {(innerPageNum===1)?
             <Bottom 
-                text={(innerPageNum===1)?"다음 코디 보러가기":"이전 코디 보러가기"}
-                onClick={isActive? handleClick : ()=>{}}
+                text={"다음 코디 보러가기"}
+                onClick={isActive? handleBtnClick : ()=>setIsModalShown(true)}
                 isActive={isActive}
             />
+            :<div style={{width:'100%',height:'8.6rem',display:'flex',alignItems:'center',justifyContent:'center',position:'fixed',bottom:'0'}}>
+                <div style={{width:'32rem',height:'5.2rem',display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
+                    <Btn
+                        style={{width:'15rem',backgroundColor:'#f6f2eb'}}
+                        onClick={handleBtnClick}
+                    >
+                        이전 코디 보기
+                    </Btn>
+                    <Btn
+                        style={{width:'15rem',backgroundColor:(isActive?'#c7b299':'#e5e5e5'),color:'white'}}
+                        onClick={isActive? handleSubmitClick : ()=>setIsModalShown(true)}
+                    >
+                        작성 완료
+                    </Btn>
+                </div>
+            </div>
+            }
+            {isModalShown&&<Modal
+                                setIsShown={setIsModalShown}
+                                innerPageNum={innerPageNum}
+                            />
+            }
         </div>
     )
 }
@@ -282,4 +315,19 @@ const RequestBtn = styled.div`
     line-height: 5.1rem;
     color: white;
     transition: 0.5s;
+`;
+
+const Btn = styled.div`
+    height: 5.2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0,0,0, 0.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition: 0.5s;
+
+    color: ${({theme})=>theme.colors.black};
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: -0.4px;
 `;
