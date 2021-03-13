@@ -12,14 +12,8 @@ export default (recoilState) => {
   const onChange = async (e) => {
     // console.log(e.target.files);
     if(value.length < 3){
-      if(sex===0){
-        const data = await postApi.PostImg(e.target.files[0], 'M');
-        setValue(value.concat([data.data]));
-      }
-      else{
-        const data = await postApi.PostImg(e.target.files[0], 'F');
-        setValue(value.concat([data.data]));
-      }
+      const data = await postApi.PostImg(e.target.files[0]);
+      setValue(value.concat([data.data]));
     }
   };
 

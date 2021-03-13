@@ -88,16 +88,12 @@ export default ({user_datas}) => {
         else{
             isMorF = 'F';
         }
-        // console.log(codyData);
         const style = await postApi.PostData(styleData, isMorF, 'style', 'Style');
         const size = await postApi.PostData(sizeData, isMorF, 'size', 'Size');
-        // console.log(size.data.id);
-        // return size.data.id;
         setSizeId(size.data.id);
     }
 
     useEffect(()=>{
-        console.log('?',sizeid);
         if(sizeid!==0){
             PostCody();
             router.push('/website_dev/result');
@@ -112,7 +108,6 @@ export default ({user_datas}) => {
         else{
             isMorF = 'F';
         }
-        console.log(codyData)
         const cody = await postApi.PostData(codyData, isMorF, 'cody', 'Cody');
     }
 
@@ -120,7 +115,6 @@ export default ({user_datas}) => {
         if(e.target.checked){
             setChecked(e.target.checked);
             setCheckedList(['1', '2', '3']);
-            // console.log(1);
         }
         else{
             setChecked(e.target.checked);

@@ -35,12 +35,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         imginput.setValue(imginput.value.filter((item, idx)=>{
             return e.target.id != item.id;
         }))
-        if(sex === 0){
-            const response = await deleteApi.DeleteImg(e.target.id, 'M');
-        }
-        else{
-            const response = await deleteApi.DeleteImg(e.target.id, 'F');
-        }
+        const response = await deleteApi.DeleteImg(e.target.id);
     }
 
     // useEffect(()=>{
