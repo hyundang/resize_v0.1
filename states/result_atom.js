@@ -51,3 +51,8 @@ export const RequestDataState = selector({
         }
     }
 })
+
+export const CurationDataState = atom({
+    key: "CurationDataState",
+    default: {}
+})
