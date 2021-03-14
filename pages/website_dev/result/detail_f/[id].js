@@ -1,15 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { ResultPage, RerequestPage, BuySurveyPage } from "../../../../components/result";
 // recoil
 import { useRecoilValue } from "recoil";
 import { DetailPageNumState } from "../../../../states/result_atom";
+import { useRouter } from "next/router";
 
 
 export default () => {
     const pageNum = useRecoilValue(DetailPageNumState);
-    
+    const router = useRouter();
+    const [ID, setID] = useState(0);
+    const {id} = router.query;
+
     // 페이지 새로고침 막기
     useEffect(()=>{
         window.addEventListener('beforeunload', (e)=>{
@@ -18,13 +22,19 @@ export default () => {
         })
     },[])
 
+    useEffect(()=>{
+        if(id!==undefined){
+            setID(id);
+        }
+    }, [id])
+
     switch (pageNum) {
         case 1:
-            return <RerequestPage/>
+            return <RerequestPage sex={'F'} id={ID}/>
         case 2:
             return <BuySurveyPage/>
         default:
-            return <ResultPage/>
+            return <ResultPage sex={'F'} id={ID}/>
     }
 }
 
