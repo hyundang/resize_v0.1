@@ -172,7 +172,7 @@ export default ({sex, id}) => {
                 <div style={{height:'4.5rem'}}/>
                 <InfoBox>
                     <Info 
-                        textone={"코디 조합"} texttwo={innerPageNum===1? resData.cody[0].cody_combination : resData.cody[1].cody_combination}
+                        textone={"코디 조합"} texttwo={innerPageNum===1? resData.cody[0].cody_combination.name : resData.cody[1].cody_combination.name}
                         widthone={"11rem"} widthtwo={"6rem"}
                     />
                     <Info 
