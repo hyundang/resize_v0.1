@@ -3,18 +3,27 @@ import styled from "styled-components";
 // components
 import { Header, Bottom, ClothesBox, Modal } from "./common";
 import { RatioStep } from "../common";
+import { Loading } from "../index";
 // hooks
 import useInput from "../../hooks/useRecoilInput";
 // recoil
 import { useSetRecoilState, useRecoilState } from "recoil";
-import { DetailPageLikeState, DetailPageNumState, DetailPageOpinionState,  } from "../../states/result_atom"
+import { CurationDataState, DetailPageLikeState, DetailPageNumState, DetailPageOpinionState,  } from "../../states/result_atom"
 // router
 import { useRouter } from "next/router";
+// api
+import { getApi, postApi } from "../../lib/api";
+// lib
+import curation_clothes from "../../lib/curation_clothes";
 
 
 const data = ["0%", "25%", "50%", "75%", "100%"];
 
-export default () => {
+export default ({sex, id}) => {
+    const [resData, setResData] = useRecoilState(CurationDataState);
+    const [curationOne, setCurationOne] = useState([]);
+    const [curationTwo, setCurationTwo] = useState([]);
+
     const inputOne = useInput(DetailPageOpinionState(0));
     const inputTwo = useInput(DetailPageOpinionState(1));
     const [selectDataOne, setSelectDataOne] = useRecoilState(DetailPageLikeState(0));
@@ -25,12 +34,41 @@ export default () => {
 
     const [isActive, setIsActive] = useState(false);
     const [isModalShown, setIsModalShown] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const router = useRouter();
 
-    useEffect(()=>{
+    useEffect(()=>{       
         window.scroll(0,0);
+        if(!isLoading)
+            document.getElementById("ExplainBox").scroll(0,0);
     },[innerPageNum])
+
+
+    const GetData = async () => {
+            const data = await getApi.getResult(sex, id);
+            setResData(data);
+    }
+
+    useEffect(()=>{
+        if(id!==0){
+            GetData();
+        }
+    }, [id])
+
+    useEffect(()=>{
+        if(Object.keys(resData).length!==0){
+            const clothes1 = curation_clothes(resData.cody[0]);
+            const clothes2 = curation_clothes(resData.cody[1]);
+            setCurationOne(clothes1);
+            setCurationTwo(clothes2);
+            setIsLoading(false);
+        }
+    }, [resData])
+
+    // useEffect(()=>{
+    //     console.log(curationOne);
+    // }, [curationOne])
 
     useEffect(()=>{
         if(innerPageNum===1){
@@ -61,43 +99,67 @@ export default () => {
         }
     }
 
+    const PostData = async () => {
+        let data = {
+            cody_num: 1,
+            review: selectDataOne,
+            review_detail: inputOne.value,
+            curation: id
+        }
+        await postApi.postReview(data, sex);
+        data = {
+            cody_num: 2,
+            review: selectDataTwo,
+            review_detail: inputTwo.value,
+            curation: id
+        }
+        await postApi.postReview(data, sex);
+    }
+
     const handleSubmitClick = () => {
         // 유저가 써놓은 것 post 보내기
-
+        PostData();
         router.push('/website_dev');
+    }
+
+    const handleRequestClick = () => {
+        PostData();
+        setPageNum(1)
     }
 
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header text={"코디 큐레이션 결과"}/>
             <Wrap>
+                {!isLoading?
+                <>
                 <div style={{width:'32rem'}}>
                 <Title>나의 정보</Title>
                 </div>
                 <div style={{height:'2.6rem'}}/>
                 <InfoBox style={{height:'18rem'}}>
                     <Info 
-                        textone={"키"} texttwo={`${160}cm`} 
+                        textone={"키"} texttwo={`${resData.reservation.size.height}cm`} 
                         widthone={"10.5rem"} widthtwo={"21.5rem"}
                     />
                     <Info 
-                        textone={"몸무게"} texttwo={`${45}kg`}
+                        textone={"몸무게"} texttwo={`${resData.reservation.size.weight}kg`}
                         widthone={"10.5rem"} widthtwo={"21.5rem"}
                     />
                     <Info 
-                        textone={"체형 장점"} texttwo={"다리가 얇아요얇아요얇아요얇아요ㅇㅇㅇㅇ"}
+                        textone={"체형 장점"} texttwo={resData.reservation.size.fit_like}
                         widthone={"10.5rem"} widthtwo={"21.5rem"}
                     />
                     <Info 
-                        textone={"체형 단점"} texttwo={"허리가 두꺼워요"}
+                        textone={"체형 단점"} texttwo={resData.reservation.size.fit_hate}
                         widthone={"10.5rem"} widthtwo={"21.5rem"}
                     />
                     <Info 
-                        textone={"요청 코디"} texttwo={"캐주얼 캠퍼스룩"}
+                        textone={"요청 코디"} texttwo={resData.reservation.TPO}
                         widthone={"10.5rem"} widthtwo={"21.5rem"}
                     />
                     <Info 
-                        textone={"요청 가격"} texttwo={"10,000~50,000"}
+                        textone={"요청 가격"} texttwo={resData.reservation.cody_price}
                         widthone={"10.5rem"} widthtwo={"21.5rem"}
                     />
                 </InfoBox>
@@ -106,29 +168,35 @@ export default () => {
                 <div style={{height:'3.2rem'}}/>
                 <Title>LOOK {innerPageNum}</Title>
                 <div style={{height:'3.5rem'}}/>
-                <img style={{width:'22.6rem',height:'22.6rem'}}/>
+                <img style={{width:'22.6rem',height:'22.6rem'}} src={innerPageNum===1? resData.cody[0].photo: resData.cody[1].photo}/>
                 <div style={{height:'4.5rem'}}/>
                 <InfoBox>
                     <Info 
-                        textone={"코디 조합"} texttwo={"상의+바지"}
+                        textone={"코디 조합"} texttwo={innerPageNum===1? resData.cody[0].cody_combination : resData.cody[1].cody_combination}
                         widthone={"11rem"} widthtwo={"6rem"}
                     />
                     <Info 
-                        textone={"총 가격"} texttwo={"150,000"}
+                        textone={"총 가격"} texttwo={innerPageNum===1? resData.cody[0].price : resData.cody[1].price}
                         widthone={"11rem"} widthtwo={"6rem"}
                     />
                 </InfoBox>
                 <div style={{height:'3.6rem'}}/>
                 <ExplainBox 
-                    value={"편안하고 따뜻한 느낌의 캐주얼한 데일리, 데이트룩 소개해드립니다! 상의로는 v자로 파인 브이넥 니트를 골라봤는데요, 목이 짧은게 고민이시라면 목 부분이 더드러나는 v넥을 추천드려요. 추천드리는 니트는 랩 형식으로 되어 있어, 밋밋해보일 수 있는 룩에 포인트를 더해준답니다. 허리 부분은 슬림한 실루엣을 가지고 있어서 고민되시는 뱃살도 커버하실 수 있을 거예요! ◡̈ 추천드리는 치마는 브라운 색상의 코듀로이 플리츠 스커트입니다. 코듀로이 소재 그 자체만으로도 유니크한 포인트가 되어주는데요, 세로선이 있는 코듀로이 소재는 다리가 길어보이고 얇아보이는 착시효과까지 준답니다!"}
+                    id="ExplainBox"
+                    value={innerPageNum===1? resData.comment1 : resData.comment2}
                     readOnly={true}  
                 />
                 <div style={{height:'3.6rem'}}/>
                 <TitleLineNone>코디 큐레이션 상품 정보</TitleLineNone>
                 <div style={{height:'2rem'}}/>
-                {/* 코디 개수만큼 나오기->map사용 */}
-                <ClothesBox/>
-                <ClothesBox/>
+                {innerPageNum===1?
+                curationOne.map((item, idx)=>{
+                    return <ClothesBox data={item} key={idx}/>
+                })
+                : curationTwo.map((item, idx)=>{
+                    return <ClothesBox data={item} key={idx}/>
+                })
+                }
                 <div style={{height:'3.6rem'}}/>
                 <TitleLineNone>코디 {innerPageNum}은 원하는 스타일과 어느정도 일치하나요?</TitleLineNone>
                 <div style={{height:'2rem'}}/>
@@ -166,11 +234,14 @@ export default () => {
                     </TitleLineNone>
                     <div style={{height:'3rem'}}/>
                     <RequestBtn 
-                        onClick={isActive?()=>setPageNum(1) : ()=>setIsModalShown(true)}
+                        onClick={isActive? handleRequestClick : ()=>setIsModalShown(true)}
                         isActive={isActive}
                     >코디 큐레이션 재요청하기</RequestBtn>
                 </>}
-                <div style={{height:'7rem'}}/>
+                <div style={{height:'5rem'}}/>
+                </>
+                : <Loading/>
+                }
             </Wrap>
             {(innerPageNum===1)?
             <Bottom 

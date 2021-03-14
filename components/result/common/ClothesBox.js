@@ -6,13 +6,13 @@ import arrow_icon from "../../../assets/img/icons/black_arrow_right.svg";
 
 export default ({data}) => {
     return(
-        <Wrap>
-            <Img/>
+        <Wrap onClick={()=>window.open(data.url, '_blank')}>
+            <Img src={data.photo}/>
             <InfoWrap>
-                <Text style={{fontWeight:'bold',letterSpacing:'-0.35px',fontSize:'1.4rem'}}>{"ORDINARY HOLIDAY"}</Text>
-                <Text>{"green lettering MTM"}</Text>
-                <Text>{"free size/oatmeal"}</Text>
-                <Text style={{color:'#b5b5b5'}}>{"128,000"}</Text>
+                <Text style={{fontWeight:'bold',letterSpacing:'-0.35px',fontSize:'1.4rem'}}>{data.name}</Text>
+                <Text>{data.color}</Text>
+                <Text>{data.size}</Text>
+                <Text style={{color:'#b5b5b5'}}>{data.price}</Text>
             </InfoWrap>
             <img src={arrow_icon} style={{width:'4rem'}}/>
         </Wrap>
@@ -28,10 +28,11 @@ const Wrap = styled.div`
     flex-direction: row;
 `;
 
-const Img = styled.img`
+const Img = styled.div`
     width: 7.8rem;
     height: 7.6rem;
     margin-right: 1rem;
+    background: url(${props=>props.src}) center center / cover;
 `;
 
 const InfoWrap = styled.div`
