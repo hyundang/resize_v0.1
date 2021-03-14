@@ -10,7 +10,7 @@ export default ( {setIsShown, innerPageNum} ) => {
             <div style={{fontSize:'1.6rem',whiteSpace:'pre-line',color:'#333333',lineHeight:'1.75',textAlign:'center'}}>
                 {innerPageNum===0? "요청사항 작성을 완료해주세요!"
                 :(innerPageNum===1?
-                    "이전 코디를 보고싶다면\n만족도 조사를 완료해주세요!"
+                    "다음 코디를 보고싶다면\n만족도 조사를 완료해주세요!"
                     :"만족도 조사를 완료해주세요!")}
             </div>
             <Btn onClick={()=>setIsShown(false)}>
