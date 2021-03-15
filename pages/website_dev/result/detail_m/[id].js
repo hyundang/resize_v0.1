@@ -5,10 +5,14 @@ import { ResultPage, RerequestPage, BuySurveyPage } from "../../../../components
 // recoil
 import { useRecoilValue } from "recoil";
 import { DetailPageNumState } from "../../../../states/result_atom";
+// router
+import { useRouter } from "next/router";
+
 
 
 export default () => {
     const pageNum = useRecoilValue(DetailPageNumState);
+    const router = useRouter();
     const [ID, setID] = useState(0);
     const {id} = router.query;
 

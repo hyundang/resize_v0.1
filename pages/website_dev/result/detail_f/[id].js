@@ -5,6 +5,7 @@ import { ResultPage, RerequestPage, BuySurveyPage } from "../../../../components
 // recoil
 import { useRecoilValue } from "recoil";
 import { DetailPageNumState } from "../../../../states/result_atom";
+// router
 import { useRouter } from "next/router";
 
 
