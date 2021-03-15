@@ -1,14 +1,45 @@
-import React from 'react';
-import MainContainer from '../containers/mainContainer';
-import Head from "next/head";
+import React from "react";
+import styled from "styled-components";
+// components
+import { 
+    PageOne, PageTwo, 
+    GuidePage, LoginPage 
+} from "../components/first";
+// recoil
+import { useRecoilState, useRecoilValue } from "recoil";
+import { PageNumState, VisitState } from "../states/website_atom";
 
-export default function Home() {
-  return (
-    <>
-      <Head>
-        <script src="https://developers.kakao.com/sdk/js/kakao.js"/>
-      </Head>
-      <MainContainer/>
-    </>
-  )
+
+const Start  = () => {
+    const [pageNum, setPageNum] = useRecoilState(PageNumState);
+    const isVisited = useRecoilValue(VisitState);
+
+    // switch (pageNum) {
+    //     case 1:
+    //         return <PageTwo
+    //                     setPageNum={setPageNum}
+    //                 />
+    //     case 2:
+    //         if(isVisited.includes("아니요")){
+    //             return <LoginPage/>
+    //         }
+    //         else{
+    //             return <GuidePage/>
+    //         }
+    //     default:
+    //         return <PageOne
+    //                     setPageNum={setPageNum}
+    //                 />
+    // }
+
+    switch (pageNum) {
+        case 1:
+            return <GuidePage/>
+        default:
+            return <PageOne
+                        setPageNum={setPageNum}
+                    />
+    }
 }
+
+export default Start;
