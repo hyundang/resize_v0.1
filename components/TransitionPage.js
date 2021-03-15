@@ -35,7 +35,7 @@ export default ({text_one, text_two, setPageNum, kategorie}) => {
                 "/images/website/style/style.png"
                 : (kategorie===1? "/images/website/size/size.png"
                     : kategorie===2? "/images/website/cody/cody.png"
-                        : "")
+                        : "/images/website/background.png")
             }>
                 <Title>STYLING ROOM</Title>
                 <TextWrap>
