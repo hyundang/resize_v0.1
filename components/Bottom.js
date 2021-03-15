@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 // assets
-import gray_arrow_left from "../assets/img/icons/gray_arrow_left.svg";
-import gray_arrow_right from "../assets/img/icons/gray_arrow_right.svg";
-import black_arrow_left from "../assets/img/icons/black_arrow_left.svg";
-import black_arrow_right from "../assets/img/icons/black_arrow_right.svg";
+import gray_arrow_left from "../public/images/website/icon/gray_arrow_left.svg";
+import gray_arrow_right from "../public/images/website/icon/gray_arrow_right.svg";
+import black_arrow_left from "../public/images/website/icon/black_arrow_left.svg";
+import black_arrow_right from "../public/images/website/icon/black_arrow_right.svg";
 // router
 import { useRouter } from "next/router";
 // recoil

@@ -3,7 +3,6 @@ import style from 'styled-components';
 // hooks
 import useScript from "../hooks/useScript";
 // asset
-// import add_icon from "../assets/img/icons/add_channel.png";
 import Image from "next/image";
 
 

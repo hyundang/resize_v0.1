@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 // assets
-import arrow_icon from "../../../assets/img/icons/black_arrow_right.svg";
+import arrow_icon from "../../../public/images/website/icon/black_arrow_right.svg";
 
 
 export default ({data}) => {

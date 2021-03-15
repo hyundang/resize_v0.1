@@ -9,7 +9,7 @@ import useRecoilInput from "../../hooks/useRecoilInput";
 // router
 import { useRouter } from "next/router";
 // assets
-import arrow from "../../assets/img/icons/brown_arrow_right.svg";
+import arrow from "../../public/images/website/icon/brown_arrow_right.svg";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
 import { UserInfoState, UserJobState, CheckedListState, TotalUserInfoState, UserIDState } from "../../states/last_atom";

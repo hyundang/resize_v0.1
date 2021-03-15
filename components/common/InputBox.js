@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 // assets
-import del_icon from "../../assets/img/icons/del_icon.svg";
+import del_icon from "../../public/images/website/icon/del_icon.svg";
 // hooks
 import useWindowSize from "../../hooks/useWindowSize";
 

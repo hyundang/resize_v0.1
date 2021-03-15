@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import del_icon from "../../assets/img/icons/del_icon.svg";
+import del_icon from "../../public/images/website/icon/del_icon.svg";
 
 function Modal({
   className,

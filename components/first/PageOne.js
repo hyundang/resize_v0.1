@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // assets
-import arrow_icon from "../../assets/img/icons/white_arrow_right.svg";
+import arrow_icon from "../../public/images/website/icon/white_arrow_right.svg";
 
 
 export default ({setPageNum}) => {
