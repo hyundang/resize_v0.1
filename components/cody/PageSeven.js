@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
@@ -7,9 +7,9 @@ import { InputBoxBig, QuestionTwo, Question } from "../../components/common";
 import useRecoilInput from "../../hooks/useRecoilInput";
 import useImgInput from "../../hooks/useImgInput";
 // recoil
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { CodyOtherState, CodyImgState } from "../../states/cody_atom";
-import { SexState, VisitState } from "../../states/website_atom";
+import { VisitState } from "../../states/website_atom";
 // assets
 import camera_icon from "../../public/images/website/icon/camera.svg";
 import del_icon from "../../public/images/website/icon/del_icon.svg";
@@ -26,12 +26,13 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     const inputOne = useRecoilInput(CodyOtherState(7));
     const inputTwo = useRecoilInput(CodyOtherState(8));
     const imginput = useImgInput(CodyImgState);
+    const fileInput = useRef();
 
     const isVisited = useRecoilValue(VisitState);
 
-    const sex = useRecoilValue(SexState);
 
     const handleDelClick = async (e) => {
+        fileInput.current.value = '';
         imginput.setValue(imginput.value.filter((item, idx)=>{
             return e.target.id != item.id;
         }))
@@ -92,6 +93,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                         id="file"
                         // multiple="multiple"
                         accept="image/jpeg, image/jpg, image/png"
+                        ref={fileInput}
                         onChange={imginput.onChange}
                         style={{width:'0', height:'0'}}
                     />
@@ -157,7 +159,6 @@ const ImgInputBox = styled.label`
     line-height: 1.36;
     text-align: center;
     white-space: pre-line;
-    /* background: url(${camera_icon}) center center / cover; */
 `;
 
 const Picture = styled.div`

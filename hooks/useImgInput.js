@@ -1,13 +1,11 @@
 import React from 'react';
 import { useRecoilState } from "recoil";
-import { SexState } from "../states/website_atom";
 // axios
 import { postApi } from "../lib/api";
 
 
 export default (recoilState) => {
   const [value, setValue] = useRecoilState(recoilState);
-  const [sex, setSex] = useRecoilState(SexState);
 
   const onChange = async (e) => {
     // console.log(e.target.files);
@@ -17,5 +15,5 @@ export default (recoilState) => {
     }
   };
 
-  return { value, onChange, setValue };
+  return { value, onChange, setValue};
 };
