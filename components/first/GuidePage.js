@@ -45,7 +45,7 @@ export default () => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Img style={{marginLeft:'6.4rem'}} />
+                        <Img style={{marginLeft:'6.4rem'}} url={"/images/website/guide/3.png"}/>
                         <div style={{height:'11.7rem',marginTop:'2rem'}}>
                             <Text big={true}>2. '나만을 위한 코디' 카카오톡으로 받기</Text>
                             <div style={{height:'1.2rem'}}/>
