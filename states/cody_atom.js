@@ -153,11 +153,7 @@ export const TotalCodyDataState = selector({
                 cody_photo2: (get(CodyImgState).length>1?get(CodyImgState)[1].photo : ""),
                 cody_photo3: (get(CodyImgState).length>2?get(CodyImgState)[2].photo : ""),
                 request: get(CodyQuesSevenState).quesThree,
-                cody_combination: get(CodyCaseState),
-                is_rereservation: "False",
-                reason: "",
-                reason_detail: "",
-                reason_detail2: "",
+                cody_combination: get(CodyCaseState)
             }
         }
         else{
@@ -188,11 +184,7 @@ export const TotalCodyDataState = selector({
                 cody_photo2: (get(CodyImgState).length>1? get(CodyImgState)[1].photo : ""),
                 cody_photo3: (get(CodyImgState).length>2? get(CodyImgState)[2].photo : ""),
                 request: get(CodyQuesSevenState).quesThree,
-                cody_combination: get(CodyCaseState),
-                is_rereservation: "False",
-                reason: "",
-                reason_detail: "",
-                reason_detail2: "",
+                cody_combination: get(CodyCaseState)
             }
         }
     }
