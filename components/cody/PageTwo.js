@@ -16,14 +16,18 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         window.scrollTo(0,0);
     }, [])
 
-    const [selectData, setSelectData] = useRecoilState(CodyTagState(1));
-    const input = useRecoilInput(CodyOtherState(1));
-    const isVisited = useRecoilValue(VisitState);
 
+    const [selectData, setSelectData] = useRecoilState(CodyTagState(0));
+    const input = useRecoilInput(CodyOtherState(0));
+    const isVisited = useRecoilValue(VisitState);
+    // useEffect(()=>{
+    //     console.log(selectData);
+    // }, [selectData])
     const [isRightOkay, setIsRightOkay] = useState(false);
 
     const [isEct, setIsEct] = useState(false);
 
+    // 다음 페이지로 넘어갈 수 있는지 판단
     useEffect(()=>{
         if(selectData.length!==0){
             if(isEct){
@@ -45,8 +49,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             <Wrap isVisited={isVisited.includes("네")}>
                 <QuestionTwo
                     quesNum={quesNum}
-                    quesTextOne={"해당 코디를 어떻게"}
-                    quesTextTwo={"활용하실건가요?"}
+                    quesTextOne={"해당 코디로 연출하고 싶은"}
+                    quesTextTwo={"스타일을 선택해주실래요?"}
                     overlapText={"최대 3개"}
                 />
                 <div style={{width:'100%', height:'3.6rem'}}/>
@@ -58,7 +62,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     selectData={selectData} setSelectData={setSelectData}
                     otherTextOne={"이외에 연출하고 싶은"}
                     otherTextTwo={"스타일이 있다면 알려주세요!"}
-                    inputText={"예) 상견례룩을 추천해주세요!"}
+                    inputText={"예) 락시크룩도 추천해주세요!"}
                     input={input}
                     isEssential={true}
                     setIsEct={setIsEct}
@@ -67,7 +71,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             </Wrap>
             <Bottom 
                 setPageNum={setPageNum} pageNum={quesNum}
-                isLeftOkay={true} isRightOkay={isRightOkay}
+                isRightOkay={isRightOkay}
             />
         </div>
     )
