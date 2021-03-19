@@ -11,11 +11,13 @@ import { SexState, VisitState } from "../../states/website_atom";
 import { getApi } from "../../lib/api";
 // lib
 import SortData from "../../lib/SortData";
+import { QuesTenState } from "../../states/style_atom";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     const sex = useRecoilValue(SexState);
-    
+    const colorData = useRecoilValue(QuesTenState);
+
     const [color, setColor] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
@@ -23,6 +25,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         window.scrollTo(0,0);
         // 서버로 부터 데이터 받아오기
         getData();
+        if(selectData.length===0){
+            setSelectData(colorData);
+        }
     },[])
     
     const getData = async () => {

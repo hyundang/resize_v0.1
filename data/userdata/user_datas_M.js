@@ -373,11 +373,6 @@ const cody_M = [
     {
         id : 4,
         questionNum: 5,
-        answers: ['빨강', '주황', '노랑', '초록', '파랑', '보라', '분홍', '베이지', '갈색', '검정', '실버', '골드', '남색', '회색', '카키', '버건디', '아이보리', '흰색', '없음'],
-    },
-    {
-        id : 5,
-        questionNum: 6,
         answers: [
             {
                 question : ['코디 전체의 총 가격대는', '어느 정도로 희망하시나요?', '중복선택'],
@@ -394,8 +389,8 @@ const cody_M = [
         ],
     },
     {
-        id : 6,
-        questionNum: 7,
+        id : 5,
+        questionNum: 6,
         answers: [],
     },
 ]

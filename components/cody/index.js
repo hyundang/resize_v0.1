@@ -4,4 +4,3 @@ export {default as PageThree} from './PageThree';
 export {default as PageFour} from './PageFour';
 export {default as PageFive} from './PageFive';
 export {default as PageSix} from './PageSix';
-export {default as PageSeven} from './PageSeven';

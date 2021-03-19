@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
 import { CodyPageNumState } from "../states/cody_atom";
@@ -12,8 +11,7 @@ import {
     PageFour,
     PageThree,
     PageTwo,
-    PageSix,
-    PageSeven
+    PageSix
 } from '../components/cody';
 // data
 import user_datas_F from "../data/userdata/user_datas_F";
@@ -29,7 +27,7 @@ const Start  = () => {
     switch(pageNum){
         case 1:
             return (<PageOne 
-                lastQuesNum={7}
+                lastQuesNum={6}
                 quesNum={1}
                 setPageNum={setPageNum}
                 user_datas={(sex===0)? 
@@ -43,7 +41,7 @@ const Start  = () => {
             />)
         case 2:
             return (<PageTwo
-                lastQuesNum={7}
+                lastQuesNum={6}
                 quesNum={2}
                 setPageNum={setPageNum}
                 user_datas={(sex===0)? 
@@ -57,7 +55,7 @@ const Start  = () => {
             />)
         case 3:
             return (<PageThree
-                lastQuesNum={7}
+                lastQuesNum={6}
                 quesNum={3}
                 setPageNum={setPageNum}
                 user_datas={(sex===0)? 
@@ -68,7 +66,7 @@ const Start  = () => {
             />)
         case 4:
             return (<PageFour
-                lastQuesNum={7}
+                lastQuesNum={6}
                 quesNum={4}
                 setPageNum={setPageNum}
                 user_datas={(sex===0)? 
@@ -82,7 +80,7 @@ const Start  = () => {
             />)
         case 5:
             return (<PageFive
-                lastQuesNum={7}
+                lastQuesNum={6}
                 quesNum={5}
                 setPageNum={setPageNum}
                 user_datas={(sex===0)? 
@@ -94,34 +92,20 @@ const Start  = () => {
                     : user_datas_F.cody_F[pageNum-1].answers.length
                 }
             />)
-            case 6:
-                return (<PageSix
-                    lastQuesNum={7}
-                    quesNum={6}
-                    setPageNum={setPageNum}
-                    user_datas={(sex===0)? 
-                        user_datas_M.cody_M[pageNum-1].answers 
-                        : user_datas_F.cody_F[pageNum-1].answers
-                    }
-                    data_num={(sex===0)? 
-                        user_datas_M.cody_M[pageNum-1].answers.length 
-                        : user_datas_F.cody_F[pageNum-1].answers.length
-                    }
-                />)
-            case 7:
-                return (<PageSeven
-                    lastQuesNum={7}
-                    quesNum={7}
-                    setPageNum={setPageNum}
-                    user_datas={(sex===0)? 
-                        user_datas_M.cody_M[pageNum-1].answers 
-                        : user_datas_F.cody_F[pageNum-1].answers
-                    }
-                    data_num={(sex===0)? 
-                        user_datas_M.cody_M[pageNum-1].answers.length 
-                        : user_datas_F.cody_F[pageNum-1].answers.length
-                    }
-                />)
+        case 6:
+            return (<PageSix
+                lastQuesNum={6}
+                quesNum={6}
+                setPageNum={setPageNum}
+                user_datas={(sex===0)? 
+                    user_datas_M.cody_M[pageNum-1].answers 
+                    : user_datas_F.cody_F[pageNum-1].answers
+                }
+                data_num={(sex===0)? 
+                    user_datas_M.cody_M[pageNum-1].answers.length 
+                    : user_datas_F.cody_F[pageNum-1].answers.length
+                }
+            />)
         default:
             return (<TransitionPage 
                 text_one={"이제 당신만을 위한 코디를"}

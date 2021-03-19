@@ -86,13 +86,6 @@ export const CodyQuesFourState = selector({
     }
 })
 
-export const CodyQuesFiveState = selector({
-    key: "CodyQuesFiveState",
-    get: ({ get }) => {
-        return get(CodyColorstate(1));
-    }
-})
-
 // 태그 한 개만 선택될 때 사용되는 state
 export const CodyOneTagState = atomFamily({
     key: "CodyOneTagState",
@@ -133,19 +126,18 @@ export const TotalCodyDataState = selector({
             return {
                 user: get(UserIDState),
                 size: get(SizeID),
-                style: get(CodyQuesOneState).data.join(','),
+                style: get(CodyQuesOneState).data.join(', '),
                 style_etc: get(CodyQuesOneState).ect,
-                TPO: get(CodyQuesTwoState).data.join(','),
+                TPO: get(CodyQuesTwoState).data.join(', '),
                 TPO_etc: get(CodyQuesTwoState).ect,
-                hate_clothes1: get(CodyTagState(2)).join(','),
+                hate_clothes1: get(CodyTagState(2)).join(', '),
                 hate_clothes1_etc: get(CodyOtherState(2)),
-                hate_clothes2: get(CodyTagState(3)).join(','),
+                hate_clothes2: get(CodyTagState(3)).join(', '),
                 hate_clothes2_etc: get(CodyOtherState(3)),
-                hate_clothes3: get(CodyTagState(4)).join(','),
+                hate_clothes3: get(CodyTagState(4)).join(', '),
                 hate_clothes3_etc: get(CodyOtherState(4)),
-                color_main: get(CodyQuesFourState).join(','),
-                color_point: get(CodyQuesFiveState).join(','),
-                cody_price: get(CodyQuesSixState).quesOne.join(','),
+                color_main: get(CodyQuesFourState).join(', '),
+                cody_price: get(CodyQuesSixState).quesOne.join(', '),
                 cody_quality: get(CodyQuesSixState).quesTwo,
                 cody_trend: get(CodyQuesSixState).quesThree,
                 cody_essential: get(CodyQuesSevenState).quesOne,
@@ -160,23 +152,22 @@ export const TotalCodyDataState = selector({
             return {
                 user: get(UserIDState),
                 size: get(SizeID),
-                style: get(CodyQuesOneState).data.join(','),
+                style: get(CodyQuesOneState).data.join(', '),
                 style_etc: get(CodyQuesOneState).ect,
-                TPO: get(CodyQuesTwoState).data.join(','),
+                TPO: get(CodyQuesTwoState).data.join(', '),
                 TPO_etc: get(CodyQuesTwoState).ect,
-                hate_clothes1: get(CodyTagState(2)).join(','),
+                hate_clothes1: get(CodyTagState(2)).join(', '),
                 hate_clothes1_etc: get(CodyOtherState(2)),
-                hate_clothes2: get(CodyTagState(3)).join(','),
+                hate_clothes2: get(CodyTagState(3)).join(', '),
                 hate_clothes2_etc: get(CodyOtherState(3)),
-                hate_clothes3: get(CodyTagState(4)).join(','),
+                hate_clothes3: get(CodyTagState(4)).join(', '),
                 hate_clothes3_etc: get(CodyOtherState(4)),
-                hate_clothes4: get(CodyTagState(5)).join(','),
+                hate_clothes4: get(CodyTagState(5)).join(', '),
                 hate_clothes4_etc: get(CodyOtherState(5)),
-                hate_clothes5: get(CodyTagState(6)).join(','),
+                hate_clothes5: get(CodyTagState(6)).join(', '),
                 hate_clothes5_etc: get(CodyOtherState(6)),
-                color_main: get(CodyQuesFourState).join(','),
-                color_point: get(CodyQuesFiveState).join(','),
-                cody_price: get(CodyQuesSixState).quesOne.join(','),
+                color_main: get(CodyQuesFourState).join(', '),
+                cody_price: get(CodyQuesSixState).quesOne.join(', '),
                 cody_quality: get(CodyQuesSixState).quesTwo,
                 cody_trend: get(CodyQuesSixState).quesThree,
                 cody_essential: get(CodyQuesSevenState).quesOne,
