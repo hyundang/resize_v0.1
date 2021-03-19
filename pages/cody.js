@@ -69,14 +69,6 @@ const Start  = () => {
                 lastQuesNum={6}
                 quesNum={4}
                 setPageNum={setPageNum}
-                user_datas={(sex===0)? 
-                    user_datas_M.cody_M[pageNum-1].answers 
-                    : user_datas_F.cody_F[pageNum-1].answers
-                }
-                data_num={(sex===0)? 
-                    user_datas_M.cody_M[pageNum-1].answers.length 
-                    : user_datas_F.cody_F[pageNum-1].answers.length
-                }
             />)
         case 5:
             return (<PageFive
@@ -84,12 +76,12 @@ const Start  = () => {
                 quesNum={5}
                 setPageNum={setPageNum}
                 user_datas={(sex===0)? 
-                    user_datas_M.cody_M[pageNum-1].answers 
-                    : user_datas_F.cody_F[pageNum-1].answers
+                    user_datas_M.cody_M[3].answers 
+                    : user_datas_F.cody_F[3].answers
                 }
                 data_num={(sex===0)? 
-                    user_datas_M.cody_M[pageNum-1].answers.length 
-                    : user_datas_F.cody_F[pageNum-1].answers.length
+                    user_datas_M.cody_M[3].answers.length 
+                    : user_datas_F.cody_F[3].answers.length
                 }
             />)
         case 6:
@@ -97,14 +89,6 @@ const Start  = () => {
                 lastQuesNum={6}
                 quesNum={6}
                 setPageNum={setPageNum}
-                user_datas={(sex===0)? 
-                    user_datas_M.cody_M[pageNum-1].answers 
-                    : user_datas_F.cody_F[pageNum-1].answers
-                }
-                data_num={(sex===0)? 
-                    user_datas_M.cody_M[pageNum-1].answers.length 
-                    : user_datas_F.cody_F[pageNum-1].answers.length
-                }
             />)
         default:
             return (<TransitionPage 

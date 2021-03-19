@@ -67,7 +67,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             </Wrap>
             <Bottom 
                 setPageNum={setPageNum} pageNum={quesNum}
-                isLeftOkay={true} isRightOkay={isRightOkay}
+                isRightOkay={isRightOkay}
             />
         </div>
     )

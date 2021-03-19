@@ -91,7 +91,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                 <SmallText>
                     {"객관적인 기준을 적용하지 않아도 됩니다.\n본인이 생각하는 자신의 체형에 대해 알려주세요!"}
                 </SmallText>
-                <div style={{marginBottom:'4.8rem'}}>
+                <div style={{marginBottom:'6rem'}}>
                     <Text>{user_datas[0].question}</Text>
                     <RatioStep
                         data={user_datas[0].datas}
@@ -99,30 +99,27 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                     />
                 </div>
                 <div style={{marginBottom:'4.8rem'}}>
-                    <Text>{user_datas[2].question}</Text>
+                    <Text>{user_datas[1].question}</Text>
                     <Circles
                         data={faceType}
-                        // data={user_datas[2].datas}
                         isThree={true}
                         isOverlap={false}
                         selectData={facetype} setSelectData={setFacetype}
                     />
                 </div>
                 <div style={{marginBottom:'4.8rem'}}>
-                    <Text>{user_datas[3].question}</Text>
+                    <Text>{user_datas[2].question}</Text>
                     <Circles
                         data={skinTone}
-                        // data={user_datas[3].datas}
                         isTwo={true} 
                         isOverlap={false}
                         selectData={skintype} setSelectData={setSkintype}
                     />
                 </div>
                 <div style={{marginBottom:'4.8rem'}}>
-                    <Text>{user_datas[4].question}</Text>
+                    <Text>{user_datas[3].question}</Text>
                     <Circles
                         data={shoulderType}
-                        // data={user_datas[4].datas}
                         isThree={true}
                         isOverlap={false}
                         selectData={shoultype} setSelectData={setShoultype}
