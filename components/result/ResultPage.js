@@ -137,30 +137,34 @@ export default ({sex, id}) => {
                 <Title>나의 정보</Title>
                 </div>
                 <div style={{height:'2.6rem'}}/>
-                <InfoBox style={{height:'18rem'}}>
+                <InfoBox style={{height:'21rem'}}>
                     <Info 
                         textone={"키"} texttwo={`${resData.reservation.size.height}cm`} 
-                        widthone={"10.5rem"} widthtwo={"21.5rem"}
+                        widthone={"10.5"} widthtwo={"21.5"}
                     />
                     <Info 
                         textone={"몸무게"} texttwo={`${resData.reservation.size.weight}kg`}
-                        widthone={"10.5rem"} widthtwo={"21.5rem"}
+                        widthone={"10.5"} widthtwo={"21.5"}
                     />
                     <Info 
                         textone={"체형 장점"} texttwo={resData.reservation.size.fit_like}
-                        widthone={"10.5rem"} widthtwo={"21.5rem"}
+                        widthone={"10.5"} widthtwo={"21.5"}
                     />
                     <Info 
                         textone={"체형 단점"} texttwo={resData.reservation.size.fit_hate}
-                        widthone={"10.5rem"} widthtwo={"21.5rem"}
+                        widthone={"10.5"} widthtwo={"21.5"}
                     />
                     <Info 
-                        textone={"요청 코디"} texttwo={resData.reservation.TPO}
-                        widthone={"10.5rem"} widthtwo={"21.5rem"}
+                        textone={"요청 스타일"} texttwo={resData.reservation.style}
+                        widthone={"10.5"} widthtwo={"21.5"}
+                    />
+                    <Info 
+                        textone={"요청 TPO"} texttwo={resData.reservation.TPO}
+                        widthone={"10.5"} widthtwo={"21.5"}
                     />
                     <Info 
                         textone={"요청 가격"} texttwo={resData.reservation.cody_price}
-                        widthone={"10.5rem"} widthtwo={"21.5rem"}
+                        widthone={"10.5"} widthtwo={"21.5"}
                     />
                 </InfoBox>
                 <div style={{height:'3rem'}}/>
@@ -173,11 +177,11 @@ export default ({sex, id}) => {
                 <InfoBox>
                     <Info 
                         textone={"코디 조합"} texttwo={innerPageNum===1? resData.cody[0].cody_combination.name : resData.cody[1].cody_combination.name}
-                        widthone={"11rem"} widthtwo={"6rem"}
+                        widthone={"11"} widthtwo={innerPageNum===1? resData.cody[0].cody_combination.name.length*1.2 : resData.cody[1].cody_combination.name.length*1.2}
                     />
                     <Info 
                         textone={"총 가격"} texttwo={innerPageNum===1? resData.cody[0].price : resData.cody[1].price}
-                        widthone={"11rem"} widthtwo={"6rem"}
+                        widthone={"11"} widthtwo={innerPageNum===1? resData.cody[0].cody_combination.name.length*1.2 : resData.cody[1].cody_combination.name.length*1.2}
                     />
                 </InfoBox>
                 <div style={{height:'3.6rem'}}/>
@@ -253,7 +257,7 @@ export default ({sex, id}) => {
                 <div style={{width:'32rem',height:'5.2rem',display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
                     <Btn
                         style={{width:'15rem',backgroundColor:'#f6f2eb'}}
-                        onClick={handleBtnClick}
+                        onClick={isActive? handleBtnClick : ()=>setIsModalShown(true)}
                     >
                         이전 코디 보기
                     </Btn>
@@ -321,8 +325,8 @@ const InfoBox = styled.div`
 const Info = ({textone, texttwo, widthone, widthtwo}) => {
     return(
         <div style={{display:'flex',flexDirection:'row'}}>
-            <Type style={{width:`${widthone}`}}>{textone}</Type>
-            <Data style={{width:`${widthtwo}`}}>{texttwo}</Data>
+            <Type style={{width:`${widthone}rem`}}>{textone}</Type>
+            <Data style={{width:`${widthtwo}rem`}}>{texttwo}</Data>
         </div>
     )
 }
