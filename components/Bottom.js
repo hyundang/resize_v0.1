@@ -18,7 +18,8 @@ export default ({
     setPageNum, pageNum, 
     isCody, setInnerPageNum, innerPageNum, lastInnerPageNum,
     lastQuesNum, kategorie,
-    isLeftOkay, isRightOkay
+    isLeftOkay, isRightOkay,
+    isBlur
 }) => {
     const router = useRouter();
     const setStlyePageNum = useSetRecoilState(StylePageNumState);
@@ -79,7 +80,7 @@ export default ({
     
     return(
         <>
-        <Wrap>
+        <Wrap isBlur={isBlur}>
             <BtnWrap 
                 onClick={
                     isLeftActive?
@@ -125,7 +126,7 @@ const Wrap = styled.div`
     align-items: center;
     justify-content: space-between;
     background-color: ${({theme}) => theme.colors.off_white};
-    /* box-shadow: 0 0 1rem 1rem rgba(255,255,255,1);  */
+    box-shadow: ${props=>props.isBlur? '0 0 2rem 1.5rem rgba(255,255,255,1)' : 'none'}; 
 `;
 
 const Space = styled.div`
