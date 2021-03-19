@@ -12,8 +12,7 @@ import {
     PageFour,
     PageThree,
     PageTwo,
-    PageSix,
-    PageSeven
+    PageSix
 } from '../../components/cody';
 // data
 import user_datas_F from "../../data/userdata/user_datas_F";

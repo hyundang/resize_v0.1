@@ -51,6 +51,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
             <Bottom 
                 setPageNum={setPageNum} pageNum={quesNum}
                 isLeftOkay={true} isRightOkay={isRightOkay}
+                isBlur={true}
             />
         </div>
     )

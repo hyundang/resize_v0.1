@@ -25,13 +25,6 @@ const Start  = () => {
 
 
     switch(pageNum){
-        case 0:
-            return (<TransitionPage 
-                        text_one={"이제 당신의 체형을"}
-                        text_two={"함께 알아볼까요?"}
-                        setPageNum={setPageNum}
-                        kategorie={1}
-                    />)
         case 1:
             return (<PageOne 
                 lastQuesNum={5}
@@ -79,6 +72,8 @@ const Start  = () => {
             return (<TransitionPage 
                 text_one={"이제 당신의 체형을"}
                 text_two={"함께 알아볼까요?"}
+                setPageNum={setPageNum}
+                kategorie={1}
             />)
     }
 }

@@ -18,7 +18,8 @@ export default ({
     setPageNum, pageNum, 
     isCody, setInnerPageNum, innerPageNum, lastInnerPageNum,
     lastQuesNum, kategorie,
-    isLeftOkay, isRightOkay
+    isLeftOkay, isRightOkay,
+    isBlur
 }) => {
     const router = useRouter();
     const setStlyePageNum = useSetRecoilState(StylePageNumState);
@@ -54,20 +55,20 @@ export default ({
                 // 그 후 router.push();
                 setStlyePageNum(1);
                 setSizePageNum(1);
-                router.push('/website_dev/cody');
+                router.push('/cody');
                 break;
             case 0:
-                router.push('/website_dev/size');
+                router.push('/size');
                 break;
             case 1:
-                router.push('/website_dev/cody');
+                router.push('/cody');
                 break;
             case 2:
                 if(isVisited.includes("네")){
-                    router.push('/website_dev/last');
+                    router.push('/last');
                 }
                 else{
-                    router.push('/website_dev/result');
+                    router.push('/result');
                 }
                 break;
             case 3:
@@ -79,7 +80,7 @@ export default ({
     
     return(
         <>
-        <Wrap>
+        <Wrap isBlur={isBlur}>
             <BtnWrap 
                 onClick={
                     isLeftActive?
@@ -125,7 +126,7 @@ const Wrap = styled.div`
     align-items: center;
     justify-content: space-between;
     background-color: ${({theme}) => theme.colors.off_white};
-    /* box-shadow: 0 0 1rem 1rem rgba(255,255,255,1);  */
+    box-shadow: ${props=>props.isBlur? '0 0 2rem 1.5rem rgba(255,255,255,1)' : 'none'}; 
 `;
 
 const Space = styled.div`

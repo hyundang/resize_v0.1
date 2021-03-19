@@ -15,15 +15,13 @@ import SortData from "../../lib/SortData";
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     const [ratio, setRatio] = useRecoilState(BodyDetailState(0));
-    const [bodytype, setBodytype] = useRecoilState(BodyDetailState(1));
-    const [facetype, setFacetype] = useRecoilState(BodyDetailState(2));
-    const [skintype, setSkintype] = useRecoilState(BodyDetailState(3));
-    const [shoultype, setShoultype] = useRecoilState(BodyDetailState(4));
+    const [facetype, setFacetype] = useRecoilState(BodyDetailState(1));
+    const [skintype, setSkintype] = useRecoilState(BodyDetailState(2));
+    const [shoultype, setShoultype] = useRecoilState(BodyDetailState(3));
     
     const sex = useRecoilValue(SexState);
 
     // 서버에서 받아온 데이터 저장됨.
-    const [fitType, setFitType] = useState([]);
     const [faceType, setFaceType] = useState([]);
     const [skinTone, setSkinTone] = useState([]);
     const [shoulderType, setShoulderType] = useState([]);
@@ -44,14 +42,10 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
         else{
             isMorF = 'F';
         }
-        const fitType_result = await getApi.getImgData('size', isMorF, 'Fit_Type');
-        setFitType(fitType_result.results);
-        let sorted_data = await SortData(fitType_result.results);
-        setFitType(sorted_data);
 
         const faceType_result = await getApi.getImgData('size', isMorF, 'Face_Type');
         setFaceType(faceType_result.results);
-        sorted_data = await SortData(faceType_result.results);
+        let sorted_data = await SortData(faceType_result.results);
         setFaceType(sorted_data);
 
         const skinTone_result = await getApi.getImgData('size', isMorF, 'Skin_Tone');
@@ -97,7 +91,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                 <SmallText>
                     {"객관적인 기준을 적용하지 않아도 됩니다.\n본인이 생각하는 자신의 체형에 대해 알려주세요!"}
                 </SmallText>
-                <div style={{marginBottom:'4.8rem'}}>
+                <div style={{marginBottom:'6rem'}}>
                     <Text>{user_datas[0].question}</Text>
                     <RatioStep
                         data={user_datas[0].datas}
@@ -106,38 +100,26 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                 </div>
                 <div style={{marginBottom:'4.8rem'}}>
                     <Text>{user_datas[1].question}</Text>
-                    <Rectangles
-                        data={fitType}
-                        // data={user_datas[1].datas}
-                        isOverlap={false}
-                        selectData={bodytype} setSelectData={setBodytype}
-                    />
-                </div>
-                <div style={{marginBottom:'4.8rem'}}>
-                    <Text>{user_datas[2].question}</Text>
                     <Circles
                         data={faceType}
-                        // data={user_datas[2].datas}
                         isThree={true}
                         isOverlap={false}
                         selectData={facetype} setSelectData={setFacetype}
                     />
                 </div>
                 <div style={{marginBottom:'4.8rem'}}>
-                    <Text>{user_datas[3].question}</Text>
+                    <Text>{user_datas[2].question}</Text>
                     <Circles
                         data={skinTone}
-                        // data={user_datas[3].datas}
                         isTwo={true} 
                         isOverlap={false}
                         selectData={skintype} setSelectData={setSkintype}
                     />
                 </div>
                 <div style={{marginBottom:'4.8rem'}}>
-                    <Text>{user_datas[4].question}</Text>
+                    <Text>{user_datas[3].question}</Text>
                     <Circles
                         data={shoulderType}
-                        // data={user_datas[4].datas}
                         isThree={true}
                         isOverlap={false}
                         selectData={shoultype} setSelectData={setShoultype}
