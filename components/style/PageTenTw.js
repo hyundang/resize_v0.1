@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom, Loading } from "../../components";
-import { QuestionTwo, Rectangles } from "../../components/common";
+import { QuestionTwo, Squares } from "../../components/common";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
-import { QuesTenTwState } from "../../states/style_atom";
+import { QuesTenTrState } from "../../states/style_atom";
 import { SexState } from "../../states/website_atom";
 // axios
 import { getApi } from "../../lib/api";
@@ -16,7 +16,7 @@ import SortData from "../../lib/SortData";
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     const sex = useRecoilValue(SexState);
     
-    const [pantsFit, setPantsFit] = useState([]);
+    const [pantsWaist, setPantsWaist] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(()=>{
@@ -33,16 +33,16 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         else{
             isMorF = 'F';
         }
-        const pantsFit_result = await getApi.getImgData('style', isMorF, 'Pants_Fit');
-        setPantsFit(pantsFit_result.results);
-        const sorted_data = await SortData(pantsFit_result.results);
-        setPantsFit(sorted_data);
+        const pantsWaist_result = await getApi.getImgData('style', isMorF, 'Pants_Waist');
+        setPantsWaist(pantsWaist_result.results);
+        const sorted_data = await SortData(pantsWaist_result.results);
+        setPantsWaist(sorted_data);
         setIsLoading(false);
     }
     
     // 선택한 데이터가 담긴 배열
-    const [selectData, setSelectData] = useRecoilState(QuesTenTwState);
-    
+    const [selectData, setSelectData] = useRecoilState(QuesTenTrState)
+
     const [isRightOkay, setIsRightOkay] = useState(false);
 
     useEffect(()=>{
@@ -52,6 +52,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         else{
             setIsRightOkay(false);
         }
+        // console.log(selectData)
     }, [selectData])
     
 
@@ -63,17 +64,17 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <>
                 <QuestionTwo
                     quesNum={quesNum}
-                    quesTextOne={"평소 선호하는 바지의 핏을"}
-                    quesTextTwo={"모두 골라주실래요?"}
+                    quesTextOne={"평소 선호하는 바지 허리의 위치를"}
+                    quesTextTwo={"골라주실래요?"}
                     overlapText={"중복선택"}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
-                <Rectangles 
-                    data={pantsFit}
+                <Squares 
+                    data={pantsWaist}
                     // data={user_datas}
-                    isOverlap={true}
-                    selectData={selectData}
-                    setSelectData={setSelectData}
+                    isOverlap={true} maxNum={0}
+                    isBorderLine={true}
+                    selectData={selectData} setSelectData={setSelectData}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
                 </>

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom, Loading } from "../../components";
-import { Circles, QuestionTwo } from "../../components/common";
+import { QuestionTwo, Rectangles } from "../../components/common";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
-import { QuesTenOState } from "../../states/style_atom";
+import { QuesTenTwState } from "../../states/style_atom";
 import { SexState } from "../../states/website_atom";
 // axios
 import { getApi } from "../../lib/api";
@@ -16,7 +16,7 @@ import SortData from "../../lib/SortData";
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     const sex = useRecoilValue(SexState);
     
-    const [pointColor, setPointColor] = useState([]);
+    const [pantsFit, setPantsFit] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(()=>{
@@ -33,15 +33,15 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         else{
             isMorF = 'F';
         }
-        const pointColor_result = await getApi.getColor();
-        setPointColor(pointColor_result.results);
-        const sorted_data = await SortData(pointColor_result.results);
-        setPointColor(sorted_data);
+        const pantsFit_result = await getApi.getImgData('style', isMorF, 'Pants_Fit');
+        setPantsFit(pantsFit_result.results);
+        const sorted_data = await SortData(pantsFit_result.results);
+        setPantsFit(sorted_data);
         setIsLoading(false);
     }
     
     // 선택한 데이터가 담긴 배열
-    const [selectData, setSelectData] = useRecoilState(QuesTenOState);
+    const [selectData, setSelectData] = useRecoilState(QuesTenTwState);
     
     const [isRightOkay, setIsRightOkay] = useState(false);
 
@@ -63,17 +63,15 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <>
                 <QuestionTwo
                     quesNum={quesNum}
-                    quesTextOne={"평소 착용하는 옷의 포인트/서브 컬러를"}
+                    quesTextOne={"평소 선호하는 바지의 핏을"}
                     quesTextTwo={"모두 골라주실래요?"}
                     overlapText={"중복선택"}
                 />
-                <div style={{marginBottom:'5.3rem'}}/>
-                <Circles 
-                    data={pointColor}
-                    isColor={true}
-                    // data={user_datas} 
-                    isThree={false} isOverlap={true}
-                    isNoneExist={true}
+                <div style={{marginBottom:'3.6rem'}}/>
+                <Rectangles 
+                    data={pantsFit}
+                    // data={user_datas}
+                    isOverlap={true}
                     selectData={selectData}
                     setSelectData={setSelectData}
                 />
