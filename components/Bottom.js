@@ -55,20 +55,20 @@ export default ({
                 // 그 후 router.push();
                 setStlyePageNum(1);
                 setSizePageNum(1);
-                router.push('/website_dev/cody');
+                router.push('/cody');
                 break;
             case 0:
-                router.push('/website_dev/size');
+                router.push('/size');
                 break;
             case 1:
-                router.push('/website_dev/cody');
+                router.push('/cody');
                 break;
             case 2:
                 if(isVisited.includes("네")){
-                    router.push('/website_dev/last');
+                    router.push('/last');
                 }
                 else{
-                    router.push('/website_dev/result');
+                    router.push('/result');
                 }
                 break;
             case 3:
