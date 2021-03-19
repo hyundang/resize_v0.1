@@ -47,7 +47,7 @@ export const BodyDetailState = atomFamily({
     default: -1
 })
 
-const size_ques_num_two = 5;
+const size_ques_num_two = 4;
 
 export const SizeQuesThreeState = selector({
     key: "SizeQuesThreeState",
@@ -136,10 +136,9 @@ export const TotalSizeDataState = selector({
                 size_top2: get(SizeQuesFiveState).two.join(','),
                 size_pants1: get(SizeQuesFiveState).three.join(','),
                 size_pants2: get(SizeQuesFiveState).four.join(','),
-                fit_type: get(SizeQuesThreeState)[1],
-                face_type: get(SizeQuesThreeState)[2],
-                skin_tone: get(SizeQuesThreeState)[3],
-                shoulder_type: get(SizeQuesThreeState)[4]
+                face_type: get(SizeQuesThreeState)[1],
+                skin_tone: get(SizeQuesThreeState)[2],
+                shoulder_type: get(SizeQuesThreeState)[3]
             }
         }
         else{
@@ -160,15 +159,14 @@ export const TotalSizeDataState = selector({
                 size_ratio: get(SizeQuesThreeState)[0],
                 fit_hate: get(SizeQuesFourState).cons,
                 fit_like: get(SizeQuesFourState).pros,
-                size_top1: get(SizeQuesFiveState).one.join(','),
-                size_top2: get(SizeQuesFiveState).two.join(','),
-                size_top3: get(SizeQuesFiveState).three.join(','),
-                size_pants1: get(SizeQuesFiveState).four.join(','),
-                size_pants2: get(SizeQuesFiveState).five.join(','),
-                fit_type: get(SizeQuesThreeState)[1],
-                face_type: get(SizeQuesThreeState)[2],
-                skin_tone: get(SizeQuesThreeState)[3],
-                shoulder_type: get(SizeQuesThreeState)[4]
+                size_top1: get(SizeQuesFiveState).one.join(', '),
+                size_top2: get(SizeQuesFiveState).two.join(', '),
+                size_top3: get(SizeQuesFiveState).three.join(', '),
+                size_pants1: get(SizeQuesFiveState).four.join(', '),
+                size_pants2: get(SizeQuesFiveState).five.join(', '),
+                face_type: get(SizeQuesThreeState)[1],
+                skin_tone: get(SizeQuesThreeState)[2],
+                shoulder_type: get(SizeQuesThreeState)[3]
             }
         }
     }

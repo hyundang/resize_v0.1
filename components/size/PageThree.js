@@ -15,15 +15,13 @@ import SortData from "../../lib/SortData";
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     const [ratio, setRatio] = useRecoilState(BodyDetailState(0));
-    const [bodytype, setBodytype] = useRecoilState(BodyDetailState(1));
-    const [facetype, setFacetype] = useRecoilState(BodyDetailState(2));
-    const [skintype, setSkintype] = useRecoilState(BodyDetailState(3));
-    const [shoultype, setShoultype] = useRecoilState(BodyDetailState(4));
+    const [facetype, setFacetype] = useRecoilState(BodyDetailState(1));
+    const [skintype, setSkintype] = useRecoilState(BodyDetailState(2));
+    const [shoultype, setShoultype] = useRecoilState(BodyDetailState(3));
     
     const sex = useRecoilValue(SexState);
 
     // 서버에서 받아온 데이터 저장됨.
-    const [fitType, setFitType] = useState([]);
     const [faceType, setFaceType] = useState([]);
     const [skinTone, setSkinTone] = useState([]);
     const [shoulderType, setShoulderType] = useState([]);
@@ -44,14 +42,10 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
         else{
             isMorF = 'F';
         }
-        const fitType_result = await getApi.getImgData('size', isMorF, 'Fit_Type');
-        setFitType(fitType_result.results);
-        let sorted_data = await SortData(fitType_result.results);
-        setFitType(sorted_data);
 
         const faceType_result = await getApi.getImgData('size', isMorF, 'Face_Type');
         setFaceType(faceType_result.results);
-        sorted_data = await SortData(faceType_result.results);
+        let sorted_data = await SortData(faceType_result.results);
         setFaceType(sorted_data);
 
         const skinTone_result = await getApi.getImgData('size', isMorF, 'Skin_Tone');
@@ -102,15 +96,6 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
                     <RatioStep
                         data={user_datas[0].datas}
                         selectData={ratio} setSelectData={setRatio}
-                    />
-                </div>
-                <div style={{marginBottom:'4.8rem'}}>
-                    <Text>{user_datas[1].question}</Text>
-                    <Rectangles
-                        data={fitType}
-                        // data={user_datas[1].datas}
-                        isOverlap={false}
-                        selectData={bodytype} setSelectData={setBodytype}
                     />
                 </div>
                 <div style={{marginBottom:'4.8rem'}}>
