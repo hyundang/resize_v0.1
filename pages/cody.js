@@ -124,8 +124,8 @@ const Start  = () => {
                 />)
         default:
             return (<TransitionPage 
-                text_one={"이제 당신의 코디 취향을"}
-                text_two={"알아보러 가볼까요?"}
+                text_one={"이제 당신만을 위한 코디를"}
+                text_two={"찾으러 가볼까요?"}
                 setPageNum={setPageNum}
                 kategorie={2}
             />)
