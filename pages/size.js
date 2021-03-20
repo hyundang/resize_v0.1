@@ -70,7 +70,7 @@ const Start  = () => {
             />)
         default:
             return (<TransitionPage 
-                text_one={"이제 당신의 체형을"}
+                text_one={"이번에는 당신의 체형을"}
                 text_two={"함께 알아볼까요?"}
                 setPageNum={setPageNum}
                 kategorie={1}
