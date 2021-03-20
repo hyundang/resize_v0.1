@@ -18,8 +18,8 @@ const Start  = () => {
             return <PageOne user_datas={user_datas_M.userInfo_M[0].answers}/>
         default:
             return (<TransitionPage 
-                text_one={"이제 마무리를"}
-                text_two={"하러 가볼까요?"}
+                text_one={"이제 마무리를 하러"}
+                text_two={"가볼까요?"}
                 setPageNum={setPageNum}
                 kategorie={3}
             />)

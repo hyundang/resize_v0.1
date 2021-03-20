@@ -3,7 +3,8 @@ import styled from "styled-components";
 // components
 import { 
     PageOne, PageTwo, 
-    GuidePage, LoginPage 
+    GuidePage, LoginPage,
+    PolicyPage, InformPage, 
 } from "../components/first";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -34,6 +35,10 @@ const Start  = () => {
 
     switch (pageNum) {
         case 1:
+            return <PolicyPage/>
+        case 2:
+            return <InformPage/>
+        case 3:
             return <GuidePage/>
         default:
             return <PageOne

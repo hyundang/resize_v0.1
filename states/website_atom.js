@@ -19,3 +19,8 @@ export const PageNumState = atom({
     key: "PageNumState",
     default: 0
 })
+
+export const CheckedListState = atom({
+    key: "CheckedListState",
+    default: []
+})
