@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { QuestionTwo, OverlapBtns } from "../../components/common";
+import { Question, OverlapBtns } from "../../components/common";
 // hooks
 import useRecoilInput from "../../hooks/useRecoilInput";
 import useWindowSize from "../../hooks/useWindowSize";
@@ -112,21 +112,19 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     <span style={{fontWeight:'bold'}}>럭셔리:</span>
                     {"\n고급스러운, 화려한"}
                 </HelpBox>)}
-                <QuestionTwo
+                <Question
                     quesNum={quesNum}
-                    quesTextOne={"해당 코디로 연출하고 싶은"}
-                    quesTextTwo={"스타일을 선택해주실래요?"}
+                    quesText={"코디로 연출하고 싶은 스타일"}
                     overlapText={"최대 3개"}
                 />
-                <div style={{width:'100%', height:'3.6rem'}}/>
+                <div style={{width:'100%', height:'2.3rem'}}/>
                 <OverlapBtns
                     data={user_datas} data_num={data_num}
                     btnType={1}
                     isOverlap={false} maxNum={3}
                     isNoneExist={false}
                     selectData={selectData} setSelectData={setSelectData}
-                    otherTextOne={"이외에 연출하고 싶은"}
-                    otherTextTwo={"스타일이 있다면 알려주세요!"}
+                    otherText={"이외에 연출하고 싶은 스타일"}
                     inputText={"예) 락시크룩도 추천해주세요!"}
                     input={input}
                     isEssential={true}
@@ -152,10 +150,10 @@ const Wrap = styled.div`
 
 const Icon = styled.div`
     position: absolute;
-    top: 17.3rem;
-    left: ${props=>(props.width/10-32)/2+19.5}rem;
+    top: 17.8rem;
+    left: ${props=>(props.width/10-32)/2+27}rem;
     @media screen and (min-width: 500px) {
-        left: ${props=>(props.width/18-32)/2+19.5}rem;
+        left: ${props=>(props.width/18-32)/2+27}rem;
     }
     width: 2rem;
     height: 2rem;
@@ -169,13 +167,13 @@ const Icon = styled.div`
 
 const HelpBox = styled.div`
     position: absolute;
-    z-index: 2;
-    top: 20.7rem;
-    left: ${props=>(props.width/10-32)/2+12}rem;
+    z-index: 20;
+    top: 21.5rem;
+    left: ${props=>(props.width/10-32)/2+13}rem;
     @media screen and (min-width: 500px) {
         left: ${props=>(props.width/18-32)/2+12}rem;
     }
-    width: 17rem;
+    width: 20rem;
     padding: 1.1rem 1.6rem;
     opacity: 0.83;
 	background: #797979;
@@ -186,7 +184,7 @@ const HelpBox = styled.div`
     white-space: pre-line;
     ::after{
         bottom: 100%;
-        left: 50%;
+        left: 75%;
         border: solid transparent;
         content: " ";
         height: 0;

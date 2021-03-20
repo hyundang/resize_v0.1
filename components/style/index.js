@@ -11,5 +11,6 @@ export {default as PageTen} from './PageTen';
 export {default as PageTenO} from './PageTenO';
 export {default as PageTenTw} from './PageTenTw';
 export {default as PageTenTr} from './PageTenTr';
+export {default as WPageTenTr} from './WPageTenTr';
 export {default as PageTenFo} from './PageTenFo';
 export {default as PageTenFi} from './PageTenFi';

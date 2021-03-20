@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom, Loading } from "../../components";
-import { QuestionTwo, Squares } from "../../components/common";
+import { Question, Squares } from "../../components/common";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
 import { QuesNineState } from "../../states/style_atom";
@@ -61,13 +61,12 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             <Wrap>
             {!isLoading?
                 <>
-                <QuestionTwo
+                <Question
                     quesNum={quesNum}
-                    quesTextOne={"평소 자주 착용하는 옷의"}
-                    quesTextTwo={"색상톤을 모두 골라주실래요?"}
+                    quesText={"평소 자주 착용하는 옷의 색상톤"}
                     overlapText={"중복선택"}
                 />
-                <div style={{marginBottom:'5.3rem'}}/>
+                <div style={{marginBottom:'2.3rem'}}/>
                 <Squares
                     data={colorTone}
                     // data={user_datas}

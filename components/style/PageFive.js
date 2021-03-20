@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom, Loading } from "../../components";
-import { Circles, QuestionTwo } from "../../components/common";
+import { Circles, Question } from "../../components/common";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
 import { QuesFiveState } from "../../states/style_atom";
@@ -61,13 +61,12 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             <Wrap>
             {!isLoading? 
                 <>
-                <QuestionTwo
+                <Question
                     quesNum={quesNum}
-                    quesTextOne={"다음 중 ❌싫어하는❌ 옷의"}
-                    quesTextTwo={"디테일/패턴을 모두 골라주실래요?"}
+                    quesText={"❌싫어하는❌ 옷의 디테일/패턴"}
                     overlapText={"중복선택"}
                 />
-                <div style={{marginBottom:'5.3rem'}}/>
+                <div style={{marginBottom:'3.6rem'}}/>
                 <Circles 
                     data={detail}
                     // data={user_datas}

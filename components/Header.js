@@ -19,16 +19,16 @@ export default ({kategorie, quesNum, lastQuesNum}) => {
             console.log(e.target.id)
             switch (Number(e.target.id)) {
                 case 0:
-                    router.push('/website_dev/style')
+                    router.push('/style')
                     break;
                 case 1:
-                    router.push('/website_dev/size')
+                    router.push('/size')
                     break;
                 case 2:
-                    router.push('/website_dev/cody')
+                    router.push('/cody')
                     break;
                 case 3:
-                    router.push('/website_dev/last')
+                    router.push('/last')
                     break;
                 default:
                     break;
@@ -43,17 +43,17 @@ export default ({kategorie, quesNum, lastQuesNum}) => {
                     onClick={handleClick} 
                     id={0}
                     num={0} kategorie={kategorie}
-                >스타일</TypeText>
+                >스타일분석</TypeText>
                 <TypeText
                     onClick={handleClick}  
                     id={1}
                     num={1} kategorie={kategorie}
-                >체형</TypeText>
+                >체형분석</TypeText>
                 <TypeText 
                     onClick={handleClick} 
                     id={2}
                     num={2} kategorie={kategorie}
-                >코디</TypeText>
+                >코디요청</TypeText>
                 <TypeText
                     onClick={handleClick} 
                     id={3} 
@@ -92,13 +92,13 @@ const TypeWrap = styled.div`
 `;
 
 const TypeText = styled.div`
-    width: 8rem;
     height: 5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.4rem;
     font-weight: normal;
+    letter-spacing: -0.35px;
     color: ${props=> (props.num === props.kategorie)? ({theme})=>theme.colors.pale_brown : '#e8d7c1'}; 
     font-weight: ${props=> (props.num === props.kategorie)? '900' : '500'};
 `;

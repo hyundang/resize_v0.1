@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 // recoil
 import { useSetRecoilState } from "recoil";
 import { KategorieState } from "../states/website_atom";
 
 
-export default ({text_one, text_two, setPageNum, kategorie}) => {
+export default ({text_one, text_two, setPageNum, kategorie, isCody}) => {
     const setKategorie = useSetRecoilState(KategorieState);
+    const [isClicked, setIsClicked] = useState(false);
 
     const handleClick = () =>{
         switch (kategorie) {
@@ -29,7 +30,7 @@ export default ({text_one, text_two, setPageNum, kategorie}) => {
 
     return(
         <>
-            <Wrap onClick={handleClick} 
+            <Wrap onClick={(isCody&!isClicked)? ()=>setIsClicked(true) : handleClick} 
                 url={
                 kategorie===0?
                 "/images/website/style/style.png"
@@ -37,11 +38,24 @@ export default ({text_one, text_two, setPageNum, kategorie}) => {
                     : kategorie===2? "/images/website/cody/cody.png"
                         : "/images/website/background.png")
             }>
-                <Title>STYLING ROOM</Title>
-                <TextWrap>
+                {isCody&!isClicked?
+                <></>
+                :<Title>STYLING ROOM</Title>}
+                {isCody&!isClicked?
+                <>
+                <TextWrap style={{top:'30%'}}>
+                    <Text>여기까지 오시느라</Text>
+                    <Text>수고하셨어요!👏</Text>
+                </TextWrap>
+                <SmallText style={{top:'45%'}}>
+                    {"응답해주신 평소 스타일과 체형정보는\n자동 저장되어 다음부터는 2분 이내로\n코디를 요청하실 수 있어요!"}
+                </SmallText>
+                </>
+                :<TextWrap>
                     <Text>{text_one}</Text>
                     <Text>{text_two}</Text>
                 </TextWrap>
+                }
                 <BottomText>탭해서 계속하기</BottomText>
             </Wrap>
         </>
@@ -51,7 +65,7 @@ export default ({text_one, text_two, setPageNum, kategorie}) => {
 const Wrap = styled.div`
     width: 100vw;
     height: 100vh;
-    background: url(${props=>props.url}) center center / cover;
+    background:  linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), url(${props=>props.url}) center center / cover;
 `;
 
 const Title = styled.div`
@@ -87,9 +101,27 @@ const TextWrap = styled.div`
 `;
 
 const Text = styled.div`
+    white-space: pre-line;
     font-size: 2.4rem;
     font-weight: bold;
     color: ${({theme})=>theme.colors.very_light_pink};
+`;
+
+const SmallText = styled.div`
+    position: absolute;
+    left: 7%;
+    @media screen and (min-width: 500px) {
+        left: 10%;
+    }
+    font-size: 1.9rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.9;
+    letter-spacing: normal;
+    text-align: left;
+    white-space: pre-line;
+    color: white;
 `;
 
 const BottomText = styled.div`

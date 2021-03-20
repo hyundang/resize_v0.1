@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { QuestionTwo, Styles } from "../../components/common";
+import { Question, Styles } from "../../components/common";
 // recoil
 import { useRecoilState } from "recoil";
 import { QuesTwoState } from "../../states/style_atom";
@@ -35,12 +35,14 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
             <Wrap>
-                <QuestionTwo
+                <Question
                     quesNum={quesNum}
-                    quesTextOne={"평소에 자주 입는 스타일을"}
-                    quesTextTwo={"순서대로 골라주실래요?"}
+                    quesText={"평소에 자주 입는 스타일 순위"}
                     overlapText={"최대 3개"}
                 />
+                <div style={{width:'32rem',marginTop:'0.5rem',fontSize:'1.2rem',lineHeight:'1.67',color:'#707070',textAlign:'left'}}>
+                    선택하신 스타일대로 코디를 전달해드리는 것이 아닌, 취향 참고용으로만 사용되니 본인의 취향과 가장 가까운 선택지를 선택해주세요!
+                </div>
                 <Styles 
                     data={user_datas}
                     selectData={selectData}

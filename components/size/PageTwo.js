@@ -32,7 +32,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
             <Wrap>
                 <Question
                     quesNum={quesNum}
-                    quesText={"체형을 함께 분석해볼까요?"}
+                    quesText={"체형 분석"}
                 />
                 <SmallText>
                     {"객관적인 기준을 적용하지 않아도 됩니다.\n본인이 생각하는 자신의 체형에 대해 알려주세요!"}

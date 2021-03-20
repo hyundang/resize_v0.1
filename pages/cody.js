@@ -96,6 +96,7 @@ const Start  = () => {
                 text_two={"찾으러 가볼까요?"}
                 setPageNum={setPageNum}
                 kategorie={2}
+                isCody={true}
             />)
     }
 }

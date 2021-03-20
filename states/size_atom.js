@@ -81,6 +81,11 @@ export const ClothesSizeState = atomFamily({
     default: []
 })
 
+export const PantsSizeState = atom({
+    key: "PantsSizeState",
+    default: ""
+})
+
 export const SizeQuesFiveState = selector({
     key: "SizeQuesFiveState",
     get: ({ get }) => {
@@ -138,7 +143,8 @@ export const TotalSizeDataState = selector({
                 size_pants2: get(SizeQuesFiveState).four.join(','),
                 face_type: get(SizeQuesThreeState)[1],
                 skin_tone: get(SizeQuesThreeState)[2],
-                shoulder_type: get(SizeQuesThreeState)[3]
+                shoulder_type: get(SizeQuesThreeState)[3],
+                pants_standard: get(PantsSizeState),
             }
         }
         else{
@@ -166,7 +172,8 @@ export const TotalSizeDataState = selector({
                 size_pants2: get(SizeQuesFiveState).five.join(', '),
                 face_type: get(SizeQuesThreeState)[1],
                 skin_tone: get(SizeQuesThreeState)[2],
-                shoulder_type: get(SizeQuesThreeState)[3]
+                shoulder_type: get(SizeQuesThreeState)[3],
+                pants_standard: get(PantsSizeState),
             }
         }
     }

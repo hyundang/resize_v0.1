@@ -16,8 +16,6 @@ export default ({
                             text={item.name}
                             id={isColor? item.name : item.id}
                             url={item.photo}
-                            // text={item}
-                            // id={idx}
                             isOverlap={isOverlap} isNoneExist={isNoneExist}
                             selectData={selectData} setSelectData={setSelectData}
                         />

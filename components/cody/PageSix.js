@@ -2,14 +2,14 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { InputBoxBig, QuestionTwo, Question } from "../../components/common";
+import { InputBoxBig, Question } from "../../components/common";
 // hooks
 import useRecoilInput from "../../hooks/useRecoilInput";
 import useImgInput from "../../hooks/useImgInput";
 // recoil
 import { useRecoilValue } from "recoil";
 import { CodyOtherState, CodyImgState } from "../../states/cody_atom";
-import { VisitState } from "../../states/website_atom";
+import { SexState, VisitState } from "../../states/website_atom";
 // assets
 import camera_icon from "../../public/images/website/icon/camera.svg";
 import del_icon from "../../public/images/website/icon/del_icon.svg";
@@ -17,7 +17,7 @@ import del_icon from "../../public/images/website/icon/del_icon.svg";
 import { deleteApi } from "../../lib/api";
 
 
-export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
+export default ({quesNum, lastQuesNum, setPageNum}) => {
     useEffect(()=>{
         window.scrollTo(0,0);
     },[])
@@ -29,7 +29,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     const fileInput = useRef();
 
     const isVisited = useRecoilValue(VisitState);
-
+    const sex = useRecoilValue(SexState);
 
     const handleDelClick = async (e) => {
         fileInput.current.value = '';
@@ -47,10 +47,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             {(isVisited.includes("네"))&&<Header kategorie={2} quesNum={quesNum} lastQuesNum={lastQuesNum}/>}
             <Wrap isVisited={isVisited.includes("네")}>
-                <QuestionTwo
+                <Question
                     quesNum={quesNum}
-                    quesTextOne={"해당 코디에 꼭 포함하고"}
-                    quesTextTwo={"싶은 상품이 있을까요?"}
+                    quesText={"해당 코디에 꼭 포함하고 싶은 상품"}
                     overlapText={"선택"}
                 />
                 <div style={{marginBottom:'2.3rem'}}/>
@@ -59,10 +58,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     input={inputOne}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
-                <QuestionTwo
+                <Question
                     quesNum={0}
-                    quesTextOne={"참고하고 싶은 코디 사진이"}
-                    quesTextTwo={"있다면 업로드 해주실래요?"}
+                    quesText={"참고하고 싶은 코디 사진"}
                     overlapText={"선택"}
                 />
                 {/* 사진 업로드 기능 들어가기 */}
@@ -118,12 +116,12 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <div style={{marginBottom:'3.6rem'}}/>
                 <Question
                     quesNum={0}
-                    quesText={"이밖의 요청사항이 있으신가요?"}
+                    quesText={"이밖의 요청사항"}
                     overlapText={"선택"}
                 />
                 <div style={{marginBottom:'2.3rem'}}/>
                 <InputBoxBig
-                    text={"예) 연예인 이동휘나 류준열 느낌의 코디를 추천해주세요!"}
+                    text={sex===0? "예) 연예인 이동휘나 류준열 느낌의 코디를 추천해주세요!" : "예) 블랙핑크 제니 느낌의 코디를 추천해주세요!"}
                     input={inputTwo}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>

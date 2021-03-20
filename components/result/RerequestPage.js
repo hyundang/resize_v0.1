@@ -75,7 +75,7 @@ export default ({id, sex}) => {
 
     const handleClick = () => {
         PostData();
-        router.push('/website_dev/result')
+        router.push('/result')
     }
 
     return(

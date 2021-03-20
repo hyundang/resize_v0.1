@@ -2,17 +2,14 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Loading } from "../../components";
-import { InputBox, Question, CheckBox, OverlapBtns } from "../../components/common";
-import Modal from "../../components/common/modal";
+import { InputBox, Question, OverlapBtns } from "../../components/common";
 // hooks
 import useRecoilInput from "../../hooks/useRecoilInput";
 // router
 import { useRouter } from "next/router";
-// assets
-import arrow from "../../public/images/website/icon/brown_arrow_right.svg";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
-import { UserInfoState, UserJobState, CheckedListState, TotalUserInfoState, UserIDState } from "../../states/last_atom";
+import { UserInfoState, UserJobState, TotalUserInfoState, UserIDState } from "../../states/last_atom";
 import { TotalStyleDataState } from "../../states/style_atom";
 import { SizeID, TotalSizeDataState } from "../../states/size_atom";
 import { TotalCodyDataState } from "../../states/cody_atom";
@@ -37,11 +34,6 @@ export default ({user_datas}) => {
     // 전체 데이터
     const result = useRecoilValue(TotalUserInfoState);
 
-    
-    // 약관동의 전체동의 여부
-    const [checked, setChecked] = useState(false);
-    // 약관동의 된 리스트
-    const [checkedList, setCheckedList] = useRecoilState(CheckedListState);
 
     // 다음 단계 진행 가능 여부
     const [isNextOkay, setIsNextOkay] = useState(false);
@@ -61,6 +53,12 @@ export default ({user_datas}) => {
     // size id
     const [sizeid, setSizeId] = useRecoilState(SizeID);
 
+
+    useEffect(()=>{
+        window.scroll(0, 0);
+        emailback.setValue("gmail.com")
+    }, [])
+
     // 스타일링 끝내기 눌렀을 때
     // 유저 데이테와 스타일링 데이터 서버에 전송
     const handleClick = async () => {
@@ -71,7 +69,6 @@ export default ({user_datas}) => {
         setId(userID);
         // res_signup 에서 유저 id값 받은 후 스타일 데이터 보낼 때 넣어서 같이 post
         // post 될 동안 로딩 화면 보여주어야 할 듯!!
-
     }
 
     useEffect(()=>{
@@ -96,7 +93,7 @@ export default ({user_datas}) => {
     useEffect(()=>{
         if(sizeid!==0){
             PostCody();
-            router.push('/website_dev/result');
+            router.push('/result');
         }
     }, [sizeid])
 
@@ -110,58 +107,21 @@ export default ({user_datas}) => {
         }
         const cody = await postApi.PostData(codyData, isMorF, 'cody', 'Cody');
     }
-
-    const handleCheckboxClick = (e) => {
-        if(e.target.checked){
-            setChecked(e.target.checked);
-            setCheckedList(['1', '2', '3']);
-        }
-        else{
-            setChecked(e.target.checked);
-            setCheckedList([]);
-        }
-    }
-
-    const handleCheckClick = (e) => {
-        if(checkedList.includes(e.target.id)){
-            setCheckedList(checkedList.filter((item, idx)=>{
-                return e.target.id != item;
-            }))
-        }
-        else{
-            setCheckedList(checkedList.concat(e.target.id))
-        }
-    }
-
-    useEffect(()=>{
-        window.scroll(0, 0);
-        emailback.setValue("gmail.com")
-    }, [])
     
-    useEffect(()=>{
-        if(checkedList.length === 3){
-            setChecked(true);
-        }
-        else{
-            setChecked(false);
-        }
-    },[checkedList])
 
     // 다음 단계로 진행 가능 여부 판단
     useEffect(()=>{
-        // console.log(checkedList);
         if(result.name!=="" & result.birth!==""
         & result.phone!=="" & result.emailfront!==""
         & result.phone.length===11
-        & selectData!==-1
-        & checkedList.includes('1') & checkedList.includes('2')){
+        & selectData!==-1){
             setIsNextOkay(true);
             // console.log(1);
         }
         else{
             setIsNextOkay(false);
         }
-    },[result, checkedList, selectData]);
+    },[result, selectData]);
 
     // useEffect(()=>{
     //     // console.log(result);
@@ -246,6 +206,9 @@ export default ({user_datas}) => {
                 quesNum={0}
                 quesText={"인스타그램 계정"}
             />
+            <div style={{width:'32rem',marginTop:'0.5rem',whiteSpace:'pre-wrap',fontSize:'1.2rem',color:'#707070',textAlign:'left',lineHeight:'1.67'}}>
+                {"고객님의 평소 스타일을 참고하기 위해서\n수집하는 항목이며, 이 외의 용도로는 사용되지 않습니다."}
+            </div>
             <div style={{marginTop:'2.4rem'}}/>
             <InputBox
                 text={"예) instagram"}
@@ -264,94 +227,11 @@ export default ({user_datas}) => {
                 isOverlap={false} maxNum={1}
                 isNoneExist={false}
                 selectData={selectData} setSelectData={setSelectData}
-            />
-            <div style={{marginTop:'3.6rem'}}/>
-            <Question
-                quesNum={0}
-                quesText={"약관동의"}
-            />
-            <label style={{width:'32rem',marginTop:'2.1rem',marginBottom:'2.1rem'}}>
-                <CheckBox 
-                    checked={checked} 
-                    onChange={handleCheckboxClick}
-                />
-                <span style={{fontSize:'1.4rem',color:'#333333',textAlign:'left',marginLeft:'0.8rem'}}>전체동의</span>
-            </label>
-            <PolicyBox
-                id={1}
-                text={"리사이즈 이용약관"}
-                checkedList={checkedList} 
-                handleCheckClick={handleCheckClick}
-                handleBtnClick={()=>setModalVisible(true)}
-            />
-            <PolicyBox
-                id={2}
-                text={"리사이즈 개인 정보 처리방침"}
-                checkedList={checkedList} 
-                handleCheckClick={handleCheckClick}
-                handleBtnClick={()=>setModalVisible(true)}
-            />
-            <PolicyBox
-                id={3}
-                text={"[선택] 마케팅 활용동의"}
-                checkedList={checkedList} 
-                handleCheckClick={handleCheckClick}
-                handleBtnClick={()=>setModalVisible(true)}
-            />
+            />          
             <div style={{marginTop:'3.6rem'}}/>
             <Bottom onClick={isNextOkay? handleClick : ()=>{}}>스타일링 끝내기</Bottom>
         </Wrap>
         :<Loading/>
-        }
-        {modalVisible&&
-        <Modal
-            visible={modalVisible}
-            closable={true}
-            maskClosable={true}
-            onClose={()=>setModalVisible(false)}
-            title= {'개인정보 처리방침'}
-        >
-            <div style={{height:'1.5rem'}}/>
-            <div style={{width:'26rem'}}>제 1조 [총칙]</div>
-            <div style={{height:'1.5rem'}}/>
-            <div>“리사이즈”는 이용자들의 개인정보를 중요시하며 고객들의 개인정보를 보호하기 
-                위해 최선을 다하고 있습니다. 따라서 「통신비밀보호법」,
-                「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 등과 관련된 법규를 
-                준수하기 위해 [개인정보 처리방침]을 제정하고 이를 준수하고 있습니다.
-            </div>
-            <div style={{height:'1.5rem'}}/>
-            <div>리사이즈는 다음 개인정보 처리방침을 통하여 이용자들의 개인정보가 
-                어떠한 용도로 이용되고 있으며 어떠한 방식으로 관리되고 있는지 또한 
-                개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려 드립니다.
-            </div>
-            <div style={{height:'1.5rem'}}/>
-            <div>
-                리사이즈의 개인정보 처리방침은 관련 법률 및 지침의 변경이나 회사 내부 운영방침의 
-                변경 등으로 인하여 개정될 수 있습니다. 개인정보 처리방침 이 변경될 경우 변경사항은 
-                홈페이지에 게시됩니다. 
-            </div>
-            <div style={{height:'1.5rem'}}/>
-            <div style={{width:'26rem'}}>제 2 조 [개인정보 수집항목 및 이용목적]</div>
-            <div style={{height:'1.5rem'}}/>
-            <div>
-                리사이즈가 개인정보 보호법 제32조에 따라 등록․공개하는 개인정보파일의 처리목적은 
-                다음과 같습니다.
-            </div>
-            <div style={{height:'1.5rem'}}/>
-            <div>
-                - (필수) 성명, 아이디, 비밀번호, 휴대폰번호, 생년월일 : 회원제 서비스 이용에 따른 본인 확인 절차에 이용
-            </div>
-            <div>
-            - (필수) 기타 선택항목(신체사이즈, 선호 스타일 등) : 개인맞춤 서비스를 제공하기 위한 자료
-            </div>
-            <div>
-                - (필수) IP 주소, 방문일시, 쿠키, 기기정보 등 서비스 이용기록 : 서비스 개선, 불량회원 관리
-            </div>
-            <div style={{height:'1.5rem'}}/>
-            <div>
-                수집된 정보는 서비스의 발전, 알고리즘 개발, 회원관리, 마케팅 및 광고 등에 활용됩니다.
-            </div>
-        </Modal>
         }
         </>
     )
@@ -466,45 +346,4 @@ const InputEmailBack = styled.select`
         outline: none;
         border: solid 0.1rem #767676;
     }
-`;
-
-const PolicyBox = ({id, checkedList, handleCheckClick, text, handleBtnClick}) => {
-    return(
-        <BoxWrap>
-            <div style={{width:'2rem',height:'2rem',marginLeft:'1.3rem'}} id={id} onClick={handleCheckClick}>
-                <Icon viewBox="0 0 24 24" checked={checkedList.includes(`${id}`)?true:false} id={id}>
-                    <polyline points="19 7 10 17 5 12" id={id} onClick={handleCheckClick}/>
-                </Icon>
-            </div>
-            <Text>{text}</Text>
-            <img src={arrow} style={{width:'4rem',height:'4rem'}} onClick={handleBtnClick}/>
-        </BoxWrap>
-    )
-}
-
-const BoxWrap = styled.div`
-    width: 32.7rem;
-    height: 4.8rem;
-    margin-bottom: 0.8rem;
-    border-radius: 0.3rem;
-    border: solid 0.1rem #f5f3f0;
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-`;
-
-const Icon = styled.svg`
-fill: none;
-stroke: ${props=>props.checked? '#a99174': '#e5e5e5'};
-stroke-width: 2px;
-`;
-
-const Text = styled.span`
-    width: 26.4rem;
-    height: 1.8rem;
-    margin-left: 0.7rem;
-    font-size: 1.2rem;
-    text-align: left;
-    color: ${({theme})=>theme.colors.black};
 `;

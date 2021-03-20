@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom, Loading } from "../../components";
-import { OverlapBtns, QuestionTwo, Squares } from "../../components/common";
+import { OverlapBtns, Question, QuestionTwo, Squares } from "../../components/common";
 // function
 import cody_case_F from "../../lib/cody_case_F";
 import cody_case_M from "../../lib/cody_case_M";
@@ -176,8 +176,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     <Wrap isVisited={isVisited.includes("네")}>
                         <QuestionTwo
                             quesNum={0}
-                            quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
-                            quesTextTwo={`${user_datas[itemList[0]].question} 종류는 무엇인가요?`}
+                            quesTextOne={`코디에 ❌포함하고 싶지 않은❌`}
+                            quesTextTwo={`${user_datas[itemList[0]].question} 종류`}
                             overlapText={"중복선택"}
                         />
                         <div style={{height:'3.6rem'}}/>
@@ -187,8 +187,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataOne} setSelectData={setSelectDataOne}
-                            otherTextOne={"이외에 ❌포함하고 싶지 않은❌"}
-                            otherTextTwo={`${user_datas[itemList[0]].question}가 있다면 알려주세요!`}
+                            otherText={`코디로 ❌받고 싶지 않은❌ ${user_datas[itemList[0]].question}`}
                             inputText={user_datas[itemList[0]].inputText}
                             input={inputOne}
                             innerPageNum={innerPageNum}
@@ -212,8 +211,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     <Wrap isVisited={isVisited.includes("네")}>
                         <QuestionTwo
                             quesNum={0}
-                            quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
-                            quesTextTwo={`${user_datas[itemList[1]].question} 종류는 무엇인가요?`}
+                            quesTextOne={`코디에 ❌포함하고 싶지 않은❌`}
+                            quesTextTwo={`${user_datas[itemList[1]].question} 종류`}
                             overlapText={"중복선택"}
                         />
                         <div style={{height:'3.6rem'}}/>
@@ -223,8 +222,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataTwo} setSelectData={setSelectDataTwo}
-                            otherTextOne={"이외에 ❌포함하고 싶지 않은❌"}
-                            otherTextTwo={`${user_datas[itemList[1]].question}가 있다면 알려주세요!`}
+                            otherText={`코디로 ❌받고 싶지 않은❌ ${user_datas[itemList[1]].question}`}
                             inputText={user_datas[itemList[1]].inputText}
                             input={inputTwo}
                             innerPageNum={innerPageNum}
@@ -248,8 +246,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     <Wrap isVisited={isVisited.includes("네")}>
                         <QuestionTwo
                             quesNum={0}
-                            quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
-                            quesTextTwo={`${user_datas[itemList[2]].question} 종류는 무엇인가요?`}
+                            quesTextOne={`코디에 ❌포함하고 싶지 않은❌`}
+                            quesTextTwo={`${user_datas[itemList[2]].question} 종류`}
                             overlapText={"중복선택"}
                         />
                         <div style={{height:'3.6rem'}}/>
@@ -259,8 +257,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataThree} setSelectData={setSelectDataThree}
-                            otherTextOne={"이외에 ❌포함하고 싶지 않은❌"}
-                            otherTextTwo={`${user_datas[itemList[2]].question}가 있다면 알려주세요!`}
+                            otherText={`코디로 ❌받고 싶지 않은❌ ${user_datas[itemList[2]].question}`}
                             inputText={user_datas[itemList[2]].inputText}
                             input={inputThree}
                             innerPageNum={innerPageNum}
@@ -285,8 +282,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     <Wrap isVisited={isVisited.includes("네")}>
                         <QuestionTwo
                             quesNum={0}
-                            quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
-                            quesTextTwo={`${user_datas[itemList[3]].question} 종류는 무엇인가요?`}
+                            quesTextOne={`코디에 ❌포함하고 싶지 않은❌`} 
+                            quesTextTwo={`${user_datas[itemList[3]].question} 종류`}
                             overlapText={"중복선택"}
                         />
                         <div style={{height:'3.6rem'}}/>
@@ -296,8 +293,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataFour} setSelectData={setSelectDataFour}
-                            otherTextOne={"이외에 ❌포함하고 싶지 않은❌"}
-                            otherTextTwo={`${user_datas[itemList[3]].question}가 있다면 알려주세요!`}
+                            otherText={`코디로 ❌받고 싶지 않은❌ ${user_datas[itemList[3]].question}`}
                             inputText={user_datas[itemList[3]].inputText}
                             input={inputFour}
                             innerPageNum={innerPageNum}
@@ -321,8 +317,8 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     <Wrap isVisited={isVisited.includes("네")}>
                         <QuestionTwo
                             quesNum={0}
-                            quesTextOne={"해당 코디에 ❌포함하고 싶지 않은❌"}
-                            quesTextTwo={`${user_datas[itemList[4]].question} 종류는 무엇인가요?`}
+                            quesTextOne={`코디에 ❌포함하고 싶지 않은❌`}
+                            quesTextTwo={`${user_datas[itemList[4]].question} 종류`}
                             overlapText={"중복선택"}
                         />
                         <div style={{height:'3.6rem'}}/>
@@ -332,8 +328,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataFive} setSelectData={setSelectDataFive}
-                            otherTextOne={"이외에 ❌포함하고 싶지 않은❌"}
-                            otherTextTwo={`${user_datas[itemList[4]].question}가 있다면 알려주세요!`}
+                            otherText={`코디로 ❌받고 싶지 않은❌ ${user_datas[itemList[4]].question}`}
                             inputText={user_datas[itemList[4]].inputText}
                             input={inputFive}
                             innerPageNum={innerPageNum}
@@ -357,10 +352,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     <Wrap isVisited={isVisited.includes("네")}>
                     {!isLoading? 
                         <>
-                        <QuestionTwo
+                        <Question
                             quesNum={quesNum}
-                            quesTextOne={"받아보고 싶은 코디에 포함하고"}
-                            quesTextTwo={"싶은 옷의 조합은 무엇인가요?"}
+                            quesText={"코디에 받고 싶은 옷의 조합"}
                             overlapText={"최대 2개"}
                         />
                         <div style={{height:'4rem'}}/>

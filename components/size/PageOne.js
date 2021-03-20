@@ -39,7 +39,7 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
             <Wrap>
                 <Question
                     quesNum={quesNum}
-                    quesText={"당신의 키와 몸무게를 알려주실래요?"}
+                    quesText={"키와 몸무게"}
                 />
                 <div style={{width:'100%', height:'3.6rem'}}/>
                 <Text>키</Text>

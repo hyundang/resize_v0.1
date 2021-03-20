@@ -2,21 +2,18 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom, Loading } from "../../components";
-import { Question, Rectangles } from "../../components/common";
+import { Question, Squares } from "../../components/common";
 // recoil
-import { useRecoilState, useRecoilValue } from "recoil";
-import { QuesTenTwState } from "../../states/style_atom";
-import { SexState } from "../../states/website_atom";
+import { useRecoilState } from "recoil";
+import { SkirtLengthState } from "../../states/style_atom";
 // axios
 import { getApi } from "../../lib/api";
 // lib
 import SortData from "../../lib/SortData";
 
 
-export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
-    const sex = useRecoilValue(SexState);
-    
-    const [pantsFit, setPantsFit] = useState([]);
+export default ({quesNum, lastQuesNum, setPageNum}) => { 
+    const [skirtLength, setSkirtLength] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(()=>{
@@ -26,22 +23,15 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
     },[])
 
     const getData = async () => {
-        let isMorF = 'M';
-        if(sex===0){
-            isMorF = 'M';
-        }
-        else{
-            isMorF = 'F';
-        }
-        const pantsFit_result = await getApi.getImgData('style', isMorF, 'Pants_Fit');
-        setPantsFit(pantsFit_result.results);
-        const sorted_data = await SortData(pantsFit_result.results);
-        setPantsFit(sorted_data);
+        const skirtLength_result = await getApi.getImgData('style', 'F', 'Skirt_Length');
+        setSkirtLength(skirtLength_result.results);
+        const sorted_data = await SortData(skirtLength_result.results);
+        setSkirtLength(sorted_data);
         setIsLoading(false);
     }
     
     // 선택한 데이터가 담긴 배열
-    const [selectData, setSelectData] = useRecoilState(QuesTenTwState);
+    const [selectData, setSelectData] = useRecoilState(SkirtLengthState);
     
     const [isRightOkay, setIsRightOkay] = useState(false);
 
@@ -63,14 +53,14 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <>
                 <Question
                     quesNum={quesNum}
-                    quesText={"평소 선호하는 바지의 핏"}
+                    quesText={"평소 선호하는 치마/원피스 기장"}
                     overlapText={"중복선택"}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
-                <Rectangles 
-                    data={pantsFit}
-                    // data={user_datas}
+                <Squares
+                    data={skirtLength}
                     isOverlap={true}
+                    isBorderLine={true}
                     selectData={selectData}
                     setSelectData={setSelectData}
                 />

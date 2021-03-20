@@ -1,5 +1,5 @@
 import { atom, atomFamily, selector } from 'recoil';
-import { SexState } from "./website_atom";
+import { SexState, CheckedListState } from "./website_atom";
 
 
 export const LastPageNumState = atom({
@@ -17,10 +17,6 @@ export const UserJobState = atom({
     default: -1
 })
 
-export const CheckedListState = atom({
-    key: "CheckedListState",
-    default: []
-})
 
 export const TotalUserInfoState = selector({
     key: "TotalUserInfoState",

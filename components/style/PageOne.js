@@ -44,7 +44,7 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
             <Wrap>
                 <Question
                     quesNum={quesNum}
-                    quesText={"당신의 성별은 무엇인가요?"}
+                    quesText={"성별"}
                 />
                 <BtnWrap>
                     <ChoiceBtn 

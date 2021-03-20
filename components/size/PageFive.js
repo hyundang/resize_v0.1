@@ -2,27 +2,31 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { QuestionTwo, OverlapBtnThree } from "../../components/common";
+import { Question, OverlapBtnThree, OverlapBtns } from "../../components/common";
 // hooks
 import useWindowSize from "../../hooks/useWindowSize";
 // recoil
-import { useRecoilState } from "recoil";
-import { ClothesSizeState } from "../../states/size_atom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { ClothesSizeState, PantsSizeState } from "../../states/size_atom";
+import { SexState } from "../../states/website_atom";
 
+const data = ["허리에 바지 사이즈를 맞춘다", "허벅지에 바지 사이즈를 맞춘다"];
 
-export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
+export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     const size = useWindowSize();
+    const sex = useRecoilValue(SexState);
     // 항목 개수에 맞게 만들기
     const [selectOneData, setSelectOneData] = useRecoilState(ClothesSizeState(0));
     const [selectTwoData, setSelectTwoData] = useRecoilState(ClothesSizeState(1));
     const [selectThreeData, setSelectThreeData] = useRecoilState(ClothesSizeState(2));
     const [selectFourData, setSelectFourData] = useRecoilState(ClothesSizeState(3));
     const [selectFiveData, setSelectFiveData] = useRecoilState(ClothesSizeState(4));
+    const [selectSixData, setSelectSixData] = useRecoilState(PantsSizeState);
 
     const [isRightOkay, setIsRightOkay] = useState(false);
 
     useEffect(()=>{
-        if(selectOneData.length!==0 & selectTwoData.length!==0 & selectThreeData.length!==0 & selectFourData.length!==0){
+        if(selectOneData.length!==0 & selectTwoData.length!==0 & selectThreeData.length!==0 & selectFourData.length!==0 & selectSixData.length!==0){
             if(sex===1){
                 if(selectFiveData.length!==0)
                     setIsRightOkay(true);
@@ -37,7 +41,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
         else{
             setIsRightOkay(false);
         }
-    }, [selectOneData, selectTwoData, selectThreeData, selectFourData, selectFiveData])
+    }, [selectOneData, selectTwoData, selectThreeData, selectFourData, selectFiveData, selectSixData])
 
     const [isShowOne, setIsShowOne] = useState(false);
     const [isShowTwo, setIsShowTwo] = useState(false);
@@ -151,22 +155,21 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                 {/* 블러 처리 부분... */}
                 {(sex===0)?
                 <>
-                    <BlurBoxFirst width={size.width} top={28.5}/><BlurBoxEnd isShow={isShowOne} top={28.5}/>
-                    <BlurBoxFirst width={size.width} top={36}/><BlurBoxEnd isShow={isShowTwo} top={36}/>
-                    <BlurBoxFirst width={size.width} top={54.3}/><BlurBoxEnd isShow={isShowThree} top={54.3}/>
-                    <BlurBoxFirst width={size.width} top={62}/><BlurBoxEnd isShow={isShowFour} top={62}/>
+                    <BlurBoxFirst width={size.width} top={26}/><BlurBoxEnd isShow={isShowOne} top={26}/>
+                    <BlurBoxFirst width={size.width} top={33.5}/><BlurBoxEnd isShow={isShowTwo} top={33.5}/>
+                    <BlurBoxFirst width={size.width} top={48.8}/><BlurBoxEnd isShow={isShowThree} top={48.8}/>
+                    <BlurBoxFirst width={size.width} top={56.5}/><BlurBoxEnd isShow={isShowFour} top={56.5}/>
                 </>
                 :<>
-                    <BlurBoxFirst width={size.width} top={28.5}/><BlurBoxEnd isShow={isShowOne} top={28.5}/>
-                    <BlurBoxFirst width={size.width} top={36}/><BlurBoxEnd isShow={isShowTwo} top={36}/>
-                    <BlurBoxFirst width={size.width} top={43.5}/><BlurBoxEnd isShow={isShowThree} top={43.5}/>
-                    <BlurBoxFirst width={size.width} top={62}/><BlurBoxEnd isShow={isShowFour} top={62}/>
-                    <BlurBoxFirst width={size.width} top={68.3}/><BlurBoxEnd isShow={isShowFive} top={68.3}/>
+                    <BlurBoxFirst width={size.width} top={26}/><BlurBoxEnd isShow={isShowOne} top={26}/>
+                    <BlurBoxFirst width={size.width} top={33.5}/><BlurBoxEnd isShow={isShowTwo} top={33.5}/>
+                    <BlurBoxFirst width={size.width} top={41}/><BlurBoxEnd isShow={isShowThree} top={41}/>
+                    <BlurBoxFirst width={size.width} top={56.5}/><BlurBoxEnd isShow={isShowFour} top={56.5}/>
+                    <BlurBoxFirst width={size.width} top={64}/><BlurBoxEnd isShow={isShowFive} top={64}/>
                 </>}
-                <QuestionTwo
+                <Question
                     quesNum={quesNum}
-                    quesTextOne={"평소 착용하는"}
-                    quesTextTwo={"상의 사이즈는 무엇인가요?"}
+                    quesText={"평소 착용하는 상의 사이즈"}
                     overlapText={"중복선택"}
                 />
                 <div style={{marginBottom:'2.3rem'}}/>
@@ -235,10 +238,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                     </BtnOutterWrap>
                 </div>}
                 <div style={{marginBottom:'2.7rem'}}/>
-                <QuestionTwo
+                <Question
                     quesNum={0}
-                    quesTextOne={"평소 착용하는"}
-                    quesTextTwo={"바지 사이즈는 무엇인가요?"}
+                    quesText={"평소 착용하는 바지 사이즈"}
                     overlapText={"중복선택"}
                 />
                 <div style={{marginBottom:'2.3rem'}}/>
@@ -330,6 +332,21 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                 </div>
                 </>
                 }
+                <div style={{marginBottom:'2.7rem'}}/>
+                <Question
+                    quesNum={0}
+                    quesText={"바지 사이즈 고르는 기준"}
+                />
+                <div style={{marginBottom:'2.3rem'}}/>
+                <OverlapBtns
+                    data={data}
+                    data_num={data.length}
+                    btnType={-1}
+                    isNoneExist={false} isOverlap={false} maxNum={1}
+                    selectData={selectSixData}
+                    setSelectData={setSelectSixData}
+                />
+                <div style={{marginBottom:'2.3rem'}}/>
                 <div style={{marginBottom:'3.6rem'}}/>
             </Wrap>
             <Bottom 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom, Loading } from "../../components";
-import { Circles, QuestionTwo } from "../../components/common";
+import { Circles, Question } from "../../components/common";
 // recoil
 import { useRecoilValue, useRecoilState } from "recoil";
 import { CodyColorstate } from "../../states/cody_atom";
@@ -14,7 +14,7 @@ import SortData from "../../lib/SortData";
 import { QuesTenState } from "../../states/style_atom";
 
 
-export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
+export default ({quesNum, lastQuesNum, setPageNum}) => {
     const sex = useRecoilValue(SexState);
     const colorData = useRecoilValue(QuesTenState);
 
@@ -67,10 +67,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             <Wrap isVisited={isVisited.includes("네")}>
             {!isLoading?
                 <> 
-                <QuestionTwo
+                <Question
                     quesNum={quesNum}
-                    quesTextOne={"해당 코디에 포함하고 싶은"}
-                    quesTextTwo={"메인 컬러를 모두 골라주실래요?"}
+                    quesText={"코디에 포함하고 싶은 컬러"}
                     overlapText={"중복선택"}
                 />
                 <div style={{marginBottom:'3.4rem'}}/>
