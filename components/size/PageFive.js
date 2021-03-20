@@ -26,7 +26,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     const [isRightOkay, setIsRightOkay] = useState(false);
 
     useEffect(()=>{
-        if(selectOneData.length!==0 & selectTwoData.length!==0 & selectThreeData.length!==0 & selectFourData.length!==0 & selectSixData!==""){
+        if(selectOneData.length!==0 & selectTwoData.length!==0 & selectThreeData.length!==0 & selectFourData.length!==0 & selectSixData.length!==0){
             if(sex===1){
                 if(selectFiveData.length!==0)
                     setIsRightOkay(true);
@@ -41,7 +41,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
         else{
             setIsRightOkay(false);
         }
-    }, [selectOneData, selectTwoData, selectThreeData, selectFourData, selectFiveData])
+    }, [selectOneData, selectTwoData, selectThreeData, selectFourData, selectFiveData, selectSixData])
 
     const [isShowOne, setIsShowOne] = useState(false);
     const [isShowTwo, setIsShowTwo] = useState(false);

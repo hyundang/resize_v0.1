@@ -93,7 +93,7 @@ export default ({user_datas}) => {
     useEffect(()=>{
         if(sizeid!==0){
             PostCody();
-            router.push('/website_dev/result');
+            router.push('/result');
         }
     }, [sizeid])
 

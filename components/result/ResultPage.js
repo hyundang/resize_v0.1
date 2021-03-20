@@ -119,7 +119,7 @@ export default ({sex, id}) => {
     const handleSubmitClick = () => {
         // 유저가 써놓은 것 post 보내기
         PostData();
-        router.push('/website_dev');
+        router.push('');
     }
 
     const handleRequestClick = () => {
