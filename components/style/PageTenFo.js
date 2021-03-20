@@ -1,27 +1,45 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 // components
-import { Header, Bottom } from "../../components";
-import { OverlapBtns, Question } from "../../components/common";
-// hooks
-import useWindowSize from "../../hooks/useWindowSize";
+import { Header, Bottom, Loading } from "../../components";
+import { Question, Squares } from "../../components/common";
 // recoil
 import { useRecoilValue, useRecoilState } from "recoil";
 import { QuesTenFiState } from "../../states/style_atom";
 import { SexState } from "../../states/website_atom";
+// api
+import { getApi } from "../../lib/api";
+// lib
+import SortData from "../../lib/SortData";
 
 
-export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
+export default ({quesNum, lastQuesNum, setPageNum}) => {
+    const sex = useRecoilValue(SexState);
+    const [brand, setBrand] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    
     useEffect(()=>{
         window.scroll(0, 0);
+        getData();
     }, [])
-    
-    const [isShow, setIsShow] = useState(false);
-    const size = useWindowSize();
+
+    const getData = async () => {
+        let isMorF = 'M';
+        if(sex===0){
+            isMorF = 'M';
+        }
+        else{
+            isMorF = 'F';
+        }
+        const brand_result = await getApi.getImgData('style', isMorF, 'Brand');
+        setBrand(brand_result.results);
+        const sorted_data = await SortData(brand_result.results);
+        setBrand(sorted_data);
+        setIsLoading(false);
+    }
 
     // 선택한 데이터가 담긴 배열
     const [selectData, setSelectData] = useRecoilState(QuesTenFiState);
-    const sex = useRecoilValue(SexState);
 
     const [isRightOkay, setIsRightOkay] = useState(false);
 
@@ -32,78 +50,33 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         else{
             setIsRightOkay(false);
         }
-        // console.log(selectData)
     }, [selectData])
     
-    
-    // useEffect(()=>{
-    //     console.log(selectData);
-    // }, [selectData])
     
     return(
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
             <Wrap>
-                <Icon width={size.width} onClick={()=>setIsShow(true)} onMouseLeave={()=>setIsShow(false)}>?</Icon>
-                {isShow&&((sex===0)?
-                <HelpBox width={size.width}>
-                    <span style={{fontWeight:'bold'}}>SPA 브랜드:</span>
-                    {"\nH&M, 지오다노, 유니클로 등"}
-                    <div style={{height:'0.8rem'}}/>
-                    <span style={{fontWeight:'bold'}}>아웃도어 브랜드:</span>
-                    {"\n나이키, 아디다스 등"}
-                    <div style={{height:'0.8rem'}}/>
-                    <span style={{fontWeight:'bold'}}>디자이너 브랜드:</span>
-                    {"\nLMC, 커버낫, 앤더슨벨 등"}
-                    <div style={{height:'0.8rem'}}/>
-                    <span style={{fontWeight:'bold'}}>고가 디자이너 브랜드:</span>
-                    {"\n준지, 우영미 등"}
-                    <div style={{height:'0.8rem'}}/>
-                    <span style={{fontWeight:'bold'}}>남성복 브랜드:</span>
-                    {"\n반스, 닥스 등"}
-                    <div style={{height:'0.8rem'}}/>
-                    <span style={{fontWeight:'bold'}}>보세(브랜드 없는):</span>
-                    {"\n인터넷쇼핑몰, 지하상가 등"}
-                    <div style={{height:'0.8rem'}}/>
-                    <span style={{fontWeight:'bold'}}>하이엔드(명품) 브랜드:</span>
-                    {"\n구찌, 발렌시아가 등"}
-                </HelpBox>  
-                : <HelpBox width={size.width}>
-                    <span style={{fontWeight:'bold'}}>SPA 브랜드:</span>
-                    {"\nZARA, 스파오, 유니클로 등"}
-                    <div style={{height:'0.8rem'}}/>
-                    <span style={{fontWeight:'bold'}}>아웃도어 브랜드:</span>
-                    {"\n나이키, 아디다스 등"}
-                    <div style={{height:'0.8rem'}}/>
-                    <span style={{fontWeight:'bold'}}>디자이너 브랜드:</span>
-                    {"\nOIOI, Dunst, 앤더슨벨 등"}
-                    <div style={{height:'0.8rem'}}/>
-                    <span style={{fontWeight:'bold'}}>고가 디자이너 브랜드:</span>
-                    {"\nTheory, TIME, sandro 등"}
-                    <div style={{height:'0.8rem'}}/>
-                    <span style={{fontWeight:'bold'}}>여성복 브랜드:</span>
-                    {"\n스튜디오 톰보이, NAIN 등"}
-                    <div style={{height:'0.8rem'}}/>
-                    <span style={{fontWeight:'bold'}}>보세(브랜드 없는):</span>
-                    {"\n인터넷쇼핑몰, 지하상가 등"}
-                    <div style={{height:'0.8rem'}}/>
-                    <span style={{fontWeight:'bold'}}>하이엔드(명품) 브랜드:</span>
-                    {"\n구찌, 셀린느, 디올 등"}
-                </HelpBox>)}
+            {!isLoading?
+                <>
                 <Question
                     quesNum={quesNum}
                     quesText={"평소 선호하는 브랜드"}
                     overlapText={"중복선택"}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
-                <OverlapBtns
-                    data={user_datas} data_num={data_num}
-                    btnType={0}
-                    isOverlap={true} maxNum={0}
+                <Squares
+                    data={brand}
+                    isOverlap={true}
                     isNoneExist={true}
-                    selectData={selectData} setSelectData={setSelectData}
+                    isBorderLine={true}
+                    selectData={selectData}
+                    setSelectData={setSelectData}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
+                </>
+            : <Loading/>
+            }
             </Wrap>
             <Bottom 
                 setPageNum={setPageNum} pageNum={quesNum}
@@ -119,54 +92,4 @@ const Wrap = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-`;
-
-const Icon = styled.div`
-    position: absolute;
-    top: 18rem;
-    left: ${props=>(props.width/10-32)/2+21.5}rem;
-    @media screen and (min-width: 500px) {
-        left: ${props=>(props.width/18-32)/2+21.5}rem;
-    }
-    width: 2rem;
-    height: 2rem;
-    border-radius: 1rem;
-    background-color: #B9B9B9;
-    text-align: center;
-    line-height: 1.6;
-    color: white;
-    font-size: 1.2rem;
-`;
-
-const HelpBox = styled.div`
-    position: absolute;
-    z-index: 2;
-    top: 21.5rem;
-    left: ${props=>(props.width/10-32)/2+14}rem;
-    @media screen and (min-width: 500px) {
-        left: ${props=>(props.width/18-32)/2+14}rem;
-    }
-    width: 17rem;
-    padding: 1.1rem 1.6rem;
-    opacity: 0.83;
-	background: #797979;
-    border-radius: 0.8rem;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: normal;
-    white-space: pre-line;
-    ::after{
-        bottom: 100%;
-        left: 50%;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-        border-color: rgba(121, 121, 121, 0);
-        border-bottom-color: #797979;
-        border-width: 1rem;
-        margin-left: -1rem;
-    }
 `;

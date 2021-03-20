@@ -4,6 +4,7 @@ import styled from "styled-components";
 export default ({
     data,
     isOverlap, maxNum,
+    isNoneExist,
     isBorderLine,
     selectData, setSelectData
 }) => {
@@ -17,6 +18,7 @@ export default ({
                             url={item.photo}
                             data={selectData}
                             isOverlap={isOverlap} maxNum={maxNum}
+                            isNoneExist={isNoneExist}
                             isBorderLine={isBorderLine}
                             selectData={selectData} setSelectData={setSelectData}
                         />
@@ -36,6 +38,7 @@ const Square = ({
     id, text, url, 
     data,
     isOverlap, maxNum,
+    isNoneExist,
     isBorderLine,
     selectData, setSelectData, 
 }) => {
@@ -52,6 +55,15 @@ const Square = ({
 
     // 유저 선택 값이 변경 될 때마다
     useEffect(()=>{
+        // '없음' 항목이 존재하는 경우
+        if(isNoneExist){
+            if(text === '없음' & selectData.length===2 & selectData.includes(id)){
+                setIsClicked(false);
+                setSelectData(selectData.filter((s, idx)=>{
+                    return s !== id;
+                }));
+            }
+        }
         if(selectData.includes(id)){
             setIsClicked(true);
         }
@@ -70,8 +82,14 @@ const Square = ({
             setIsClicked(false);
         }
         else{
-            setSelectData(selectData.concat([id]));
-            setIsClicked(true);
+            if(text === '없음'){
+                setSelectData([id]);
+                setIsClicked(true);
+            }
+            else{
+                setSelectData(selectData.concat([id]));
+                setIsClicked(true);
+            }
         }
         // console.log(selectData);
     }

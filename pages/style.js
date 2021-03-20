@@ -148,8 +148,6 @@ const Start  = () => {
                     lastQuesNum={15}
                     quesNum={14}
                     setPageNum={setPageNum}
-                    user_datas={user_datas_M.style_M[4].answers}
-                    data_num={user_datas_M.style_M[4].answers.length}
                 />)
             }
             else{
@@ -176,8 +174,6 @@ const Start  = () => {
                     lastQuesNum={16}
                     quesNum={15}
                     setPageNum={setPageNum}
-                    user_datas={user_datas_F.style_F[4].answers}
-                    data_num={ user_datas_F.style_F[4].answers.length}
                 />)
             }
         case 16:
