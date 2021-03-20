@@ -21,7 +21,8 @@ import {
     PageTenO,
     PageTenTr,
     PageTenTw,
-    PageTwo
+    PageTwo,
+    WPageTenTr
 } from '../components/style';
 // data
 import user_datas_F from "../data/userdata/user_datas_F";
@@ -51,13 +52,13 @@ const Start  = () => {
                     />)
         case 1:
             return (<PageOne 
-                lastQuesNum={15}
+                lastQuesNum={sex===0? 15 : 16}
                 quesNum={1}
                 setPageNum={setPageNum}
             />)
         case 2:
             return (<PageTwo
-                lastQuesNum={15}
+                lastQuesNum={sex===0? 15 : 16}
                 quesNum={2}
                 setPageNum={setPageNum}
                 user_datas={(sex===0)? 
@@ -67,7 +68,7 @@ const Start  = () => {
             />)
         case 3:
             return (<PageThree
-                lastQuesNum={15}
+                lastQuesNum={sex===0? 15 : 16}
                 quesNum={3}
                 setPageNum={setPageNum}
                 user_datas={(sex===0)? 
@@ -77,7 +78,7 @@ const Start  = () => {
             />)
         case 4:
             return (<PageFour
-                lastQuesNum={15}
+                lastQuesNum={sex===0? 15 : 16}
                 quesNum={4}
                 setPageNum={setPageNum}
                 user_datas={(sex===0)? 
@@ -87,89 +88,113 @@ const Start  = () => {
             />)
         case 5:
             return (<PageFive
-                lastQuesNum={15}
+                lastQuesNum={sex===0? 15 : 16}
                 quesNum={5}
                 setPageNum={setPageNum}
             />)
         case 6:
             return (<PageSix
-                lastQuesNum={15}
+                lastQuesNum={sex===0? 15 : 16}
                 quesNum={6}
                 setPageNum={setPageNum}
             />)
         case 7:
             return (<PageSeven
-                lastQuesNum={15}
+                lastQuesNum={sex===0? 15 : 16}
                 quesNum={7}
                 setPageNum={setPageNum}
             />)
         case 8:
             return (<PageEight
-                lastQuesNum={15}
+                lastQuesNum={sex===0? 15 : 16}
                 quesNum={8}
                 setPageNum={setPageNum}
             />)
         case 9:
             return (<PageNine
-                lastQuesNum={15}
+                lastQuesNum={sex===0? 15 : 16}
                 quesNum={9}
                 setPageNum={setPageNum}
             />)
         case 10:
             return (<PageTen
-                lastQuesNum={15}
+                lastQuesNum={sex===0? 15 : 16}
                 quesNum={10}
                 setPageNum={setPageNum}
             />)
         case 11:
             return (<PageTenO
-                lastQuesNum={16}
+                lastQuesNum={sex===0? 15 : 16}
                 quesNum={11}
                 setPageNum={setPageNum}
             />)
         case 12:
             return (<PageTenTw
-                lastQuesNum={16}
+                lastQuesNum={sex===0? 15 : 16}
                 quesNum={12}
                 setPageNum={setPageNum}
             />)
         case 13:
-            return (<PageTenTr
-                lastQuesNum={16}
-                quesNum={13}
-                setPageNum={setPageNum}
-            />)
+            if(sex===0){
+                return (<PageTenTr
+                            lastQuesNum={15}
+                            quesNum={13}
+                            setPageNum={setPageNum}
+                        />)
+            }
+            else{
+                return (<WPageTenTr
+                            lastQuesNum={16}
+                            quesNum={13}
+                            setPageNum={setPageNum}
+                        />)
+            }
         case 14:
-            return (<PageTenFo
-                lastQuesNum={16}
-                quesNum={14}
-                setPageNum={setPageNum}
-                user_datas={(sex===0)? 
-                    user_datas_M.style_M[4].answers 
-                    : user_datas_F.style_F[4].answers
-                }
-                data_num={(sex===0)? 
-                    user_datas_M.style_M[4].answers.length 
-                    : user_datas_F.style_F[4].answers.length
-                }
-            />)
+            if(sex===0){
+                return (<PageTenFo
+                    lastQuesNum={15}
+                    quesNum={14}
+                    setPageNum={setPageNum}
+                    user_datas={user_datas_M.style_M[4].answers}
+                    data_num={user_datas_M.style_M[4].answers.length}
+                />)
+            }
+            else{
+                return (<PageTenTr
+                    lastQuesNum={16}
+                    quesNum={14}
+                    setPageNum={setPageNum}
+                />)
+            }
         case 15:
+            if(sex===0){
+                return (<PageTenFi
+                    lastQuesNum={15}
+                    quesNum={15}
+                    setPageNum={setPageNum}
+                    user_datas={user_datas_M.style_M[5].answers}
+                    data_num={user_datas_M.style_M[5].answers.length}
+                    inputTextOne={"예) COS, LMC, 유니폼브릿지, 앤더슨벨..."}
+                    inputTextTwo={"예) SSG닷컴, LF몰, SSF샵..."}
+                />)
+            }
+            else{
+                return (<PageTenFo
+                    lastQuesNum={16}
+                    quesNum={15}
+                    setPageNum={setPageNum}
+                    user_datas={user_datas_F.style_F[4].answers}
+                    data_num={ user_datas_F.style_F[4].answers.length}
+                />)
+            }
+        case 16:
             return (<PageTenFi
-                lastQuesNum={15}
-                quesNum={15}
+                lastQuesNum={16}
+                quesNum={16}
                 setPageNum={setPageNum}
-                user_datas={(sex===0)? 
-                    user_datas_M.style_M[5].answers 
-                    : user_datas_F.style_F[5].answers
-                }
-                data_num={(sex===0)? 
-                    user_datas_M.style_M[5].answers.length 
-                    : user_datas_F.style_F[5].answers.length
-                }
-                inputTextOne={(sex===0)?
-                    "예) COS, LMC, 유니폼브릿지, 앤더슨벨..."
-                    : "예) ZARA, OIOI, 커먼유니크, 아뜨랑스..."
-                }
+                user_datas={user_datas_F.style_F[5].answers}
+                data_num={user_datas_F.style_F[5].answers.length}
+                inputTextOne={"예) ZARA, OIOI, 커먼유니크, 아뜨랑스..."}
                 inputTextTwo={"예) SSG닷컴, LF몰, SSF샵..."}
             />)
         default:

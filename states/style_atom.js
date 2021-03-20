@@ -1,5 +1,6 @@
 import { atom, selector } from 'recoil';
 import { UserIDState } from "./last_atom";
+import { SexState } from './website_atom';
 
 export const StylePageNumState = atom({
     key: "StylePageNumState",
@@ -66,6 +67,11 @@ export const QuesTenTrState = atom({
     default: []
 })
 
+export const SkirtLengthState = atom({
+    key: "SkirtLengthState",
+    default: []
+})
+
 export const QuesTenFoState = atom({
     key: "QuesTenFoState",
     default: []
@@ -108,24 +114,48 @@ export const QuesTenSState = selector({
 export const TotalStyleDataState = selector({
     key: 'TotalStyleDataState',
     get: ({ get }) => {
-        return {
-            user: get(UserIDState),
-            style_like: get(QuesTwoState).join(', '),
-            style_hate: get(QuesThreeState).join(', '),
-            style_want: get(QuesFourState).join(', '),
-            type_hate: get(QuesEightState),
-            brand: get(QuesTenFiState).join(', '),
-            brandName: get(QuesTenSState).brand,
-            platform: get(QuesTenSState).site.join(', '),
-            platform_etc: get(QuesTenSState).siteName,
-            color_main: get(QuesTenState).join(', '),
-            detail: get(QuesFiveState),
-            material: get(QuesSixState),
-            neck: get(QuesSevenState),
-            color_tone: get(QuesNineState),
-            pants_fit: get(QuesTenTwState),
-            pants_waist: get(QuesTenTrState),
-            top_length: get(QuesTenFoState),
+        if(get(SexState)===0){
+            return {
+                user: get(UserIDState),
+                style_like: get(QuesTwoState).join(', '),
+                style_hate: get(QuesThreeState).join(', '),
+                style_want: get(QuesFourState).join(', '),
+                type_hate: get(QuesEightState),
+                brand: get(QuesTenFiState).join(', '),
+                brandName: get(QuesTenSState).brand,
+                platform: get(QuesTenSState).site.join(', '),
+                platform_etc: get(QuesTenSState).siteName,
+                color_main: get(QuesTenState).join(', '),
+                detail: get(QuesFiveState),
+                material: get(QuesSixState),
+                neck: get(QuesSevenState),
+                color_tone: get(QuesNineState),
+                pants_fit: get(QuesTenTwState),
+                pants_waist: get(QuesTenTrState),
+                top_length: get(QuesTenFoState),
+            }
+        }
+        else{
+            return {
+                user: get(UserIDState),
+                style_like: get(QuesTwoState).join(', '),
+                style_hate: get(QuesThreeState).join(', '),
+                style_want: get(QuesFourState).join(', '),
+                type_hate: get(QuesEightState),
+                brand: get(QuesTenFiState).join(', '),
+                brandName: get(QuesTenSState).brand,
+                platform: get(QuesTenSState).site.join(', '),
+                platform_etc: get(QuesTenSState).siteName,
+                color_main: get(QuesTenState).join(', '),
+                detail: get(QuesFiveState),
+                material: get(QuesSixState),
+                neck: get(QuesSevenState),
+                color_tone: get(QuesNineState),
+                pants_fit: get(QuesTenTwState),
+                pants_waist: get(QuesTenTrState),
+                top_length: get(QuesTenFoState),
+                skirt_length: get(SkirtLengthState),
+            }
         }
     }
 })
