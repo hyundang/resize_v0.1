@@ -107,7 +107,6 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <div style={{marginBottom:'3.6rem'}}/>
                 <Circles 
                     data={material}
-                    // data={user_datas}
                     isThree={false} isOverlap={true}
                     isNoneExist={true}
                     selectData={selectData}
@@ -155,11 +154,11 @@ const HelpBox = styled.div`
     position: absolute;
     z-index: 2;
     top: 21.5rem;
-    left: ${props=>(props.width/10-32)/2+17.5}rem;
+    left: ${props=>(props.width/10-32)/2+11}rem;
     @media screen and (min-width: 500px) {
-        left: ${props=>(props.width/18-32)/2+17.5}rem;
+        left: ${props=>(props.width/18-32)/2+11}rem;
     }
-    width: 17rem;
+    width: 20rem;
     padding: 1.1rem 1.6rem;
     opacity: 0.83;
 	background: #797979;
@@ -170,7 +169,7 @@ const HelpBox = styled.div`
     white-space: pre-line;
     ::after{
         bottom: 100%;
-        left: 50%;
+        left: 75%;
         border: solid transparent;
         content: " ";
         height: 0;
