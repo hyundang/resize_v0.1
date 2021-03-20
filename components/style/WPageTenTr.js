@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom, Loading } from "../../components";
-import { Question, Rectangles } from "../../components/common";
+import { Question, Squares } from "../../components/common";
 // recoil
 import { useRecoilState } from "recoil";
 import { SkirtLengthState } from "../../states/style_atom";
@@ -23,7 +23,7 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
     },[])
 
     const getData = async () => {
-        const skirtLength_result = await getApi.getImgData('style', 'F', 'SkirtLength');
+        const skirtLength_result = await getApi.getImgData('style', 'F', 'Skirt_Length');
         setSkirtLength(skirtLength_result.results);
         const sorted_data = await SortData(skirtLength_result.results);
         setSkirtLength(sorted_data);
@@ -57,9 +57,10 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                     overlapText={"중복선택"}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
-                <Rectangles 
+                <Squares
                     data={skirtLength}
                     isOverlap={true}
+                    isBorderLine={true}
                     selectData={selectData}
                     setSelectData={setSelectData}
                 />

@@ -15,8 +15,6 @@ export default ({
                             text={item.name}
                             id={item.id}
                             url={item.photo}
-                            // text={item}
-                            // id={idx}
                             data={selectData}
                             isOverlap={isOverlap} maxNum={maxNum}
                             isBorderLine={isBorderLine}
@@ -29,7 +27,6 @@ export default ({
 
 const Wrap = styled.div`
     width: 27rem;
-    /* margin-top: 5.3rem; */
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;

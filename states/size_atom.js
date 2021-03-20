@@ -81,6 +81,11 @@ export const ClothesSizeState = atomFamily({
     default: []
 })
 
+export const PantsSizeState = atom({
+    key: "PantsSizeState",
+    default: -1
+})
+
 export const SizeQuesFiveState = selector({
     key: "SizeQuesFiveState",
     get: ({ get }) => {
