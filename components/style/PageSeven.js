@@ -66,7 +66,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     quesText={"❌입고 싶지 않은❌ 넥라인"}
                     overlapText={"중복선택"}
                 />
-                <div style={{marginBottom:'5.3rem'}}/>
+                <div style={{marginBottom:'3.6rem'}}/>
                 <Circles 
                     data={neckline}
                     // data={user_datas} 

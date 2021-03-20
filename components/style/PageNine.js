@@ -66,7 +66,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     quesText={"평소 자주 착용하는 옷의 색상톤"}
                     overlapText={"중복선택"}
                 />
-                <div style={{marginBottom:'5.3rem'}}/>
+                <div style={{marginBottom:'2.3rem'}}/>
                 <Squares
                     data={colorTone}
                     // data={user_datas}

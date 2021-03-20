@@ -26,7 +26,7 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                     quesText={"이 외 ❌입고 싶지 않은❌ 옷의 종류"}
                     overlapText={"선택"}
                 />
-                <div style={{marginBottom:'5.3rem'}}/>
+                <div style={{marginBottom:'2.3rem'}}/>
                 <InputBoxBig 
                     text={"예) 카라티, 무스탕, 라이더 자켓, 양털 자켓"}
                     input={input}
