@@ -45,10 +45,9 @@ export default ({
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
             <Wrap>
-                <QuestionTwo
+                <Question
                     quesNum={quesNum}
-                    quesTextOne={"평소 선호하는 브랜드/쇼핑몰의"}
-                    quesTextTwo={"이름을 적어주실래요?"}
+                    quesText={"평소 선호하는 브랜드/쇼핑몰"}
                 />
                 <Text>최대한 다양하게 적어주세요!</Text>
                 <InputBox
@@ -58,8 +57,8 @@ export default ({
                 <div style={{width:'100vw', height:'3.6rem'}}/>
                 <QuestionTwo
                     quesNum={0}
-                    quesTextOne={"온라인으로 옷을 구매 시 어떤"}
-                    quesTextTwo={"사이트/플랫폼을 이용하시나요?"}
+                    quesTextOne={"온라인으로 옷 구매 시"}
+                    quesTextTwo={"사용하는 사이트/플랫폼"}
                     overlapText={"중복선택"}
                 />
                 <div style={{marginBottom:'3rem'}}/>
@@ -73,7 +72,7 @@ export default ({
                 <div style={{width:'100vw', height:'2.5rem'}}/>
                 <Question
                     quesNum={0}
-                    quesText={"이 외에 이용하는 사이트를 알려주세요!"}
+                    quesText={"이 외에 이용하는 사이트"}
                     overlapText={"선택"}
                 />
                 <div style={{width:'100vw', height:'1.9rem'}}/>

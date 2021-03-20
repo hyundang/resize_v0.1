@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { QuestionTwo, Styles } from "../../components/common";
+import { Question, Styles } from "../../components/common";
 // recoil
 import { useRecoilState } from "recoil";
 import { QuesThreeState } from "../../states/style_atom";
@@ -32,10 +32,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
             <Wrap>
-                <QuestionTwo
+                <Question
                     quesNum={quesNum}
-                    quesTextOne={"다음 중 ❌싫어하는❌ 스타일을"}
-                    quesTextTwo={"순서대로 골라주실래요?"}
+                    quesText={"❌싫어하는❌ 스타일 순위"}
                     overlapText={"최대 3개"}
                 />
                 <Styles 

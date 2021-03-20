@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom, Loading } from "../../components";
-import { Circles, QuestionTwo } from "../../components/common";
+import { Circles, Question } from "../../components/common";
 // recoil
 import { useRecoilState, useRecoilValue } from "recoil";
 import { QuesSixState } from "../../states/style_atom";
@@ -11,9 +11,15 @@ import { SexState } from "../../states/website_atom";
 import { getApi } from "../../lib/api";
 // lib
 import SortData from "../../lib/SortData";
+// hooks
+import useWindowSize from "../../hooks/useWindowSize";
 
 
 export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
+    // for modal
+    const [isShow, setIsShow] = useState(false);
+    const size = useWindowSize();
+    
     const sex = useRecoilValue(SexState);
     
     const [material, setMaterial] = useState([]);
@@ -59,12 +65,43 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:'scroll'}}>
             <Header kategorie={0} quesNum={quesNum} lastQuesNum={lastQuesNum}/>
             <Wrap>
+            <Icon width={size.width} onClick={()=>setIsShow(true)} onMouseLeave={()=>setIsShow(false)}>?</Icon>
+            {isShow &&
+                <HelpBox width={size.width}>
+                <span style={{fontWeight:'bold',fontSize:'1.4rem'}}>{"소재별 상품 예시:\n"}</span>
+                <div style={{height:'0.8rem'}}/>
+                <span style={{fontWeight:'bold'}}>가죽:</span>
+                {"\n가죽 라이더 자켓"}
+                <div style={{height:'0.8rem'}}/>
+                <span style={{fontWeight:'bold'}}>앙고라:</span>
+                {"\n앙고라 니트"}
+                <div style={{height:'0.8rem'}}/>
+                <span style={{fontWeight:'bold'}}>나일론(비닐):</span>
+                {"\n바람막이, 아노락"}
+                <div style={{height:'0.8rem'}}/>
+                <span style={{fontWeight:'bold'}}>코듀로이:</span>
+                {"\n골덴 바지"}
+                <div style={{height:'0.8rem'}}/>
+                <span style={{fontWeight:'bold'}}>벨벳:</span>
+                {"\n벨벳 자켓"}
+                <div style={{height:'0.8rem'}}/>
+                <span style={{fontWeight:'bold'}}>린넨:</span>
+                {"\n린넨(마) 셔츠"}
+                <div style={{height:'0.8rem'}}/>
+                <span style={{fontWeight:'bold'}}>실크(새틴):</span>
+                {"\n실크(새틴) 셔츠"}
+                <div style={{height:'0.8rem'}}/>
+                <span style={{fontWeight:'bold'}}>트위드:</span>
+                {"\n트위드 자켓"}
+                <div style={{height:'0.8rem'}}/>
+                <span style={{fontWeight:'bold'}}>플리스:</span>
+                {"\n후리스 자켓"}
+            </HelpBox>}
             {!isLoading?
                 <>
-                <QuestionTwo
+                <Question
                     quesNum={quesNum}
-                    quesTextOne={"다음 중 ❌싫어하는❌ 옷의"}
-                    quesTextTwo={"소재를 모두 골라주실래요?"}
+                    quesText={"❌싫어하는❌ 옷의 소재"}
                     overlapText={"중복선택"}
                 />
                 <div style={{marginBottom:'5.3rem'}}/>
@@ -95,4 +132,55 @@ const Wrap = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+`;
+
+const Icon = styled.div`
+    position: absolute;
+    top: 18rem;
+    left: ${props=>(props.width/10-32)/2+25}rem;
+    @media screen and (min-width: 500px) {
+        left: ${props=>(props.width/18-32)/2+25}rem;
+    }
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: #B9B9B9;
+    text-align: center;
+    line-height: 1.6;
+    color: white;
+    font-size: 1.2rem;
+`;
+
+const HelpBox = styled.div`
+    position: absolute;
+    z-index: 2;
+    top: 21.5rem;
+    left: ${props=>(props.width/10-32)/2+17.5}rem;
+    @media screen and (min-width: 500px) {
+        left: ${props=>(props.width/18-32)/2+17.5}rem;
+    }
+    width: 17rem;
+    padding: 1.1rem 1.6rem;
+    opacity: 0.83;
+	background: #797979;
+    border-radius: 0.8rem;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: normal;
+    white-space: pre-line;
+    ::after{
+        bottom: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        opacity: 0.83;
+        border-color: rgba(121, 121, 121, 0);
+        border-bottom-color: #797979;
+        border-width: 1rem;
+        margin-left: -1rem;
+    }
 `;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 // components
 import { Header, Bottom } from "../../components";
-import { OverlapBtns, QuestionTwo } from "../../components/common";
+import { OverlapBtns, Question } from "../../components/common";
 // hooks
 import useWindowSize from "../../hooks/useWindowSize";
 // recoil
@@ -57,7 +57,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     {"\nLMC, 커버낫, 앤더슨벨 등"}
                     <div style={{height:'0.8rem'}}/>
                     <span style={{fontWeight:'bold'}}>고가 디자이너 브랜드:</span>
-                    {"\n춘자, 우영미 등"}
+                    {"\n준지, 우영미 등"}
                     <div style={{height:'0.8rem'}}/>
                     <span style={{fontWeight:'bold'}}>남성복 브랜드:</span>
                     {"\n반스, 닥스 등"}
@@ -90,10 +90,9 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                     <span style={{fontWeight:'bold'}}>하이엔드(명품) 브랜드:</span>
                     {"\n구찌, 셀린느, 디올 등"}
                 </HelpBox>)}
-                <QuestionTwo
+                <Question
                     quesNum={quesNum}
-                    quesTextOne={"평소 선호하는 브랜드를"}
-                    quesTextTwo={"골라주실래요?"}
+                    quesText={"평소 선호하는 브랜드"}
                     overlapText={"중복선택"}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
@@ -124,27 +123,28 @@ const Wrap = styled.div`
 
 const Icon = styled.div`
     position: absolute;
-    top: 17.3rem;
-    left: ${props=>(props.width/10-32)/2+17.8}rem;
+    top: 18rem;
+    left: ${props=>(props.width/10-32)/2+21.5}rem;
     @media screen and (min-width: 500px) {
-        left: ${props=>(props.width/18-32)/2+17.8}rem;
+        left: ${props=>(props.width/18-32)/2+21.5}rem;
     }
-    width: 1.6rem;
-    height: 1.6rem;
-    border-radius: 0.8rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
     background-color: #B9B9B9;
     text-align: center;
+    line-height: 1.6;
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
 `;
 
 const HelpBox = styled.div`
     position: absolute;
     z-index: 2;
-    top: 20.7rem;
-    left: ${props=>(props.width/10-32)/2+10.1}rem;
+    top: 21.5rem;
+    left: ${props=>(props.width/10-32)/2+14}rem;
     @media screen and (min-width: 500px) {
-        left: ${props=>(props.width/18-32)/2+10.1}rem;
+        left: ${props=>(props.width/18-32)/2+14}rem;
     }
     width: 17rem;
     padding: 1.1rem 1.6rem;
