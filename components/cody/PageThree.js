@@ -187,7 +187,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataOne} setSelectData={setSelectDataOne}
-                            otherText={`이외에 ❌입고 싶지 않은❌ ${user_datas[itemList[0]].question}`}
+                            otherText={`코디로 ❌받고 싶지 않은❌ ${user_datas[itemList[0]].question}`}
                             inputText={user_datas[itemList[0]].inputText}
                             input={inputOne}
                             innerPageNum={innerPageNum}
@@ -222,7 +222,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataTwo} setSelectData={setSelectDataTwo}
-                            otherText={`이외에 ❌입고 싶지 않은❌ ${user_datas[itemList[1]].question}`}
+                            otherText={`코디로 ❌받고 싶지 않은❌ ${user_datas[itemList[1]].question}`}
                             inputText={user_datas[itemList[1]].inputText}
                             input={inputTwo}
                             innerPageNum={innerPageNum}
@@ -257,7 +257,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataThree} setSelectData={setSelectDataThree}
-                            otherText={`이외에 ❌입고 싶지 않은❌ ${user_datas[itemList[2]].question}`}
+                            otherText={`코디로 ❌받고 싶지 않은❌ ${user_datas[itemList[2]].question}`}
                             inputText={user_datas[itemList[2]].inputText}
                             input={inputThree}
                             innerPageNum={innerPageNum}
@@ -293,7 +293,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataFour} setSelectData={setSelectDataFour}
-                            otherText={`이외에 ❌입고 싶지 않은❌ ${user_datas[itemList[3]].question}`}
+                            otherText={`코디로 ❌받고 싶지 않은❌ ${user_datas[itemList[3]].question}`}
                             inputText={user_datas[itemList[3]].inputText}
                             input={inputFour}
                             innerPageNum={innerPageNum}
@@ -318,7 +318,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                         <QuestionTwo
                             quesNum={0}
                             quesTextOne={`코디에 ❌포함하고 싶지 않은❌`}
-                            quesTextTwo={` ${user_datas[itemList[4]].question} 종류`}
+                            quesTextTwo={`${user_datas[itemList[4]].question} 종류`}
                             overlapText={"중복선택"}
                         />
                         <div style={{height:'3.6rem'}}/>
@@ -328,7 +328,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                             btnType={1}
                             isOverlap={true} isNoneExist={true}
                             selectData={selectDataFive} setSelectData={setSelectDataFive}
-                            otherText={`이외에 ❌입고 싶지 않은❌ ${user_datas[itemList[4]].question}`}
+                            otherText={`코디로 ❌받고 싶지 않은❌ ${user_datas[itemList[4]].question}`}
                             inputText={user_datas[itemList[4]].inputText}
                             input={inputFive}
                             innerPageNum={innerPageNum}
@@ -354,7 +354,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                         <>
                         <Question
                             quesNum={quesNum}
-                            quesText={"코디에 입고 싶은 옷의 조합"}
+                            quesText={"코디에 받고 싶은 옷의 조합"}
                             overlapText={"최대 2개"}
                         />
                         <div style={{height:'4rem'}}/>
