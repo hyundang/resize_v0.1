@@ -26,7 +26,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas}) => {
     const [isRightOkay, setIsRightOkay] = useState(false);
 
     useEffect(()=>{
-        if(selectOneData.length!==0 & selectTwoData.length!==0 & selectThreeData.length!==0 & selectFourData.length!==0){
+        if(selectOneData.length!==0 & selectTwoData.length!==0 & selectThreeData.length!==0 & selectFourData.length!==0 & selectSixData!==-1){
             if(sex===1){
                 if(selectFiveData.length!==0)
                     setIsRightOkay(true);

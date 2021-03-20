@@ -64,7 +64,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
                 <>
                 <Question
                     quesNum={quesNum}
-                    quesText={"평소 자주 착용하는 옷의 메인 컬러"}
+                    quesText={"평소 자주 착용하는 옷의 컬러"}
                     overlapText={"중복선택"}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>

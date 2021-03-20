@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // components
-import { InputBox, QuestionTwo, OverlapBtn } from ".";
+import { InputBox, Question, OverlapBtn } from ".";
 // hooks
 // import useInput from "../../hooks/useInput";
 
@@ -10,7 +10,7 @@ export default ({
     btnType, 
     isOverlap, maxNum, 
     isNoneExist,
-    otherTextOne, otherTextTwo, inputText,
+    otherText, inputText,
     selectData, setSelectData,
     input,
     innerPageNum,
@@ -40,10 +40,9 @@ export default ({
             })}
         </Wrap> 
         { isOther && <OtherWrap>
-            <QuestionTwo
+            <Question
                 quesNum={0}
-                quesTextOne={otherTextOne}
-                quesTextTwo={otherTextTwo}
+                quesText={otherText}
                 overlapText={isEssential? "필수" : "선택" }
             />
             <div style={{marginTop:'2.3rem'}}/>
@@ -71,5 +70,5 @@ const OtherWrap = styled.div`
     display: flex;
     flex-direction: column;
     width: 32rem;
-    margin-top: 6.2rem;
+    margin-top: 3.2rem;
 `;
