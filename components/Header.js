@@ -19,16 +19,16 @@ export default ({kategorie, quesNum, lastQuesNum}) => {
             console.log(e.target.id)
             switch (Number(e.target.id)) {
                 case 0:
-                    router.push('/website_dev/style')
+                    router.push('/style')
                     break;
                 case 1:
-                    router.push('/website_dev/size')
+                    router.push('/size')
                     break;
                 case 2:
-                    router.push('/website_dev/cody')
+                    router.push('/cody')
                     break;
                 case 3:
-                    router.push('/website_dev/last')
+                    router.push('/last')
                     break;
                 default:
                     break;
