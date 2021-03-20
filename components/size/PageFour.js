@@ -34,7 +34,7 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
             <Wrap>
                 <Question
                     quesNum={quesNum}
-                    quesText={"체형에서 보완하고 싶은 점은 무엇인가요?"}
+                    quesText={"체형에서 보완하고 싶은 점"}
                 />
                 <div style={{marginBottom:'2.3rem'}}/>
                 <InputBoxBig 
@@ -45,7 +45,7 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                 <div style={{marginBottom:'3.3rem'}}/>
                 <Question
                     quesNum={0}
-                    quesText={"체형의 장점은 무엇인가요?"}
+                    quesText={"체형의 장점"}
                 />
                 <div style={{marginBottom:'2.3rem'}}/>
                 <InputBoxBig 
