@@ -45,7 +45,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, data_num}) => {
             <Wrap isVisited={isVisited.includes("네")}>
                 <Question
                     quesNum={quesNum}
-                    quesText={"요청 코디의 TPO (용도)"}
+                    quesText={"받고 싶은 코디의 TPO(용도)"}
                     overlapText={"최대 3개"}
                 />
                 <div style={{width:'100%', height:'2.3rem'}}/>

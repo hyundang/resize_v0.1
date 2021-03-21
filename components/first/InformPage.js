@@ -20,7 +20,7 @@ export default () => {
             <Detail>본 설문은 15분 이내로 소요될 예정입니다.</Detail>
             <div style={{height:'2.4rem'}}/>
             <Question>💡 설문절차</Question>
-            <Detail>평소 스타일’과 ‘체형 정보’는 단 한 번만 응답해주시면 자동 저장되어 다음부터는 2분 이내로 코디를 요청하실 수 있어요!</Detail>
+            <Detail>'평소 스타일’과 ‘체형 정보’는 단 한 번만 응답해주시면 자동 저장되어 다음부터는 2분 이내로 코디를 요청하실 수 있어요!</Detail>
             <div style={{height:'2.4rem'}}/>
             <Question>💡 답변내용</Question>
             <Detail>고객님의 취향과 체형을 정밀하게 분석하기 위해 상세하게 질문을 드릴 예정이니 솔직하게 답변해주세요! 답변해주신 내용은 저희만 알고 있을게요! </Detail>

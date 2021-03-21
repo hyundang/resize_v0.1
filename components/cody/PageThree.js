@@ -354,7 +354,7 @@ export default ({quesNum, lastQuesNum, setPageNum, user_datas, sex}) => {
                         <>
                         <Question
                             quesNum={quesNum}
-                            quesText={"코디에 받고 싶은 옷의 조합"}
+                            quesText={"받고 싶은 코디의 조합"}
                             overlapText={"최대 2개"}
                         />
                         <div style={{height:'4rem'}}/>

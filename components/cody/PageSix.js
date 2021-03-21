@@ -89,7 +89,6 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                     <input
                         type="file"
                         id="file"
-                        // multiple="multiple"
                         accept="image/jpeg, image/jpg, image/png"
                         ref={fileInput}
                         onChange={imginput.onChange}
@@ -121,7 +120,7 @@ export default ({quesNum, lastQuesNum, setPageNum}) => {
                 />
                 <div style={{marginBottom:'2.3rem'}}/>
                 <InputBoxBig
-                    text={sex===0? "예) 연예인 이동휘나 류준열 느낌의 코디를 추천해주세요!" : "예) 블랙핑크 제니 느낌의 코디를 추천해주세요!"}
+                    text={"제 체형을 보완할 수 있는 옷을 추천해주셨으면 좋겠어요! 과한 디테일은 좋아하지 않아서 작은 포인트만 들어가있는 옷을 추천해주세요."}
                     input={inputTwo}
                 />
                 <div style={{marginBottom:'3.6rem'}}/>
