@@ -123,10 +123,6 @@ export default ({user_datas}) => {
         }
     },[result, selectData]);
 
-    // useEffect(()=>{
-    //     // console.log(result);
-    // }, [result])
-
 
     return(
         <>
@@ -338,9 +334,9 @@ const InputEmailBack = styled.select`
     font-weight: 500;
     font-family: 'Noto Sans KR';
     text-align: left;
-    color: #bdbdbd;
+    color: #767676;
     ::placeholder{
-        color: #bdbdbd;
+        color: #767676;
     }
     &:focus{
         outline: none;

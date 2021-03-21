@@ -126,7 +126,7 @@ const fadein = keyframes`
 const Btn = styled.div`
     position: absolute;
     left: 50%;
-    bottom: 4%;
+    bottom: 3.5%;
     transform: translate(-50%, 0);
     width: 14rem;
     height: 4rem;

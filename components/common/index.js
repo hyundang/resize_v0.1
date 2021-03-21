@@ -12,3 +12,4 @@ export { default as Styles } from './Styles';
 export { default as Circles } from './Circles';
 export { default as Squares } from './Squares';
 export { default as Rectangles } from './Rectangles';
+export { default as Modal } from './PolicyModal'; 
