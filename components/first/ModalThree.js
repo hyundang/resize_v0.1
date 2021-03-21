@@ -7,7 +7,7 @@ import { Modal } from "../../components/common";
 export default ({setModalVisible}) => {
     return(
         <Modal setModalVisible={setModalVisible}>
-            <div style={{fontSize:'1.8rem',fontWeight:'bold'}}>리사이즈 홍보 및 마케팅 이용 동의</div>
+            <div style={{fontSize:'1.8rem',fontWeight:'bold'}}>리사이즈 홍보 및 마케팅 이용 동의 전문</div>
             <div style={{height:'1.5rem'}}/>
             <div>
                 귀하는 개인(신용)정보의 선택적인 수집∙이용, 
