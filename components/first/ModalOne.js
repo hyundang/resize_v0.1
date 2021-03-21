@@ -7,7 +7,7 @@ import { Modal } from "../../components/common";
 export default ({setModalVisible}) => {
     return(
         <Modal setModalVisible={setModalVisible}>
-            <div style={{fontSize:'1.8rem',fontWeight:'bold'}}>리사이즈 이용약관</div>
+            <div style={{fontSize:'1.8rem',fontWeight:'bold'}}>이용약관 전문</div>
             <div style={{height:'1.5rem'}}/>
             <div style={{fontWeight:'bold'}}>제 1조 [목적]</div>
             <div style={{height:'1.5rem'}}/>

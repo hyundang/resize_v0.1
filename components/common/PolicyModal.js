@@ -34,6 +34,7 @@ const Wrap = styled.div`
     border-radius: 1.2rem;
     background-color: white;
     font-size: 1.4rem;
+    line-height: 1.7;
     color: ${({theme})=>theme.colors.black};
     white-space: pre-line;
     overflow-y: scroll;
