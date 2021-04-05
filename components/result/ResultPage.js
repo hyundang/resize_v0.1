@@ -355,6 +355,7 @@ const ExplainBox = styled.textarea`
     line-height: 1.86;
     text-align: center;
     color: ${({theme})=>theme.colors.black};
+    resize: none;
     &:focus{
         outline: none;
     }
@@ -371,6 +372,7 @@ const InputBox = styled.textarea`
     font-size: 1.4rem;
     text-align: left;
     color: #767676;
+    resize: none;
     ::placeholder{
         color: #bdbdbd;
     }

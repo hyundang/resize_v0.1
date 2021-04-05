@@ -8,6 +8,7 @@ const colors = {
     very_light_pink: '#f0f0f0',
     brown_grey: '#b5b5b5',
     black: '#191919',
+    gray: '#707070',
 }
 // how to use : ${({ theme }) => theme.colors.cookieOrange};
 

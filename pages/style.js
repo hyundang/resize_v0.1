@@ -25,12 +25,21 @@ import {
     WPageTenTr
 } from '../components/style';
 // data
-import user_datas_F from "../data/userdata/user_datas_F";
-import user_datas_M from "../data/userdata/user_datas_M";
+import datas_F from "../data/userdata/user_datas_F";
+import datas_M from "../data/userdata/user_datas_M";
 
 
+export const getStaticProps = async () => {
+    return{
+        props:{
+            user_datas_F: datas_F.style_F,
+            user_datas_M: datas_M.style_M,
+        }
+    }
+}
 
-const Start  = () => {
+
+const Start  = ({user_datas_F, user_datas_M}) => {
     const [pageNum, setPageNum] = useRecoilState(StylePageNumState);
     const sex = useRecoilValue(SexState); // 0: 남자, 1: 여자
 
@@ -55,8 +64,8 @@ const Start  = () => {
                 quesNum={2}
                 setPageNum={setPageNum}
                 user_datas={(sex===0)? 
-                    user_datas_M.style_M[pageNum-1].answers 
-                    : user_datas_F.style_F[pageNum-1].answers
+                    user_datas_M[0].answers 
+                    : user_datas_F[0].answers
                 }
             />)
         case 3:
@@ -65,8 +74,8 @@ const Start  = () => {
                 quesNum={3}
                 setPageNum={setPageNum}
                 user_datas={(sex===0)? 
-                    user_datas_M.style_M[pageNum-1].answers 
-                    : user_datas_F.style_F[pageNum-1].answers
+                    user_datas_M[0].answers 
+                    : user_datas_F[0].answers
                 }
             />)
         case 4:
@@ -75,8 +84,8 @@ const Start  = () => {
                 quesNum={4}
                 setPageNum={setPageNum}
                 user_datas={(sex===0)? 
-                    user_datas_M.style_M[pageNum-1].answers 
-                    : user_datas_F.style_F[pageNum-1].answers
+                    user_datas_M[0].answers 
+                    : user_datas_F[0].answers
                 }
             />)
         case 5:
@@ -163,8 +172,8 @@ const Start  = () => {
                     lastQuesNum={15}
                     quesNum={15}
                     setPageNum={setPageNum}
-                    user_datas={user_datas_M.style_M[5].answers}
-                    data_num={user_datas_M.style_M[5].answers.length}
+                    user_datas={user_datas_M[1].answers}
+                    data_num={user_datas_M[1].answers.length}
                     inputTextOne={"예) COS, LMC, 유니폼브릿지, 앤더슨벨..."}
                     inputTextTwo={"예) SSG닷컴, LF몰, SSF샵..."}
                 />)
@@ -181,8 +190,8 @@ const Start  = () => {
                 lastQuesNum={16}
                 quesNum={16}
                 setPageNum={setPageNum}
-                user_datas={user_datas_F.style_F[5].answers}
-                data_num={user_datas_F.style_F[5].answers.length}
+                user_datas={user_datas_F[1].answers}
+                data_num={user_datas_F[1].answers.length}
                 inputTextOne={"예) ZARA, OIOI, 커먼유니크, 아뜨랑스..."}
                 inputTextTwo={"예) SSG닷컴, LF몰, SSF샵..."}
             />)
