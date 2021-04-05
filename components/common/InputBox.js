@@ -7,7 +7,7 @@ import useWindowSize from "../../hooks/useWindowSize";
 
 
 // text: placeholder 문구
-export default ({text, input}) => {
+export default ({text, input, type, maxLength}) => {
     const [isBtnShown, setIsBtnShown] = useState(false);
     const size = useWindowSize();
 
@@ -22,12 +22,10 @@ export default ({text, input}) => {
     }, [input.value])
 
     return(
-        <>
         <Wrap>
-            <Box isShown={isBtnShown} placeholder={text} onChange={input.onChange} value={input.value}/>
+            <Box isShown={isBtnShown} placeholder={text} onChange={input.onChange} value={input.value} type={type?'number':'text'} pattern={type? '\d*':'none'} maxLength={maxLength? maxLength : 'none'}/>
             <DelBtn width={size.width} isShown={isBtnShown} onClick={() => input.setValue('')} src={del_icon}/>
         </Wrap>
-        </>
     )
 }
 
@@ -37,6 +35,7 @@ const Wrap = styled.div`
 `;
 
 const Box = styled.input`
+    z-index:1;
     width: 32rem;
     height: 4.4rem;
     padding-left: 1.2rem;
@@ -45,7 +44,7 @@ const Box = styled.input`
     border: solid 0.1rem #bdbdbd;
     background-color: ${({ theme }) => theme.colors.white};
     font-size: 1.6rem;
-    font-weight: 500;
+    font-weight: normal;
     font-family: 'Noto Sans KR';
     text-align: left;
     color: #767676;

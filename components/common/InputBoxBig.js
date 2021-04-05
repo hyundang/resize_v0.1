@@ -25,6 +25,7 @@ const Wrap = styled.textarea`
     font-family: "Noto Sans KR";
     font-size: 1.35rem;
     text-align: left;
+    resize: none;
     color: #767676;
     ::placeholder{
         color: #bdbdbd;

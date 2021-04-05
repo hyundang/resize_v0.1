@@ -1,13 +1,7 @@
 const style_M = [
     {
         id : 0,
-        questionNum : 1,
-        required : 1, //-1: 무제한 중복 선택, 0: 선택, 1 : 객관식, 2~: 중복선택/최대개수
-        answers : [],
-    },
-    {
-        id : 1,
-        questionNum : 2,
+        questionNum : "2,3,4",
         // answers 부분 name, tag로 바꿔주세여
         answers : [
             {
@@ -58,114 +52,7 @@ const style_M = [
         ],
     },
     {
-        id : 2,
-        questionNum : 3,
-        answers : [
-            {
-                name: "캐주얼", 
-                tag: ["편안한","스포티한","귀여운"], 
-                imgs:["/images/website/style/man/male-casual1.jpg","/images/website/style/man/male-casual2.jpg"]
-            },
-            {
-                name: "클래식포멀", 
-                tag: ["단정한", "격식있는", "세련된"], 
-                imgs:["/images/website/style/man/male-classicformal1.jpg","/images/website/style/man/male-classicformal2.jpg"]
-            }, 
-            {
-                name: "댄디베이직", 
-                tag: ["깔끔한", "단정한", "심플한"], 
-                imgs:["/images/website/style/man/male-dandybasic1.jpg","/images/website/style/man/male-dandybasic2.jpg"]
-            }, 
-            {
-                name: "스트릿", 
-                tag: ["힙한", "개성있는", "유니크한"], 
-                imgs:["/images/website/style/man/male-street1.jpg","/images/website/style/man/male-street2.jpg"]
-            }, 
-            {
-                name: "빈티지", 
-                tag: ["개성있는", "편안한", "따뜻한"], 
-                imgs:["/images/website/style/man/male-vintage1.jpg","/images/website/style/man/male-vintage2.jpg"]
-            }, 
-            {
-                name: "스포티", 
-                tag: ["캐주얼한", "활동성있는", "편한"], 
-                imgs:["/images/website/style/man/male-sporty1.jpg","/images/website/style/man/male-sporty2.jpg"]
-            }, 
-            {
-                name: "프레피", 
-                tag: ["통통튀는", "귀여운", "엘리트의"], 
-                imgs:["/images/website/style/man/male-preppy1.jpg","/images/website/style/man/male-preppy2.jpg"]
-            }, 
-            {
-                name: "힙시크", 
-                tag: ["힙한", "시크한", "개성있는"], 
-                imgs:["/images/website/style/man/male-hipchic1.jpg","/images/website/style/man/male-hipchic2.jpg"]
-            }, 
-            {
-                name: "럭셔리", 
-                tag: ["고급스러운", "화려한"], 
-                imgs:["/images/website/style/man/male-luxury1.jpg","/images/website/style/man/male-luxury2.jpg"]
-            }, 
-        ],
-    },
-    {
-        id : 3,
-        questionNum : 4,
-        answers : [
-            {
-                name: "캐주얼", 
-                tag: ["편안한","스포티한","귀여운"], 
-                imgs:["/images/website/style/man/male-casual1.jpg","/images/website/style/man/male-casual2.jpg"]
-            },
-            {
-                name: "클래식포멀", 
-                tag: ["단정한", "격식있는", "세련된"], 
-                imgs:["/images/website/style/man/male-classicformal1.jpg","/images/website/style/man/male-classicformal2.jpg"]
-            }, 
-            {
-                name: "댄디베이직", 
-                tag: ["깔끔한", "단정한", "심플한"], 
-                imgs:["/images/website/style/man/male-dandybasic1.jpg","/images/website/style/man/male-dandybasic2.jpg"]
-            }, 
-            {
-                name: "스트릿", 
-                tag: ["힙한", "개성있는", "유니크한"], 
-                imgs:["/images/website/style/man/male-street1.jpg","/images/website/style/man/male-street2.jpg"]
-            }, 
-            {
-                name: "빈티지", 
-                tag: ["개성있는", "편안한", "따뜻한"], 
-                imgs:["/images/website/style/man/male-vintage1.jpg","/images/website/style/man/male-vintage2.jpg"]
-            }, 
-            {
-                name: "스포티", 
-                tag: ["캐주얼한", "활동성있는", "편한"], 
-                imgs:["/images/website/style/man/male-sporty1.jpg","/images/website/style/man/male-sporty2.jpg"]
-            }, 
-            {
-                name: "프레피", 
-                tag: ["통통튀는", "귀여운", "엘리트의"], 
-                imgs:["/images/website/style/man/male-preppy1.jpg","/images/website/style/man/male-preppy2.jpg"]
-            }, 
-            {
-                name: "힙시크", 
-                tag: ["힙한", "시크한", "개성있는"], 
-                imgs:["/images/website/style/man/male-hipchic1.jpg","/images/website/style/man/male-hipchic2.jpg"]
-            }, 
-            {
-                name: "럭셔리", 
-                tag: ["고급스러운", "화려한"], 
-                imgs:["/images/website/style/man/male-luxury1.jpg","/images/website/style/man/male-luxury2.jpg"]
-            }, 
-        ],
-    },
-    {
-        id : 4,
-        questionNum: 14,
-        answers : ['SPA', '아웃도어', '디자이너', '고가 디자이너', '남성복', '보세', '하이엔드(명품)', '없음'],
-    },
-    {
-        id : 5,
+        id : 1,
         questionNum: 15,
         answers : ['무신사', '자사홈페이지', '하이버','룩핀', 'D.Stance', '29cm', '스타일쉐어', '블로그마켓', '홈쇼핑', '없음' ],
     },
