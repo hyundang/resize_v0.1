@@ -132,7 +132,7 @@ const InputWrap = styled.div`
 
 const InputBox = styled.input`
     width: 24rem;
-    height: 3rem;
+    height: 3.5rem;
     padding-bottom: 0.5rem;
     border-top: 0;
     border-left: 0;
