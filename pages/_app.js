@@ -62,8 +62,8 @@ const Resize = ({ Component, pageProps }) => {
           <meta name="title" property="og:title" content="RESIZE" />
           <meta name="description" property="og:description" content="오직 나만을 위한 모바일 퍼스널 쇼퍼"/>
           <meta name="image" property="og:image" content="/images/website/ogtag2.png" />
-          <meta property="og:url" content="https://resize.co.kr" />
-          <meta property="og:site_name" content="RESIZE" />
+          <meta name="url" property="og:url" content="https://resize.co.kr" />
+          <meta name="site_name" property="og:site_name" content="RESIZE" />
         </Head>
         {isPC?
         <>

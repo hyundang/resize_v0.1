@@ -19,6 +19,8 @@ const Start = () => {
                     <meta name="title" property="og:title" content="INVIATION" />
                     <meta name="description" property="og:description" content="to the exclusive VIP personal shopper"/>
                     <meta name="image" property="og:image" content="/images/website/resize-ogtag2.png" />
+                    <meta name="url" property="og:url" content="https://resize.co.kr/invitation" />
+                    <meta name="site_name" property="og:site_name" content="RESIZE" />
                 </Head>
                 <PageOne setPageNum={setPageNum}/>
                 </>
@@ -31,6 +33,8 @@ const Start = () => {
                     <meta name="title" property="og:title" content="INVIATION" />
                     <meta name="description" property="og:description" content="to the exclusive VIP personal shopper"/>
                     <meta name="image" property="og:image" content="/images/website/resize-ogtag2.png" />
+                    <meta name="url" property="og:url" content="https://resize.co.kr/invitation" />
+                    <meta name="site_name" property="og:site_name" content="RESIZE" />
                 </Head>
                 <PageTwo/>
                 </>
@@ -43,6 +47,8 @@ const Start = () => {
                     <meta name="title" property="og:title" content="INVIATION" />
                     <meta name="description" property="og:description" content="to the exclusive VIP personal shopper"/>
                     <meta name="image" property="og:image" content="/images/website/resize-ogtag2.png" />
+                    <meta name="url" property="og:url" content="https://resize.co.kr/invitation" />
+                    <meta name="site_name" property="og:site_name" content="RESIZE" />
                 </Head>
                 <DefaultPage setPageNum={setPageNum}/>
                 </>
