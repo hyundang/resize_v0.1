@@ -18,8 +18,6 @@ import 'swiper/components/pagination/pagination.scss';
 // mediaquery
 import { Mobile, PC } from "../lib/mediaQuery";
 import { PreparePage, PreparePagePC } from "../components";
-// assets
-// import ogImg from "../public/images/website/ogtag2.png";
 
 
 const store = createStore(
@@ -30,8 +28,8 @@ const store = createStore(
 const Resize = ({ Component, pageProps }) => {
   let filter = "win16|win32|win64|mac|macintel";
   
-  const [isPC, setIsPC] = useState(true);
-  // const [isPC, setIsPC] = useState(false);
+  // const [isPC, setIsPC] = useState(true);
+  const [isPC, setIsPC] = useState(false);
 
   useEffect(()=>{
       if (!window.GA_INITIALIZED) {
@@ -43,14 +41,14 @@ const Resize = ({ Component, pageProps }) => {
   )
 
   // 접속 기기가 pc인지 확인
-  useEffect(()=>{
-    if(navigator.platform) {
-      if(filter.indexOf(navigator.platform.toLowerCase())<0){
-        setIsPC(false);
-        console.log(isPC);
-      }
-    }
-  }, [])
+  // useEffect(()=>{
+  //   if(navigator.platform) {
+  //     if(filter.indexOf(navigator.platform.toLowerCase())<0){
+  //       setIsPC(false);
+  //       console.log(isPC);
+  //     }
+  //   }
+  // }, [])
 
   return (
     <ThemeProvider theme={theme}>
