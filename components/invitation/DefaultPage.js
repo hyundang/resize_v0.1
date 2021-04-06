@@ -14,6 +14,8 @@ export default ({setPageNum}) => {
     useEffect(()=>{
         if(password.value.length === 5)
             setIsActive(true);
+        else
+            setIsActive(false);
     }, [password.value])
     
 

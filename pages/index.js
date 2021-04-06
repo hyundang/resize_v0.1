@@ -33,18 +33,22 @@ const Start  = () => {
     //                 />
     // }
 
-    switch (pageNum) {
-        case 1:
-            return <PolicyPage/>
-        case 2:
-            return <InformPage/>
-        case 3:
-            return <GuidePage/>
-        default:
-            return <PageOne
-                        setPageNum={setPageNum}
-                    />
-    }
+    // switch (pageNum) {
+    //     case 1:
+    //         return <PolicyPage/>
+    //     case 2:
+    //         return <InformPage/>
+    //     case 3:
+    //         return <GuidePage/>
+    //     default:
+    //         return <PageOne
+    //                     setPageNum={setPageNum}
+    //                 />
+    // }
+    return(
+        <>
+        </>
+    )
 }
 
 export default Start;
