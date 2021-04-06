@@ -30,7 +30,6 @@ const Resize = ({ Component, pageProps }) => {
   
   const [isPC, setIsPC] = useState(false);
 
-
   useEffect(()=>{
       if (!window.GA_INITIALIZED) {
         initGA()
