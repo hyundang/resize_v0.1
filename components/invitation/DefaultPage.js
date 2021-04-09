@@ -21,7 +21,7 @@ export default ({setPageNum}) => {
 
     const handleBtnClick = () => {
         if(password.value[0] === 'A' & password.value[1] ==='1'){
-            if(Number(password.value.slice(2,)) > 0 & Number(password.value.slice(2,)) <= 200){
+            if(Number(password.value.slice(2,)) >= 0 & Number(password.value.slice(2,)) <= 200){
                 setPageNum(1);
             }
             else{
