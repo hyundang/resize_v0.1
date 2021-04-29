@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 // hooks
 import useInput from "../../hooks/useInput";
+import useRecoilInput from '../../hooks/useRecoilInput';
 // components
 import Modal from "./Modal";
+// recoil
+import { InvitationCodeState } from '../../states/invitation_atom';
 
 
 export default ({setPageNum}) => {
     const [isActive, setIsActive] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const password = useInput('');
+    const password = useRecoilInput(InvitationCodeState);
 
     useEffect(()=>{
         if(password.value.length === 5)

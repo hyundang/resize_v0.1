@@ -7,6 +7,9 @@ import { Modal, CheckBox } from ".";
 import useInput from "../../hooks/useInput";
 // api
 import { postApi } from "../../lib/api";
+// recoil
+import { InvitationCodeState } from '../../states/invitation_atom';
+import { useRecoilValue } from 'recoil';
 
 
 export default ({setPageNum}) => {
@@ -38,6 +41,7 @@ export default ({setPageNum}) => {
     const phone = useInput('');
     const person = useInput('');
     const [checked, setChecked] = useState(false);
+    const InvitationCode = useRecoilValue(InvitationCodeState);
 
 
     const handleRadioClick = (e) => {
@@ -51,7 +55,7 @@ export default ({setPageNum}) => {
     const handleBtnClick = async () => {
         // 데이터 전송
         const body = {
-            password: "A1000",
+            password: InvitationCode,
             name: name.value,
             birth: birth.value,
             gender: (gender==='여성'? 1 : 0),
